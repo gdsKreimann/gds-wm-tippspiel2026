@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "09.06.2026 22:48 Uhr (CEST)",
+    "generiert_am": "09.06.2026 22:52 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -27,31 +27,108 @@
   "ranglisten": {
     "1": [
       {
-        "name": "Heim",
+        "name": "Anne",
         "pts_spieltag": 0,
         "pts_gesamt": 0,
         "rang": "1",
         "delta": 0
       },
       {
-        "name": "Gast",
+        "name": "Annik",
         "pts_spieltag": 0,
         "pts_gesamt": 0,
         "rang": "2",
         "delta": 0
       },
       {
-        "name": "Gruppe",
+        "name": "Captain",
         "pts_spieltag": 0,
         "pts_gesamt": 0,
         "rang": "3",
         "delta": 0
       },
       {
-        "name": "Ergebnis",
+        "name": "Conny",
         "pts_spieltag": 0,
         "pts_gesamt": 0,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "5",
+        "delta": 0
+      },
+      {
+        "name": "Hanne_Sobek",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "6",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "7",
+        "delta": 0
+      },
+      {
+        "name": "Ludger_H",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "8",
+        "delta": 0
+      },
+      {
+        "name": "Michelle",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "Olli_R",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "10",
+        "delta": 0
+      },
+      {
+        "name": "Paule",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "11",
+        "delta": 0
+      },
+      {
+        "name": "Pottkind",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "12",
+        "delta": 0
+      },
+      {
+        "name": "thommes",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "13",
+        "delta": 0
+      },
+      {
+        "name": "TurboTobiBVB",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "14",
+        "delta": 0
+      },
+      {
+        "name": "UliPausS",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "15",
         "delta": 0
       }
     ]
