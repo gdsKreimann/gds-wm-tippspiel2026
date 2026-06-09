@@ -1,8 +1,9 @@
 """
-gds WM Tippspiel 2026 — Datenscraper
-Holt Daten von Kicktipp + football-data.org, schreibt data.json
+gds WM Tippspiel 2026 - Datenscraper
+Holt: Kicktipp (Login + Rangliste + Tipps) + football-data.org (Ergebnisse)
+Schreibt: data.json
 """
-import os, json, csv, io, time, sys, traceback, requests
+import os, json, csv, io, time, sys, traceback, requests, zoneinfo
 from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 
@@ -11,6 +12,7 @@ KICKTIPP_GROUP      = "gds-wm-tippspiel2026"
 FOOTBALL_API_BASE   = "https://api.football-data.org/v4"
 WM_COMPETITION_CODE = "WC"
 OUTPUT_FILE         = "data.json"
+BERLIN              = zoneinfo.ZoneInfo("Europe/Berlin")
 
 FLAG_MAP = {
     "Mexico":"🇲🇽","Canada":"🇨🇦","United States":"🇺🇸","USA":"🇺🇸",
@@ -35,61 +37,93 @@ FLAG_MAP = {
     "Iraq":"🇮🇶","New Zealand":"🇳🇿",
 }
 
+# Kicktipp DE-Namen → football-data EN-Namen
+NAME_MAP = {
+    "Deutschland":"Germany","Frankreich":"France","Spanien":"Spain",
+    "Niederlande":"Netherlands","Belgien":"Belgium","Schweiz":"Switzerland",
+    "Kroatien":"Croatia","Daenemark":"Denmark","Dänemark":"Denmark",
+    "Polen":"Poland","Serbien":"Serbia","Schottland":"Scotland",
+    "Oesterreich":"Austria","Österreich":"Austria","Schweden":"Sweden",
+    "Norwegen":"Norway","Tuerkei":"Turkey","Türkei":"Turkey",
+    "Tschechien":"Czechia","Brasilien":"Brazil","Argentinien":"Argentina",
+    "Kolumbien":"Colombia","Mexiko":"Mexico","USA":"United States",
+    "Kanada":"Canada","Marokko":"Morocco","Aegypten":"Egypt","Ägypten":"Egypt",
+    "Algerien":"Algeria","Suedafrika":"South Africa","Südafrika":"South Africa",
+    "Elfenbeinkueste":"Ivory Coast","Elfenbeinküste":"Ivory Coast",
+    "Kongo DR":"Congo DR","Kap Verde":"Cape Verde Islands",
+    "Suedkorea":"South Korea","Südkorea":"South Korea",
+    "Saudi-Arabien":"Saudi Arabia","Australien":"Australia",
+    "Katar":"Qatar","Usbekistan":"Uzbekistan","Jordanien":"Jordan",
+    "Irak":"Iraq","Neuseeland":"New Zealand","Tunesien":"Tunisia",
+    "Kamerun":"Cameroon","Uruguay":"Uruguay","Paraguay":"Paraguay",
+    "Ecuador":"Ecuador","Iran":"Iran","Senegal":"Senegal","Ghana":"Ghana",
+    "Nigeria":"Nigeria","Haiti":"Haiti","Bosnien-Herzegowina":"Bosnia-Herzegovina",
+}
+
+
 class KicktippScraper:
     def __init__(self, email, password):
-        self.email = email
+        self.email    = email
         self.password = password
-        self.session = requests.Session()
+        self.session  = requests.Session()
         self.session.headers.update({
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                          "AppleWebKit/537.36 (KHTML, like Gecko) "
-                          "Chrome/124.0.0.0 Safari/537.36",
+            "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                               "AppleWebKit/537.36 (KHTML, like Gecko) "
+                               "Chrome/124.0.0.0 Safari/537.36",
             "Accept-Language": "de-DE,de;q=0.9",
+            "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         })
 
-    def login(self):
+    # ── LOGIN ────────────────────────────────────────────────────
+    def login(self) -> bool:
         print(f"[Kicktipp] Login als {self.email[:4]}***...")
         try:
-            # Login-Seite laden um CSRF-Token zu holen
-            # Kicktipp Login-URL: gruppenspezifisch unter /profil/login
+            # Startseite der Gruppe laden um Session-Cookie zu bekommen
+            r0 = self.session.get(f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}", timeout=30)
+            print(f"[Kicktipp] Startseite: HTTP {r0.status_code}")
+
+            # Login-Seite laden
             login_url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/profil/login"
             r = self.session.get(login_url, timeout=30)
-            print(f"[Kicktipp] Login-Seite: HTTP {r.status_code} ({login_url})")
+            print(f"[Kicktipp] Login-Seite: HTTP {r.status_code}")
             soup = BeautifulSoup(r.text, "html.parser")
 
-            # Alle hidden inputs aus dem Formular holen
+            # Formular finden und Action-URL + alle hidden fields holen
             form = soup.find("form")
+            action_url = login_url  # Fallback
             payload = {}
             if form:
-                for inp in form.find_all("input", {"type": "hidden"}):
-                    if inp.get("name"):
-                        payload[inp["name"]] = inp.get("value", "")
-                print(f"[Kicktipp] Formular-Felder gefunden: {list(payload.keys())}")
+                if form.get("action"):
+                    action = form["action"]
+                    action_url = action if action.startswith("http") else KICKTIPP_BASE + action
+                for inp in form.find_all("input"):
+                    name = inp.get("name","")
+                    val  = inp.get("value","")
+                    if name:
+                        payload[name] = val
+                print(f"[Kicktipp] Form action: {action_url}")
+                print(f"[Kicktipp] Hidden fields: {[k for k,v in payload.items() if k not in ('login_email','login_password')]}")
 
             payload["login_email"]    = self.email
             payload["login_password"] = self.password
 
-            r2 = self.session.post(
-                login_url,
-                data=payload,
-                allow_redirects=True,
-                timeout=30
-            )
-            print(f"[Kicktipp] POST Login: HTTP {r2.status_code}, URL nach Redirect: {r2.url}")
+            r2 = self.session.post(action_url, data=payload, allow_redirects=True, timeout=30)
+            print(f"[Kicktipp] POST Login: HTTP {r2.status_code}, finale URL: {r2.url}")
 
-            # Login-Erfolg prüfen
-            if "logout" in r2.text.lower() or "/info/login" not in r2.url:
+            # Erfolg prüfen: kein Redirect zurück zur Login-Seite
+            if "profil/login" not in r2.url and r2.status_code in (200, 302):
                 print("[Kicktipp] Login erfolgreich!")
                 return True
 
-            # Fehlermeldung aus der Seite lesen
+            # Fehlermeldung aus Seite lesen
             soup2 = BeautifulSoup(r2.text, "html.parser")
-            err = soup2.find(class_=lambda c: c and "error" in c.lower())
-            if err:
-                print(f"[Kicktipp] Login-Fehler auf Seite: {err.get_text(strip=True)}")
+            for sel in [".error", ".alert", ".message", "#error"]:
+                el = soup2.select_one(sel)
+                if el:
+                    print(f"[Kicktipp] Fehler auf Seite: {el.get_text(strip=True)}")
+                    break
             else:
-                print("[Kicktipp] Login fehlgeschlagen — kein Logout-Link, aber auch kein Fehlertext gefunden.")
-                print(f"[Kicktipp] Seiten-Titel: {soup2.title.string if soup2.title else 'kein Titel'}")
+                print("[Kicktipp] Login fehlgeschlagen — immer noch auf Login-Seite")
             return False
 
         except Exception as e:
@@ -97,91 +131,121 @@ class KicktippScraper:
             traceback.print_exc()
             return False
 
-    def get_rangliste_csv(self):
-        """CSV-Export Gesamtübersicht Einzelwertung"""
+    # ── RANGLISTE ────────────────────────────────────────────────
+    def get_rangliste_csv(self) -> list:
+        """Lädt den Gesamtübersicht-Einzelwertung CSV-Export."""
         print("[Kicktipp] Lade Ranglisten-CSV...")
-        urls_to_try = [
+        # Korrekte Export-URL laut Kicktipp-Datenexport-Seite
+        urls = [
             f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport/rangliste?typ=gesamtuebersicht&wertung=einzelwertung",
-            f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport?rangliste=1",
+            f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport/rangliste",
             f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste",
         ]
-        for url in urls_to_try:
+        for url in urls:
             try:
                 r = self.session.get(url, timeout=30)
-                print(f"[Kicktipp] CSV-URL {url}: HTTP {r.status_code}, Content-Type: {r.headers.get('content-type','?')}")
-                if r.status_code == 200 and (";" in r.text[:200] or "Name" in r.text[:200]):
+                print(f"[Kicktipp] {url}: HTTP {r.status_code}, CT: {r.headers.get('content-type','?')[:40]}")
+                if r.status_code == 200 and ";" in r.text[:500]:
                     rows = list(csv.DictReader(io.StringIO(r.text), delimiter=";", quotechar='"'))
-                    if rows and len(rows) > 1:
-                        print(f"[Kicktipp] {len(rows)} Zeilen, Spalten: {list(rows[0].keys())}")
+                    if rows:
+                        print(f"[Kicktipp] CSV OK: {len(rows)} Zeilen, Spalten: {list(rows[0].keys())}")
                         return rows
             except Exception as e:
-                print(f"[Kicktipp] Fehler bei {url}: {e}")
+                print(f"[Kicktipp] {url} Fehler: {e}")
+        print("[Kicktipp] Kein CSV — HTML-Fallback")
         return self._scrape_rangliste_html()
 
-    def _scrape_rangliste_html(self):
-        """Fallback: Rangliste direkt von HTML scrapen"""
-        print("[Kicktipp] Fallback: Scrape HTML-Rangliste...")
+    def _scrape_rangliste_html(self) -> list:
+        """Fallback: Rangliste aus HTML-Tabelle scrapen."""
         r = self.session.get(f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste", timeout=30)
         soup = BeautifulSoup(r.text, "html.parser")
-        rows = []
         table = soup.find("table")
         if not table:
-            print("[Kicktipp] Keine Tabelle auf Rangliste-Seite gefunden!")
+            print("[Kicktipp] Keine Tabelle auf Rangliste-Seite")
             return []
         headers = [th.get_text(strip=True) for th in table.find_all("th")]
-        print(f"[Kicktipp] HTML-Tabellen-Header: {headers}")
+        rows = []
         for tr in table.find_all("tr")[1:]:
             tds = [td.get_text(strip=True) for td in tr.find_all("td")]
             if tds and len(tds) >= 2:
-                row = dict(zip(headers, tds))
-                rows.append(row)
-        print(f"[Kicktipp] {len(rows)} Zeilen aus HTML-Fallback")
+                rows.append(dict(zip(headers, tds)))
+        print(f"[Kicktipp] HTML-Rangliste: {len(rows)} Zeilen")
         return rows
 
-    def get_teilnehmer_fallback(self):
-        """
-        Wenn die WM noch nicht gestartet hat und alle Punkte 0 sind,
-        liefert Kicktipp eine leere Rangliste.
-        Dieser Fallback scrapt die Teilnehmernamen direkt von der Rangliste-Seite
-        und gibt eine Starttabelle mit 0 Punkten für Spieltag 1 zurück.
-        """
-        print("[Kicktipp] Lade Teilnehmernamen für Pre-Tournament-Tabelle...")
+    def get_teilnehmer_fallback(self) -> dict:
+        """Wenn WM noch nicht gestartet: Teilnehmernamen von Ranglisten-Seite."""
+        print("[Kicktipp] Lade Teilnehmernamen (Pre-Tournament)...")
         try:
             r = self.session.get(f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste", timeout=30)
             soup = BeautifulSoup(r.text, "html.parser")
             namen = []
-            # Tipper-Namen aus Ranglisten-Tabelle oder Profil-Links holen
             for a in soup.find_all("a", href=True):
-                href = a["href"]
-                if "/profil/" in href and "login" not in href:
+                if "/profil/" in a["href"] and "login" not in a["href"]:
                     name = a.get_text(strip=True)
                     if name and name not in namen and len(name) > 1:
                         namen.append(name)
-            print(f"[Kicktipp] {len(namen)} Teilnehmer gefunden: {namen}")
+            print(f"[Kicktipp] {len(namen)} Teilnehmer: {namen}")
             if not namen:
                 return {}
-            # Dummy-Spieltag-1-Tabelle mit 0 Punkten
-            st_data = [{"name": n, "pts_spieltag": 0, "pts_gesamt": 0, "rang": str(i+1), "delta": 0}
-                       for i, n in enumerate(namen)]
-            return {1: st_data}
+            return {1: [{"name":n,"pts_spieltag":0,"pts_gesamt":0,"rang":str(i+1),"delta":0}
+                        for i,n in enumerate(namen)]}
         except Exception as e:
-            print(f"[Kicktipp] Teilnehmer-Fallback fehlgeschlagen: {e}")
+            print(f"[Kicktipp] Teilnehmer-Fallback Fehler: {e}")
             return {}
 
+    @staticmethod
+    def parse_rangliste_csv(rows: list) -> dict:
+        """CSV-Zeilen → strukturierte Rangliste pro Spieltag."""
+        if not rows:
+            return {}
+        header = list(rows[0].keys())
+        print(f"[Parse] Spalten: {header}")
+        spieltag_cols = [k for k in header if "spieltag" in k.lower()]
+        print(f"[Parse] Spieltag-Spalten: {spieltag_cols}")
+        if not spieltag_cols:
+            # Fallback: Gesamtpunkte-Spalte → Spieltag 1
+            gesamt_col = next((k for k in header if "gesamt" in k.lower()), None)
+            if gesamt_col:
+                rows_sorted = sorted(rows, key=lambda r: int(r.get(gesamt_col,"0") or "0"), reverse=True)
+                return {1: [{"name":r.get("Name","").strip(),
+                              "pts_spieltag":int(r.get(gesamt_col,"0") or "0"),
+                              "pts_gesamt":int(r.get(gesamt_col,"0") or "0"),
+                              "rang":r.get("Rang","0").strip(), "delta":0}
+                             for r in rows_sorted if r.get("Name","").strip()]}
+            return {}
+
+        result = {}
+        for st_idx, col in enumerate(spieltag_cols, start=1):
+            st_data = []
+            for row in rows:
+                kumuliert = sum(
+                    int(str(row.get(c,"0")).strip()) if str(row.get(c,"0")).strip().lstrip("-").isdigit() else 0
+                    for c in spieltag_cols[:st_idx]
+                )
+                pts_st = int(str(row.get(col,"0")).strip()) if str(row.get(col,"0")).strip().lstrip("-").isdigit() else 0
+                name = str(row.get("Name","")).strip()
+                if name:
+                    st_data.append({"name":name,"pts_spieltag":pts_st,"pts_gesamt":kumuliert,
+                                    "rang":str(row.get("Rang","0")).strip(),"delta":0})
+            st_data.sort(key=lambda x: x["pts_gesamt"], reverse=True)
+            if st_idx > 1 and (st_idx-1) in result:
+                prev = {p["name"]:i+1 for i,p in enumerate(result[st_idx-1])}
+                for i,p in enumerate(st_data):
+                    p["delta"] = prev.get(p["name"], i+1) - (i+1)
+            result[st_idx] = st_data
+        return result
+
+    # ── TIPPS ────────────────────────────────────────────────────
     def get_spieltag_tipps(self, spieltag: int) -> dict:
         """
-        Scrapt die Tippübersicht eines Spieltags — zeigt wer was getippt hat.
-        Kicktipp zeigt fremde Tipps erst NACH Spielbeginn → vorher leer.
-
-        Gibt zurück: { "Heim vs Gast": [{name, tipp, punkte}, ...] }
-        Key = "Heimteam:Gastteam" zur Zuordnung zu football-data Spielen.
+        Scrapt Tippübersicht — nur nach Spielbeginn sichtbar.
+        Gibt zurück: {"HeimName:GastName": [{name, tipp, result}, ...]}
         """
         print(f"[Kicktipp] Lade Tippübersicht Spieltag {spieltag}...")
-        # spieltagIndex ist 0-basiert
-        url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/tippuebersicht?spieltagIndex={spieltag - 1}"
+        url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/tippuebersicht?spieltagIndex={spieltag-1}"
         try:
             r = self.session.get(url, timeout=30)
-            print(f"[Kicktipp] Tippübersicht HTTP {r.status_code}")
+            print(f"[Kicktipp] Tippübersicht: HTTP {r.status_code}")
             if r.status_code != 200:
                 return {}
         except Exception as e:
@@ -189,179 +253,89 @@ class KicktippScraper:
             return {}
 
         soup = BeautifulSoup(r.text, "html.parser")
-        tipps_by_spiel = {}
 
-        # Kicktipp-Struktur: Tabelle mit Spielen als Zeilen
-        # Kopfzeile = Teilnehmernamen, erste Spalte = Spiel
-        table = soup.find("table", id="tippuebersicht") or \
-                soup.find("table", class_=lambda c: c and "tipp" in c.lower()) or \
-                soup.find("table")
-
+        # Tabelle finden
+        table = (soup.find("table", id="tippuebersicht") or
+                 soup.find("table", class_=lambda c: c and "tipp" in c.lower()) or
+                 soup.find("table"))
         if not table:
             print("[Kicktipp] Keine Tippübersicht-Tabelle gefunden")
             return {}
 
-        # Teilnehmernamen aus Kopfzeile
+        # Teilnehmernamen aus Header-Zeile
         header_row = table.find("tr")
-        if not header_row:
-            return {}
-        teilnehmer = []
-        for th in header_row.find_all(["th", "td"])[1:]:  # erste Spalte = Spiel überspringen
-            name = th.get_text(strip=True)
-            if name:
-                teilnehmer.append(name)
-        print(f"[Kicktipp] Teilnehmer in Tippübersicht: {teilnehmer}")
+        teilnehmer = [th.get_text(strip=True)
+                      for th in header_row.find_all(["th","td"])[1:]
+                      if th.get_text(strip=True)]
+        print(f"[Kicktipp] {len(teilnehmer)} Teilnehmer in Tippübersicht")
 
-        # Spielzeilen parsen
+        tipps_by_spiel = {}
         for row in table.find_all("tr")[1:]:
-            cells = row.find_all(["td", "th"])
+            cells = row.find_all(["td","th"])
             if len(cells) < 2:
                 continue
-
-            # Erste Zelle = Spiel (z.B. "Deutschland - Frankreich")
             spiel_text = cells[0].get_text(strip=True)
-            if not spiel_text or ":" not in spiel_text and " - " not in spiel_text and " vs " not in spiel_text.lower():
-                continue
-
-            # Spiel-Key normalisieren: "Heim - Gast" → "Heim:Gast"
-            for sep in [" - ", " vs ", " – "]:
+            # Spiel-Key aus "Heim - Gast" bauen
+            spiel_key = None
+            for sep in [" - ", " – ", " vs ", " vs. "]:
                 if sep in spiel_text:
-                    parts = spiel_text.split(sep, 1)
-                    spiel_key = f"{parts[0].strip()}:{parts[1].strip()}"
+                    h, g = spiel_text.split(sep, 1)
+                    spiel_key = f"{h.strip()}:{g.strip()}"
                     break
-            else:
-                spiel_key = spiel_text
+            if not spiel_key:
+                continue
 
             tipps = []
             for i, cell in enumerate(cells[1:]):
                 if i >= len(teilnehmer):
                     break
                 tipp_text = cell.get_text(strip=True)
-                if not tipp_text:
+                if not tipp_text or ":" not in tipp_text:
                     continue
-
-                # Punkte aus CSS-Klasse ableiten (kicktipp markiert richtige Tipps)
                 css = " ".join(cell.get("class", []))
-                if "richtig" in css or "correct" in css or "gewonnen" in css:
-                    punkte = "correct"
-                elif "tendenz" in css or "partial" in css:
-                    punkte = "tendenz"
-                elif tipp_text and ":" in tipp_text:
-                    punkte = "unknown"  # Tipp vorhanden, Spiel läuft noch
+                if any(x in css for x in ["richtig","correct","gewonnen"]):
+                    result = True
+                elif any(x in css for x in ["falsch","wrong","verloren"]):
+                    result = False
                 else:
-                    punkte = "wrong"
-
-                tipps.append({
-                    "name":   teilnehmer[i],
-                    "tipp":   tipp_text,
-                    "result": punkte,
-                })
+                    result = None  # Spiel läuft noch
+                tipps.append({"name": teilnehmer[i], "tipp": tipp_text, "result": result})
 
             if tipps:
                 tipps_by_spiel[spiel_key] = tipps
                 print(f"[Kicktipp]   {spiel_key}: {len(tipps)} Tipps")
 
-        print(f"[Kicktipp] Tippübersicht Spieltag {spieltag}: {len(tipps_by_spiel)} Spiele mit Tipps")
+        print(f"[Kicktipp] Spieltag {spieltag}: {len(tipps_by_spiel)} Spiele mit Tipps")
         return tipps_by_spiel
 
     @staticmethod
     def match_tipps_to_spiele(spiele: list, tipps_by_spiel: dict) -> list:
-        """
-        Ordnet die gescrapten Tipps den football-data.org Spielen zu.
-        Matching über Teamnamen — fuzzy, da Kicktipp deutsche Namen verwendet.
-        """
-        # Kicktipp → football-data Name-Mapping (Deutsch → Englisch)
-        NAME_MAP = {
-            "Deutschland": "Germany", "Frankreich": "France", "Spanien": "Spain",
-            "Portugal": "Portugal", "England": "England", "Niederlande": "Netherlands",
-            "Belgien": "Belgium", "Schweiz": "Switzerland", "Kroatien": "Croatia",
-            "Dänemark": "Denmark", "Polen": "Poland", "Serbien": "Serbia",
-            "Schottland": "Scotland", "Wales": "Wales", "Österreich": "Austria",
-            "Schweden": "Sweden", "Norwegen": "Norway", "Türkei": "Turkey",
-            "Tschechien": "Czechia", "Brasilien": "Brazil", "Argentinien": "Argentina",
-            "Kolumbien": "Colombia", "Uruguay": "Uruguay", "Chile": "Chile",
-            "Ecuador": "Ecuador", "Peru": "Peru", "Venezuela": "Venezuela",
-            "Paraguay": "Paraguay", "Mexiko": "Mexico", "USA": "United States",
-            "Kanada": "Canada", "Panama": "Panama", "Marokko": "Morocco",
-            "Senegal": "Senegal", "Nigeria": "Nigeria", "Ghana": "Ghana",
-            "Kamerun": "Cameroon", "Tunesien": "Tunisia", "Ägypten": "Egypt",
-            "Algerien": "Algeria", "Südafrika": "South Africa",
-            "Elfenbeinküste": "Ivory Coast", "Kongo DR": "Congo DR",
-            "Kap Verde": "Cape Verde Islands", "Japan": "Japan",
-            "Südkorea": "South Korea", "Saudi-Arabien": "Saudi Arabia",
-            "Iran": "Iran", "Australien": "Australia", "Katar": "Qatar",
-            "Usbekistan": "Uzbekistan", "Jordanien": "Jordan", "Irak": "Iraq",
-            "Neuseeland": "New Zealand", "Haiti": "Haiti", "Bosnien-Herzegowina": "Bosnia-Herzegovina",
-            "Irak": "Iraq", "Norwegen": "Norway",
-        }
-
-        def normalize(name):
-            return NAME_MAP.get(name, name).lower().strip()
+        """Ordnet Kicktipp-Tipps (DE-Namen) den football-data Spielen (EN-Namen) zu."""
+        def norm(name):
+            en = NAME_MAP.get(name, name)
+            return en.lower().strip()
 
         result = []
         for spiel in spiele:
-            heim_norm = normalize(spiel["heim"]["name"])
-            gast_norm = normalize(spiel["gast"]["name"])
-            matched_tipps = []
+            heim_en = norm(spiel["heim"]["name"])
+            gast_en = norm(spiel["gast"]["name"])
+            matched = []
 
             for key, tipps in tipps_by_spiel.items():
                 if ":" not in key:
                     continue
-                k_heim, k_gast = key.split(":", 1)
-                kh = normalize(k_heim)
-                kg = normalize(k_gast)
-                # Fuzzy: Teilstring-Match reicht (z.B. "United States" vs "USA")
-                if (kh in heim_norm or heim_norm in kh) and \
-                   (kg in gast_norm or gast_norm in kg):
-                    matched_tipps = [
-                        {
-                            "n": t["name"],
-                            "t": t["tipp"],
-                            "c": True  if t["result"] == "correct"  else
-                                 None  if t["result"] == "unknown"  else
-                                 False
-                        }
-                        for t in tipps
-                    ]
+                kh, kg = key.split(":", 1)
+                kh_n, kg_n = norm(kh), norm(kg)
+                # Substring-Match in beide Richtungen
+                if ((kh_n in heim_en or heim_en in kh_n) and
+                    (kg_n in gast_en or gast_en in kg_n)):
+                    matched = [{"n": t["name"], "t": t["tipp"],
+                                "c": t["result"]} for t in tipps]
                     break
 
-            spiel_copy = dict(spiel)
-            spiel_copy["tipps"] = matched_tipps
-            result.append(spiel_copy)
-
-        return result
-
-
-        if not rows:
-            return {}
-        header = list(rows[0].keys())
-        print(f"[Parse] Alle Spalten: {header}")
-        spieltag_cols = [k for k in header if "spieltag" in k.lower()]
-        print(f"[Parse] Spieltag-Spalten: {spieltag_cols}")
-        result = {}
-        for st_idx, col in enumerate(spieltag_cols, start=1):
-            st_data = []
-            for row in rows:
-                pts_kumuliert = 0
-                for prev_col in spieltag_cols[:st_idx]:
-                    v = str(row.get(prev_col, "")).strip()
-                    pts_kumuliert += int(v) if v.lstrip("-").isdigit() else 0
-                st_data.append({
-                    "name":         str(row.get("Name", "")).strip(),
-                    "pts_spieltag": int(str(row.get(col,"0")).strip()) if str(row.get(col,"0")).strip().lstrip("-").isdigit() else 0,
-                    "pts_gesamt":   pts_kumuliert,
-                    "rang":         str(row.get("Rang", "0")).strip(),
-                })
-            st_data = [r for r in st_data if r["name"]]
-            st_data.sort(key=lambda x: x["pts_gesamt"], reverse=True)
-            if st_idx > 1 and (st_idx - 1) in result:
-                prev = {p["name"]: i+1 for i, p in enumerate(result[st_idx-1])}
-                for i, p in enumerate(st_data):
-                    p["delta"] = prev.get(p["name"], i+1) - (i+1)
-            else:
-                for p in st_data:
-                    p["delta"] = 0
-            result[st_idx] = st_data
+            sp = dict(spiel)
+            sp["tipps"] = matched
+            result.append(sp)
         return result
 
 
@@ -375,129 +349,120 @@ class FootballAPI:
         url = f"{FOOTBALL_API_BASE}/competitions/{WM_COMPETITION_CODE}/matches"
         r = self.session.get(url, timeout=30)
         if r.status_code == 429:
-            print("[Football-API] Rate limit, 60s warten...")
+            print("[Football-API] Rate limit — 60s warten...")
             time.sleep(60)
             r = self.session.get(url, timeout=30)
         print(f"[Football-API] HTTP {r.status_code}")
         if r.status_code != 200:
-            print(f"[Football-API] Fehler: {r.text[:300]}")
+            print(f"[Football-API] Fehler: {r.text[:200]}")
             return []
         matches = r.json().get("matches", [])
-        print(f"[Football-API] {len(matches)} Spiele geladen")
+        print(f"[Football-API] {len(matches)} Spiele")
         return matches
 
     @staticmethod
     def parse_matches(matches):
-        by_spieltag = {}
+        by_st = {}
         for m in matches:
             md = m.get("matchday")
             if not md:
                 continue
-            status_raw = m.get("status", "SCHEDULED")
-            if status_raw == "FINISHED":
-                status = "finished"
-            elif status_raw in ("IN_PLAY","PAUSED","HALF_TIME"):
-                status = "live"
-            else:
-                status = "upcoming"
+            status_raw = m.get("status","SCHEDULED")
+            if status_raw == "FINISHED":            status = "finished"
+            elif status_raw in ("IN_PLAY","PAUSED","HALF_TIME"): status = "live"
+            else:                                   status = "upcoming"
+
             ft = m.get("score",{}).get("fullTime",{})
             hg, ag = ft.get("home"), ft.get("away")
-            if status == "finished" and hg is not None:
-                score = f"{hg}:{ag}"
-            elif status == "live":
-                score = f"{hg or 0}:{ag or 0}"
-            else:
-                score = "—"
+            if status == "finished" and hg is not None: score = f"{hg}:{ag}"
+            elif status == "live":                       score = f"{hg or 0}:{ag or 0}"
+            else:                                        score = "—"
+
             utc = m.get("utcDate","")
             try:
-                import zoneinfo
                 dt = datetime.fromisoformat(utc.replace("Z","+00:00"))
-                dt_local = dt.astimezone(zoneinfo.ZoneInfo("Europe/Berlin"))
-                zeit = "Abpfiff" if status=="finished" else ("LIVE" if status=="live" else dt_local.strftime("%H:%M"))
+                dt_loc = dt.astimezone(BERLIN)
+                zeit = "Abpfiff" if status=="finished" else "LIVE" if status=="live" else dt_loc.strftime("%H:%M")
             except:
                 zeit = utc[:10]
+
             heim = m.get("homeTeam",{}).get("name","")
             gast = m.get("awayTeam",{}).get("name","")
-            by_spieltag.setdefault(md,[]).append({
-                "heim": {"name": heim, "flag": FLAG_MAP.get(heim,"🏳️")},
-                "gast": {"name": gast, "flag": FLAG_MAP.get(gast,"🏳️")},
+            by_st.setdefault(md,[]).append({
+                "heim":  {"name":heim, "flag":FLAG_MAP.get(heim,"🏳️")},
+                "gast":  {"name":gast, "flag":FLAG_MAP.get(gast,"🏳️")},
                 "score": score, "status": status, "zeit": zeit, "tipps": [],
             })
-        return by_spieltag
+        return by_st
 
 
 def main():
-    email    = os.environ.get("KICKTIPP_EMAIL","")
-    password = os.environ.get("KICKTIPP_PASSWORD","")
-    api_key  = os.environ.get("FOOTBALL_API_KEY","")
+    email   = os.environ.get("KICKTIPP_EMAIL","")
+    password= os.environ.get("KICKTIPP_PASSWORD","")
+    api_key = os.environ.get("FOOTBALL_API_KEY","")
 
-    print(f"[Start] Email gesetzt: {'ja' if email else 'NEIN'}")
-    print(f"[Start] Password gesetzt: {'ja' if password else 'NEIN'}")
-    print(f"[Start] API-Key gesetzt: {'ja' if api_key else 'nein (optional)'}")
-
+    print(f"[Start] Email: {'ja' if email else 'NEIN'} | Password: {'ja' if password else 'NEIN'} | API-Key: {'ja' if api_key else 'nein'}")
     if not email or not password:
-        print("FEHLER: KICKTIPP_EMAIL und KICKTIPP_PASSWORD müssen als GitHub Secrets gesetzt sein!")
+        print("FEHLER: KICKTIPP_EMAIL und KICKTIPP_PASSWORD fehlen!")
         sys.exit(1)
 
-    # Kicktipp
+    # 1. Kicktipp Login
     kt = KicktippScraper(email, password)
-    login_ok = kt.login()
-    if not login_ok:
+    if not kt.login():
         print("FEHLER: Kicktipp-Login fehlgeschlagen!")
-        print("Prüfe: 1) Secrets korrekt geschrieben? 2) Passwort stimmt? 3) Kicktipp-Account aktiv?")
         sys.exit(1)
 
+    # 2. Rangliste
     csv_rows  = kt.get_rangliste_csv()
     rangliste = KicktippScraper.parse_rangliste_csv(csv_rows)
+    if not rangliste:
+        print("[Info] Rangliste leer — Teilnehmer-Fallback...")
+        rangliste = kt.get_teilnehmer_fallback()
 
-    # Football API
+    # 3. Spielergebnisse von football-data.org
     spiele_by_spieltag = {}
     if api_key:
-        fapi = FootballAPI(api_key)
+        fapi    = FootballAPI(api_key)
         matches = fapi.get_wm_matches()
         spiele_by_spieltag = FootballAPI.parse_matches(matches)
 
-    # Tipps scrapen — nur für Spieltage mit mind. einem gestarteten Spiel
-    # (Kicktipp zeigt fremde Tipps erst nach Spielbeginn)
-    for st_id, spiele in spiele_by_spieltag.items():
-        hat_gestartete_spiele = any(s["status"] in ("finished", "live") for s in spiele)
-        if hat_gestartete_spiele:
-            print(f"[Info] Spieltag {st_id} hat gestartete Spiele → Tipps werden gescrapt")
-            tipps_by_spiel = kt.get_spieltag_tipps(st_id)
-            if tipps_by_spiel:
-                spiele_by_spieltag[st_id] = KicktippScraper.match_tipps_to_spiele(
-                    spiele, tipps_by_spiel
-                )
-        else:
-            print(f"[Info] Spieltag {st_id}: alle Spiele noch ausstehend → Tipps nicht sichtbar")
-
-    # Wenn Rangliste leer (WM noch nicht gestartet): Teilnehmer aus HTML scrapen
-    if not rangliste:
-        print("[Info] Rangliste leer (WM noch nicht gestartet) — lade Teilnehmerliste aus HTML...")
-        rangliste = kt.get_teilnehmer_fallback()
-
-    # Aktiven Spieltag bestimmen
-    aktiver_spieltag = max(rangliste.keys()) if rangliste else 1
+    # 4. Tipps scrapen — nur für Spieltage mit gestarteten Spielen
     for st_id, spiele in spiele_by_spieltag.items():
         if any(s["status"] in ("finished","live") for s in spiele):
-            aktiver_spieltag = max(aktiver_spieltag, st_id)
+            print(f"[Info] Spieltag {st_id} gestartet → Tipps scrapen")
+            tipps = kt.get_spieltag_tipps(st_id)
+            if tipps:
+                spiele_by_spieltag[st_id] = KicktippScraper.match_tipps_to_spiele(spiele, tipps)
+        else:
+            print(f"[Info] Spieltag {st_id}: noch keine Spiele gestartet")
+
+    # 5. Aktiven Spieltag bestimmen
+    aktiver_st = max(rangliste.keys()) if rangliste else 1
+    for st_id, spiele in spiele_by_spieltag.items():
+        if any(s["status"] in ("finished","live") for s in spiele):
+            aktiver_st = max(aktiver_st, st_id)
 
     alle_st = sorted(set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())))
-    spieltag_meta = [{"id":i,"label":f"Spieltag {i}","aktiv":i==aktiver_spieltag,"zukuenftig":i>aktiver_spieltag} for i in alle_st]
+    spieltag_meta = [{"id":i,"label":f"Spieltag {i}",
+                      "aktiv":i==aktiver_st,"zukuenftig":i>aktiver_st}
+                     for i in alle_st]
 
-    import zoneinfo
-    berlin = zoneinfo.ZoneInfo("Europe/Berlin")
-    jetzt_berlin = datetime.now(berlin)
-
+    # 6. data.json schreiben
     output = {
-        "meta": {"generiert_am": jetzt_berlin.strftime("%d.%m.%Y %H:%M Uhr (CEST)"), "aktiver_spieltag": aktiver_spieltag, "quelle": KICKTIPP_GROUP},
+        "meta": {
+            "generiert_am": datetime.now(BERLIN).strftime("%d.%m.%Y %H:%M Uhr (CEST)"),
+            "aktiver_spieltag": aktiver_st,
+            "quelle": KICKTIPP_GROUP,
+        },
         "spieltage":  spieltag_meta,
         "ranglisten": {str(k): v for k,v in rangliste.items()},
         "spiele":     {str(k): v for k,v in spiele_by_spieltag.items()},
     }
     with open(OUTPUT_FILE,"w",encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    print(f"✓ {OUTPUT_FILE} geschrieben — {len(rangliste)} Spieltage, {sum(len(v) for v in spiele_by_spieltag.values())} Spiele")
+
+    n_spiele = sum(len(v) for v in spiele_by_spieltag.values())
+    print(f"✓ {OUTPUT_FILE} — {len(rangliste)} Spieltag-Ranglisten, {n_spiele} Spiele")
 
 if __name__ == "__main__":
     main()
