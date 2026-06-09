@@ -1,0 +1,42 @@
+name: WM Tippspiel Scraper
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 16 * * *"
+    - cron: "30 20 * * *"
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Python Setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Abhaengigkeiten installieren
+        run: pip install -r requirements.txt
+
+      - name: Scraper ausfuehren
+        env:
+          KICKTIPP_EMAIL:    ${{ secrets.KICKTIPP_EMAIL }}
+          KICKTIPP_PASSWORD: ${{ secrets.KICKTIPP_PASSWORD }}
+          FOOTBALL_API_KEY:  ${{ secrets.FOOTBALL_API_KEY }}
+        run: python scraper.py
+
+      - name: data.json committen
+        run: |
+          git config user.name  "WM-Bot"
+          git config user.email "wm-bot@gds.eu"
+          git add data.json
+          git diff --staged --quiet || git commit -m "chore: update data.json [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push
