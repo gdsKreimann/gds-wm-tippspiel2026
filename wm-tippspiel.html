@@ -234,133 +234,95 @@ function updateTabCacheBadges() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// DUMMY DATA
-// In Produktion wird dies durch data.json aus GitHub ersetzt.
-// Format entspricht dem Kicktipp Gesamtübersicht-CSV + football-data.org API.
-//
-// CSV-Spalten: Rang;Name;1.Spieltag;2.Spieltag;...;Gesamtpunkte
-// Diese Struktur wird direkt vom Scraper in data.json überführt.
+// KONFIGURATION — HIER ANPASSEN
 // ═══════════════════════════════════════════════════════════════
-const SPIELTAGE = [
-  {id:1, label:"Spieltag 1", datum:"12. Jun"},
-  {id:2, label:"Spieltag 2", datum:"16. Jun"},
-  {id:3, label:"Spieltag 3", datum:"20. Jun", aktiv:true},
-  {id:4, label:"Spieltag 4", datum:"24. Jun", zukuenftig:true},
-];
-
-// Rangliste: Gesamtübersicht-CSV Spalten werden als kumulierte Punkte gespeichert.
-// delta = Platzveränderung gegenüber Vorspielgag (berechnet aus Rangunterschied).
-const RANGLISTEN = {
-  1: [
-    {n:"Pottkind",      pts:18, d:0},
-    {n:"TurboTobiBVB",  pts:15, d:0},
-    {n:"JanG",          pts:12, d:0},
-    {n:"DennisCostaRica",pts:11,d:0},
-    {n:"thommes",       pts:11, d:0},
-    {n:"Olli_R",        pts:10, d:0},
-    {n:"Paule",         pts:9,  d:0},
-    {n:"UliPausS",      pts:8,  d:0},
-    {n:"Ludger_H",      pts:7,  d:0},
-    {n:"Michelle",      pts:6,  d:0},
-    {n:"Annik",         pts:5,  d:0},
-    {n:"Conny",         pts:4,  d:0},
-    {n:"Captain",       pts:3,  d:0},
-    {n:"Anne",          pts:2,  d:0},
-    {n:"Hanne_Sobek",   pts:1,  d:0},
-  ],
-  2: [
-    {n:"TurboTobiBVB",   pts:24, d:2},
-    {n:"Pottkind",       pts:22, d:-1},
-    {n:"JanG",           pts:21, d:1},
-    {n:"DennisCostaRica",pts:19, d:1},
-    {n:"thommes",        pts:18, d:0},
-    {n:"Paule",          pts:17, d:2},
-    {n:"Olli_R",         pts:16, d:-1},
-    {n:"UliPausS",       pts:14, d:0},
-    {n:"Ludger_H",       pts:13, d:0},
-    {n:"Michelle",       pts:10, d:0},
-    {n:"Annik",          pts:9,  d:0},
-    {n:"Conny",          pts:8,  d:0},
-    {n:"Captain",        pts:6,  d:0},
-    {n:"Anne",           pts:4,  d:0},
-    {n:"Hanne_Sobek",    pts:2,  d:-1},
-  ],
-  3: [
-    {n:"TurboTobiBVB",   pts:33, d:3},
-    {n:"DennisCostaRica",pts:28, d:3},
-    {n:"JanG",           pts:27, d:-2},
-    {n:"Pottkind",       pts:26, d:-2},
-    {n:"thommes",        pts:24, d:0},
-    {n:"Paule",          pts:22, d:1},
-    {n:"UliPausS",       pts:19, d:2},
-    {n:"Olli_R",         pts:18, d:-1},
-    {n:"Ludger_H",       pts:16, d:0},
-    {n:"Michelle",       pts:13, d:0},
-    {n:"Annik",          pts:12, d:0},
-    {n:"Conny",          pts:10, d:0},
-    {n:"Captain",        pts:8,  d:0},
-    {n:"Anne",           pts:5,  d:0},
-    {n:"Hanne_Sobek",    pts:2,  d:0},
-  ],
-};
-
-const SPIELE = {
-  1: [
-    {heim:{flag:"🇲🇽",name:"Mexiko"},gast:{flag:"🇨🇦",name:"Kanada"},score:"2:1",status:"finished",zeit:"Abpfiff",
-     tipps:[{n:"TurboTobiBVB",t:"2:1",c:true},{n:"Pottkind",t:"1:0",c:false},{n:"JanG",t:"2:1",c:true},{n:"Hanne_Sobek",t:"0:1",c:false},{n:"thommes",t:"1:0",c:false}]},
-    {heim:{flag:"🇺🇸",name:"USA"},gast:{flag:"🏴󠁧󠁢󠁷󠁬󠁳󠁿",name:"Wales"},score:"3:0",status:"finished",zeit:"Abpfiff",
-     tipps:[{n:"TurboTobiBVB",t:"2:0",c:false},{n:"Pottkind",t:"3:0",c:true},{n:"Paule",t:"1:0",c:false},{n:"thommes",t:"2:0",c:false}]},
-  ],
-  2: [
-    {heim:{flag:"🇧🇷",name:"Brasilien"},gast:{flag:"🇦🇷",name:"Argentinien"},score:"1:2",status:"finished",zeit:"Abpfiff",
-     tipps:[{n:"TurboTobiBVB",t:"1:1",c:false},{n:"Pottkind",t:"0:1",c:false},{n:"JanG",t:"1:2",c:true},{n:"thommes",t:"1:1",c:false}]},
-    {heim:{flag:"🇩🇪",name:"Deutschland"},gast:{flag:"🇫🇷",name:"Frankreich"},score:"2:2",status:"finished",zeit:"Abpfiff",
-     tipps:[{n:"TurboTobiBVB",t:"2:1",c:false},{n:"DennisCostaRica",t:"2:2",c:true},{n:"Paule",t:"2:2",c:true},{n:"thommes",t:"1:2",c:false}]},
-  ],
-  3: [
-    {heim:{flag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",name:"Schottland"},gast:{flag:"🇵🇹",name:"Portugal"},score:"0:3",status:"finished",zeit:"Abpfiff",
-     tipps:[{n:"TurboTobiBVB",t:"0:3",c:true},{n:"Pottkind",t:"1:2",c:false},{n:"DennisCostaRica",t:"0:3",c:true},{n:"Hanne_Sobek",t:"2:0",c:false},{n:"thommes",t:"0:2",c:false}]},
-    {heim:{flag:"🇪🇸",name:"Spanien"},gast:{flag:"🇯🇵",name:"Japan"},score:"2:1",status:"live",zeit:"67'",
-     tipps:[{n:"TurboTobiBVB",t:"3:0",c:false},{n:"Pottkind",t:"2:1",c:true},{n:"UliPausS",t:"2:1",c:true},{n:"thommes",t:"1:0",c:false}]},
-    {heim:{flag:"🇳🇱",name:"Niederlande"},gast:{flag:"🇲🇦",name:"Marokko"},score:"—",status:"upcoming",zeit:"21:00",
-     tipps:[{n:"TurboTobiBVB",t:"2:0",c:null},{n:"Pottkind",t:"1:0",c:null},{n:"thommes",t:"1:1",c:null}]},
-  ],
-};
-
-// Fallback-Kommentare (wenn KI nicht erreichbar UND kein Cache)
-const FALLBACK_K = {
-  1:{headline:"POTTKIND FÜHRT — Spieltag 1 ist Geschichte!",sub:"Ein starker Start für Pottkind mit 18 Punkten. TurboTobiBVB folgt auf Platz 2. Hanne_Sobek tippt, als wäre 2006 noch.",anekdote:"Die WM 1994 in den USA war die erste ohne Jugoslawien und Sowjetunion als eigenständige Nationen. Brasilien gewann — zum vierten Mal. Die WM 2026 kehrt nun erstmals seit 32 Jahren auf denselben Kontinent zurück.",ticker:["Pottkind führt mit 18 Punkten","TurboTobiBVB auf Rang 2","Mexiko schlägt Kanada 2:1","USA dominiert Wales 3:0"]},
-  2:{headline:"TurboTobiBVB GREIFT AN — Führungswechsel nach Spieltag 2!",sub:"Das Südamerika-Duell schüttelt die Tabelle. JanG trifft Argentinien 1:2 exakt. Hanne_Sobek tippt weiter ins Nichts.",anekdote:"1990 eliminierte Argentinien den Titelverteidiger Brasilien mit einem einzigen Caniggia-Tor. Die Brasilianer weinten. Manche weinen heute noch.",ticker:["TurboTobiBVB übernimmt Führung","JanG trifft Arg. 1:2 exakt","Paule klettert auf Rang 6","2:2 zwischen Deutschland und Frankreich"]},
-  3:{headline:"TurboTobiBVB DOMINIERT — Portugal-Tipp war MAKELLOS!",sub:"0:3 gegen Schottland perfekt getippt! Spanien führt 2:1 in der 67. Minute. Hanne_Sobek tippt Schottland 2:0 und lebt in einer Parallelwelt.",anekdote:"CR7 ist bei der WM 2026 genau 41 Jahre alt. Er spielt trotzdem — und ist damit der älteste WM-Torschütze aller Zeiten. Den Rekord hat er sich 2022 selbst gesetzt.",ticker:["TurboTobiBVB führt mit 33 Pkt","Spanien 2:1 gegen Japan (67')","Niederlande vs. Marokko noch offen","DennisCostaRica springt auf Rang 2"]},
-};
+const DATA_URL = 'data.json';  // Liegt im selben Repo → relativer Pfad reicht
 
 // ═══════════════════════════════════════════════════════════════
-// STATE
+// LIVE-DATEN — geladen aus data.json (GitHub Actions aktualisiert täglich)
 // ═══════════════════════════════════════════════════════════════
-let aktiverSpieltag = 3;
+let SPIELTAGE  = [];
+let RANGLISTEN = {};
+let SPIELE     = {};
+let aktiverSpieltag = 1;
+
+// Generischen Fallback-Kommentar (wird durch KI ersetzt)
+function getFallbackK(id) {
+  const r = RANGLISTEN[id] || [];
+  const fuehrender = r[0]?.name || '—';
+  const letzter    = r[r.length-1]?.name || '—';
+  return {
+    headline: `SPIELTAG ${id} — die Tipps sind abgegeben!`,
+    sub: `${fuehrender} führt die Tabelle an. ${letzter} hat noch Luft nach oben. KI-Kommentar wird gleich geladen...`,
+    anekdote: 'Die WM 2026 ist das erste Turnier mit 48 Mannschaften — mehr Spiele, mehr Überraschungen, mehr Chancen für epische Tipp-Fails.',
+    ticker: [`${fuehrender} führt die Rangliste`, 'WM 2026 läuft!', 'Tipps abgegeben', 'Nächste Spiele stehen an'],
+  };
+}
 
 // ═══════════════════════════════════════════════════════════════
-// INIT
+// INIT — data.json laden, dann App starten
 // ═══════════════════════════════════════════════════════════════
 document.getElementById('headerDate').textContent =
   new Date().toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
-document.getElementById('footerUpdate').textContent =
-  'Zuletzt aktualisiert: ' + new Date().toLocaleString('de-DE');
 
-// Tabs bauen
-const nav = document.getElementById('spieltagNav');
-SPIELTAGE.forEach(st => {
-  const t = document.createElement('div');
-  t.className = 'spieltag-tab' + (st.id === aktiverSpieltag ? ' active' : '');
-  t.textContent = st.label + (st.datum ? ' · ' + st.datum : '');
-  if (st.zukuenftig) { t.style.opacity = '.3'; t.style.cursor = 'not-allowed'; }
-  else t.onclick = () => wechsel(st.id);
-  nav.appendChild(t);
-});
-updateTabCacheBadges();
+async function initApp() {
+  // Lade-Spinner im Footer
+  document.getElementById('footerUpdate').textContent = 'Daten werden geladen…';
 
-render(aktiverSpieltag);
-setTimeout(() => ladeKI(aktiverSpieltag), 400);
+  try {
+    const res  = await fetch(DATA_URL + '?t=' + Date.now()); // Cache-Buster
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+
+    // Daten in globale Variablen schreiben
+    SPIELTAGE  = json.spieltage || [];
+    aktiverSpieltag = json.meta?.aktiver_spieltag || 1;
+
+    // Rangliste: Scraper liefert name/pts_gesamt/delta — auf internes Format mappen
+    Object.entries(json.ranglisten || {}).forEach(([stId, rows]) => {
+      RANGLISTEN[parseInt(stId)] = rows.map(r => ({
+        n:   r.name,
+        pts: r.pts_gesamt,
+        d:   r.delta || 0,
+      }));
+    });
+
+    // Spiele: direkt übernehmen, tipps[] bleibt leer (Kicktipp liefert keine Einzel-Tipps im CSV)
+    Object.entries(json.spiele || {}).forEach(([stId, spiele]) => {
+      SPIELE[parseInt(stId)] = spiele;
+    });
+
+    document.getElementById('footerUpdate').textContent =
+      'Zuletzt aktualisiert: ' + (json.meta?.generiert_am || new Date().toLocaleString('de-DE'));
+
+  } catch(e) {
+    console.error('data.json konnte nicht geladen werden:', e);
+    document.getElementById('footerUpdate').textContent =
+      '⚠️ Daten konnten nicht geladen werden — bitte Seite neu laden';
+    // Minimaler Fallback damit die Seite nicht leer bleibt
+    SPIELTAGE = [{id:1, label:'Spieltag 1', aktiv:true, zukuenftig:false}];
+    aktiverSpieltag = 1;
+  }
+
+  // Tabs bauen
+  const nav = document.getElementById('spieltagNav');
+  nav.innerHTML = '';
+  SPIELTAGE.forEach(st => {
+    const t = document.createElement('div');
+    t.className = 'spieltag-tab' + (st.id === aktiverSpieltag ? ' active' : '');
+    t.textContent = st.label;
+    if (st.zukuenftig) { t.style.opacity = '.3'; t.style.cursor = 'not-allowed'; }
+    else t.onclick = () => wechsel(st.id);
+    nav.appendChild(t);
+  });
+  updateTabCacheBadges();
+
+  render(aktiverSpieltag);
+  setTimeout(() => ladeKI(aktiverSpieltag), 400);
+}
+
+// App starten
+initApp();
 
 // ═══════════════════════════════════════════════════════════════
 // NAVIGATION
@@ -368,7 +330,7 @@ setTimeout(() => ladeKI(aktiverSpieltag), 400);
 function wechsel(id) {
   aktiverSpieltag = id;
   document.querySelectorAll('.spieltag-tab').forEach((t, i) =>
-    t.classList.toggle('active', SPIELTAGE[i].id === id));
+    t.classList.toggle('active', SPIELTAGE[i]?.id === id));
   render(id);
   resetBanner();
   setTimeout(() => ladeKI(id), 300);
@@ -380,17 +342,16 @@ function wechsel(id) {
 function render(id) {
   const rangliste = RANGLISTEN[id];
   const spiele    = SPIELE[id];
-  if (!rangliste) return;
+  if (!rangliste && !spiele) return;
 
   document.getElementById('stLabel').textContent    = id;
   document.getElementById('kpiSpieltag').textContent = id;
-  document.getElementById('kpiMaxPts').textContent   = rangliste[0]?.n || '—';
+  document.getElementById('kpiMaxPts').textContent   = rangliste?.[0]?.n || '—';
   document.getElementById('kpiSpiele').textContent   = spiele?.length || '—';
   document.getElementById('flapMeta').textContent    = 'Spieltag ' + id;
 
   if (spiele) renderSpiele(spiele);
-  renderTop3(rangliste.slice(0, 3));
-  renderFlap(rangliste);
+  if (rangliste?.length) { renderTop3(rangliste.slice(0, 3)); renderFlap(rangliste); }
 }
 
 function renderSpiele(spiele) {
@@ -496,9 +457,9 @@ async function ladeKI(id) {
   }
 
   // 2. Kein Cache → Claude API aufrufen
-  const r = rangliste;
+  const r = RANGLISTEN[id] || [];
   const spiele = (SPIELE[id] || []).map(s => `${s.heim.name} ${s.score} ${s.gast.name}`).join(', ');
-  const fb = FALLBACK_K[id];
+  const fb = getFallbackK(id);
 
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -558,7 +519,7 @@ function zeigeKommentar(k, id, fromCache) {
   // Ticker aufbauen (doppelt für nahtlosen Loop)
   const ticker = document.getElementById('rtlTicker');
   ticker.innerHTML = '';
-  const items = k.ticker || (FALLBACK_K[id] && FALLBACK_K[id].ticker) || [];
+  const items = k.ticker || getFallbackK(id).ticker || [];
   [...items, ...items].forEach(t => {
     const s = document.createElement('span');
     s.textContent = '· ' + t + ' ';
