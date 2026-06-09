@@ -138,26 +138,79 @@ class KicktippScraper:
 
     # ── RANGLISTE ────────────────────────────────────────────────
     def get_rangliste_csv(self) -> list:
-        """Lädt den Gesamtübersicht-Einzelwertung CSV-Export."""
+        """Lädt den Gesamtübersicht-Einzelwertung CSV-Export via POST (wie das UI)."""
         print("[Kicktipp] Lade Ranglisten-CSV...")
-        # Korrekte Export-URL laut Kicktipp-Datenexport-Seite
-        urls = [
-            f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport/rangliste?typ=gesamtuebersicht&wertung=einzelwertung",
-            f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport/rangliste",
-            f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste",
-        ]
-        for url in urls:
-            try:
-                r = self.session.get(url, timeout=30)
-                print(f"[Kicktipp] {url}: HTTP {r.status_code}, CT: {r.headers.get('content-type','?')[:40]}")
-                if r.status_code == 200 and ";" in r.text[:500]:
-                    rows = list(csv.DictReader(io.StringIO(r.text), delimiter=";", quotechar='"'))
-                    if rows:
-                        print(f"[Kicktipp] CSV OK: {len(rows)} Zeilen, Spalten: {list(rows[0].keys())}")
+
+        # Schritt 1: Datenexport-Seite laden um CSRF-Token zu holen
+        export_page_url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport"
+        try:
+            r = self.session.get(export_page_url, timeout=30)
+            print(f"[Kicktipp] Datenexport-Seite: HTTP {r.status_code}")
+            soup = BeautifulSoup(r.text, "html.parser")
+
+            # Formular finden
+            form = soup.find("form")
+            payload = {}
+            action_url = export_page_url
+            if form:
+                if form.get("action"):
+                    action = form["action"]
+                    action_url = action if action.startswith("http") else KICKTIPP_BASE + action
+                for inp in form.find_all("input"):
+                    if inp.get("name"):
+                        payload[inp["name"]] = inp.get("value", "")
+                print(f"[Kicktipp] Export-Form action: {action_url}")
+                print(f"[Kicktipp] Export-Form fields: {list(payload.keys())}")
+
+            # Schritt 2: POST mit den richtigen Dropdown-Werten
+            # Aus dem Screenshot: Auswahl=Rangliste, Spieltag=1.Spieltag, Wertung=Einzelwertung
+            payload["typ"]     = "gesamtuebersicht"   # Dropdown "Auswahl der Daten"
+            payload["wertung"] = "einzelwertung"       # Dropdown "Wertung"
+
+            # Auch Select-Felder aus dem Formular übernehmen
+            for sel in soup.find_all("select"):
+                name = sel.get("name", "")
+                if name and name not in payload:
+                    # Ersten Option-Wert nehmen
+                    opt = sel.find("option")
+                    payload[name] = opt["value"] if opt and opt.get("value") else ""
+
+            print(f"[Kicktipp] POST payload: {payload}")
+            r2 = self.session.post(action_url, data=payload, timeout=30)
+            print(f"[Kicktipp] Export POST: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
+
+            if r2.status_code == 200 and ";" in r2.text[:500]:
+                rows = list(csv.DictReader(io.StringIO(r2.text), delimiter=";", quotechar='"'))
+                if rows:
+                    print(f"[Kicktipp] CSV OK: {len(rows)} Zeilen, Spalten: {list(rows[0].keys())}")
+                    # Validierung: muss eine "Name"-Spalte haben mit echten Teilnehmernamen
+                    # Kicktipp-Rangliste hat immer "Rang" und "Name"
+                    has_name = any("name" in k.lower() for k in rows[0].keys())
+                    # Sanity-check: Werte in Name-Spalte dürfen keine Wertungstypen sein
+                    name_col = next((k for k in rows[0].keys() if "name" in k.lower()), None)
+                    fake_namen = {"heim","gast","gruppe","ergebnis","tendenz"}
+                    if name_col:
+                        echte_namen = [r[name_col].strip().lower() for r in rows
+                                       if r.get(name_col,"").strip().lower() not in fake_namen]
+                    else:
+                        echte_namen = []
+
+                    if has_name and echte_namen:
                         return rows
-            except Exception as e:
-                print(f"[Kicktipp] {url} Fehler: {e}")
-        print("[Kicktipp] Kein CSV — HTML-Fallback")
+                    else:
+                        print(f"[Kicktipp] CSV enthält keine echten Teilnehmernamen — ignoriert")
+                        print(f"[Kicktipp] Spalten waren: {list(rows[0].keys())}")
+                        print(f"[Kicktipp] Erste Werte: {[r.get(name_col,'?') for r in rows[:5]]}")
+                print("[Kicktipp] CSV leer oder ungültig")
+                print(f"[Kicktipp] Antwort-Vorschau: {r2.text[:300]}")
+            else:
+                print(f"[Kicktipp] Unerwartete Antwort: {r2.text[:200]}")
+
+        except Exception as e:
+            print(f"[Kicktipp] Datenexport Fehler: {e}")
+            traceback.print_exc()
+
+        print("[Kicktipp] CSV-Export fehlgeschlagen — HTML-Fallback")
         return self._scrape_rangliste_html()
 
     def _scrape_rangliste_html(self) -> list:
