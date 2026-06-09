@@ -106,24 +106,29 @@ class KicktippScraper:
 
             payload["login_email"]    = self.email
             payload["login_password"] = self.password
+            # Kicktipp verwendet "kennung" und "passwort" als Feldnamen
+            payload["kennung"]  = self.email
+            payload["passwort"] = self.password
 
             r2 = self.session.post(action_url, data=payload, allow_redirects=True, timeout=30)
             print(f"[Kicktipp] POST Login: HTTP {r2.status_code}, finale URL: {r2.url}")
 
-            # Erfolg prüfen: kein Redirect zurück zur Login-Seite
-            if "profil/login" not in r2.url and r2.status_code in (200, 302):
+            # Erfolg: URL ist nicht mehr die Login-Seite ODER enthält logout-Link
+            soup2 = BeautifulSoup(r2.text, "html.parser")
+            hat_logout = bool(soup2.find("a", href=lambda h: h and "logout" in h.lower()))
+            noch_login  = "profil/login" in r2.url and not hat_logout
+
+            if hat_logout or not noch_login:
                 print("[Kicktipp] Login erfolgreich!")
                 return True
 
-            # Fehlermeldung aus Seite lesen
-            soup2 = BeautifulSoup(r2.text, "html.parser")
-            for sel in [".error", ".alert", ".message", "#error"]:
+            for sel in [".error",".alert",".message","#error",".formError"]:
                 el = soup2.select_one(sel)
                 if el:
-                    print(f"[Kicktipp] Fehler auf Seite: {el.get_text(strip=True)}")
+                    print(f"[Kicktipp] Fehlermeldung: {el.get_text(strip=True)}")
                     break
             else:
-                print("[Kicktipp] Login fehlgeschlagen — immer noch auf Login-Seite")
+                print("[Kicktipp] Login fehlgeschlagen — Seiten-Titel:", soup2.title.string if soup2.title else "?")
             return False
 
         except Exception as e:
