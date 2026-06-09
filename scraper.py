@@ -14,6 +14,20 @@ WM_COMPETITION_CODE = "WC"
 OUTPUT_FILE         = "data.json"
 BERLIN              = zoneinfo.ZoneInfo("Europe/Berlin")
 
+# Feste Teilnehmerliste — aus dem Kicktipp-Export vom 09.06.2026
+# Wird als Starttabelle (0 Punkte) verwendet bis echte Punkte vorliegen.
+# Nach Turnierstart wird diese Liste durch den CSV-Export überschrieben.
+TEILNEHMER_FEST = [
+    "Anne", "Annik", "Captain", "Conny", "DennisCostaRica",
+    "Hanne_Sobek", "JanG", "Ludger_H", "Michelle", "Olli_R",
+    "Paule", "Pottkind", "thommes", "TurboTobiBVB", "UliPausS",
+]
+
+STARTTABELLE = [
+    {"name": n, "pts_spieltag": 0, "pts_gesamt": 0, "rang": str(i+1), "delta": 0}
+    for i, n in enumerate(TEILNEHMER_FEST)
+]
+
 FLAG_MAP = {
     "Mexico":"🇲🇽","Canada":"🇨🇦","United States":"🇺🇸","USA":"🇺🇸",
     "Panama":"🇵🇦","Honduras":"🇭🇳","Jamaica":"🇯🇲","Costa Rica":"🇨🇷",
@@ -179,15 +193,19 @@ class KicktippScraper:
                 payload = dict(base_payload)
                 payload["typ"] = typ_value
                 print(f"[Kicktipp] POST typ={typ_value} ({label})...")
-                r2 = self.session.post(action_url, data=payload, timeout=30)
-                print(f"[Kicktipp] {label}: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
-                if r2.status_code == 200 and ";" in r2.text[:500]:
-                    rows = list(csv.DictReader(io.StringIO(r2.text), delimiter=";", quotechar='"'))
-                    print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
-                    if rows:
+                try:
+                    r2 = self.session.post(action_url, data=payload, timeout=15)
+                    print(f"[Kicktipp] {label}: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
+                    if r2.status_code == 200 and ";" in r2.text[:500]:
+                        rows = list(csv.DictReader(io.StringIO(r2.text), delimiter=";", quotechar='"'))
+                        print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
                         return rows
-                else:
-                    print(f"[Kicktipp] {label} Antwort: {r2.text[:150]}")
+                    else:
+                        print(f"[Kicktipp] {label} kein CSV: {r2.text[:100]}")
+                except requests.exceptions.Timeout:
+                    print(f"[Kicktipp] {label} Timeout nach 15s")
+                except Exception as e:
+                    print(f"[Kicktipp] {label} Fehler: {e}")
                 return []
 
             # Liste aller Tipper → Teilnehmernamen
@@ -547,42 +565,51 @@ def main():
         print("FEHLER: Kicktipp-Login fehlgeschlagen!")
         sys.exit(1)
 
-    # 2. Rangliste — nur holen wenn WM schon läuft
-    # Vor Turnierstart liefert Kicktipp keine verwertbaren Daten.
-    # Wir laden die bestehende data.json und überschreiben nur die Spiele.
-    rangliste = {}
-    existing_data = {}
-    if os.path.exists(OUTPUT_FILE):
-        try:
-            with open(OUTPUT_FILE, encoding="utf-8") as f:
-                existing_data = json.load(f)
-            rangliste = {int(k): v for k, v in existing_data.get("ranglisten", {}).items()}
-            print(f"[Info] Bestehende Rangliste geladen: {list(rangliste.keys())} Spieltage, "
-                  f"{len(list(rangliste.values())[0]) if rangliste else 0} Tipper")
-        except Exception as e:
-            print(f"[Info] data.json lesen fehlgeschlagen: {e}")
-
-    # 2. CSV-Exporte holen und parsen
-    exports       = kt.get_rangliste_csv()
+    # 2. CSV-Exporte von Kicktipp holen
+    exports = kt.get_rangliste_csv()
     neue_rangliste, tipper_namen = KicktippScraper.parse_exports(exports)
 
-    # Nur übernehmen wenn echte Punkte drin sind
+    # Priorität für Rangliste:
+    # A) Kicktipp-Export mit echten Punkten (> 0) → nehmen
+    # B) Bestehende data.json wenn sie echte Namen enthält → behalten
+    # C) Feste Starttabelle mit 15 bekannten Teilnehmern → immer korrekt
+
+    FAKE_NAMEN = {"heim", "gast", "gruppe", "ergebnis", "tendenz", "de"}
+
     hat_echte_punkte = any(
         p.get("pts_gesamt", 0) > 0
         for st_data in neue_rangliste.values()
         for p in st_data
     )
+
     if hat_echte_punkte:
-        print(f"[Info] Neue Rangliste mit echten Punkten übernommen")
         rangliste = neue_rangliste
-    elif tipper_namen:
-        # WM noch nicht gestartet aber Namen bekannt → Starttabelle mit 0 Punkten
-        print(f"[Info] Noch keine Punkte — baue Starttabelle aus {len(tipper_namen)} Tipper-Namen")
-        rangliste = {1: [{"name": n, "pts_spieltag": 0, "pts_gesamt": 0,
-                          "rang": str(i+1), "delta": 0}
-                         for i, n in enumerate(tipper_namen)]}
+        print(f"[Rangliste] ✓ Kicktipp-Export mit echten Punkten: {len(neue_rangliste)} Spieltage")
     else:
-        print(f"[Info] Kicktipp liefert keine verwertbaren Daten — behalte bestehende Rangliste")
+        # Bestehende data.json prüfen
+        rangliste_existing = {}
+        if os.path.exists(OUTPUT_FILE):
+            try:
+                with open(OUTPUT_FILE, encoding="utf-8") as f:
+                    existing = json.load(f)
+                rangliste_existing = {int(k): v for k, v in existing.get("ranglisten", {}).items()}
+            except Exception as e:
+                print(f"[Rangliste] data.json lesen fehlgeschlagen: {e}")
+
+        # Prüfen ob bestehende Rangliste echte Namen enthält
+        hat_echte_namen = False
+        if rangliste_existing:
+            erste_liste = list(rangliste_existing.values())[0]
+            echte = [p for p in erste_liste if p.get("name","").lower() not in FAKE_NAMEN]
+            hat_echte_namen = len(echte) >= 5  # mind. 5 echte Namen
+
+        if hat_echte_namen:
+            rangliste = rangliste_existing
+            erste = list(rangliste.values())[0]
+            print(f"[Rangliste] ✓ Bestehende data.json: {len(erste)} Tipper ({erste[0]['name']} ...)")
+        else:
+            rangliste = {1: STARTTABELLE}
+            print(f"[Rangliste] ✓ Feste Starttabelle: {len(STARTTABELLE)} Tipper")
 
     # 3. Spielergebnisse von football-data.org
     spiele_by_spieltag = {}
