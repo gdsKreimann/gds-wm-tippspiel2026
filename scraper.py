@@ -178,25 +178,81 @@ class KicktippScraper:
         return rows
 
     def get_teilnehmer_fallback(self) -> dict:
-        """Wenn WM noch nicht gestartet: Teilnehmernamen von Ranglisten-Seite."""
+        """Wenn WM noch nicht gestartet: Teilnehmernamen von verschiedenen Seiten."""
         print("[Kicktipp] Lade Teilnehmernamen (Pre-Tournament)...")
+        namen = []
+
+        # Versuch 1: Tippübersicht Spieltag 1 (zeigt alle Teilnehmer in Kopfzeile)
         try:
-            r = self.session.get(f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste", timeout=30)
+            r = self.session.get(
+                f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/tippuebersicht?spieltagIndex=0",
+                timeout=30)
             soup = BeautifulSoup(r.text, "html.parser")
-            namen = []
-            for a in soup.find_all("a", href=True):
-                if "/profil/" in a["href"] and "login" not in a["href"]:
-                    name = a.get_text(strip=True)
-                    if name and name not in namen and len(name) > 1:
-                        namen.append(name)
-            print(f"[Kicktipp] {len(namen)} Teilnehmer: {namen}")
-            if not namen:
-                return {}
-            return {1: [{"name":n,"pts_spieltag":0,"pts_gesamt":0,"rang":str(i+1),"delta":0}
-                        for i,n in enumerate(namen)]}
+            print(f"[Kicktipp] Tippübersicht: HTTP {r.status_code}")
+            # Teilnehmer stehen in der Tabellen-Kopfzeile
+            table = soup.find("table")
+            if table:
+                header = table.find("tr")
+                if header:
+                    for th in header.find_all(["th","td"])[1:]:
+                        name = th.get_text(strip=True)
+                        if name and len(name) > 1 and name not in namen:
+                            namen.append(name)
+                    print(f"[Kicktipp] Tippübersicht-Header: {namen}")
         except Exception as e:
-            print(f"[Kicktipp] Teilnehmer-Fallback Fehler: {e}")
+            print(f"[Kicktipp] Tippübersicht-Fallback Fehler: {e}")
+
+        # Versuch 2: Ranglisten-Seite — Teilnehmer aus Tabellenzellen
+        if not namen:
+            try:
+                r = self.session.get(
+                    f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste",
+                    timeout=30)
+                soup = BeautifulSoup(r.text, "html.parser")
+                # Alle Tabellenzellen mit Tipper-Namen
+                for td in soup.find_all("td", class_=lambda c: c and any(
+                        x in c for x in ["name","tipper","user","teilnehmer"])):
+                    name = td.get_text(strip=True)
+                    if name and len(name) > 1 and name not in namen:
+                        namen.append(name)
+                # Fallback: alle Links die auf Profil-Seiten zeigen aber NICHT auf Sprachseiten
+                if not namen:
+                    for a in soup.find_all("a", href=True):
+                        href = a["href"]
+                        name = a.get_text(strip=True)
+                        if ("/profil/" in href and "login" not in href
+                                and len(name) > 2 and name not in namen
+                                and not name.isdigit()
+                                and href != f"/{KICKTIPP_GROUP}/profil/de"):
+                            namen.append(name)
+                print(f"[Kicktipp] Rangliste-Fallback: {namen}")
+            except Exception as e:
+                print(f"[Kicktipp] Rangliste-Fallback Fehler: {e}")
+
+        # Versuch 3: Mitgliederliste (nur für Spielleiter sichtbar, kein Schaden wenn 404)
+        if not namen:
+            try:
+                r = self.session.get(
+                    f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/mitglieder",
+                    timeout=30)
+                if r.status_code == 200:
+                    soup = BeautifulSoup(r.text, "html.parser")
+                    for td in soup.find_all("td"):
+                        name = td.get_text(strip=True)
+                        if name and len(name) > 2 and name not in namen and not name.isdigit():
+                            namen.append(name)
+                    print(f"[Kicktipp] Mitgliederliste: {namen}")
+            except Exception as e:
+                print(f"[Kicktipp] Mitgliederliste Fehler: {e}")
+
+        print(f"[Kicktipp] {len(namen)} Teilnehmer gefunden: {namen}")
+        if not namen:
+            print("[Kicktipp] WARNUNG: Keine Teilnehmer gefunden — data.json bleibt ohne Rangliste")
             return {}
+
+        return {1: [{"name": n, "pts_spieltag": 0, "pts_gesamt": 0,
+                     "rang": str(i+1), "delta": 0}
+                    for i, n in enumerate(namen)]}
 
     @staticmethod
     def parse_rangliste_csv(rows: list) -> dict:
@@ -423,6 +479,17 @@ def main():
     if not rangliste:
         print("[Info] Rangliste leer — Teilnehmer-Fallback...")
         rangliste = kt.get_teilnehmer_fallback()
+
+    # Wenn immer noch leer: bestehende data.json als Basis nehmen
+    if not rangliste and os.path.exists(OUTPUT_FILE):
+        print("[Info] Kein Ergebnis von Kicktipp — behalte Rangliste aus vorheriger data.json")
+        try:
+            with open(OUTPUT_FILE, encoding="utf-8") as f:
+                existing = json.load(f)
+            rangliste = {int(k): v for k, v in existing.get("ranglisten", {}).items()}
+            print(f"[Info] Rangliste aus data.json geladen: {list(rangliste.keys())}")
+        except Exception as e:
+            print(f"[Info] data.json lesen fehlgeschlagen: {e}")
 
     # 3. Spielergebnisse von football-data.org
     spiele_by_spieltag = {}
