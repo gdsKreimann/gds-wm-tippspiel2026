@@ -19,7 +19,7 @@ BERLIN              = zoneinfo.ZoneInfo("Europe/Berlin")
 # Nach Turnierstart wird diese Liste durch den CSV-Export überschrieben.
 TEILNEHMER_FEST = [
     "Anne", "Annik", "Captain", "Conny", "DennisCostaRica",
-    "Hanne_Sobek", "JanG", "Ludger_H", "Michelle", "Olli_R",
+    "Hanne_Sobek", "Helmut", "JanG", "Ludger_H", "Michelle", "Olli_R",
     "Paule", "Pottkind", "thommes", "TurboTobiBVB", "UliPausS",
 ]
 
