@@ -309,8 +309,12 @@ def main():
     alle_st = sorted(set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())))
     spieltag_meta = [{"id":i,"label":f"Spieltag {i}","aktiv":i==aktiver_spieltag,"zukuenftig":i>aktiver_spieltag} for i in alle_st]
 
+    import zoneinfo
+    berlin = zoneinfo.ZoneInfo("Europe/Berlin")
+    jetzt_berlin = datetime.now(berlin)
+
     output = {
-        "meta": {"generiert_am": datetime.now(timezone.utc).isoformat(), "aktiver_spieltag": aktiver_spieltag, "quelle": KICKTIPP_GROUP},
+        "meta": {"generiert_am": jetzt_berlin.strftime("%d.%m.%Y %H:%M Uhr (CEST)"), "aktiver_spieltag": aktiver_spieltag, "quelle": KICKTIPP_GROUP},
         "spieltage":  spieltag_meta,
         "ranglisten": {str(k): v for k,v in rangliste.items()},
         "spiele":     {str(k): v for k,v in spiele_by_spieltag.items()},
