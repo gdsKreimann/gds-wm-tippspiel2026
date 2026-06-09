@@ -13,17 +13,26 @@ WM_COMPETITION_CODE = "WC"
 OUTPUT_FILE         = "data.json"
 
 FLAG_MAP = {
-    "Mexico":"🇲🇽","Canada":"🇨🇦","United States":"🇺🇸","Brazil":"🇧🇷",
-    "Argentina":"🇦🇷","Germany":"🇩🇪","France":"🇫🇷","Spain":"🇪🇸",
-    "Portugal":"🇵🇹","England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Netherlands":"🇳🇱","Belgium":"🇧🇪",
-    "Uruguay":"🇺🇾","Colombia":"🇨🇴","Chile":"🇨🇱","Japan":"🇯🇵",
-    "South Korea":"🇰🇷","Australia":"🇦🇺","Morocco":"🇲🇦","Senegal":"🇸🇳",
-    "Nigeria":"🇳🇬","Saudi Arabia":"🇸🇦","Iran":"🇮🇷","Switzerland":"🇨🇭",
+    "Mexico":"🇲🇽","Canada":"🇨🇦","United States":"🇺🇸","USA":"🇺🇸",
+    "Panama":"🇵🇦","Honduras":"🇭🇳","Jamaica":"🇯🇲","Costa Rica":"🇨🇷",
+    "Haiti":"🇭🇹","Curacao":"🇨🇼","Brazil":"🇧🇷","Argentina":"🇦🇷",
+    "Colombia":"🇨🇴","Uruguay":"🇺🇾","Chile":"🇨🇱","Ecuador":"🇪🇨",
+    "Peru":"🇵🇪","Venezuela":"🇻🇪","Paraguay":"🇵🇾","Bolivia":"🇧🇴",
+    "Germany":"🇩🇪","France":"🇫🇷","Spain":"🇪🇸","Portugal":"🇵🇹",
+    "England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Netherlands":"🇳🇱","Belgium":"🇧🇪","Switzerland":"🇨🇭",
     "Croatia":"🇭🇷","Denmark":"🇩🇰","Poland":"🇵🇱","Serbia":"🇷🇸",
-    "Scotland":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Wales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿","Ecuador":"🇪🇨","Qatar":"🇶🇦",
-    "Ghana":"🇬🇭","Cameroon":"🇨🇲","Tunisia":"🇹🇳","Costa Rica":"🇨🇷",
-    "Panama":"🇵🇦","Honduras":"🇭🇳","Jamaica":"🇯🇲","Peru":"🇵🇪",
-    "Venezuela":"🇻🇪","Indonesia":"🇮🇩","New Zealand":"🇳🇿","USA":"🇺🇸",
+    "Scotland":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Wales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿","Austria":"🇦🇹","Sweden":"🇸🇪",
+    "Norway":"🇳🇴","Turkey":"🇹🇷","Czechia":"🇨🇿","Czech Republic":"🇨🇿",
+    "Slovakia":"🇸🇰","Hungary":"🇭🇺","Romania":"🇷🇴","Ukraine":"🇺🇦",
+    "Greece":"🇬🇷","Bosnia-Herzegovina":"🇧🇦","Bosnia Herzegovina":"🇧🇦",
+    "Slovenia":"🇸🇮","Iceland":"🇮🇸","Finland":"🇫🇮","Ireland":"🇮🇪",
+    "Morocco":"🇲🇦","Senegal":"🇸🇳","Nigeria":"🇳🇬","Ghana":"🇬🇭",
+    "Cameroon":"🇨🇲","Tunisia":"🇹🇳","Egypt":"🇪🇬","Algeria":"🇩🇿",
+    "South Africa":"🇿🇦","Ivory Coast":"🇨🇮","Congo DR":"🇨🇩","DR Congo":"🇨🇩",
+    "Cape Verde Islands":"🇨🇻","Cape Verde":"🇨🇻","Japan":"🇯🇵",
+    "South Korea":"🇰🇷","Saudi Arabia":"🇸🇦","Iran":"🇮🇷","Australia":"🇦🇺",
+    "Qatar":"🇶🇦","Uzbekistan":"🇺🇿","Indonesia":"🇮🇩","Jordan":"🇯🇴",
+    "Iraq":"🇮🇶","New Zealand":"🇳🇿",
 }
 
 class KicktippScraper:
@@ -128,6 +137,36 @@ class KicktippScraper:
                 rows.append(row)
         print(f"[Kicktipp] {len(rows)} Zeilen aus HTML-Fallback")
         return rows
+
+    def get_teilnehmer_fallback(self):
+        """
+        Wenn die WM noch nicht gestartet hat und alle Punkte 0 sind,
+        liefert Kicktipp eine leere Rangliste.
+        Dieser Fallback scrapt die Teilnehmernamen direkt von der Rangliste-Seite
+        und gibt eine Starttabelle mit 0 Punkten für Spieltag 1 zurück.
+        """
+        print("[Kicktipp] Lade Teilnehmernamen für Pre-Tournament-Tabelle...")
+        try:
+            r = self.session.get(f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste", timeout=30)
+            soup = BeautifulSoup(r.text, "html.parser")
+            namen = []
+            # Tipper-Namen aus Ranglisten-Tabelle oder Profil-Links holen
+            for a in soup.find_all("a", href=True):
+                href = a["href"]
+                if "/profil/" in href and "login" not in href:
+                    name = a.get_text(strip=True)
+                    if name and name not in namen and len(name) > 1:
+                        namen.append(name)
+            print(f"[Kicktipp] {len(namen)} Teilnehmer gefunden: {namen}")
+            if not namen:
+                return {}
+            # Dummy-Spieltag-1-Tabelle mit 0 Punkten
+            st_data = [{"name": n, "pts_spieltag": 0, "pts_gesamt": 0, "rang": str(i+1), "delta": 0}
+                       for i, n in enumerate(namen)]
+            return {1: st_data}
+        except Exception as e:
+            print(f"[Kicktipp] Teilnehmer-Fallback fehlgeschlagen: {e}")
+            return {}
 
     @staticmethod
     def parse_rangliste_csv(rows):
@@ -255,6 +294,11 @@ def main():
         fapi = FootballAPI(api_key)
         matches = fapi.get_wm_matches()
         spiele_by_spieltag = FootballAPI.parse_matches(matches)
+
+    # Wenn Rangliste leer (WM noch nicht gestartet): Teilnehmer aus HTML scrapen
+    if not rangliste:
+        print("[Info] Rangliste leer (WM noch nicht gestartet) — lade Teilnehmerliste aus HTML...")
+        rangliste = kt.get_teilnehmer_fallback()
 
     # Aktiven Spieltag bestimmen
     aktiver_spieltag = max(rangliste.keys()) if rangliste else 1
