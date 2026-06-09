@@ -1,0 +1,1 @@
+# gds-wm-tippspiel2026
