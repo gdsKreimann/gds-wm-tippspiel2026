@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gds WM Tippspiel 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gds-blue:#1a3a5c;--gds-orange:#e8821e;--gds-light-gray:#f5f6f8;--gds-mid-gray:#e0e3e8;--gds-dark-gray:#4a5568;--gds-charcoal:#1a202c;--gds-danger:#e05252;--gds-success:#2ecc71;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:var(--gds-light-gray);color:var(--gds-dark-gray);min-height:100vh}
+/* HEADER */
+.header{background:var(--gds-blue);color:#fff;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.header-accent{height:3px;background:var(--gds-orange)}
+.logo{font-size:20px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:12px}
+.logo-sub{font-size:11px;font-weight:400;opacity:.7;letter-spacing:.06em;text-transform:uppercase}
+.header-right{display:flex;align-items:center;gap:16px}
+.live-badge{background:var(--gds-danger);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:.08em;animation:pulse-badge 1.5s ease-in-out infinite}
+@keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
+.header-date{font-size:12px;opacity:.7}
+/* TABS */
+.spieltag-nav{background:var(--gds-blue);border-top:1px solid rgba(255,255,255,.1);padding:0 40px;display:flex;gap:4px;overflow-x:auto}
+.spieltag-tab{padding:10px 18px;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
+.spieltag-tab:hover{color:rgba(255,255,255,.85)}
+.spieltag-tab.active{color:#fff;border-bottom-color:var(--gds-orange)}
+.spieltag-tab.cached::after{content:"💾";font-size:9px;margin-left:4px;opacity:.6}
+/* LAYOUT */
+.container{max-width:1200px;margin:0 auto;padding:32px 40px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.kpi-card{background:#fff;border:1px solid var(--gds-mid-gray);border-radius:6px;padding:16px;border-bottom:3px solid var(--gds-orange);text-align:center}
+.kpi-value{font-size:28px;font-weight:700;color:var(--gds-blue);line-height:1;margin-bottom:4px}
+.kpi-label{font-size:11px;color:var(--gds-dark-gray);text-transform:uppercase;letter-spacing:.06em}
+/* RTL BANNER */
+.rtl-banner{background:var(--gds-blue);border-radius:6px;overflow:hidden;margin-bottom:28px;box-shadow:0 4px 16px rgba(26,58,92,.2)}
+.rtl-top-bar{background:#c8001e;padding:6px 20px;display:flex;align-items:center;gap:12px;overflow:hidden}
+.rtl-logo{font-size:13px;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0}
+.rtl-divider{width:1px;height:14px;background:rgba(255,255,255,.4);flex-shrink:0}
+.rtl-live-label{font-size:10px;color:#fff;font-weight:600;letter-spacing:.1em;opacity:.9;flex-shrink:0}
+.rtl-ticker-wrap{overflow:hidden;flex:1}
+.rtl-ticker{display:flex;animation:ticker-scroll 30s linear infinite;white-space:nowrap}
+.rtl-ticker span{font-size:11px;color:rgba(255,255,255,.9);padding:0 24px}
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.rtl-content{padding:20px 24px;display:flex;align-items:flex-start;gap:20px}
+.rtl-headline{font-size:20px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:8px;min-height:28px}
+.rtl-subtext{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5}
+.rtl-anekdote{margin-top:12px;padding:10px 14px;background:rgba(255,255,255,.07);border-left:3px solid var(--gds-orange);border-radius:0 4px 4px 0}
+.rtl-anekdote-label{font-size:10px;font-weight:700;color:var(--gds-orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.rtl-anekdote-text{font-size:12px;color:rgba(255,255,255,.8);line-height:1.5;font-style:italic}
+.cache-indicator{font-size:10px;color:rgba(255,255,255,.35);margin-top:8px;display:flex;align-items:center;gap:4px}
+/* MAIN GRID */
+.main-grid{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gds-orange);margin-bottom:8px}
+.section-title{font-size:20px;font-weight:700;color:var(--gds-blue);margin-bottom:16px}
+/* SPIELE */
+.spiel-card{background:#fff;border:1px solid var(--gds-mid-gray);border-radius:6px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.spiel-item{display:grid;grid-template-columns:1fr 100px 1fr;align-items:center;gap:8px;padding:14px 18px}
+.spiel-item.live{background:#fff8f5}
+.spiel-item.upcoming{background:var(--gds-light-gray)}
+.team-home{text-align:right}
+.team-flag{font-size:22px}
+.team-name{font-size:14px;font-weight:600;color:var(--gds-charcoal);margin-top:2px}
+.spiel-score-wrap{text-align:center}
+.spiel-score{font-size:24px;font-weight:700;color:var(--gds-blue);letter-spacing:2px}
+.spiel-score.live-score{color:#c8001e}
+.spiel-meta{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.meta-live{color:var(--gds-danger)}.meta-finished{color:var(--gds-dark-gray);opacity:.55}.meta-upcoming{color:var(--gds-dark-gray);opacity:.45}
+.tipps-bar{padding:8px 18px 12px;background:#f8f9fa;border-top:1px solid var(--gds-mid-gray)}
+.tipps-label{font-size:10px;color:var(--gds-dark-gray);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.tipps-grid{display:flex;flex-wrap:wrap;gap:5px}
+.tipp-pill{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;display:inline-flex;align-items:center;gap:3px}
+.tipp-correct{background:rgba(46,204,113,.15);color:#1a8a50;border:1px solid rgba(46,204,113,.3)}
+.tipp-wrong{background:rgba(224,82,82,.1);color:#b52b2b;border:1px solid rgba(224,82,82,.25)}
+.tipp-open{background:rgba(74,85,104,.08);color:var(--gds-dark-gray);border:1px solid var(--gds-mid-gray)}
+/* TOP3 */
+.top3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.fifa-card{border-radius:8px;padding:14px 10px;text-align:center;position:relative}
+.fifa-card-gold{background:linear-gradient(145deg,#3d2e00,#7a5900,#b8860b);border:1px solid #d4a017}
+.fifa-card-silver{background:linear-gradient(145deg,#1a1a1a,#3a3a3a,#666);border:1px solid #999}
+.fifa-card-bronze{background:linear-gradient(145deg,#2a1200,#5a2d00,#8b4513);border:1px solid #a0522d}
+.fifa-rating{font-size:28px;font-weight:700;line-height:1;font-family:'Courier New',monospace}
+.fifa-card-gold .fifa-rating{color:#ffd700}.fifa-card-silver .fifa-rating{color:#e8e8e8}.fifa-card-bronze .fifa-rating{color:#e8b090}
+.fifa-name{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin:4px 0 2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fifa-card-gold .fifa-name{color:#ffe066}.fifa-card-silver .fifa-name{color:#ccc}.fifa-card-bronze .fifa-name{color:#d4916c}
+.fifa-pts-label{font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.5)}
+.fifa-pts{font-size:14px;font-weight:700}
+.fifa-card-gold .fifa-pts{color:#ffd700}.fifa-card-silver .fifa-pts{color:#e8e8e8}.fifa-card-bronze .fifa-pts{color:#e8b090}
+.fifa-pos-badge{position:absolute;top:5px;right:6px;font-size:15px}
+/* FLAP BOARD */
+.flap-board{background:#0d1a2a;border-radius:6px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.flap-board-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
+.flap-board-title{font-size:11px;font-weight:700;color:#ffd700;letter-spacing:.15em;text-transform:uppercase}
+.flap-board-meta{font-size:10px;color:rgba(255,255,255,.4)}
+.flap-col-headers{display:grid;grid-template-columns:26px 18px 1fr 46px 42px;gap:6px;padding:0 4px 6px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:4px}
+.flap-col-head{font-size:9px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+.flap-col-head.right{text-align:right}
+.flap-row{display:grid;grid-template-columns:26px 18px 1fr 46px 42px;gap:6px;align-items:center;padding:5px 4px;border-radius:4px;transition:background .15s}
+.flap-row:hover{background:rgba(255,255,255,.04)}
+.flap-pos{font-size:13px;font-weight:700;text-align:center;font-family:'Courier New',monospace}
+.pos-1{color:#ffd700}.pos-2{color:#c0c0c0}.pos-3{color:#cd7f32}.pos-other{color:rgba(255,255,255,.4)}
+.flap-medal{font-size:13px;text-align:center}
+.flap-name{font-size:12px;font-weight:600;color:#e8eaf0;font-family:'Courier New',monospace;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flap-name.flip{animation:flap-flip .45s ease}
+@keyframes flap-flip{0%{opacity:1;transform:rotateX(0)}45%{opacity:0;transform:rotateX(-80deg)}55%{opacity:0;transform:rotateX(80deg)}100%{opacity:1;transform:rotateX(0)}}
+.flap-pts{font-size:14px;font-weight:700;text-align:right;font-family:'Courier New',monospace;color:#ffd700}
+.flap-delta{font-size:10px;font-weight:700;text-align:right;font-family:'Courier New',monospace}
+.delta-up{color:#4ade80}.delta-down{color:#f87171}.delta-same{color:rgba(255,255,255,.3)}
+.flap-separator{height:1px;background:rgba(255,255,255,.06);margin:4px 0}
+/* AI LOADING */
+.ai-loading{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.55);font-style:italic}
+.ai-dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gds-orange);margin:0 1px;animation:dot-bounce 1.2s ease-in-out infinite}
+.ai-dots span:nth-child(2){animation-delay:.2s}.ai-dots span:nth-child(3){animation-delay:.4s}
+@keyframes dot-bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+/* FOOTER */
+.footer{background:var(--gds-blue);color:rgba(255,255,255,.5);text-align:center;padding:16px;font-size:11px;margin-top:48px}
+.footer strong{color:rgba(255,255,255,.8)}
+@media(max-width:900px){.container{padding:16px 20px}.header{padding:12px 20px}.main-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr)}.spieltag-nav{padding:0 20px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <span style="font-size:26px">⚽</span>
+    <div>
+      <div>gds <span style="color:var(--gds-orange)">WM</span> Tippspiel 2026</div>
+      <div class="logo-sub">FIFA World Cup · USA / Canada / Mexico</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="live-badge">LIVE</span>
+    <span class="header-date" id="headerDate"></span>
+  </div>
+</div>
+<div class="header-accent"></div>
+<div class="spieltag-nav" id="spieltagNav"></div>
+
+<div class="container">
+  <div class="stats-row">
+    <div class="kpi-card"><div class="kpi-value">15</div><div class="kpi-label">Tipper</div></div>
+    <div class="kpi-card"><div class="kpi-value" id="kpiSpieltag">—</div><div class="kpi-label">Spieltag</div></div>
+    <div class="kpi-card"><div class="kpi-value" id="kpiMaxPts">—</div><div class="kpi-label">Führender</div></div>
+    <div class="kpi-card"><div class="kpi-value" id="kpiSpiele">—</div><div class="kpi-label">Spiele</div></div>
+  </div>
+
+  <div class="rtl-banner">
+    <div class="rtl-top-bar">
+      <span class="rtl-logo">⚽ RTL Sport</span>
+      <div class="rtl-divider"></div>
+      <span class="rtl-live-label">LIVE · Spieltag-Analyse</span>
+      <div class="rtl-ticker-wrap"><div class="rtl-ticker" id="rtlTicker"></div></div>
+    </div>
+    <div class="rtl-content">
+      <div style="font-size:36px;flex-shrink:0;margin-top:2px">🎙️</div>
+      <div style="flex:1">
+        <div class="rtl-headline" id="rtlHeadline">
+          <span class="ai-loading">KI-Kommentar wird geladen<span class="ai-dots"><span></span><span></span><span></span></span></span>
+        </div>
+        <div class="rtl-subtext" id="rtlSubtext"></div>
+        <div class="rtl-anekdote" id="rtlAnekdote" style="display:none">
+          <div class="rtl-anekdote-label">⚽ Fußball-Anekdote des Tages</div>
+          <div class="rtl-anekdote-text" id="rtlAnekdoteText"></div>
+        </div>
+        <div class="cache-indicator" id="cacheIndicator" style="display:none">
+          💾 <span id="cacheText"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div>
+      <div class="section-label">Spieltag <span id="stLabel">—</span></div>
+      <div class="section-title">Ergebnisse &amp; Tipps</div>
+      <div id="spieleContainer"></div>
+    </div>
+    <div>
+      <div class="section-label">Gesamtrangliste</div>
+      <div class="section-title">Tabelle</div>
+      <div class="top3-grid" id="top3Grid"></div>
+      <div class="flap-board">
+        <div class="flap-board-header">
+          <span class="flap-board-title">▶ Rangliste</span>
+          <span class="flap-board-meta" id="flapMeta"></span>
+        </div>
+        <div class="flap-col-headers">
+          <span class="flap-col-head">#</span><span class="flap-col-head"></span>
+          <span class="flap-col-head">Tipper</span>
+          <span class="flap-col-head right">Pkt</span>
+          <span class="flap-col-head right">±</span>
+        </div>
+        <div id="flapBoard"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>gds WM Tippspiel 2026</strong> · Powered by Claude AI · Kicktipp &amp; football-data.org<br>
+  <span id="footerUpdate"></span>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// KI-KOMMENTAR CACHE
+// Speichert generierte Kommentare im localStorage nach Spieltag-ID.
+// Vortage werden nie neu generiert — nur der aktuelle Spieltag
+// bekommt einen frischen Kommentar wenn der Cache leer ist.
+// ═══════════════════════════════════════════════════════════════
+const KI_CACHE_KEY = 'gds_wm_ki_cache_v1';
+
+function cacheLoad() {
+  try { return JSON.parse(localStorage.getItem(KI_CACHE_KEY) || '{}'); }
+  catch(e) { return {}; }
+}
+function cacheSave(cache) {
+  try { localStorage.setItem(KI_CACHE_KEY, JSON.stringify(cache)); } catch(e){}
+}
+function cacheGet(spieltagId) {
+  return cacheLoad()[spieltagId] || null;
+}
+function cacheSet(spieltagId, data) {
+  const cache = cacheLoad();
+  cache[spieltagId] = { ...data, cachedAt: new Date().toISOString() };
+  cacheSave(cache);
+  // Tab-Badge aktualisieren
+  updateTabCacheBadges();
+}
+function updateTabCacheBadges() {
+  const cache = cacheLoad();
+  document.querySelectorAll('.spieltag-tab').forEach((tab, i) => {
+    const id = SPIELTAGE[i]?.id;
+    tab.classList.toggle('cached', !!(id && cache[id]));
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// DUMMY DATA
+// In Produktion wird dies durch data.json aus GitHub ersetzt.
+// Format entspricht dem Kicktipp Gesamtübersicht-CSV + football-data.org API.
+//
+// CSV-Spalten: Rang;Name;1.Spieltag;2.Spieltag;...;Gesamtpunkte
+// Diese Struktur wird direkt vom Scraper in data.json überführt.
+// ═══════════════════════════════════════════════════════════════
+const SPIELTAGE = [
+  {id:1, label:"Spieltag 1", datum:"12. Jun"},
+  {id:2, label:"Spieltag 2", datum:"16. Jun"},
+  {id:3, label:"Spieltag 3", datum:"20. Jun", aktiv:true},
+  {id:4, label:"Spieltag 4", datum:"24. Jun", zukuenftig:true},
+];
+
+// Rangliste: Gesamtübersicht-CSV Spalten werden als kumulierte Punkte gespeichert.
+// delta = Platzveränderung gegenüber Vorspielgag (berechnet aus Rangunterschied).
+const RANGLISTEN = {
+  1: [
+    {n:"Pottkind",      pts:18, d:0},
+    {n:"TurboTobiBVB",  pts:15, d:0},
+    {n:"JanG",          pts:12, d:0},
+    {n:"DennisCostaRica",pts:11,d:0},
+    {n:"thommes",       pts:11, d:0},
+    {n:"Olli_R",        pts:10, d:0},
+    {n:"Paule",         pts:9,  d:0},
+    {n:"UliPausS",      pts:8,  d:0},
+    {n:"Ludger_H",      pts:7,  d:0},
+    {n:"Michelle",      pts:6,  d:0},
+    {n:"Annik",         pts:5,  d:0},
+    {n:"Conny",         pts:4,  d:0},
+    {n:"Captain",       pts:3,  d:0},
+    {n:"Anne",          pts:2,  d:0},
+    {n:"Hanne_Sobek",   pts:1,  d:0},
+  ],
+  2: [
+    {n:"TurboTobiBVB",   pts:24, d:2},
+    {n:"Pottkind",       pts:22, d:-1},
+    {n:"JanG",           pts:21, d:1},
+    {n:"DennisCostaRica",pts:19, d:1},
+    {n:"thommes",        pts:18, d:0},
+    {n:"Paule",          pts:17, d:2},
+    {n:"Olli_R",         pts:16, d:-1},
+    {n:"UliPausS",       pts:14, d:0},
+    {n:"Ludger_H",       pts:13, d:0},
+    {n:"Michelle",       pts:10, d:0},
+    {n:"Annik",          pts:9,  d:0},
+    {n:"Conny",          pts:8,  d:0},
+    {n:"Captain",        pts:6,  d:0},
+    {n:"Anne",           pts:4,  d:0},
+    {n:"Hanne_Sobek",    pts:2,  d:-1},
+  ],
+  3: [
+    {n:"TurboTobiBVB",   pts:33, d:3},
+    {n:"DennisCostaRica",pts:28, d:3},
+    {n:"JanG",           pts:27, d:-2},
+    {n:"Pottkind",       pts:26, d:-2},
+    {n:"thommes",        pts:24, d:0},
+    {n:"Paule",          pts:22, d:1},
+    {n:"UliPausS",       pts:19, d:2},
+    {n:"Olli_R",         pts:18, d:-1},
+    {n:"Ludger_H",       pts:16, d:0},
+    {n:"Michelle",       pts:13, d:0},
+    {n:"Annik",          pts:12, d:0},
+    {n:"Conny",          pts:10, d:0},
+    {n:"Captain",        pts:8,  d:0},
+    {n:"Anne",           pts:5,  d:0},
+    {n:"Hanne_Sobek",    pts:2,  d:0},
+  ],
+};
+
+const SPIELE = {
+  1: [
+    {heim:{flag:"🇲🇽",name:"Mexiko"},gast:{flag:"🇨🇦",name:"Kanada"},score:"2:1",status:"finished",zeit:"Abpfiff",
+     tipps:[{n:"TurboTobiBVB",t:"2:1",c:true},{n:"Pottkind",t:"1:0",c:false},{n:"JanG",t:"2:1",c:true},{n:"Hanne_Sobek",t:"0:1",c:false},{n:"thommes",t:"1:0",c:false}]},
+    {heim:{flag:"🇺🇸",name:"USA"},gast:{flag:"🏴󠁧󠁢󠁷󠁬󠁳󠁿",name:"Wales"},score:"3:0",status:"finished",zeit:"Abpfiff",
+     tipps:[{n:"TurboTobiBVB",t:"2:0",c:false},{n:"Pottkind",t:"3:0",c:true},{n:"Paule",t:"1:0",c:false},{n:"thommes",t:"2:0",c:false}]},
+  ],
+  2: [
+    {heim:{flag:"🇧🇷",name:"Brasilien"},gast:{flag:"🇦🇷",name:"Argentinien"},score:"1:2",status:"finished",zeit:"Abpfiff",
+     tipps:[{n:"TurboTobiBVB",t:"1:1",c:false},{n:"Pottkind",t:"0:1",c:false},{n:"JanG",t:"1:2",c:true},{n:"thommes",t:"1:1",c:false}]},
+    {heim:{flag:"🇩🇪",name:"Deutschland"},gast:{flag:"🇫🇷",name:"Frankreich"},score:"2:2",status:"finished",zeit:"Abpfiff",
+     tipps:[{n:"TurboTobiBVB",t:"2:1",c:false},{n:"DennisCostaRica",t:"2:2",c:true},{n:"Paule",t:"2:2",c:true},{n:"thommes",t:"1:2",c:false}]},
+  ],
+  3: [
+    {heim:{flag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",name:"Schottland"},gast:{flag:"🇵🇹",name:"Portugal"},score:"0:3",status:"finished",zeit:"Abpfiff",
+     tipps:[{n:"TurboTobiBVB",t:"0:3",c:true},{n:"Pottkind",t:"1:2",c:false},{n:"DennisCostaRica",t:"0:3",c:true},{n:"Hanne_Sobek",t:"2:0",c:false},{n:"thommes",t:"0:2",c:false}]},
+    {heim:{flag:"🇪🇸",name:"Spanien"},gast:{flag:"🇯🇵",name:"Japan"},score:"2:1",status:"live",zeit:"67'",
+     tipps:[{n:"TurboTobiBVB",t:"3:0",c:false},{n:"Pottkind",t:"2:1",c:true},{n:"UliPausS",t:"2:1",c:true},{n:"thommes",t:"1:0",c:false}]},
+    {heim:{flag:"🇳🇱",name:"Niederlande"},gast:{flag:"🇲🇦",name:"Marokko"},score:"—",status:"upcoming",zeit:"21:00",
+     tipps:[{n:"TurboTobiBVB",t:"2:0",c:null},{n:"Pottkind",t:"1:0",c:null},{n:"thommes",t:"1:1",c:null}]},
+  ],
+};
+
+// Fallback-Kommentare (wenn KI nicht erreichbar UND kein Cache)
+const FALLBACK_K = {
+  1:{headline:"POTTKIND FÜHRT — Spieltag 1 ist Geschichte!",sub:"Ein starker Start für Pottkind mit 18 Punkten. TurboTobiBVB folgt auf Platz 2. Hanne_Sobek tippt, als wäre 2006 noch.",anekdote:"Die WM 1994 in den USA war die erste ohne Jugoslawien und Sowjetunion als eigenständige Nationen. Brasilien gewann — zum vierten Mal. Die WM 2026 kehrt nun erstmals seit 32 Jahren auf denselben Kontinent zurück.",ticker:["Pottkind führt mit 18 Punkten","TurboTobiBVB auf Rang 2","Mexiko schlägt Kanada 2:1","USA dominiert Wales 3:0"]},
+  2:{headline:"TurboTobiBVB GREIFT AN — Führungswechsel nach Spieltag 2!",sub:"Das Südamerika-Duell schüttelt die Tabelle. JanG trifft Argentinien 1:2 exakt. Hanne_Sobek tippt weiter ins Nichts.",anekdote:"1990 eliminierte Argentinien den Titelverteidiger Brasilien mit einem einzigen Caniggia-Tor. Die Brasilianer weinten. Manche weinen heute noch.",ticker:["TurboTobiBVB übernimmt Führung","JanG trifft Arg. 1:2 exakt","Paule klettert auf Rang 6","2:2 zwischen Deutschland und Frankreich"]},
+  3:{headline:"TurboTobiBVB DOMINIERT — Portugal-Tipp war MAKELLOS!",sub:"0:3 gegen Schottland perfekt getippt! Spanien führt 2:1 in der 67. Minute. Hanne_Sobek tippt Schottland 2:0 und lebt in einer Parallelwelt.",anekdote:"CR7 ist bei der WM 2026 genau 41 Jahre alt. Er spielt trotzdem — und ist damit der älteste WM-Torschütze aller Zeiten. Den Rekord hat er sich 2022 selbst gesetzt.",ticker:["TurboTobiBVB führt mit 33 Pkt","Spanien 2:1 gegen Japan (67')","Niederlande vs. Marokko noch offen","DennisCostaRica springt auf Rang 2"]},
+};
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let aktiverSpieltag = 3;
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+document.getElementById('headerDate').textContent =
+  new Date().toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+document.getElementById('footerUpdate').textContent =
+  'Zuletzt aktualisiert: ' + new Date().toLocaleString('de-DE');
+
+// Tabs bauen
+const nav = document.getElementById('spieltagNav');
+SPIELTAGE.forEach(st => {
+  const t = document.createElement('div');
+  t.className = 'spieltag-tab' + (st.id === aktiverSpieltag ? ' active' : '');
+  t.textContent = st.label + (st.datum ? ' · ' + st.datum : '');
+  if (st.zukuenftig) { t.style.opacity = '.3'; t.style.cursor = 'not-allowed'; }
+  else t.onclick = () => wechsel(st.id);
+  nav.appendChild(t);
+});
+updateTabCacheBadges();
+
+render(aktiverSpieltag);
+setTimeout(() => ladeKI(aktiverSpieltag), 400);
+
+// ═══════════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════════
+function wechsel(id) {
+  aktiverSpieltag = id;
+  document.querySelectorAll('.spieltag-tab').forEach((t, i) =>
+    t.classList.toggle('active', SPIELTAGE[i].id === id));
+  render(id);
+  resetBanner();
+  setTimeout(() => ladeKI(id), 300);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════════
+function render(id) {
+  const rangliste = RANGLISTEN[id];
+  const spiele    = SPIELE[id];
+  if (!rangliste) return;
+
+  document.getElementById('stLabel').textContent    = id;
+  document.getElementById('kpiSpieltag').textContent = id;
+  document.getElementById('kpiMaxPts').textContent   = rangliste[0]?.n || '—';
+  document.getElementById('kpiSpiele').textContent   = spiele?.length || '—';
+  document.getElementById('flapMeta').textContent    = 'Spieltag ' + id;
+
+  if (spiele) renderSpiele(spiele);
+  renderTop3(rangliste.slice(0, 3));
+  renderFlap(rangliste);
+}
+
+function renderSpiele(spiele) {
+  const c = document.getElementById('spieleContainer');
+  c.innerHTML = '';
+  spiele.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'spiel-card';
+    const scoreHtml = s.status === 'upcoming'
+      ? `<div class="spiel-score" style="font-size:16px;opacity:.4;letter-spacing:0">vs</div>`
+      : `<div class="spiel-score${s.status==='live'?' live-score':''}">${s.score}</div>`;
+    const metaCls  = {finished:'meta-finished',live:'meta-live',upcoming:'meta-upcoming'}[s.status];
+    const metaIcon = {finished:'✓ ',live:'🔴 ',upcoming:'⏰ '}[s.status];
+    card.innerHTML = `<div class="spiel-item ${s.status}">
+      <div class="team-home"><div class="team-flag" style="text-align:right">${s.heim.flag}</div><div class="team-name">${s.heim.name}</div></div>
+      <div class="spiel-score-wrap">${scoreHtml}<div class="spiel-meta ${metaCls}">${metaIcon}${s.zeit}</div></div>
+      <div><div class="team-flag">${s.gast.flag}</div><div class="team-name">${s.gast.name}</div></div>
+    </div>`;
+    if (s.tipps?.length) {
+      const bar = document.createElement('div');
+      bar.className = 'tipps-bar';
+      bar.innerHTML = '<div class="tipps-label">Tipps der Kollegen</div><div class="tipps-grid">' +
+        s.tipps.map(t => {
+          const cls  = t.c === null ? 'tipp-open' : t.c ? 'tipp-correct' : 'tipp-wrong';
+          const icon = t.c === null ? '' : (t.c ? '✓ ' : '✗ ');
+          return `<span class="tipp-pill ${cls}">${icon}${t.n}: ${t.t}</span>`;
+        }).join('') + '</div>';
+      card.appendChild(bar);
+    }
+    c.appendChild(card);
+  });
+}
+
+function renderTop3(top3) {
+  const g = document.getElementById('top3Grid');
+  g.innerHTML = '';
+  const styles  = ['fifa-card-gold','fifa-card-silver','fifa-card-bronze'];
+  const medals  = ['🥇','🥈','🥉'];
+  const maxPts  = top3[0]?.pts || 1;
+  top3.forEach((p, i) => {
+    const rating = Math.round(60 + (p.pts / maxPts) * 39);
+    const card   = document.createElement('div');
+    card.className = `fifa-card ${styles[i]}`;
+    card.innerHTML = `<div class="fifa-pos-badge">${medals[i]}</div>
+      <div class="fifa-rating">${rating}</div>
+      <div class="fifa-name">${p.n.length > 10 ? p.n.substring(0,10) : p.n}</div>
+      <div class="fifa-pts-label">Punkte</div>
+      <div class="fifa-pts">${p.pts}</div>`;
+    g.appendChild(card);
+  });
+}
+
+function renderFlap(rangliste) {
+  const b = document.getElementById('flapBoard');
+  b.innerHTML = '';
+  rangliste.forEach((p, i) => {
+    if (i === 3) { const sep = document.createElement('div'); sep.className = 'flap-separator'; b.appendChild(sep); }
+    const row   = document.createElement('div');
+    row.className = 'flap-row';
+    const pCls  = i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'pos-other';
+    const medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
+    const dCls  = p.d>0?'delta-up':p.d<0?'delta-down':'delta-same';
+    const dTxt  = p.d>0?'▲'+p.d:p.d<0?'▼'+Math.abs(p.d):'—';
+    row.innerHTML = `<div class="flap-pos ${pCls}">${i+1}</div>
+      <div class="flap-medal">${medal}</div>
+      <div class="flap-name" id="fn-${i}">${p.n}</div>
+      <div class="flap-pts">${p.pts}</div>
+      <div class="flap-delta ${dCls}">${dTxt}</div>`;
+    b.appendChild(row);
+    if (p.d !== 0) {
+      setTimeout(() => {
+        const el = document.getElementById('fn-' + i);
+        if (el) { el.classList.add('flip'); setTimeout(() => el.classList.remove('flip'), 500); }
+      }, 250 + i * 55);
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BANNER RESET
+// ═══════════════════════════════════════════════════════════════
+function resetBanner() {
+  document.getElementById('rtlHeadline').innerHTML =
+    '<span class="ai-loading">KI-Kommentar wird geladen<span class="ai-dots"><span></span><span></span><span></span></span></span>';
+  document.getElementById('rtlSubtext').textContent = '';
+  document.getElementById('rtlAnekdote').style.display = 'none';
+  document.getElementById('cacheIndicator').style.display = 'none';
+  document.getElementById('rtlTicker').innerHTML = '';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// KI-KOMMENTAR LADEN — mit Cache-Logik
+// ═══════════════════════════════════════════════════════════════
+async function ladeKI(id) {
+  const rangliste = RANGLISTEN[id];
+  if (!rangliste) return;
+
+  // 1. Cache prüfen
+  const cached = cacheGet(id);
+  if (cached) {
+    zeigeKommentar(cached, id, true);
+    return;
+  }
+
+  // 2. Kein Cache → Claude API aufrufen
+  const r = rangliste;
+  const spiele = (SPIELE[id] || []).map(s => `${s.heim.name} ${s.score} ${s.gast.name}`).join(', ');
+  const fb = FALLBACK_K[id];
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        messages: [{
+          role: "user",
+          content: `Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
+Analysiere Spieltag ${id} und erstelle einen tagesfrischen Kommentar.
+
+Aktueller Stand:
+- Führender: ${r[0].n} mit ${r[0].pts} Punkten
+- Letzter: ${r[r.length-1].n} mit ${r[r.length-1].pts} Punkten
+- Spiele: ${spiele || 'Daten werden geladen'}
+- Alle Tipper: ${r.map(x => x.n + ' (' + x.pts + ')').join(', ')}
+
+Erstelle:
+1. "headline": Dramatische Schlagzeile max. 12 Wörter, CAPS für Highlights, auf Deutsch
+2. "sub": Witziger Kommentar 2-3 Sätze über Tabellensituation, gerne auf Kosten des Letzten
+3. "anekdote": Echte, interessante Fußball-Anekdote passend zu den heutigen Spielen
+4. "ticker": Array mit 5 kurzen Ticker-Meldungen (je max. 8 Wörter)
+
+Nur JSON antworten, kein Markdown: {"headline":"...","sub":"...","anekdote":"...","ticker":["...","...","...","...","..."]}`
+        }]
+      })
+    });
+
+    const data = await res.json();
+    const txt  = data.content?.find(c => c.type === 'text')?.text || '';
+    const parsed = JSON.parse(txt.replace(/```json|```/g, '').trim());
+
+    // Cache speichern
+    cacheSet(id, parsed);
+    zeigeKommentar(parsed, id, false);
+
+  } catch(e) {
+    // Fallback ohne Cache-Speicherung (nicht cachen wenn API-Fehler)
+    zeigeKommentar(fb, id, false);
+  }
+}
+
+function zeigeKommentar(k, id, fromCache) {
+  document.getElementById('rtlHeadline').textContent    = k.headline;
+  document.getElementById('rtlSubtext').textContent     = k.sub;
+  document.getElementById('rtlAnekdoteText').textContent = k.anekdote;
+  document.getElementById('rtlAnekdote').style.display  = 'block';
+
+  if (fromCache && k.cachedAt) {
+    const d = new Date(k.cachedAt).toLocaleDateString('de-DE', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('cacheText').textContent = 'Aus dem Speicher · Erstellt am ' + d;
+    document.getElementById('cacheIndicator').style.display = 'flex';
+  }
+
+  // Ticker aufbauen (doppelt für nahtlosen Loop)
+  const ticker = document.getElementById('rtlTicker');
+  ticker.innerHTML = '';
+  const items = k.ticker || (FALLBACK_K[id] && FALLBACK_K[id].ticker) || [];
+  [...items, ...items].forEach(t => {
+    const s = document.createElement('span');
+    s.textContent = '· ' + t + ' ';
+    ticker.appendChild(s);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ADMIN-BEREICH — Manueller CSV-Upload als Fallback
+// Aktivierung: URL + #admin oder Konami-Code ↑↑↓↓←→←→BA
+// Passwort: konfigurier unten als ADMIN_PW
+// ═══════════════════════════════════════════════════════════════
+const ADMIN_PW = 'gds2026';  // ← hier ändern wenn gewünscht
+
+// Konami-Code Listener
+const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIdx = 0;
+document.addEventListener('keydown', e => {
+  if (e.key === KONAMI[konamiIdx]) {
+    konamiIdx++;
+    if (konamiIdx === KONAMI.length) { konamiIdx = 0; toggleAdmin(); }
+  } else {
+    konamiIdx = 0;
+  }
+});
+// Auch via URL-Hash
+if (window.location.hash === '#admin') toggleAdmin();
+
+function toggleAdmin() {
+  const panel = document.getElementById('adminPanel');
+  if (!panel) { buildAdminPanel(); return; }
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+}
+
+function buildAdminPanel() {
+  const overlay = document.createElement('div');
+  overlay.id = 'adminPanel';
+  overlay.style.cssText = `
+    position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;
+    background:rgba(10,20,35,.92);display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(4px);
+  `;
+
+  overlay.innerHTML = `
+    <div style="background:#1a2a3d;border-radius:10px;padding:32px;width:520px;max-width:95vw;
+                box-shadow:0 20px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#e8821e;letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px">⚙️ Admin-Bereich</div>
+          <div style="font-size:18px;font-weight:700;color:#fff">Manueller Daten-Upload</div>
+        </div>
+        <button onclick="document.getElementById('adminPanel').style.display='none'"
+          style="background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;
+                 border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">✕</button>
+      </div>
+
+      <!-- Passwort -->
+      <div id="adminAuth">
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px">Passwort eingeben:</div>
+        <div style="display:flex;gap:8px">
+          <input type="password" id="adminPwInput" placeholder="Passwort…"
+            style="flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+                   border-radius:4px;padding:10px 14px;color:#fff;font-size:14px;outline:none"
+            onkeydown="if(event.key==='Enter')checkAdminPw()">
+          <button onclick="checkAdminPw()"
+            style="background:#e8821e;border:none;color:#fff;padding:10px 20px;border-radius:4px;
+                   cursor:pointer;font-weight:700;font-size:14px">OK</button>
+        </div>
+        <div id="adminPwErr" style="color:#f87171;font-size:12px;margin-top:6px;display:none">Falsches Passwort.</div>
+      </div>
+
+      <!-- Upload-Bereich (nach Auth) -->
+      <div id="adminUpload" style="display:none">
+
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:16px">
+          Lade den Kicktipp <strong style="color:#e8821e">Gesamtübersicht-Einzelwertung</strong> CSV-Export hoch.<br>
+          Kicktipp → Spielleiter → Datenexport → Gesamtübersicht → Einzelwertung → Daten exportieren
+        </div>
+
+        <!-- Drop Zone -->
+        <div id="adminDropZone"
+          style="border:2px dashed rgba(255,255,255,.2);border-radius:8px;padding:32px;text-align:center;
+                 cursor:pointer;transition:border-color .2s;margin-bottom:16px"
+          ondragover="event.preventDefault();this.style.borderColor='#e8821e'"
+          ondragleave="this.style.borderColor='rgba(255,255,255,.2)'"
+          ondrop="handleAdminDrop(event)">
+          <div style="font-size:32px;margin-bottom:8px">📂</div>
+          <div style="color:#fff;font-weight:600;margin-bottom:4px">CSV hier reinziehen</div>
+          <div style="color:rgba(255,255,255,.4);font-size:12px">oder klicken zum Auswählen</div>
+          <input type="file" id="adminFileInput" accept=".csv,.zip" style="display:none"
+            onchange="handleAdminFile(this.files[0])">
+        </div>
+
+        <!-- Status -->
+        <div id="adminStatus" style="display:none;padding:12px 16px;border-radius:6px;font-size:13px;margin-bottom:16px"></div>
+
+        <!-- Spieltag Zuweisung -->
+        <div id="adminSpieltagWahl" style="display:none;margin-bottom:16px">
+          <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-weight:700">Für welchen Spieltag?</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap" id="adminSTButtons"></div>
+        </div>
+
+        <!-- Preview -->
+        <div id="adminPreview" style="display:none">
+          <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;font-weight:700">Vorschau (Top 5)</div>
+          <div id="adminPreviewTable" style="background:rgba(0,0,0,.3);border-radius:6px;padding:12px;font-family:'Courier New',monospace;font-size:12px;color:#e8eaf0"></div>
+          <button id="adminApplyBtn" onclick="adminApplyData()"
+            style="margin-top:12px;width:100%;background:#e8821e;border:none;color:#fff;
+                   padding:12px;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer">
+            ✓ Daten übernehmen &amp; Seite aktualisieren
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  document.getElementById('adminDropZone').onclick = () =>
+    document.getElementById('adminFileInput').click();
+}
+
+function checkAdminPw() {
+  const val = document.getElementById('adminPwInput').value;
+  if (val === ADMIN_PW) {
+    document.getElementById('adminAuth').style.display   = 'none';
+    document.getElementById('adminUpload').style.display = 'block';
+  } else {
+    document.getElementById('adminPwErr').style.display = 'block';
+    document.getElementById('adminPwInput').value = '';
+  }
+}
+
+function handleAdminDrop(e) {
+  e.preventDefault();
+  document.getElementById('adminDropZone').style.borderColor = 'rgba(255,255,255,.2)';
+  const file = e.dataTransfer.files[0];
+  if (file) handleAdminFile(file);
+}
+
+let parsedAdminData = null;
+let selectedSpieltag = null;
+
+function handleAdminFile(file) {
+  if (!file) return;
+  const status = document.getElementById('adminStatus');
+  status.style.display = 'block';
+  status.style.background = 'rgba(255,255,255,.08)';
+  status.style.color = 'rgba(255,255,255,.8)';
+  status.textContent = `📄 Lese ${file.name}…`;
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const text = e.target.result;
+      const parsed = parseKicktippCSV(text);
+      if (!parsed || parsed.length === 0) throw new Error('Keine Daten gefunden');
+
+      parsedAdminData = parsed;
+      status.style.background = 'rgba(46,204,113,.15)';
+      status.style.color = '#4ade80';
+      status.textContent = `✓ ${parsed.length} Tipper erkannt aus ${file.name}`;
+
+      // Spieltag-Buttons zeigen
+      zeigeSpieltagButtons();
+    } catch(err) {
+      status.style.background = 'rgba(248,113,113,.15)';
+      status.style.color = '#f87171';
+      status.textContent = `✗ Fehler beim Lesen: ${err.message}`;
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function parseKicktippCSV(text) {
+  // Semikolon-getrennt, Anführungszeichen — exakt das Kicktipp-Format
+  const lines = text.trim().split('\n').filter(l => l.trim());
+  if (lines.length < 2) throw new Error('CSV zu kurz');
+
+  // Header parsen
+  const header = lines[0].split(';').map(h => h.replace(/"/g,'').trim());
+  const nameIdx = header.findIndex(h => h.toLowerCase() === 'name');
+  const spieltagCols = header
+    .map((h, i) => ({ h, i }))
+    .filter(({ h }) => /spieltag/i.test(h));
+  const gesamtIdx = header.findIndex(h => /gesamt/i.test(h));
+
+  if (nameIdx === -1) throw new Error('Keine Name-Spalte gefunden');
+
+  const rows = lines.slice(1).map(line => {
+    const cols = line.split(';').map(c => c.replace(/"/g,'').trim());
+    const name = cols[nameIdx];
+    if (!name) return null;
+
+    const spieltagPts = spieltagCols.map(({ h, i }) => ({
+      label: h,
+      pts: parseInt(cols[i]) || 0
+    }));
+
+    const gesamt = gesamtIdx >= 0 ? parseInt(cols[gesamtIdx]) || 0 : 0;
+
+    return { name, spieltagPts, gesamt };
+  }).filter(Boolean);
+
+  return rows;
+}
+
+function zeigeSpieltagButtons() {
+  const wrap = document.getElementById('adminSpieltagWahl');
+  const btns = document.getElementById('adminSTButtons');
+  wrap.style.display = 'block';
+  btns.innerHTML = '';
+  selectedSpieltag = null;
+  document.getElementById('adminPreview').style.display = 'none';
+
+  // Spieltage aus den CSV-Spalten ableiten
+  const stCols = parsedAdminData[0]?.spieltagPts || [];
+  stCols.forEach((st, idx) => {
+    const btn = document.createElement('button');
+    const stNr = idx + 1;
+    btn.textContent = `Spieltag ${stNr}`;
+    btn.dataset.st = stNr;
+    btn.dataset.col = idx;
+    btn.style.cssText = `
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+      color:rgba(255,255,255,.7);padding:8px 14px;border-radius:4px;cursor:pointer;
+      font-size:13px;transition:all .15s
+    `;
+    btn.onclick = function() {
+      document.querySelectorAll('#adminSTButtons button').forEach(b =>
+        Object.assign(b.style, { background:'rgba(255,255,255,.08)', color:'rgba(255,255,255,.7)', borderColor:'rgba(255,255,255,.15)' }));
+      Object.assign(this.style, { background:'#e8821e', color:'#fff', borderColor:'#e8821e' });
+      selectedSpieltag = parseInt(this.dataset.st);
+      zeigePreview(parseInt(this.dataset.col));
+    };
+    btns.appendChild(btn);
+  });
+}
+
+function zeigePreview(colIdx) {
+  // Kumulierte Punkte bis zu diesem Spieltag berechnen
+  const withPts = parsedAdminData.map(r => {
+    const kumuliert = r.spieltagPts.slice(0, colIdx + 1).reduce((s, c) => s + c.pts, 0);
+    return { name: r.name, pts: kumuliert, spieltagPts: r.spieltagPts[colIdx]?.pts || 0 };
+  }).sort((a, b) => b.pts - a.pts);
+
+  const preview = document.getElementById('adminPreviewTable');
+  preview.innerHTML = withPts.slice(0, 7).map((r, i) =>
+    `<div style="padding:2px 0;${i<3?'color:#ffd700':''}">${String(i+1).padStart(2,' ')}. ${r.name.padEnd(18,' ')} ${String(r.pts).padStart(3,' ')} Pkt (heute: +${r.spieltagPts})</div>`
+  ).join('') + (withPts.length > 7 ? `<div style="opacity:.5;margin-top:4px">… und ${withPts.length - 7} weitere</div>` : '');
+
+  document.getElementById('adminPreview').style.display = 'block';
+
+  // Daten für Übernahme vorbereiten
+  window._adminPrepared = withPts.map((r, i) => {
+    const prev = i; // delta berechnen wäre aufwendig ohne Vorspieltagdaten
+    return { n: r.name, pts: r.pts, d: 0 };
+  });
+}
+
+function adminApplyData() {
+  if (!selectedSpieltag || !window._adminPrepared) return;
+
+  // Rangliste in RANGLISTEN-Objekt schreiben
+  RANGLISTEN[selectedSpieltag] = window._adminPrepared;
+
+  // KI-Cache für diesen Spieltag löschen damit frisch generiert wird
+  const cache = cacheLoad();
+  delete cache[selectedSpieltag];
+  cacheSave(cache);
+  updateTabCacheBadges();
+
+  // Seite neu rendern
+  render(selectedSpieltag);
+
+  // Zu diesem Spieltag wechseln
+  wechsel(selectedSpieltag);
+
+  // Panel schließen
+  document.getElementById('adminPanel').style.display = 'none';
+
+  // Bestätigung
+  const toast = document.createElement('div');
+  toast.textContent = `✓ Spieltag ${selectedSpieltag} aktualisiert — ${window._adminPrepared.length} Tipper`;
+  toast.style.cssText = `
+    position:fixed;bottom:24px;right:24px;z-index:99999;
+    background:#1a3a5c;color:#fff;padding:14px 20px;border-radius:6px;
+    font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.3);
+    border-left:4px solid #e8821e;animation:toast-in .3s ease
+  `;
+  document.head.insertAdjacentHTML('beforeend',
+    '<style>@keyframes toast-in{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}</style>');
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+
+  // KI-Kommentar neu laden
+  setTimeout(() => { resetBanner(); ladeKI(selectedSpieltag); }, 300);
+}
+</script>
+</body>
+</html>

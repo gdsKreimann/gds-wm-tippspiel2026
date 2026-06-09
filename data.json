@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "generiert_am": "2026-06-20T20:30:00+00:00",
+    "aktiver_spieltag": 3,
+    "quelle_kicktipp": "gds-wm-tippspiel2026"
+  },
+  "spieltage": [
+    { "id": 1, "label": "Spieltag 1", "aktiv": false, "zukuenftig": false },
+    { "id": 2, "label": "Spieltag 2", "aktiv": false, "zukuenftig": false },
+    { "id": 3, "label": "Spieltag 3", "aktiv": true,  "zukuenftig": false },
+    { "id": 4, "label": "Spieltag 4", "aktiv": false, "zukuenftig": true  }
+  ],
+  "ranglisten": {
+    "3": [
+      { "name": "TurboTobiBVB",    "pts_spieltag": 9, "pts_gesamt": 33, "rang": "1", "delta": 3 },
+      { "name": "DennisCostaRica", "pts_spieltag": 9, "pts_gesamt": 28, "rang": "2", "delta": 3 },
+      { "name": "JanG",            "pts_spieltag": 6, "pts_gesamt": 27, "rang": "3", "delta": -2 }
+    ]
+  },
+  "spiele": {
+    "3": [
+      {
+        "heim":   { "name": "Schottland", "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿" },
+        "gast":   { "name": "Portugal",   "flag": "🇵🇹" },
+        "score":  "0:3",
+        "status": "finished",
+        "zeit":   "Abpfiff",
+        "tipps": [
+          { "n": "TurboTobiBVB", "t": "0:3", "c": true },
+          { "n": "Hanne_Sobek",  "t": "2:0", "c": false }
+        ]
+      }
+    ]
+  }
+}
