@@ -168,8 +168,170 @@ class KicktippScraper:
             print(f"[Kicktipp] Teilnehmer-Fallback fehlgeschlagen: {e}")
             return {}
 
+    def get_spieltag_tipps(self, spieltag: int) -> dict:
+        """
+        Scrapt die Tippübersicht eines Spieltags — zeigt wer was getippt hat.
+        Kicktipp zeigt fremde Tipps erst NACH Spielbeginn → vorher leer.
+
+        Gibt zurück: { "Heim vs Gast": [{name, tipp, punkte}, ...] }
+        Key = "Heimteam:Gastteam" zur Zuordnung zu football-data Spielen.
+        """
+        print(f"[Kicktipp] Lade Tippübersicht Spieltag {spieltag}...")
+        # spieltagIndex ist 0-basiert
+        url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/tippuebersicht?spieltagIndex={spieltag - 1}"
+        try:
+            r = self.session.get(url, timeout=30)
+            print(f"[Kicktipp] Tippübersicht HTTP {r.status_code}")
+            if r.status_code != 200:
+                return {}
+        except Exception as e:
+            print(f"[Kicktipp] Tippübersicht Fehler: {e}")
+            return {}
+
+        soup = BeautifulSoup(r.text, "html.parser")
+        tipps_by_spiel = {}
+
+        # Kicktipp-Struktur: Tabelle mit Spielen als Zeilen
+        # Kopfzeile = Teilnehmernamen, erste Spalte = Spiel
+        table = soup.find("table", id="tippuebersicht") or \
+                soup.find("table", class_=lambda c: c and "tipp" in c.lower()) or \
+                soup.find("table")
+
+        if not table:
+            print("[Kicktipp] Keine Tippübersicht-Tabelle gefunden")
+            return {}
+
+        # Teilnehmernamen aus Kopfzeile
+        header_row = table.find("tr")
+        if not header_row:
+            return {}
+        teilnehmer = []
+        for th in header_row.find_all(["th", "td"])[1:]:  # erste Spalte = Spiel überspringen
+            name = th.get_text(strip=True)
+            if name:
+                teilnehmer.append(name)
+        print(f"[Kicktipp] Teilnehmer in Tippübersicht: {teilnehmer}")
+
+        # Spielzeilen parsen
+        for row in table.find_all("tr")[1:]:
+            cells = row.find_all(["td", "th"])
+            if len(cells) < 2:
+                continue
+
+            # Erste Zelle = Spiel (z.B. "Deutschland - Frankreich")
+            spiel_text = cells[0].get_text(strip=True)
+            if not spiel_text or ":" not in spiel_text and " - " not in spiel_text and " vs " not in spiel_text.lower():
+                continue
+
+            # Spiel-Key normalisieren: "Heim - Gast" → "Heim:Gast"
+            for sep in [" - ", " vs ", " – "]:
+                if sep in spiel_text:
+                    parts = spiel_text.split(sep, 1)
+                    spiel_key = f"{parts[0].strip()}:{parts[1].strip()}"
+                    break
+            else:
+                spiel_key = spiel_text
+
+            tipps = []
+            for i, cell in enumerate(cells[1:]):
+                if i >= len(teilnehmer):
+                    break
+                tipp_text = cell.get_text(strip=True)
+                if not tipp_text:
+                    continue
+
+                # Punkte aus CSS-Klasse ableiten (kicktipp markiert richtige Tipps)
+                css = " ".join(cell.get("class", []))
+                if "richtig" in css or "correct" in css or "gewonnen" in css:
+                    punkte = "correct"
+                elif "tendenz" in css or "partial" in css:
+                    punkte = "tendenz"
+                elif tipp_text and ":" in tipp_text:
+                    punkte = "unknown"  # Tipp vorhanden, Spiel läuft noch
+                else:
+                    punkte = "wrong"
+
+                tipps.append({
+                    "name":   teilnehmer[i],
+                    "tipp":   tipp_text,
+                    "result": punkte,
+                })
+
+            if tipps:
+                tipps_by_spiel[spiel_key] = tipps
+                print(f"[Kicktipp]   {spiel_key}: {len(tipps)} Tipps")
+
+        print(f"[Kicktipp] Tippübersicht Spieltag {spieltag}: {len(tipps_by_spiel)} Spiele mit Tipps")
+        return tipps_by_spiel
+
     @staticmethod
-    def parse_rangliste_csv(rows):
+    def match_tipps_to_spiele(spiele: list, tipps_by_spiel: dict) -> list:
+        """
+        Ordnet die gescrapten Tipps den football-data.org Spielen zu.
+        Matching über Teamnamen — fuzzy, da Kicktipp deutsche Namen verwendet.
+        """
+        # Kicktipp → football-data Name-Mapping (Deutsch → Englisch)
+        NAME_MAP = {
+            "Deutschland": "Germany", "Frankreich": "France", "Spanien": "Spain",
+            "Portugal": "Portugal", "England": "England", "Niederlande": "Netherlands",
+            "Belgien": "Belgium", "Schweiz": "Switzerland", "Kroatien": "Croatia",
+            "Dänemark": "Denmark", "Polen": "Poland", "Serbien": "Serbia",
+            "Schottland": "Scotland", "Wales": "Wales", "Österreich": "Austria",
+            "Schweden": "Sweden", "Norwegen": "Norway", "Türkei": "Turkey",
+            "Tschechien": "Czechia", "Brasilien": "Brazil", "Argentinien": "Argentina",
+            "Kolumbien": "Colombia", "Uruguay": "Uruguay", "Chile": "Chile",
+            "Ecuador": "Ecuador", "Peru": "Peru", "Venezuela": "Venezuela",
+            "Paraguay": "Paraguay", "Mexiko": "Mexico", "USA": "United States",
+            "Kanada": "Canada", "Panama": "Panama", "Marokko": "Morocco",
+            "Senegal": "Senegal", "Nigeria": "Nigeria", "Ghana": "Ghana",
+            "Kamerun": "Cameroon", "Tunesien": "Tunisia", "Ägypten": "Egypt",
+            "Algerien": "Algeria", "Südafrika": "South Africa",
+            "Elfenbeinküste": "Ivory Coast", "Kongo DR": "Congo DR",
+            "Kap Verde": "Cape Verde Islands", "Japan": "Japan",
+            "Südkorea": "South Korea", "Saudi-Arabien": "Saudi Arabia",
+            "Iran": "Iran", "Australien": "Australia", "Katar": "Qatar",
+            "Usbekistan": "Uzbekistan", "Jordanien": "Jordan", "Irak": "Iraq",
+            "Neuseeland": "New Zealand", "Haiti": "Haiti", "Bosnien-Herzegowina": "Bosnia-Herzegovina",
+            "Irak": "Iraq", "Norwegen": "Norway",
+        }
+
+        def normalize(name):
+            return NAME_MAP.get(name, name).lower().strip()
+
+        result = []
+        for spiel in spiele:
+            heim_norm = normalize(spiel["heim"]["name"])
+            gast_norm = normalize(spiel["gast"]["name"])
+            matched_tipps = []
+
+            for key, tipps in tipps_by_spiel.items():
+                if ":" not in key:
+                    continue
+                k_heim, k_gast = key.split(":", 1)
+                kh = normalize(k_heim)
+                kg = normalize(k_gast)
+                # Fuzzy: Teilstring-Match reicht (z.B. "United States" vs "USA")
+                if (kh in heim_norm or heim_norm in kh) and \
+                   (kg in gast_norm or gast_norm in kg):
+                    matched_tipps = [
+                        {
+                            "n": t["name"],
+                            "t": t["tipp"],
+                            "c": True  if t["result"] == "correct"  else
+                                 None  if t["result"] == "unknown"  else
+                                 False
+                        }
+                        for t in tipps
+                    ]
+                    break
+
+            spiel_copy = dict(spiel)
+            spiel_copy["tipps"] = matched_tipps
+            result.append(spiel_copy)
+
+        return result
+
+
         if not rows:
             return {}
         header = list(rows[0].keys())
@@ -294,6 +456,20 @@ def main():
         fapi = FootballAPI(api_key)
         matches = fapi.get_wm_matches()
         spiele_by_spieltag = FootballAPI.parse_matches(matches)
+
+    # Tipps scrapen — nur für Spieltage mit mind. einem gestarteten Spiel
+    # (Kicktipp zeigt fremde Tipps erst nach Spielbeginn)
+    for st_id, spiele in spiele_by_spieltag.items():
+        hat_gestartete_spiele = any(s["status"] in ("finished", "live") for s in spiele)
+        if hat_gestartete_spiele:
+            print(f"[Info] Spieltag {st_id} hat gestartete Spiele → Tipps werden gescrapt")
+            tipps_by_spiel = kt.get_spieltag_tipps(st_id)
+            if tipps_by_spiel:
+                spiele_by_spieltag[st_id] = KicktippScraper.match_tipps_to_spiele(
+                    spiele, tipps_by_spiel
+                )
+        else:
+            print(f"[Info] Spieltag {st_id}: alle Spiele noch ausstehend → Tipps nicht sichtbar")
 
     # Wenn Rangliste leer (WM noch nicht gestartet): Teilnehmer aus HTML scrapen
     if not rangliste:
