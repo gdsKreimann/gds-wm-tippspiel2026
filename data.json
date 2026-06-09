@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "09.06.2026 22:26 Uhr (CEST)",
+    "generiert_am": "09.06.2026 22:30 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -27,10 +27,31 @@
   "ranglisten": {
     "1": [
       {
-        "name": "de",
+        "name": "Heim",
         "pts_spieltag": 0,
         "pts_gesamt": 0,
         "rang": "1",
+        "delta": 0
+      },
+      {
+        "name": "Gast",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "2",
+        "delta": 0
+      },
+      {
+        "name": "Gruppe",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "3",
+        "delta": 0
+      },
+      {
+        "name": "Ergebnis",
+        "pts_spieltag": 0,
+        "pts_gesamt": 0,
+        "rang": "4",
         "delta": 0
       }
     ]
