@@ -8,6 +8,9 @@ on:
     - cron: "30 20 * * *"
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -25,6 +28,21 @@ jobs:
 
       - name: Abhaengigkeiten installieren
         run: pip install -r requirements.txt
+
+      - name: Secrets pruefen
+        run: |
+          if [ -z "$KICKTIPP_EMAIL" ]; then
+            echo "FEHLER: KICKTIPP_EMAIL ist leer!"
+            exit 1
+          fi
+          if [ -z "$KICKTIPP_PASSWORD" ]; then
+            echo "FEHLER: KICKTIPP_PASSWORD ist leer!"
+            exit 1
+          fi
+          echo "Secrets OK — Email: ${KICKTIPP_EMAIL:0:3}***"
+        env:
+          KICKTIPP_EMAIL:    ${{ secrets.KICKTIPP_EMAIL }}
+          KICKTIPP_PASSWORD: ${{ secrets.KICKTIPP_PASSWORD }}
 
       - name: Scraper ausfuehren
         env:
