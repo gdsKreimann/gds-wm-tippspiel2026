@@ -42,11 +42,13 @@ class KicktippScraper:
         print(f"[Kicktipp] Login als {self.email[:4]}***...")
         try:
             # Login-Seite laden um CSRF-Token zu holen
-            r = self.session.get(f"{KICKTIPP_BASE}/info/login", timeout=30)
-            print(f"[Kicktipp] Login-Seite: HTTP {r.status_code}")
+            # Kicktipp Login-URL: gruppenspezifisch unter /profil/login
+            login_url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/profil/login"
+            r = self.session.get(login_url, timeout=30)
+            print(f"[Kicktipp] Login-Seite: HTTP {r.status_code} ({login_url})")
             soup = BeautifulSoup(r.text, "html.parser")
 
-            # Alle hidden inputs holen
+            # Alle hidden inputs aus dem Formular holen
             form = soup.find("form")
             payload = {}
             if form:
@@ -59,7 +61,7 @@ class KicktippScraper:
             payload["login_password"] = self.password
 
             r2 = self.session.post(
-                f"{KICKTIPP_BASE}/info/login",
+                login_url,
                 data=payload,
                 allow_redirects=True,
                 timeout=30
