@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "2026-06-09T14:45:12.412311+00:00",
+    "generiert_am": "2026-06-09T14:50:10.940314+00:00",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -34,7 +34,7 @@
         },
         "gast": {
           "name": "South Africa",
-          "flag": "🏳️"
+          "flag": "🇿🇦"
         },
         "score": "—",
         "status": "upcoming",
@@ -48,7 +48,7 @@
         },
         "gast": {
           "name": "Czechia",
-          "flag": "🏳️"
+          "flag": "🇨🇿"
         },
         "score": "—",
         "status": "upcoming",
@@ -62,7 +62,7 @@
         },
         "gast": {
           "name": "Bosnia-Herzegovina",
-          "flag": "🏳️"
+          "flag": "🇧🇦"
         },
         "score": "—",
         "status": "upcoming",
@@ -76,7 +76,7 @@
         },
         "gast": {
           "name": "Paraguay",
-          "flag": "🏳️"
+          "flag": "🇵🇾"
         },
         "score": "—",
         "status": "upcoming",
@@ -114,7 +114,7 @@
       {
         "heim": {
           "name": "Haiti",
-          "flag": "🏳️"
+          "flag": "🇭🇹"
         },
         "gast": {
           "name": "Scotland",
@@ -132,7 +132,7 @@
         },
         "gast": {
           "name": "Turkey",
-          "flag": "🏳️"
+          "flag": "🇹🇷"
         },
         "score": "—",
         "status": "upcoming",
@@ -170,7 +170,7 @@
       {
         "heim": {
           "name": "Ivory Coast",
-          "flag": "🏳️"
+          "flag": "🇨🇮"
         },
         "gast": {
           "name": "Ecuador",
@@ -184,7 +184,7 @@
       {
         "heim": {
           "name": "Sweden",
-          "flag": "🏳️"
+          "flag": "🇸🇪"
         },
         "gast": {
           "name": "Tunisia",
@@ -202,7 +202,7 @@
         },
         "gast": {
           "name": "Cape Verde Islands",
-          "flag": "🏳️"
+          "flag": "🇨🇻"
         },
         "score": "—",
         "status": "upcoming",
@@ -216,7 +216,7 @@
         },
         "gast": {
           "name": "Egypt",
-          "flag": "🏳️"
+          "flag": "🇪🇬"
         },
         "score": "—",
         "status": "upcoming",
@@ -268,11 +268,11 @@
       {
         "heim": {
           "name": "Iraq",
-          "flag": "🏳️"
+          "flag": "🇮🇶"
         },
         "gast": {
           "name": "Norway",
-          "flag": "🏳️"
+          "flag": "🇳🇴"
         },
         "score": "—",
         "status": "upcoming",
@@ -286,7 +286,7 @@
         },
         "gast": {
           "name": "Algeria",
-          "flag": "🏳️"
+          "flag": "🇩🇿"
         },
         "score": "—",
         "status": "upcoming",
@@ -296,11 +296,11 @@
       {
         "heim": {
           "name": "Austria",
-          "flag": "🏳️"
+          "flag": "🇦🇹"
         },
         "gast": {
           "name": "Jordan",
-          "flag": "🏳️"
+          "flag": "🇯🇴"
         },
         "score": "—",
         "status": "upcoming",
@@ -314,7 +314,7 @@
         },
         "gast": {
           "name": "Congo DR",
-          "flag": "🏳️"
+          "flag": "🇨🇩"
         },
         "score": "—",
         "status": "upcoming",
@@ -352,7 +352,7 @@
       {
         "heim": {
           "name": "Uzbekistan",
-          "flag": "🏳️"
+          "flag": "🇺🇿"
         },
         "gast": {
           "name": "Colombia",
@@ -368,11 +368,11 @@
       {
         "heim": {
           "name": "Czechia",
-          "flag": "🏳️"
+          "flag": "🇨🇿"
         },
         "gast": {
           "name": "South Africa",
-          "flag": "🏳️"
+          "flag": "🇿🇦"
         },
         "score": "—",
         "status": "upcoming",
@@ -386,7 +386,7 @@
         },
         "gast": {
           "name": "Bosnia-Herzegovina",
-          "flag": "🏳️"
+          "flag": "🇧🇦"
         },
         "score": "—",
         "status": "upcoming",
@@ -456,7 +456,7 @@
         },
         "gast": {
           "name": "Haiti",
-          "flag": "🏳️"
+          "flag": "🇭🇹"
         },
         "score": "—",
         "status": "upcoming",
@@ -466,11 +466,11 @@
       {
         "heim": {
           "name": "Turkey",
-          "flag": "🏳️"
+          "flag": "🇹🇷"
         },
         "gast": {
           "name": "Paraguay",
-          "flag": "🏳️"
+          "flag": "🇵🇾"
         },
         "score": "—",
         "status": "upcoming",
@@ -484,7 +484,7 @@
         },
         "gast": {
           "name": "Sweden",
-          "flag": "🏳️"
+          "flag": "🇸🇪"
         },
         "score": "—",
         "status": "upcoming",
@@ -498,7 +498,7 @@
         },
         "gast": {
           "name": "Ivory Coast",
-          "flag": "🏳️"
+          "flag": "🇨🇮"
         },
         "score": "—",
         "status": "upcoming",
@@ -568,7 +568,7 @@
         },
         "gast": {
           "name": "Cape Verde Islands",
-          "flag": "🏳️"
+          "flag": "🇨🇻"
         },
         "score": "—",
         "status": "upcoming",
@@ -582,7 +582,7 @@
         },
         "gast": {
           "name": "Egypt",
-          "flag": "🏳️"
+          "flag": "🇪🇬"
         },
         "score": "—",
         "status": "upcoming",
@@ -596,7 +596,7 @@
         },
         "gast": {
           "name": "Austria",
-          "flag": "🏳️"
+          "flag": "🇦🇹"
         },
         "score": "—",
         "status": "upcoming",
@@ -610,7 +610,7 @@
         },
         "gast": {
           "name": "Iraq",
-          "flag": "🏳️"
+          "flag": "🇮🇶"
         },
         "score": "—",
         "status": "upcoming",
@@ -620,7 +620,7 @@
       {
         "heim": {
           "name": "Norway",
-          "flag": "🏳️"
+          "flag": "🇳🇴"
         },
         "gast": {
           "name": "Senegal",
@@ -634,11 +634,11 @@
       {
         "heim": {
           "name": "Jordan",
-          "flag": "🏳️"
+          "flag": "🇯🇴"
         },
         "gast": {
           "name": "Algeria",
-          "flag": "🏳️"
+          "flag": "🇩🇿"
         },
         "score": "—",
         "status": "upcoming",
@@ -652,7 +652,7 @@
         },
         "gast": {
           "name": "Uzbekistan",
-          "flag": "🏳️"
+          "flag": "🇺🇿"
         },
         "score": "—",
         "status": "upcoming",
@@ -694,7 +694,7 @@
         },
         "gast": {
           "name": "Congo DR",
-          "flag": "🏳️"
+          "flag": "🇨🇩"
         },
         "score": "—",
         "status": "upcoming",
@@ -720,7 +720,7 @@
       {
         "heim": {
           "name": "Bosnia-Herzegovina",
-          "flag": "🏳️"
+          "flag": "🇧🇦"
         },
         "gast": {
           "name": "Qatar",
@@ -738,7 +738,7 @@
         },
         "gast": {
           "name": "Haiti",
-          "flag": "🏳️"
+          "flag": "🇭🇹"
         },
         "score": "—",
         "status": "upcoming",
@@ -762,7 +762,7 @@
       {
         "heim": {
           "name": "Czechia",
-          "flag": "🏳️"
+          "flag": "🇨🇿"
         },
         "gast": {
           "name": "Mexico",
@@ -776,7 +776,7 @@
       {
         "heim": {
           "name": "South Africa",
-          "flag": "🏳️"
+          "flag": "🇿🇦"
         },
         "gast": {
           "name": "South Korea",
@@ -808,7 +808,7 @@
         },
         "gast": {
           "name": "Ivory Coast",
-          "flag": "🏳️"
+          "flag": "🇨🇮"
         },
         "score": "—",
         "status": "upcoming",
@@ -836,7 +836,7 @@
         },
         "gast": {
           "name": "Sweden",
-          "flag": "🏳️"
+          "flag": "🇸🇪"
         },
         "score": "—",
         "status": "upcoming",
@@ -846,7 +846,7 @@
       {
         "heim": {
           "name": "Turkey",
-          "flag": "🏳️"
+          "flag": "🇹🇷"
         },
         "gast": {
           "name": "United States",
@@ -860,7 +860,7 @@
       {
         "heim": {
           "name": "Paraguay",
-          "flag": "🏳️"
+          "flag": "🇵🇾"
         },
         "gast": {
           "name": "Australia",
@@ -874,7 +874,7 @@
       {
         "heim": {
           "name": "Norway",
-          "flag": "🏳️"
+          "flag": "🇳🇴"
         },
         "gast": {
           "name": "France",
@@ -892,7 +892,7 @@
         },
         "gast": {
           "name": "Iraq",
-          "flag": "🏳️"
+          "flag": "🇮🇶"
         },
         "score": "—",
         "status": "upcoming",
@@ -916,7 +916,7 @@
       {
         "heim": {
           "name": "Cape Verde Islands",
-          "flag": "🏳️"
+          "flag": "🇨🇻"
         },
         "gast": {
           "name": "Saudi Arabia",
@@ -944,7 +944,7 @@
       {
         "heim": {
           "name": "Egypt",
-          "flag": "🏳️"
+          "flag": "🇪🇬"
         },
         "gast": {
           "name": "Iran",
@@ -1000,11 +1000,11 @@
       {
         "heim": {
           "name": "Congo DR",
-          "flag": "🏳️"
+          "flag": "🇨🇩"
         },
         "gast": {
           "name": "Uzbekistan",
-          "flag": "🏳️"
+          "flag": "🇺🇿"
         },
         "score": "—",
         "status": "upcoming",
@@ -1014,7 +1014,7 @@
       {
         "heim": {
           "name": "Jordan",
-          "flag": "🏳️"
+          "flag": "🇯🇴"
         },
         "gast": {
           "name": "Argentina",
@@ -1028,11 +1028,11 @@
       {
         "heim": {
           "name": "Algeria",
-          "flag": "🏳️"
+          "flag": "🇩🇿"
         },
         "gast": {
           "name": "Austria",
-          "flag": "🏳️"
+          "flag": "🇦🇹"
         },
         "score": "—",
         "status": "upcoming",
