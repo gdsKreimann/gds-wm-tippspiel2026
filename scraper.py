@@ -137,20 +137,29 @@ class KicktippScraper:
             return False
 
     # ── RANGLISTE ────────────────────────────────────────────────
-    def get_rangliste_csv(self) -> list:
-        """Lädt den Gesamtübersicht-Einzelwertung CSV-Export via POST (wie das UI)."""
-        print("[Kicktipp] Lade Ranglisten-CSV...")
-
-        # Schritt 1: Datenexport-Seite laden um CSRF-Token zu holen
-        export_page_url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/datenexport"
+    def get_rangliste_csv(self) -> dict:
+        """
+        Lädt CSV-Exporte vom Spielleiter-Datenexport via POST.
+        Gibt dict zurück: {"rangliste": [...rows], "tipper": [...rows]}
+        Dropdown-Werte laut Kicktipp-UI:
+          - "tipper"     = Liste aller Tipper
+          - "rangliste"  = Rangliste
+          - "gesamtuebersicht" = Gesamtübersicht
+          - "tipps"      = Tipps aller Tipper
+        """
+        print("[Kicktipp] Lade CSV-Exporte vom Spielleiter-Datenexport...")
+        export_page_url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/spielleiter/datenexport"
+        results = {}
         try:
             r = self.session.get(export_page_url, timeout=30)
             print(f"[Kicktipp] Datenexport-Seite: HTTP {r.status_code}")
+            if r.status_code != 200:
+                return results
             soup = BeautifulSoup(r.text, "html.parser")
 
-            # Formular finden
+            # Formular + Action-URL + hidden fields
             form = soup.find("form")
-            payload = {}
+            base_payload = {}
             action_url = export_page_url
             if form:
                 if form.get("action"):
@@ -158,61 +167,44 @@ class KicktippScraper:
                     action_url = action if action.startswith("http") else KICKTIPP_BASE + action
                 for inp in form.find_all("input"):
                     if inp.get("name"):
-                        payload[inp["name"]] = inp.get("value", "")
-                print(f"[Kicktipp] Export-Form action: {action_url}")
-                print(f"[Kicktipp] Export-Form fields: {list(payload.keys())}")
+                        base_payload[inp["name"]] = inp.get("value", "")
+                print(f"[Kicktipp] Export action: {action_url}, fields: {list(base_payload.keys())}")
 
-            # Schritt 2: POST mit den richtigen Dropdown-Werten
-            # Aus dem Screenshot: Auswahl=Rangliste, Spieltag=1.Spieltag, Wertung=Einzelwertung
-            payload["typ"]     = "gesamtuebersicht"   # Dropdown "Auswahl der Daten"
-            payload["wertung"] = "einzelwertung"       # Dropdown "Wertung"
-
-            # Auch Select-Felder aus dem Formular übernehmen
+            # Alle Dropdown-Optionen loggen
             for sel in soup.find_all("select"):
-                name = sel.get("name", "")
-                if name and name not in payload:
-                    # Ersten Option-Wert nehmen
-                    opt = sel.find("option")
-                    payload[name] = opt["value"] if opt and opt.get("value") else ""
+                opts = [(o.get("value",""), o.get_text(strip=True)) for o in sel.find_all("option")]
+                print(f"[Kicktipp] Dropdown '{sel.get('name','')}': {opts}")
 
-            print(f"[Kicktipp] POST payload: {payload}")
-            r2 = self.session.post(action_url, data=payload, timeout=30)
-            print(f"[Kicktipp] Export POST: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
-
-            if r2.status_code == 200 and ";" in r2.text[:500]:
-                rows = list(csv.DictReader(io.StringIO(r2.text), delimiter=";", quotechar='"'))
-                if rows:
-                    print(f"[Kicktipp] CSV OK: {len(rows)} Zeilen, Spalten: {list(rows[0].keys())}")
-                    # Validierung: muss eine "Name"-Spalte haben mit echten Teilnehmernamen
-                    # Kicktipp-Rangliste hat immer "Rang" und "Name"
-                    has_name = any("name" in k.lower() for k in rows[0].keys())
-                    # Sanity-check: Werte in Name-Spalte dürfen keine Wertungstypen sein
-                    name_col = next((k for k in rows[0].keys() if "name" in k.lower()), None)
-                    fake_namen = {"heim","gast","gruppe","ergebnis","tendenz"}
-                    if name_col:
-                        echte_namen = [r[name_col].strip().lower() for r in rows
-                                       if r.get(name_col,"").strip().lower() not in fake_namen]
-                    else:
-                        echte_namen = []
-
-                    if has_name and echte_namen:
+            def do_export(typ_value, label):
+                payload = dict(base_payload)
+                payload["typ"] = typ_value
+                print(f"[Kicktipp] POST typ={typ_value} ({label})...")
+                r2 = self.session.post(action_url, data=payload, timeout=30)
+                print(f"[Kicktipp] {label}: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
+                if r2.status_code == 200 and ";" in r2.text[:500]:
+                    rows = list(csv.DictReader(io.StringIO(r2.text), delimiter=";", quotechar='"'))
+                    print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
+                    if rows:
                         return rows
-                    else:
-                        print(f"[Kicktipp] CSV enthält keine echten Teilnehmernamen — ignoriert")
-                        print(f"[Kicktipp] Spalten waren: {list(rows[0].keys())}")
-                        print(f"[Kicktipp] Erste Werte: {[r.get(name_col,'?') for r in rows[:5]]}")
-                print("[Kicktipp] CSV leer oder ungültig")
-                print(f"[Kicktipp] Antwort-Vorschau: {r2.text[:300]}")
-            else:
-                print(f"[Kicktipp] Unerwartete Antwort: {r2.text[:200]}")
+                else:
+                    print(f"[Kicktipp] {label} Antwort: {r2.text[:150]}")
+                return []
+
+            # Liste aller Tipper → Teilnehmernamen
+            rows_tipper = do_export("tipper", "Liste aller Tipper")
+            if rows_tipper:
+                results["tipper"] = rows_tipper
+
+            # Rangliste → Punkte pro Spieltag
+            rows_rangliste = do_export("rangliste", "Rangliste")
+            if rows_rangliste:
+                results["rangliste"] = rows_rangliste
 
         except Exception as e:
             print(f"[Kicktipp] Datenexport Fehler: {e}")
             traceback.print_exc()
 
-        print("[Kicktipp] CSV-Export fehlgeschlagen — HTML-Fallback")
-        return self._scrape_rangliste_html()
-
+        return results
     def _scrape_rangliste_html(self) -> list:
         """Fallback: Rangliste aus HTML-Tabelle scrapen."""
         r = self.session.get(f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/rangliste", timeout=30)
@@ -308,46 +300,75 @@ class KicktippScraper:
                     for i, n in enumerate(namen)]}
 
     @staticmethod
-    def parse_rangliste_csv(rows: list) -> dict:
-        """CSV-Zeilen → strukturierte Rangliste pro Spieltag."""
-        if not rows:
-            return {}
-        header = list(rows[0].keys())
-        print(f"[Parse] Spalten: {header}")
-        spieltag_cols = [k for k in header if "spieltag" in k.lower()]
-        print(f"[Parse] Spieltag-Spalten: {spieltag_cols}")
-        if not spieltag_cols:
-            # Fallback: Gesamtpunkte-Spalte → Spieltag 1
-            gesamt_col = next((k for k in header if "gesamt" in k.lower()), None)
-            if gesamt_col:
-                rows_sorted = sorted(rows, key=lambda r: int(r.get(gesamt_col,"0") or "0"), reverse=True)
-                return {1: [{"name":r.get("Name","").strip(),
-                              "pts_spieltag":int(r.get(gesamt_col,"0") or "0"),
-                              "pts_gesamt":int(r.get(gesamt_col,"0") or "0"),
-                              "rang":r.get("Rang","0").strip(), "delta":0}
-                             for r in rows_sorted if r.get("Name","").strip()]}
-            return {}
+    def parse_exports(exports: dict) -> tuple:
+        """
+        Verarbeitet die CSV-Exporte.
+        exports = {"tipper": [...], "rangliste": [...]}
+        Gibt zurück: (rangliste_dict, tipper_namen_list)
+        """
+        tipper_namen = []
+        rangliste    = {}
 
-        result = {}
-        for st_idx, col in enumerate(spieltag_cols, start=1):
-            st_data = []
-            for row in rows:
-                kumuliert = sum(
-                    int(str(row.get(c,"0")).strip()) if str(row.get(c,"0")).strip().lstrip("-").isdigit() else 0
-                    for c in spieltag_cols[:st_idx]
-                )
-                pts_st = int(str(row.get(col,"0")).strip()) if str(row.get(col,"0")).strip().lstrip("-").isdigit() else 0
-                name = str(row.get("Name","")).strip()
-                if name:
-                    st_data.append({"name":name,"pts_spieltag":pts_st,"pts_gesamt":kumuliert,
-                                    "rang":str(row.get("Rang","0")).strip(),"delta":0})
-            st_data.sort(key=lambda x: x["pts_gesamt"], reverse=True)
-            if st_idx > 1 and (st_idx-1) in result:
-                prev = {p["name"]:i+1 for i,p in enumerate(result[st_idx-1])}
-                for i,p in enumerate(st_data):
-                    p["delta"] = prev.get(p["name"], i+1) - (i+1)
-            result[st_idx] = st_data
-        return result
+        # Teilnehmernamen aus "Liste aller Tipper"
+        tipper_rows = exports.get("tipper", [])
+        if tipper_rows:
+            name_col = next((k for k in tipper_rows[0].keys()
+                             if "name" in k.lower() or "tipper" in k.lower()), None)
+            if not name_col and tipper_rows[0]:
+                name_col = list(tipper_rows[0].keys())[0]
+            print(f"[Parse] Tipper-Spalte: '{name_col}', Spalten: {list(tipper_rows[0].keys())}")
+            tipper_namen = [r.get(name_col,"").strip() for r in tipper_rows
+                            if r.get(name_col,"").strip()]
+            print(f"[Parse] {len(tipper_namen)} Tipper: {tipper_namen}")
+
+        # Rangliste aus "Rangliste"-Export
+        rl_rows = exports.get("rangliste", [])
+        if rl_rows:
+            header = list(rl_rows[0].keys())
+            print(f"[Parse] Rangliste-Spalten: {header}")
+            spieltag_cols = [k for k in header if "spieltag" in k.lower()]
+            name_col      = next((k for k in header if k.lower() in ("name","tipper","benutzername")), None)
+            if not name_col:
+                name_col = next((k for k in header if "name" in k.lower()), None)
+            print(f"[Parse] Name-Spalte: '{name_col}', Spieltag-Spalten: {spieltag_cols}")
+
+            if name_col and spieltag_cols:
+                for st_idx, col in enumerate(spieltag_cols, start=1):
+                    st_data = []
+                    for row in rl_rows:
+                        name = str(row.get(name_col, "")).strip()
+                        if not name:
+                            continue
+                        kumuliert = sum(
+                            int(str(row.get(c,"0")).strip())
+                            if str(row.get(c,"0")).strip().lstrip("-").isdigit() else 0
+                            for c in spieltag_cols[:st_idx]
+                        )
+                        pts_st = int(str(row.get(col,"0")).strip()) \
+                            if str(row.get(col,"0")).strip().lstrip("-").isdigit() else 0
+                        st_data.append({"name": name, "pts_spieltag": pts_st,
+                                        "pts_gesamt": kumuliert,
+                                        "rang": str(row.get("Rang","0")).strip(), "delta": 0})
+                    st_data.sort(key=lambda x: x["pts_gesamt"], reverse=True)
+                    if st_idx > 1 and (st_idx-1) in rangliste:
+                        prev = {p["name"]: i+1 for i,p in enumerate(rangliste[st_idx-1])}
+                        for i,p in enumerate(st_data):
+                            p["delta"] = prev.get(p["name"], i+1) - (i+1)
+                    rangliste[st_idx] = st_data
+                print(f"[Parse] Rangliste: {len(rangliste)} Spieltage")
+            elif name_col and not spieltag_cols:
+                # Nur Gesamtpunkte-Spalte vorhanden (WM noch nicht gestartet oder nur 1 Spieltag)
+                gesamt_col = next((k for k in header if "gesamt" in k.lower()), None)
+                if gesamt_col:
+                    rows_sorted = sorted(rl_rows,
+                        key=lambda r: int(r.get(gesamt_col,"0") or "0"), reverse=True)
+                    rangliste[1] = [{"name": r.get(name_col,"").strip(),
+                                     "pts_spieltag": int(r.get(gesamt_col,"0") or "0"),
+                                     "pts_gesamt":   int(r.get(gesamt_col,"0") or "0"),
+                                     "rang": r.get("Rang","0").strip(), "delta": 0}
+                                    for r in rows_sorted if r.get(name_col,"").strip()]
+
+        return rangliste, tipper_namen
 
     # ── TIPPS ────────────────────────────────────────────────────
     def get_spieltag_tipps(self, spieltag: int) -> dict:
@@ -526,23 +547,42 @@ def main():
         print("FEHLER: Kicktipp-Login fehlgeschlagen!")
         sys.exit(1)
 
-    # 2. Rangliste
-    csv_rows  = kt.get_rangliste_csv()
-    rangliste = KicktippScraper.parse_rangliste_csv(csv_rows)
-    if not rangliste:
-        print("[Info] Rangliste leer — Teilnehmer-Fallback...")
-        rangliste = kt.get_teilnehmer_fallback()
-
-    # Wenn immer noch leer: bestehende data.json als Basis nehmen
-    if not rangliste and os.path.exists(OUTPUT_FILE):
-        print("[Info] Kein Ergebnis von Kicktipp — behalte Rangliste aus vorheriger data.json")
+    # 2. Rangliste — nur holen wenn WM schon läuft
+    # Vor Turnierstart liefert Kicktipp keine verwertbaren Daten.
+    # Wir laden die bestehende data.json und überschreiben nur die Spiele.
+    rangliste = {}
+    existing_data = {}
+    if os.path.exists(OUTPUT_FILE):
         try:
             with open(OUTPUT_FILE, encoding="utf-8") as f:
-                existing = json.load(f)
-            rangliste = {int(k): v for k, v in existing.get("ranglisten", {}).items()}
-            print(f"[Info] Rangliste aus data.json geladen: {list(rangliste.keys())}")
+                existing_data = json.load(f)
+            rangliste = {int(k): v for k, v in existing_data.get("ranglisten", {}).items()}
+            print(f"[Info] Bestehende Rangliste geladen: {list(rangliste.keys())} Spieltage, "
+                  f"{len(list(rangliste.values())[0]) if rangliste else 0} Tipper")
         except Exception as e:
             print(f"[Info] data.json lesen fehlgeschlagen: {e}")
+
+    # 2. CSV-Exporte holen und parsen
+    exports       = kt.get_rangliste_csv()
+    neue_rangliste, tipper_namen = KicktippScraper.parse_exports(exports)
+
+    # Nur übernehmen wenn echte Punkte drin sind
+    hat_echte_punkte = any(
+        p.get("pts_gesamt", 0) > 0
+        for st_data in neue_rangliste.values()
+        for p in st_data
+    )
+    if hat_echte_punkte:
+        print(f"[Info] Neue Rangliste mit echten Punkten übernommen")
+        rangliste = neue_rangliste
+    elif tipper_namen:
+        # WM noch nicht gestartet aber Namen bekannt → Starttabelle mit 0 Punkten
+        print(f"[Info] Noch keine Punkte — baue Starttabelle aus {len(tipper_namen)} Tipper-Namen")
+        rangliste = {1: [{"name": n, "pts_spieltag": 0, "pts_gesamt": 0,
+                          "rang": str(i+1), "delta": 0}
+                         for i, n in enumerate(tipper_namen)]}
+    else:
+        print(f"[Info] Kicktipp liefert keine verwertbaren Daten — behalte bestehende Rangliste")
 
     # 3. Spielergebnisse von football-data.org
     spiele_by_spieltag = {}
