@@ -137,6 +137,13 @@
         "pts_spieltag": 0,
         "rang": "16",
         "delta": 0
+      },
+      {
+        "name": "Bastelwastel",
+        "pts_gesamt": 0,
+        "pts_spieltag": 0,
+        "rang": "17",
+        "delta": 0
       }
     ]
   },
