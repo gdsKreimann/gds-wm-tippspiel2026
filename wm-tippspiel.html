@@ -136,7 +136,7 @@ body{font-family:'Source Sans 3','Segoe UI',sans-serif;background:var(--gds-ligh
 
 <div class="container">
   <div class="stats-row">
-    <div class="kpi-card"><div class="kpi-value">15</div><div class="kpi-label">Tipper</div></div>
+    <div class="kpi-card"><div class="kpi-value" id="kpiTeilnehmer">—</div><div class="kpi-label">Tipper</div></div>
     <div class="kpi-card"><div class="kpi-value" id="kpiSpieltag">—</div><div class="kpi-label">Spieltag</div></div>
     <div class="kpi-card"><div class="kpi-value" id="kpiMaxPts">—</div><div class="kpi-label">Führender</div></div>
     <div class="kpi-card"><div class="kpi-value" id="kpiSpiele">—</div><div class="kpi-label">Spiele</div></div>
@@ -349,6 +349,9 @@ function render(id) {
   document.getElementById('kpiMaxPts').textContent   = rangliste?.[0]?.n || '—';
   document.getElementById('kpiSpiele').textContent   = spiele?.length || '—';
   document.getElementById('flapMeta').textContent    = 'Spieltag ' + id;
+  // Tipper-Anzahl dynamisch aus der Rangliste
+  const alleTipper = RANGLISTEN[1] || rangliste || [];
+  document.getElementById('kpiTeilnehmer').textContent = alleTipper.length || '—';
 
   if (spiele) renderSpiele(spiele);
   if (rangliste?.length) { renderTop3(rangliste.slice(0, 3)); renderFlap(rangliste); }
@@ -390,16 +393,15 @@ function renderTop3(top3) {
   g.innerHTML = '';
   const styles  = ['fifa-card-gold','fifa-card-silver','fifa-card-bronze'];
   const medals  = ['🥇','🥈','🥉'];
-  const maxPts  = top3[0]?.pts || 1;
   top3.forEach((p, i) => {
-    const rating = Math.round(60 + (p.pts / maxPts) * 39);
-    const card   = document.createElement('div');
+    const card = document.createElement('div');
     card.className = `fifa-card ${styles[i]}`;
+    const shortName = p.n.length > 10 ? p.n.substring(0,10) : p.n;
     card.innerHTML = `<div class="fifa-pos-badge">${medals[i]}</div>
-      <div class="fifa-rating">${rating}</div>
-      <div class="fifa-name">${p.n.length > 10 ? p.n.substring(0,10) : p.n}</div>
+      <div class="fifa-rating">${p.pts}</div>
+      <div class="fifa-name">${shortName}</div>
       <div class="fifa-pts-label">Punkte</div>
-      <div class="fifa-pts">${p.pts}</div>`;
+      <div class="fifa-pts">Spieltag ${aktiverSpieltag}</div>`;
     g.appendChild(card);
   });
 }
