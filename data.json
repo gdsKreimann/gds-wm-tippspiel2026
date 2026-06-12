@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "12.06.2026 08:53 Uhr (CEST)",
+    "generiert_am": "12.06.2026 08:56 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -8,62 +8,62 @@
     {
       "id": 1,
       "label": "Spieltag 1",
-      "aktiv": false,
+      "aktiv": true,
       "zukuenftig": false
     },
     {
       "id": 2,
       "label": "Spieltag 2",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 3,
       "label": "Spieltag 3",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 4,
       "label": "Spieltag 4",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 5,
       "label": "Spieltag 5",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 6,
       "label": "Spieltag 6",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 7,
       "label": "Spieltag 7",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 8,
       "label": "Spieltag 8",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 9,
       "label": "Spieltag 9",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 10,
       "label": "Spieltag 10",
-      "aktiv": true,
-      "zukuenftig": false
+      "aktiv": false,
+      "zukuenftig": true
     }
   ],
   "ranglisten": {
@@ -2294,5 +2294,18 @@
       }
     ]
   },
-  "ki_kommentare": {}
+  "ki_kommentare": {
+    "1": {
+      "headline": "PAULE RAST VORNEWEG! JanG im TIPP-CHAOS versunken!",
+      "sub": "Während Paule mit traumhaften 6 Punkten die Konkurrenz vorführt, dümpelt JanG mit null Zählern am Tabellenende herum. Hat er vielleicht seine Tipps in einem anderen Universum abgegeben?",
+      "anekdote": "Südkorea's 2:1-Sieg über Tschechien erinnert an die WM 2002, als die Gastgeber sensationell ins Halbfinale stürmten. Damals sorgte ein umstrittenes Tor gegen Italien für Furore - Schiedsrichter Byron Moreno übersah einen klaren Ellenbogen-Check von Seol Ki-Hyeon. Die Koreaner feierten trotzdem wie verrückt!",
+      "ticker": [
+        "Paule führt souverän mit perfekten 6 Punkten!",
+        "Mexico bezwingt Südafrika überraschend deutlich 2:0",
+        "Südkorea schlägt Tschechien in packender Partie",
+        "Vier Tipper teilen sich Platz 2-12",
+        "JanG wartet noch auf ersten Punkt"
+      ]
+    }
+  }
 }
