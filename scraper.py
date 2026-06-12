@@ -178,21 +178,31 @@ class KicktippScraper:
             if form:
                 if form.get("action"):
                     action = form["action"]
-                    action_url = action if action.startswith("http") else KICKTIPP_BASE + action
+                    # Korrekte URL: action ist relativ ohne führenden Slash möglich
+                    if action.startswith("http"):
+                        action_url = action
+                    elif action.startswith("/"):
+                        action_url = KICKTIPP_BASE + action
+                    else:
+                        action_url = KICKTIPP_BASE + "/" + action
                 for inp in form.find_all("input"):
                     if inp.get("name"):
                         base_payload[inp["name"]] = inp.get("value", "")
                 print(f"[Kicktipp] Export action: {action_url}, fields: {list(base_payload.keys())}")
 
-            # Alle Dropdown-Optionen loggen
+            # Dropdown-Optionen loggen + Feldnamen ermitteln
+            auswahl_field = "datenauswahl"  # Kicktipp-Feldname laut HTML
             for sel in soup.find_all("select"):
+                name = sel.get("name", "")
                 opts = [(o.get("value",""), o.get_text(strip=True)) for o in sel.find_all("option")]
-                print(f"[Kicktipp] Dropdown '{sel.get('name','')}': {opts}")
+                print(f"[Kicktipp] Dropdown '{name}': {opts}")
+                if "auswahl" in name.lower() or "daten" in name.lower():
+                    auswahl_field = name
 
             def do_export(typ_value, label):
                 payload = dict(base_payload)
-                payload["typ"] = typ_value
-                print(f"[Kicktipp] POST typ={typ_value} ({label})...")
+                payload[auswahl_field] = typ_value
+                print(f"[Kicktipp] POST {auswahl_field}={typ_value} ({label}) → {action_url}")
                 try:
                     r2 = self.session.post(action_url, data=payload, timeout=15)
                     print(f"[Kicktipp] {label}: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
@@ -208,13 +218,13 @@ class KicktippScraper:
                     print(f"[Kicktipp] {label} Fehler: {e}")
                 return []
 
-            # Liste aller Tipper → Teilnehmernamen
-            rows_tipper = do_export("tipper", "Liste aller Tipper")
+            # Liste aller Tipper → Wert laut Kicktipp-Dropdown: "tipperliste"
+            rows_tipper = do_export("tipperliste", "Liste aller Tipper")
             if rows_tipper:
                 results["tipper"] = rows_tipper
 
-            # Rangliste → Punkte pro Spieltag
-            rows_rangliste = do_export("rangliste", "Rangliste")
+            # Rangliste → Wert laut Kicktipp-Dropdown: "ranking"
+            rows_rangliste = do_export("ranking", "Rangliste")
             if rows_rangliste:
                 results["rangliste"] = rows_rangliste
 
