@@ -1,7 +1,7 @@
 {
   "meta": {
     "generiert_am": "12.06.2026 08:53 Uhr (CEST)",
-    "aktiver_spieltag": 10,
+    "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
   "spieltage": [
@@ -2294,18 +2294,5 @@
       }
     ]
   },
-  "ki_kommentare": {
-    "10": {
-      "headline": "SPIELTAG 10: PAULE weiter UNANTASTBAR - JanG im PUNKTELOCH!",
-      "sub": "Meine Damen und Herren, Paule thront weiterhin majestätisch an der Spitze mit seinen 6 Punkten! Während JanG immer noch bei NULL Punkten dümpelt - da hilft auch kein Kaffee mehr aus der Büroküche! Das ist sportliches Elend in Reinform, liebe gds-Kollegen!",
-      "anekdote": "Apropos hartnäckige Null-Punkte-Serien: Der brasilianische Verein Íbis Sport Club hielt einst den Weltrekord für die längste Serie ohne Sieg - 23 Spiele verloren sie in Folge im Jahr 1980! Ihre Fans gründeten sogar einen Anti-Fan-Club und feierten jede Niederlage. JanG könnte sich davon eine Scheibe abschneiden!",
-      "ticker": [
-        "Paule verteidigt Tabellenführung eisern",
-        "Hanne_Sobek und Michelle jagen weiter",
-        "Elf Tipper kämpfen um Mittelfeld-Plätze",
-        "Vier Kollegen noch ohne einen Punkt",
-        "JanG sucht verzweifelt ersten Treffer"
-      ]
-    }
-  }
+  "ki_kommentare": {}
 }
