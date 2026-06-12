@@ -199,19 +199,24 @@ class KicktippScraper:
                 if "auswahl" in name.lower() or "daten" in name.lower():
                     auswahl_field = name
 
-            def do_export(typ_value, label):
+            def do_export(typ_value, label, extra_params=None):
                 payload = dict(base_payload)
                 payload[auswahl_field] = typ_value
+                if extra_params:
+                    payload.update(extra_params)
                 print(f"[Kicktipp] POST {auswahl_field}={typ_value} ({label}) → {action_url}")
                 try:
                     r2 = self.session.post(action_url, data=payload, timeout=15)
                     print(f"[Kicktipp] {label}: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
-                    if r2.status_code == 200 and ";" in r2.text[:500]:
-                        rows = list(csv.DictReader(io.StringIO(r2.text), delimiter=";", quotechar='"'))
-                        print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
-                        return rows
-                    else:
-                        print(f"[Kicktipp] {label} kein CSV: {r2.text[:100]}")
+                    if r2.status_code == 200:
+                        # Windows-Zeilenumbrüche normalisieren
+                        text = r2.text.replace('\r\n', '\n').replace('\r', '\n')
+                        if ";" in text[:500] and "<html" not in text[:200].lower():
+                            rows = list(csv.DictReader(io.StringIO(text), delimiter=";", quotechar='"'))
+                            print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
+                            return rows
+                        else:
+                            print(f"[Kicktipp] {label} kein CSV: {r2.text[:100]}")
                 except requests.exceptions.Timeout:
                     print(f"[Kicktipp] {label} Timeout nach 15s")
                 except Exception as e:
@@ -223,8 +228,11 @@ class KicktippScraper:
             if rows_tipper:
                 results["tipper"] = rows_tipper
 
-            # Rangliste → Wert laut Kicktipp-Dropdown: "ranking"
-            rows_rangliste = do_export("ranking", "Rangliste")
+            # Rangliste → "ranking" mit spieltagIndex=0 für Gesamtrangliste
+            rows_rangliste = do_export("ranking", "Rangliste", {"tippspieltagIndex": "0"})
+            if not rows_rangliste:
+                # Fallback: gesamtuebersicht probieren
+                rows_rangliste = do_export("gesamtuebersicht", "Gesamtübersicht", {"tippspieltagIndex": "0", "wertung": "einzelwertung"})
             if rows_rangliste:
                 results["rangliste"] = rows_rangliste
 
