@@ -208,19 +208,36 @@ class KicktippScraper:
                 try:
                     r2 = self.session.post(action_url, data=payload, timeout=15)
                     print(f"[Kicktipp] {label}: HTTP {r2.status_code}, CT: {r2.headers.get('content-type','?')[:50]}")
-                    if r2.status_code == 200:
-                        # Windows-Zeilenumbrüche normalisieren
+                    if r2.status_code != 200:
+                        return []
+
+                    raw = r2.content
+
+                    # ZIP-Datei erkennen (Magic Bytes PK\x03\x04)
+                    if raw[:2] == b'PK':
+                        print(f"[Kicktipp] {label}: ZIP erkannt → entpacke CSV")
+                        import zipfile
+                        zf = zipfile.ZipFile(io.BytesIO(raw))
+                        csv_files = [n for n in zf.namelist() if n.endswith('.csv')]
+                        if not csv_files:
+                            print(f"[Kicktipp] {label}: Keine CSV im ZIP")
+                            return []
+                        text = zf.read(csv_files[0]).decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
+                        print(f"[Kicktipp] {label}: CSV '{csv_files[0]}' entpackt")
+                    else:
                         text = r2.text.replace('\r\n', '\n').replace('\r', '\n')
-                        if ";" in text[:500] and "<html" not in text[:200].lower():
-                            rows = list(csv.DictReader(io.StringIO(text), delimiter=";", quotechar='"'))
-                            print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
-                            return rows
-                        else:
-                            print(f"[Kicktipp] {label} kein CSV: {r2.text[:100]}")
+
+                    if ";" in text[:500] and "<html" not in text[:200].lower():
+                        rows = list(csv.DictReader(io.StringIO(text), delimiter=";", quotechar='"'))
+                        print(f"[Kicktipp] {label} CSV: {len(rows)} Zeilen, Spalten: {list(rows[0].keys()) if rows else []}")
+                        return rows
+                    else:
+                        print(f"[Kicktipp] {label} kein CSV: {r2.text[:100]}")
                 except requests.exceptions.Timeout:
                     print(f"[Kicktipp] {label} Timeout nach 15s")
                 except Exception as e:
                     print(f"[Kicktipp] {label} Fehler: {e}")
+                    traceback.print_exc()
                 return []
 
             # Liste aller Tipper → Wert laut Kicktipp-Dropdown: "tipperliste"
