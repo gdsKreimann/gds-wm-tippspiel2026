@@ -14,6 +14,7 @@ env:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     permissions:
       contents: write
 
@@ -49,6 +50,7 @@ jobs:
           KICKTIPP_EMAIL:    ${{ secrets.KICKTIPP_EMAIL }}
           KICKTIPP_PASSWORD: ${{ secrets.KICKTIPP_PASSWORD }}
           FOOTBALL_API_KEY:  ${{ secrets.FOOTBALL_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scraper.py
 
       - name: data.json committen
