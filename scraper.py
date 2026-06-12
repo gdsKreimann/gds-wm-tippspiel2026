@@ -649,22 +649,96 @@ def main():
                       "aktiv":i==aktiver_st,"zukuenftig":i>aktiver_st}
                      for i in alle_st]
 
-    # 6. data.json schreiben
+    # 6. KI-Kommentare generieren (Anthropic API)
+    # Bestehende Kommentare laden damit Vortage nicht neu generiert werden
+    ki_kommentare = {}
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, encoding="utf-8") as f:
+                ki_kommentare = json.load(f).get("ki_kommentare", {})
+        except:
+            pass
+
+    if api_key:  # Anthropic Key wird als FOOTBALL_API_KEY nicht genutzt — eigener Key
+        anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
+        if anthropic_key and str(aktiver_st) not in ki_kommentare:
+            print(f"[KI] Generiere Kommentar für Spieltag {aktiver_st}...")
+            try:
+                rl = rangliste.get(aktiver_st, [])
+                fuehrender = rl[0]["name"] if rl else "—"
+                fuehrender_pts = rl[0]["pts_gesamt"] if rl else 0
+                letzter = rl[-1]["name"] if rl else "—"
+                spiele_txt = ", ".join(
+                    f"{s['heim']['name']} {s['score']} {s['gast']['name']}"
+                    for s in spiele_by_spieltag.get(aktiver_st, [])
+                    if s["status"] == "finished"
+                )
+                alle_tipper = ", ".join(
+                    f"{p['name']} ({p['pts_gesamt']} Pkt)"
+                    for p in rl
+                )
+                prompt = f"""Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
+Analysiere Spieltag {aktiver_st} und erstelle einen tagesfrischen Kommentar.
+
+Aktueller Stand:
+- Führender: {fuehrender} mit {fuehrender_pts} Punkten
+- Letzter: {letzter}
+- Abgeschlossene Spiele: {spiele_txt or 'noch keine'}
+- Alle Tipper: {alle_tipper}
+
+Erstelle:
+1. "headline": Dramatische Schlagzeile max. 12 Wörter, CAPS für Highlights
+2. "sub": Witziger Kommentar 2-3 Sätze, gerne auf Kosten des Letzten
+3. "anekdote": Echte interessante Fußball-Anekdote passend zu den Spielen
+4. "ticker": Array mit 5 kurzen Ticker-Meldungen (je max. 8 Wörter)
+
+Nur JSON, kein Markdown: {{"headline":"...","sub":"...","anekdote":"...","ticker":["...","...","...","...","..."]}}"""
+
+                import urllib.request
+                req_data = json.dumps({
+                    "model": "claude-sonnet-4-20250514",
+                    "max_tokens": 1000,
+                    "messages": [{"role": "user", "content": prompt}]
+                }).encode("utf-8")
+                req = urllib.request.Request(
+                    "https://api.anthropic.com/v1/messages",
+                    data=req_data,
+                    headers={
+                        "Content-Type": "application/json",
+                        "x-api-key": anthropic_key,
+                        "anthropic-version": "2023-06-01",
+                    }
+                )
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    result = json.loads(resp.read())
+                txt = result["content"][0]["text"]
+                parsed = json.loads(txt.replace("```json","").replace("```","").strip())
+                ki_kommentare[str(aktiver_st)] = parsed
+                print(f"[KI] ✓ Kommentar generiert: {parsed['headline'][:50]}...")
+            except Exception as e:
+                print(f"[KI] Fehler: {e}")
+        elif str(aktiver_st) in ki_kommentare:
+            print(f"[KI] Kommentar für Spieltag {aktiver_st} bereits vorhanden — übersprungen")
+        else:
+            print(f"[KI] ANTHROPIC_API_KEY nicht gesetzt — kein KI-Kommentar")
+
+    # 7. data.json schreiben
     output = {
         "meta": {
             "generiert_am": datetime.now(BERLIN).strftime("%d.%m.%Y %H:%M Uhr (CEST)"),
             "aktiver_spieltag": aktiver_st,
             "quelle": KICKTIPP_GROUP,
         },
-        "spieltage":  spieltag_meta,
-        "ranglisten": {str(k): v for k,v in rangliste.items()},
-        "spiele":     {str(k): v for k,v in spiele_by_spieltag.items()},
+        "spieltage":     spieltag_meta,
+        "ranglisten":    {str(k): v for k,v in rangliste.items()},
+        "spiele":        {str(k): v for k,v in spiele_by_spieltag.items()},
+        "ki_kommentare": ki_kommentare,
     }
     with open(OUTPUT_FILE,"w",encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     n_spiele = sum(len(v) for v in spiele_by_spieltag.values())
-    print(f"✓ {OUTPUT_FILE} — {len(rangliste)} Spieltag-Ranglisten, {n_spiele} Spiele")
+    print(f"✓ {OUTPUT_FILE} — {len(rangliste)} Spieltag-Ranglisten, {n_spiele} Spiele, {len(ki_kommentare)} KI-Kommentare")
 
 if __name__ == "__main__":
     main()
