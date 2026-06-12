@@ -18,7 +18,7 @@ BERLIN              = zoneinfo.ZoneInfo("Europe/Berlin")
 # Wird als Starttabelle (0 Punkte) verwendet bis echte Punkte vorliegen.
 # Nach Turnierstart wird diese Liste durch den CSV-Export überschrieben.
 TEILNEHMER_FEST = [
-    "Anne", "Annik", "Captain", "Conny", "DennisCostaRica",
+    "Anne", "Annik", "Bastelwastel", "Captain", "Conny", "DennisCostaRica",
     "Hanne_Sobek", "Helmut", "JanG", "Ludger_H", "Michelle", "Olli_R",
     "Paule", "Pottkind", "thommes", "TurboTobiBVB", "UliPausS",
 ]
