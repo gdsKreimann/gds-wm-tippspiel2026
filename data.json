@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "12.06.2026 08:30 Uhr (CEST)",
+    "generiert_am": "12.06.2026 08:35 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1163,5 +1163,18 @@
       }
     ]
   },
-  "ki_kommentare": {}
+  "ki_kommentare": {
+    "1": {
+      "headline": "SENSATION! ALLE 17 TIPPER bei NULL - BASTELWASTEL SCHLUSSLICHT!",
+      "sub": "Was für ein Drama am ersten Spieltag! Während Mexico und Südkorea ihre Gegner bezwingen, liegt das gesamte gds-Tippfeld gleichauf bei null Punkten. Bastelwastel führt bereits jetzt die Tabelle an - allerdings von hinten, ein wahres Kunstwerk der Prognostik!",
+      "anekdote": "Mexiko's 2:0-Sieg erinnert an die WM 1970, als sie als Gastgeber sensationell ins Viertelfinale einzogen. Damals besiegten sie auch überraschend starke afrikanische Teams. Südkorea hingegen schreibt seit der Heim-WM 2002 immer wieder Märchen - ihr 2:1 gegen Tschechien zeigt: Die Asiaten sind nie zu unterschätzen, besonders bei Weltmeisterschaften!",
+      "ticker": [
+        "Mexico schockt Südafrika mit Doppelschlag!",
+        "Südkorea dreht Partie gegen Tschechien!",
+        "Alle 17 Tipper völlig daneben!",
+        "Bastelwastel bereits abgeschlagen letzter!",
+        "Dramatischer WM-Start für gds-Kollegen!"
+      ]
+    }
+  }
 }
