@@ -178,13 +178,13 @@ class KicktippScraper:
             if form:
                 if form.get("action"):
                     action = form["action"]
-                    # Korrekte URL: action ist relativ ohne führenden Slash möglich
                     if action.startswith("http"):
                         action_url = action
                     elif action.startswith("/"):
                         action_url = KICKTIPP_BASE + action
                     else:
-                        action_url = KICKTIPP_BASE + "/" + action
+                        # Relativ zur Spielleiter-Seite — Basis-URL ergänzen
+                        action_url = f"{KICKTIPP_BASE}/{KICKTIPP_GROUP}/spielleiter/{action}"
                 for inp in form.find_all("input"):
                     if inp.get("name"):
                         base_payload[inp["name"]] = inp.get("value", "")
