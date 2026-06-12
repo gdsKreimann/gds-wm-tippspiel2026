@@ -379,7 +379,10 @@ class KicktippScraper:
         if rl_rows:
             header = list(rl_rows[0].keys())
             print(f"[Parse] Rangliste-Spalten: {header}")
-            spieltag_cols = [k for k in header if "spieltag" in k.lower()]
+            spieltag_cols = [k for k in header
+                             if "spieltag" in k.lower()
+                             and "gesamt" not in k.lower()
+                             and "siege" not in k.lower()]
             name_col      = next((k for k in header if k.lower() in ("name","tipper","benutzername")), None)
             if not name_col:
                 name_col = next((k for k in header if "name" in k.lower()), None)
