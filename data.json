@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "12.06.2026 00:30 Uhr (CEST)",
+    "generiert_am": "12.06.2026 06:39 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -158,7 +158,7 @@
           "name": "South Africa",
           "flag": "🇿🇦"
         },
-        "score": "—",
+        "score": "2:0",
         "status": "finished",
         "zeit": "Abpfiff",
         "tipps": []
@@ -172,9 +172,9 @@
           "name": "Czechia",
           "flag": "🇨🇿"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "04:00",
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
