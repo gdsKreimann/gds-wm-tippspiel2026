@@ -249,13 +249,29 @@ let aktiverSpieltag = 1;
 // Generischen Fallback-Kommentar (wird durch KI ersetzt)
 function getFallbackK(id) {
   const r = RANGLISTEN[id] || [];
-  const fuehrender = r[0]?.name || '—';
-  const letzter    = r[r.length-1]?.name || '—';
+  const fuehrender     = r[0]?.n || r[0]?.name || '—';
+  const letzter        = r[r.length-1]?.n || r[r.length-1]?.name || '—';
+  const fuehrender_pts = r[0]?.pts || 0;
+  const spiele         = SPIELE[id] || [];
+  const ergebnisse     = spiele
+    .filter(s => s.status === 'finished')
+    .slice(0, 3)
+    .map(s => `${s.heim.name} ${s.score} ${s.gast.name}`);
+  const ticker_items = [
+    fuehrender !== '—' ? `${fuehrender} führt mit ${fuehrender_pts} Punkten` : 'WM 2026 läuft!',
+    ...ergebnisse,
+    letzter !== '—' && letzter !== fuehrender ? `${letzter} braucht noch Punkte` : 'Spiele laufen!',
+    'Nächste Spiele stehen an',
+  ].filter(Boolean).slice(0, 5);
   return {
-    headline: `SPIELTAG ${id} — die Tipps sind abgegeben!`,
-    sub: `${fuehrender} führt die Tabelle an. ${letzter} hat noch Luft nach oben. KI-Kommentar wird gleich geladen...`,
+    headline: fuehrender !== '—'
+      ? `SPIELTAG ${id} — ${fuehrender.toUpperCase()} FÜHRT MIT ${fuehrender_pts} PUNKTEN!`
+      : `SPIELTAG ${id} — die Tipps sind abgegeben!`,
+    sub: fuehrender !== '—'
+      ? `${fuehrender} führt die Tabelle an. ${letzter} hat noch Luft nach oben. KI-Kommentar wird gleich geladen...`
+      : 'KI-Kommentar wird geladen...',
     anekdote: 'Die WM 2026 ist das erste Turnier mit 48 Mannschaften — mehr Spiele, mehr Überraschungen, mehr Chancen für epische Tipp-Fails.',
-    ticker: [`${fuehrender} führt die Rangliste`, 'WM 2026 läuft!', 'Tipps abgegeben', 'Nächste Spiele stehen an'],
+    ticker: ticker_items,
   };
 }
 
@@ -287,10 +303,17 @@ async function initApp() {
       }));
     });
 
-    // Spiele: direkt übernehmen, tipps[] bleibt leer (Kicktipp liefert keine Einzel-Tipps im CSV)
+    // Spiele: direkt übernehmen
     Object.entries(json.spiele || {}).forEach(([stId, spiele]) => {
       SPIELE[parseInt(stId)] = spiele;
     });
+
+    // KI-Kommentare aus data.json laden (generiert von n8n, kein API-Key im Browser nötig)
+    if (json.ki_kommentare) {
+      Object.entries(json.ki_kommentare).forEach(([stId, k]) => {
+        cacheSet(parseInt(stId), k);
+      });
+    }
 
     document.getElementById('footerUpdate').textContent =
       'Zuletzt aktualisiert: ' + (json.meta?.generiert_am || new Date().toLocaleString('de-DE'));
@@ -445,65 +468,21 @@ function resetBanner() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// KI-KOMMENTAR LADEN — mit Cache-Logik
+// KI-KOMMENTAR — aus data.json (generiert von n8n) oder Fallback
+// Kein direkter API-Call im Browser — kein Key nötig
 // ═══════════════════════════════════════════════════════════════
 async function ladeKI(id) {
-  const rangliste = RANGLISTEN[id];
-  if (!rangliste) return;
+  if (!RANGLISTEN[id]) return;
 
-  // 1. Cache prüfen
+  // Cache prüfen (wurde beim Laden aus data.json befüllt)
   const cached = cacheGet(id);
   if (cached) {
-    zeigeKommentar(cached, id, true);
+    zeigeKommentar(cached, id, false);
     return;
   }
 
-  // 2. Kein Cache → Claude API aufrufen
-  const r = RANGLISTEN[id] || [];
-  const spiele = (SPIELE[id] || []).map(s => `${s.heim.name} ${s.score} ${s.gast.name}`).join(', ');
-  const fb = getFallbackK(id);
-
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        messages: [{
-          role: "user",
-          content: `Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
-Analysiere Spieltag ${id} und erstelle einen tagesfrischen Kommentar.
-
-Aktueller Stand:
-- Führender: ${r[0].n} mit ${r[0].pts} Punkten
-- Letzter: ${r[r.length-1].n} mit ${r[r.length-1].pts} Punkten
-- Spiele: ${spiele || 'Daten werden geladen'}
-- Alle Tipper: ${r.map(x => x.n + ' (' + x.pts + ')').join(', ')}
-
-Erstelle:
-1. "headline": Dramatische Schlagzeile max. 12 Wörter, CAPS für Highlights, auf Deutsch
-2. "sub": Witziger Kommentar 2-3 Sätze über Tabellensituation, gerne auf Kosten des Letzten
-3. "anekdote": Echte, interessante Fußball-Anekdote passend zu den heutigen Spielen
-4. "ticker": Array mit 5 kurzen Ticker-Meldungen (je max. 8 Wörter)
-
-Nur JSON antworten, kein Markdown: {"headline":"...","sub":"...","anekdote":"...","ticker":["...","...","...","...","..."]}`
-        }]
-      })
-    });
-
-    const data = await res.json();
-    const txt  = data.content?.find(c => c.type === 'text')?.text || '';
-    const parsed = JSON.parse(txt.replace(/```json|```/g, '').trim());
-
-    // Cache speichern
-    cacheSet(id, parsed);
-    zeigeKommentar(parsed, id, false);
-
-  } catch(e) {
-    // Fallback ohne Cache-Speicherung (nicht cachen wenn API-Fehler)
-    zeigeKommentar(fb, id, false);
-  }
+  // Kein KI-Kommentar in data.json → Fallback mit echten Daten
+  zeigeKommentar(getFallbackK(id), id, false);
 }
 
 function zeigeKommentar(k, id, fromCache) {
@@ -532,10 +511,7 @@ function zeigeKommentar(k, id, fromCache) {
 // ═══════════════════════════════════════════════════════════════
 // ADMIN-BEREICH — Manueller CSV-Upload als Fallback
 // Aktivierung: URL + #admin oder Konami-Code ↑↑↓↓←→←→BA
-// Passwort: konfigurier unten als ADMIN_PW
 // ═══════════════════════════════════════════════════════════════
-const ADMIN_PW = 'gds2026';  // ← hier ändern wenn gewünscht
-
 // Konami-Code Listener
 const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
 let konamiIdx = 0;
@@ -578,23 +554,8 @@ function buildAdminPanel() {
                  border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">✕</button>
       </div>
 
-      <!-- Passwort -->
-      <div id="adminAuth">
-        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px">Passwort eingeben:</div>
-        <div style="display:flex;gap:8px">
-          <input type="password" id="adminPwInput" placeholder="Passwort…"
-            style="flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
-                   border-radius:4px;padding:10px 14px;color:#fff;font-size:14px;outline:none"
-            onkeydown="if(event.key==='Enter')checkAdminPw()">
-          <button onclick="checkAdminPw()"
-            style="background:#e8821e;border:none;color:#fff;padding:10px 20px;border-radius:4px;
-                   cursor:pointer;font-weight:700;font-size:14px">OK</button>
-        </div>
-        <div id="adminPwErr" style="color:#f87171;font-size:12px;margin-top:6px;display:none">Falsches Passwort.</div>
-      </div>
-
-      <!-- Upload-Bereich (nach Auth) -->
-      <div id="adminUpload" style="display:none">
+      <!-- Upload-Bereich -->
+      <div id="adminUpload">
 
         <div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:16px">
           Lade den Kicktipp <strong style="color:#e8821e">Gesamtübersicht-Einzelwertung</strong> CSV-Export hoch.<br>
@@ -641,17 +602,6 @@ function buildAdminPanel() {
   document.body.appendChild(overlay);
   document.getElementById('adminDropZone').onclick = () =>
     document.getElementById('adminFileInput').click();
-}
-
-function checkAdminPw() {
-  const val = document.getElementById('adminPwInput').value;
-  if (val === ADMIN_PW) {
-    document.getElementById('adminAuth').style.display   = 'none';
-    document.getElementById('adminUpload').style.display = 'block';
-  } else {
-    document.getElementById('adminPwErr').style.display = 'block';
-    document.getElementById('adminPwInput').value = '';
-  }
 }
 
 function handleAdminDrop(e) {
