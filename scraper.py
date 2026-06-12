@@ -667,10 +667,14 @@ def main():
             print(f"[Info] Spieltag {st_id}: noch keine Spiele gestartet")
 
     # 5. Aktiven Spieltag bestimmen
-    aktiver_st = max(rangliste.keys()) if rangliste else 1
-    for st_id, spiele in spiele_by_spieltag.items():
-        if any(s["status"] in ("finished","live") for s in spiele):
-            aktiver_st = max(aktiver_st, st_id)
+    # Basis: erster Spieltag mit gestarteten Spielen laut football-data.org
+    # NICHT aus rangliste.keys() — die hat alle CSV-Spalten als "Spieltage"
+    aktiver_st = 1
+    for st_id in sorted(spiele_by_spieltag.keys()):
+        spiele = spiele_by_spieltag[st_id]
+        if any(s["status"] in ("finished", "live") for s in spiele):
+            aktiver_st = st_id
+    print(f"[Info] Aktiver Spieltag: {aktiver_st}")
 
     alle_st = sorted(set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())))
     spieltag_meta = [{"id":i,"label":f"Spieltag {i}",
