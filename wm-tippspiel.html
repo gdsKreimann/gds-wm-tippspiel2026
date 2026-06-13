@@ -338,14 +338,13 @@ async function initApp() {
     const t = document.createElement('div');
     t.className = 'spieltag-tab' + (st.id === aktiverSpieltag ? ' active' : '');
     t.textContent = st.label;
-    const hatDaten = !!(RANGLISTEN[st.id] || SPIELE[st.id]);
-    if (!hatDaten) {
+    // zukuenftig=true → gesperrt (Scraper setzt das nur wenn kein finished/live Spiel)
+    if (st.zukuenftig) {
       t.style.opacity = '.3';
       t.style.cursor = 'not-allowed';
-      t.title = 'Noch keine Daten verfügbar';
+      t.title = 'Noch keine Ergebnisse';
     } else {
       t.onclick = () => wechsel(st.id);
-      if (st.zukuenftig) t.style.opacity = '.65'; // Zukunfts-ST mit Daten: leicht gedimmt aber klickbar
     }
     nav.appendChild(t);
   });
