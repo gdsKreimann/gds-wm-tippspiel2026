@@ -1,67 +1,115 @@
 {
   "meta": {
-    "generiert_am": "13.06.2026 06:41 Uhr (CEST)",
-    "aktiver_spieltag": 1,
+    "generiert_am": "13.06.2026 06:57 Uhr (CEST)",
+    "aktiver_spieltag": 3,
     "quelle": "gds-wm-tippspiel2026"
   },
   "spieltage": [
     {
       "id": 1,
-      "label": "Spieltag 1",
-      "aktiv": true,
+      "label": "11. Jun",
+      "aktiv": false,
       "zukuenftig": false
     },
     {
       "id": 2,
-      "label": "Spieltag 2",
+      "label": "12. Jun",
       "aktiv": false,
       "zukuenftig": false
     },
     {
       "id": 3,
-      "label": "Spieltag 3",
-      "aktiv": false,
+      "label": "13. Jun",
+      "aktiv": true,
       "zukuenftig": false
     },
     {
       "id": 4,
-      "label": "Spieltag 4",
+      "label": "14. Jun",
       "aktiv": false,
       "zukuenftig": true
     },
     {
       "id": 5,
-      "label": "Spieltag 5",
+      "label": "15. Jun",
       "aktiv": false,
       "zukuenftig": true
     },
     {
       "id": 6,
-      "label": "Spieltag 6",
+      "label": "16. Jun",
       "aktiv": false,
       "zukuenftig": true
     },
     {
       "id": 7,
-      "label": "Spieltag 7",
+      "label": "17. Jun",
       "aktiv": false,
       "zukuenftig": true
     },
     {
       "id": 8,
-      "label": "Spieltag 8",
+      "label": "18. Jun",
       "aktiv": false,
       "zukuenftig": true
     },
     {
       "id": 9,
-      "label": "Spieltag 9",
+      "label": "19. Jun",
       "aktiv": false,
       "zukuenftig": true
     },
     {
       "id": 10,
-      "label": "Spieltag 10",
+      "label": "20. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 11,
+      "label": "21. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 12,
+      "label": "22. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 13,
+      "label": "23. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 14,
+      "label": "24. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 15,
+      "label": "25. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 16,
+      "label": "26. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 17,
+      "label": "27. Jun",
+      "aktiv": false,
+      "zukuenftig": true
+    },
+    {
+      "id": 18,
+      "label": "28. Jun",
       "aktiv": false,
       "zukuenftig": true
     }
@@ -1292,8 +1340,11 @@
         "score": "2:0",
         "status": "finished",
         "zeit": "Abpfiff",
+        "datum": "2026-06-11",
         "tipps": []
-      },
+      }
+    ],
+    "2": [
       {
         "heim": {
           "name": "South Korea",
@@ -1306,6 +1357,7 @@
         "score": "2:1",
         "status": "finished",
         "zeit": "Abpfiff",
+        "datum": "2026-06-12",
         "tipps": []
       },
       {
@@ -1320,6 +1372,24 @@
         "score": "1:1",
         "status": "finished",
         "zeit": "Abpfiff",
+        "datum": "2026-06-12",
+        "tipps": []
+      }
+    ],
+    "3": [
+      {
+        "heim": {
+          "name": "Qatar",
+          "flag": "🇶🇦"
+        },
+        "gast": {
+          "name": "Switzerland",
+          "flag": "🇨🇭"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
+        "datum": "2026-06-13",
         "tipps": []
       },
       {
@@ -1334,22 +1404,11 @@
         "score": "4:1",
         "status": "finished",
         "zeit": "Abpfiff",
+        "datum": "2026-06-13",
         "tipps": []
-      },
-      {
-        "heim": {
-          "name": "Qatar",
-          "flag": "🇶🇦"
-        },
-        "gast": {
-          "name": "Switzerland",
-          "flag": "🇨🇭"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "13.06. 21:00",
-        "tipps": []
-      },
+      }
+    ],
+    "4": [
       {
         "heim": {
           "name": "Brazil",
@@ -1361,7 +1420,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "14.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-14",
         "tipps": []
       },
       {
@@ -1375,7 +1435,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "14.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-14",
         "tipps": []
       },
       {
@@ -1389,7 +1450,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "14.06. 06:00",
+        "zeit": "06:00",
+        "datum": "2026-06-14",
         "tipps": []
       },
       {
@@ -1403,7 +1465,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "14.06. 19:00",
+        "zeit": "19:00",
+        "datum": "2026-06-14",
         "tipps": []
       },
       {
@@ -1417,9 +1480,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "14.06. 22:00",
+        "zeit": "22:00",
+        "datum": "2026-06-14",
         "tipps": []
-      },
+      }
+    ],
+    "5": [
       {
         "heim": {
           "name": "Ivory Coast",
@@ -1431,7 +1497,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "15.06. 01:00",
+        "zeit": "01:00",
+        "datum": "2026-06-15",
         "tipps": []
       },
       {
@@ -1445,7 +1512,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "15.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-15",
         "tipps": []
       },
       {
@@ -1459,7 +1527,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "15.06. 18:00",
+        "zeit": "18:00",
+        "datum": "2026-06-15",
         "tipps": []
       },
       {
@@ -1473,9 +1542,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "15.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-15",
         "tipps": []
-      },
+      }
+    ],
+    "6": [
       {
         "heim": {
           "name": "Saudi Arabia",
@@ -1487,7 +1559,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "16.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-16",
         "tipps": []
       },
       {
@@ -1501,7 +1574,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "16.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-16",
         "tipps": []
       },
       {
@@ -1515,9 +1589,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "16.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-16",
         "tipps": []
-      },
+      }
+    ],
+    "7": [
       {
         "heim": {
           "name": "Iraq",
@@ -1529,7 +1606,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "17.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-17",
         "tipps": []
       },
       {
@@ -1543,7 +1621,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "17.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-17",
         "tipps": []
       },
       {
@@ -1557,7 +1636,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "17.06. 06:00",
+        "zeit": "06:00",
+        "datum": "2026-06-17",
         "tipps": []
       },
       {
@@ -1571,7 +1651,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "17.06. 19:00",
+        "zeit": "19:00",
+        "datum": "2026-06-17",
         "tipps": []
       },
       {
@@ -1585,11 +1666,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "17.06. 22:00",
+        "zeit": "22:00",
+        "datum": "2026-06-17",
         "tipps": []
       }
     ],
-    "2": [
+    "8": [
       {
         "heim": {
           "name": "Ghana",
@@ -1601,7 +1683,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18.06. 01:00",
+        "zeit": "01:00",
+        "datum": "2026-06-18",
         "tipps": []
       },
       {
@@ -1615,7 +1698,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-18",
         "tipps": []
       },
       {
@@ -1629,7 +1713,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18.06. 18:00",
+        "zeit": "18:00",
+        "datum": "2026-06-18",
         "tipps": []
       },
       {
@@ -1643,9 +1728,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-18",
         "tipps": []
-      },
+      }
+    ],
+    "9": [
       {
         "heim": {
           "name": "Canada",
@@ -1657,7 +1745,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-19",
         "tipps": []
       },
       {
@@ -1671,7 +1760,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-19",
         "tipps": []
       },
       {
@@ -1685,9 +1775,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-19",
         "tipps": []
-      },
+      }
+    ],
+    "10": [
       {
         "heim": {
           "name": "Scotland",
@@ -1699,7 +1792,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "20.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-20",
         "tipps": []
       },
       {
@@ -1713,7 +1807,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "20.06. 02:30",
+        "zeit": "02:30",
+        "datum": "2026-06-20",
         "tipps": []
       },
       {
@@ -1727,7 +1822,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "20.06. 05:00",
+        "zeit": "05:00",
+        "datum": "2026-06-20",
         "tipps": []
       },
       {
@@ -1741,7 +1837,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "20.06. 19:00",
+        "zeit": "19:00",
+        "datum": "2026-06-20",
         "tipps": []
       },
       {
@@ -1755,9 +1852,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "20.06. 22:00",
+        "zeit": "22:00",
+        "datum": "2026-06-20",
         "tipps": []
-      },
+      }
+    ],
+    "11": [
       {
         "heim": {
           "name": "Ecuador",
@@ -1769,7 +1869,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21.06. 02:00",
+        "zeit": "02:00",
+        "datum": "2026-06-21",
         "tipps": []
       },
       {
@@ -1783,7 +1884,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21.06. 06:00",
+        "zeit": "06:00",
+        "datum": "2026-06-21",
         "tipps": []
       },
       {
@@ -1797,7 +1899,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21.06. 18:00",
+        "zeit": "18:00",
+        "datum": "2026-06-21",
         "tipps": []
       },
       {
@@ -1811,9 +1914,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-21",
         "tipps": []
-      },
+      }
+    ],
+    "12": [
       {
         "heim": {
           "name": "Uruguay",
@@ -1825,7 +1931,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-22",
         "tipps": []
       },
       {
@@ -1839,7 +1946,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-22",
         "tipps": []
       },
       {
@@ -1853,7 +1961,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22.06. 19:00",
+        "zeit": "19:00",
+        "datum": "2026-06-22",
         "tipps": []
       },
       {
@@ -1867,9 +1976,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22.06. 23:00",
+        "zeit": "23:00",
+        "datum": "2026-06-22",
         "tipps": []
-      },
+      }
+    ],
+    "13": [
       {
         "heim": {
           "name": "Norway",
@@ -1881,7 +1993,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23.06. 02:00",
+        "zeit": "02:00",
+        "datum": "2026-06-23",
         "tipps": []
       },
       {
@@ -1895,7 +2008,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23.06. 05:00",
+        "zeit": "05:00",
+        "datum": "2026-06-23",
         "tipps": []
       },
       {
@@ -1909,7 +2023,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23.06. 19:00",
+        "zeit": "19:00",
+        "datum": "2026-06-23",
         "tipps": []
       },
       {
@@ -1923,9 +2038,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23.06. 22:00",
+        "zeit": "22:00",
+        "datum": "2026-06-23",
         "tipps": []
-      },
+      }
+    ],
+    "14": [
       {
         "heim": {
           "name": "Panama",
@@ -1937,7 +2055,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "24.06. 01:00",
+        "zeit": "01:00",
+        "datum": "2026-06-24",
         "tipps": []
       },
       {
@@ -1951,7 +2070,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "24.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-24",
         "tipps": []
       },
       {
@@ -1965,7 +2085,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "24.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-24",
         "tipps": []
       },
       {
@@ -1979,11 +2100,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "24.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-24",
         "tipps": []
       }
     ],
-    "3": [
+    "15": [
       {
         "heim": {
           "name": "Morocco",
@@ -1995,7 +2117,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "25.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-25",
         "tipps": []
       },
       {
@@ -2009,7 +2132,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "25.06. 00:00",
+        "zeit": "00:00",
+        "datum": "2026-06-25",
         "tipps": []
       },
       {
@@ -2023,7 +2147,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "25.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-25",
         "tipps": []
       },
       {
@@ -2037,7 +2162,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "25.06. 03:00",
+        "zeit": "03:00",
+        "datum": "2026-06-25",
         "tipps": []
       },
       {
@@ -2051,7 +2177,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "25.06. 22:00",
+        "zeit": "22:00",
+        "datum": "2026-06-25",
         "tipps": []
       },
       {
@@ -2065,9 +2192,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "25.06. 22:00",
+        "zeit": "22:00",
+        "datum": "2026-06-25",
         "tipps": []
-      },
+      }
+    ],
+    "16": [
       {
         "heim": {
           "name": "Tunisia",
@@ -2079,7 +2209,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "26.06. 01:00",
+        "zeit": "01:00",
+        "datum": "2026-06-26",
         "tipps": []
       },
       {
@@ -2093,7 +2224,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "26.06. 01:00",
+        "zeit": "01:00",
+        "datum": "2026-06-26",
         "tipps": []
       },
       {
@@ -2107,7 +2239,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "26.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-26",
         "tipps": []
       },
       {
@@ -2121,7 +2254,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "26.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-26",
         "tipps": []
       },
       {
@@ -2135,7 +2269,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "26.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-26",
         "tipps": []
       },
       {
@@ -2149,9 +2284,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "26.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-26",
         "tipps": []
-      },
+      }
+    ],
+    "17": [
       {
         "heim": {
           "name": "Uruguay",
@@ -2163,7 +2301,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "27.06. 02:00",
+        "zeit": "02:00",
+        "datum": "2026-06-27",
         "tipps": []
       },
       {
@@ -2177,7 +2316,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "27.06. 02:00",
+        "zeit": "02:00",
+        "datum": "2026-06-27",
         "tipps": []
       },
       {
@@ -2191,7 +2331,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "27.06. 05:00",
+        "zeit": "05:00",
+        "datum": "2026-06-27",
         "tipps": []
       },
       {
@@ -2205,7 +2346,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "27.06. 05:00",
+        "zeit": "05:00",
+        "datum": "2026-06-27",
         "tipps": []
       },
       {
@@ -2219,7 +2361,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "27.06. 23:00",
+        "zeit": "23:00",
+        "datum": "2026-06-27",
         "tipps": []
       },
       {
@@ -2233,9 +2376,12 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "27.06. 23:00",
+        "zeit": "23:00",
+        "datum": "2026-06-27",
         "tipps": []
-      },
+      }
+    ],
+    "18": [
       {
         "heim": {
           "name": "Colombia",
@@ -2247,7 +2393,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "28.06. 01:30",
+        "zeit": "01:30",
+        "datum": "2026-06-28",
         "tipps": []
       },
       {
@@ -2261,7 +2408,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "28.06. 01:30",
+        "zeit": "01:30",
+        "datum": "2026-06-28",
         "tipps": []
       },
       {
@@ -2275,7 +2423,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "28.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-28",
         "tipps": []
       },
       {
@@ -2289,7 +2438,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "28.06. 04:00",
+        "zeit": "04:00",
+        "datum": "2026-06-28",
         "tipps": []
       },
       {
@@ -2303,7 +2453,8 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "28.06. 21:00",
+        "zeit": "21:00",
+        "datum": "2026-06-28",
         "tipps": []
       }
     ]
@@ -2331,18 +2482,6 @@
         "NULLNUMMERN-TRIO: JanG, Pottkind, Olli_R punktlos!",
         "Spieltag 2: Alle Tipps abgegeben!",
         "Wer wird heute der HELD?"
-      ]
-    },
-    "3": {
-      "headline": "CAPTAIN an der SPITZE - Spieltag 3 EXPLODIERT gleich!",
-      "sub": "Die Spannung ist zum ZERREISSEN! Captain thront mit 8 Punkten einsam an der Spitze, während JanG, Pottkind und Olli_R noch auf ihre ERSTEN Punkte warten. JanG, mein Freund - selbst ein blindes Huhn findet mal ein Korn, aber du suchst anscheinend noch den ganzen Hühnerstall!",
-      "anekdote": "Die WM 2026 wird die erste mit DREI Gastgebern: USA, Kanada und Mexiko teilen sich die Ausrichtung. Besonders pikant: Das Aztekenstadion in Mexiko-Stadt wird als erstes Stadion der Geschichte zum DRITTEN Mal WM-Spiele austragen (nach 1970 und 1986). Dort schoss Maradona einst sein legendäres 'Hand Gottes'-Tor - vielleicht brauchen unsere Tipper auch göttlichen Beistand!",
-      "ticker": [
-        "Captain will Führung ZEMENTIEREN - 8 Punkte!",
-        "Michelle lauert nur EINEN Punkt dahinter!",
-        "VIER Tipper noch bei NULL - Drama!",
-        "Spieltag 3 startet JETZT - Nervenflattern garantiert!",
-        "JanG hofft auf das WUNDER aller Wunder!"
       ]
     },
     "4": {
@@ -2427,6 +2566,18 @@
         "JanG wartet VERZWEIFELT auf ersten Punkt!",
         "Mittelfeld-Chaos: ZEHN Tipper zwischen 2-4 Punkten!",
         "Spieltag 10: JETZT wird abgerechnet!"
+      ]
+    },
+    "3": {
+      "headline": "USA ZERLEGT Paraguay! CAPTAIN rast davon - JanG im TIPPSPIEL-KOMA!",
+      "sub": "WAHNSINN! Die USA ballert sich mit 4:1 ins Achtelfinale und Captain ballert sich an die Tabellenspitze! Während JanG weiterhin bei NULL Punkten rumkrebst - da tippt wohl jemand mit verbundenen Augen und Boxhandschuhen!",
+      "anekdote": "Die WM 2026 wird die erste mit 48 Teams sein und findet in drei Ländern statt - USA, Kanada und Mexiko. Besonderheit: Erstmals spielen drei Gastgeber gleichzeitig! Die USA als Hauptausrichter stellt dabei 11 der 16 Austragungsorte. Das Eröffnungsspiel findet im Aztekenstadion in Mexiko-Stadt statt, dem legendären Stadion von Maradonas 'Hand Gottes' 1986.",
+      "ticker": [
+        "Captain mit 8 Punkten - UNEINHOLBAR oder was?!",
+        "USA knallt Paraguay weg - 4:1 Gala!",
+        "JanG, Pottkind, Olli_R: Die NULL-Punkte-Fraktion wächst!",
+        "Michelle lauert auf Platz 2 - nur einen Punkt zurück!",
+        "10 Tipper bei 4 Punkten - MEGA Mittelfeld-Gedränge!"
       ]
     }
   }
