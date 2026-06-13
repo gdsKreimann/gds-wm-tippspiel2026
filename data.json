@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "13.06.2026 06:26 Uhr (CEST)",
+    "generiert_am": "13.06.2026 06:41 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -15,13 +15,13 @@
       "id": 2,
       "label": "Spieltag 2",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 3,
       "label": "Spieltag 3",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 4,
@@ -1347,7 +1347,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "13.06. 21:00",
         "tipps": []
       },
       {
@@ -1361,7 +1361,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "14.06. 00:00",
         "tipps": []
       },
       {
@@ -1375,7 +1375,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "14.06. 03:00",
         "tipps": []
       },
       {
@@ -1389,7 +1389,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "06:00",
+        "zeit": "14.06. 06:00",
         "tipps": []
       },
       {
@@ -1403,7 +1403,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19:00",
+        "zeit": "14.06. 19:00",
         "tipps": []
       },
       {
@@ -1417,7 +1417,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22:00",
+        "zeit": "14.06. 22:00",
         "tipps": []
       },
       {
@@ -1431,7 +1431,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "01:00",
+        "zeit": "15.06. 01:00",
         "tipps": []
       },
       {
@@ -1445,7 +1445,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "15.06. 04:00",
         "tipps": []
       },
       {
@@ -1459,7 +1459,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18:00",
+        "zeit": "15.06. 18:00",
         "tipps": []
       },
       {
@@ -1473,7 +1473,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "15.06. 21:00",
         "tipps": []
       },
       {
@@ -1487,7 +1487,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "16.06. 00:00",
         "tipps": []
       },
       {
@@ -1501,7 +1501,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "16.06. 03:00",
         "tipps": []
       },
       {
@@ -1515,7 +1515,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "16.06. 21:00",
         "tipps": []
       },
       {
@@ -1529,7 +1529,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "17.06. 00:00",
         "tipps": []
       },
       {
@@ -1543,7 +1543,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "17.06. 03:00",
         "tipps": []
       },
       {
@@ -1557,7 +1557,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "06:00",
+        "zeit": "17.06. 06:00",
         "tipps": []
       },
       {
@@ -1571,7 +1571,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19:00",
+        "zeit": "17.06. 19:00",
         "tipps": []
       },
       {
@@ -1585,41 +1585,41 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22:00",
-        "tipps": []
-      },
-      {
-        "heim": {
-          "name": "Ghana",
-          "flag": "🇬🇭"
-        },
-        "gast": {
-          "name": "Panama",
-          "flag": "🇵🇦"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "01:00",
-        "tipps": []
-      },
-      {
-        "heim": {
-          "name": "Uzbekistan",
-          "flag": "🇺🇿"
-        },
-        "gast": {
-          "name": "Colombia",
-          "flag": "🇨🇴"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "17.06. 22:00",
         "tipps": []
       }
     ],
     "2": [
       {
         "heim": {
+          "name": "Ghana",
+          "flag": "🇬🇭"
+        },
+        "gast": {
+          "name": "Panama",
+          "flag": "🇵🇦"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "18.06. 01:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Uzbekistan",
+          "flag": "🇺🇿"
+        },
+        "gast": {
+          "name": "Colombia",
+          "flag": "🇨🇴"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "18.06. 04:00",
+        "tipps": []
+      },
+      {
+        "heim": {
           "name": "Czechia",
           "flag": "🇨🇿"
         },
@@ -1629,7 +1629,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18:00",
+        "zeit": "18.06. 18:00",
         "tipps": []
       },
       {
@@ -1643,7 +1643,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "18.06. 21:00",
         "tipps": []
       },
       {
@@ -1657,7 +1657,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "19.06. 00:00",
         "tipps": []
       },
       {
@@ -1671,7 +1671,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "19.06. 03:00",
         "tipps": []
       },
       {
@@ -1685,7 +1685,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "19.06. 21:00",
         "tipps": []
       },
       {
@@ -1699,7 +1699,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "20.06. 00:00",
         "tipps": []
       },
       {
@@ -1713,7 +1713,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "02:30",
+        "zeit": "20.06. 02:30",
         "tipps": []
       },
       {
@@ -1727,7 +1727,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "05:00",
+        "zeit": "20.06. 05:00",
         "tipps": []
       },
       {
@@ -1741,7 +1741,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19:00",
+        "zeit": "20.06. 19:00",
         "tipps": []
       },
       {
@@ -1755,7 +1755,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22:00",
+        "zeit": "20.06. 22:00",
         "tipps": []
       },
       {
@@ -1769,7 +1769,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "02:00",
+        "zeit": "21.06. 02:00",
         "tipps": []
       },
       {
@@ -1783,7 +1783,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "06:00",
+        "zeit": "21.06. 06:00",
         "tipps": []
       },
       {
@@ -1797,7 +1797,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "18:00",
+        "zeit": "21.06. 18:00",
         "tipps": []
       },
       {
@@ -1811,7 +1811,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "21.06. 21:00",
         "tipps": []
       },
       {
@@ -1825,7 +1825,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "22.06. 00:00",
         "tipps": []
       },
       {
@@ -1839,7 +1839,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "22.06. 03:00",
         "tipps": []
       },
       {
@@ -1853,7 +1853,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19:00",
+        "zeit": "22.06. 19:00",
         "tipps": []
       },
       {
@@ -1867,7 +1867,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23:00",
+        "zeit": "22.06. 23:00",
         "tipps": []
       },
       {
@@ -1881,7 +1881,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "02:00",
+        "zeit": "23.06. 02:00",
         "tipps": []
       },
       {
@@ -1895,7 +1895,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "05:00",
+        "zeit": "23.06. 05:00",
         "tipps": []
       },
       {
@@ -1909,7 +1909,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "19:00",
+        "zeit": "23.06. 19:00",
         "tipps": []
       },
       {
@@ -1923,7 +1923,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22:00",
+        "zeit": "23.06. 22:00",
         "tipps": []
       },
       {
@@ -1937,7 +1937,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "01:00",
+        "zeit": "24.06. 01:00",
         "tipps": []
       },
       {
@@ -1951,41 +1951,41 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "24.06. 04:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Switzerland",
+          "flag": "🇨🇭"
+        },
+        "gast": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "24.06. 21:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Bosnia-Herzegovina",
+          "flag": "🇧🇦"
+        },
+        "gast": {
+          "name": "Qatar",
+          "flag": "🇶🇦"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "24.06. 21:00",
         "tipps": []
       }
     ],
     "3": [
       {
         "heim": {
-          "name": "Switzerland",
-          "flag": "🇨🇭"
-        },
-        "gast": {
-          "name": "Canada",
-          "flag": "🇨🇦"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
-        "tipps": []
-      },
-      {
-        "heim": {
-          "name": "Bosnia-Herzegovina",
-          "flag": "🇧🇦"
-        },
-        "gast": {
-          "name": "Qatar",
-          "flag": "🇶🇦"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
-        "tipps": []
-      },
-      {
-        "heim": {
           "name": "Morocco",
           "flag": "🇲🇦"
         },
@@ -1995,7 +1995,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "25.06. 00:00",
         "tipps": []
       },
       {
@@ -2009,7 +2009,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "00:00",
+        "zeit": "25.06. 00:00",
         "tipps": []
       },
       {
@@ -2023,7 +2023,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "25.06. 03:00",
         "tipps": []
       },
       {
@@ -2037,7 +2037,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "03:00",
+        "zeit": "25.06. 03:00",
         "tipps": []
       },
       {
@@ -2051,7 +2051,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22:00",
+        "zeit": "25.06. 22:00",
         "tipps": []
       },
       {
@@ -2065,7 +2065,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "22:00",
+        "zeit": "25.06. 22:00",
         "tipps": []
       },
       {
@@ -2079,7 +2079,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "01:00",
+        "zeit": "26.06. 01:00",
         "tipps": []
       },
       {
@@ -2093,7 +2093,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "01:00",
+        "zeit": "26.06. 01:00",
         "tipps": []
       },
       {
@@ -2107,7 +2107,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "26.06. 04:00",
         "tipps": []
       },
       {
@@ -2121,7 +2121,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "26.06. 04:00",
         "tipps": []
       },
       {
@@ -2135,7 +2135,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "26.06. 21:00",
         "tipps": []
       },
       {
@@ -2149,7 +2149,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "21:00",
+        "zeit": "26.06. 21:00",
         "tipps": []
       },
       {
@@ -2163,7 +2163,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "02:00",
+        "zeit": "27.06. 02:00",
         "tipps": []
       },
       {
@@ -2177,7 +2177,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "02:00",
+        "zeit": "27.06. 02:00",
         "tipps": []
       },
       {
@@ -2191,7 +2191,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "05:00",
+        "zeit": "27.06. 05:00",
         "tipps": []
       },
       {
@@ -2205,7 +2205,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "05:00",
+        "zeit": "27.06. 05:00",
         "tipps": []
       },
       {
@@ -2219,7 +2219,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23:00",
+        "zeit": "27.06. 23:00",
         "tipps": []
       },
       {
@@ -2233,7 +2233,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "23:00",
+        "zeit": "27.06. 23:00",
         "tipps": []
       },
       {
@@ -2247,7 +2247,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "01:30",
+        "zeit": "28.06. 01:30",
         "tipps": []
       },
       {
@@ -2261,7 +2261,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "01:30",
+        "zeit": "28.06. 01:30",
         "tipps": []
       },
       {
@@ -2275,7 +2275,7 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "28.06. 04:00",
         "tipps": []
       },
       {
@@ -2289,7 +2289,21 @@
         },
         "score": "—",
         "status": "upcoming",
-        "zeit": "04:00",
+        "zeit": "28.06. 04:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "28.06. 21:00",
         "tipps": []
       }
     ]
