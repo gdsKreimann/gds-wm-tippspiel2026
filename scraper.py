@@ -691,44 +691,60 @@ def main():
         except:
             pass
 
-    if api_key:  # Anthropic Key wird als FOOTBALL_API_KEY nicht genutzt — eigener Key
-        anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
-        if anthropic_key and str(aktiver_st) not in ki_kommentare:
-            print(f"[KI] Generiere Kommentar für Spieltag {aktiver_st}...")
-            try:
-                rl = rangliste.get(aktiver_st, [])
-                fuehrender = rl[0]["name"] if rl else "—"
-                fuehrender_pts = rl[0]["pts_gesamt"] if rl else 0
-                letzter = rl[-1]["name"] if rl else "—"
-                spiele_txt = ", ".join(
-                    f"{s['heim']['name']} {s['score']} {s['gast']['name']}"
-                    for s in spiele_by_spieltag.get(aktiver_st, [])
-                    if s["status"] == "finished"
-                )
-                alle_tipper = ", ".join(
-                    f"{p['name']} ({p['pts_gesamt']} Pkt)"
-                    for p in rl
-                )
-                prompt = f"""Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
-Analysiere Spieltag {aktiver_st} und erstelle einen tagesfrischen Kommentar.
+    anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not anthropic_key:
+        print(f"[KI] ANTHROPIC_API_KEY nicht gesetzt — kein KI-Kommentar")
 
-Aktueller Stand:
+    if anthropic_key:
+        import urllib.request
+
+        def generiere_ki_kommentar(st_id: int) -> bool:
+            """Generiert KI-Kommentar für einen Spieltag. Gibt True bei Erfolg zurück."""
+            rl = rangliste.get(st_id, rangliste.get(str(st_id), []))
+            spiele_st = spiele_by_spieltag.get(st_id, [])
+
+            fuehrender = rl[0]["name"] if rl else "—"
+            fuehrender_pts = rl[0]["pts_gesamt"] if rl else 0
+            letzter = rl[-1]["name"] if rl else "—"
+            spiele_txt = ", ".join(
+                f"{s['heim']['name']} {s['score']} {s['gast']['name']}"
+                for s in spiele_st
+                if s["status"] == "finished"
+            )
+            alle_tipper = ", ".join(
+                f"{p['name']} ({p['pts_gesamt']} Pkt)"
+                for p in rl
+            )
+            # Bestimme ob Spieltag bereits aktiv war oder noch in der Zukunft liegt
+            hat_ergebnisse = bool(spiele_txt)
+            context_hinweis = (
+                f"Spieltag {st_id} hat bereits abgeschlossene Spiele."
+                if hat_ergebnisse
+                else f"Spieltag {st_id} steht noch bevor — die Tipps sind abgegeben aber kein Spiel ist gestartet."
+            )
+
+            prompt = f"""Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
+Analysiere Spieltag {st_id} und erstelle einen tagesfrischen Kommentar.
+
+{context_hinweis}
+
+Aktueller Tabellenstand:
 - Führender: {fuehrender} mit {fuehrender_pts} Punkten
 - Letzter: {letzter}
-- Abgeschlossene Spiele: {spiele_txt or 'noch keine'}
-- Alle Tipper: {alle_tipper}
+- Abgeschlossene Spiele dieses Spieltags: {spiele_txt or 'noch keine'}
+- Alle Tipper mit Punkten: {alle_tipper}
 
 Erstelle:
 1. "headline": Dramatische Schlagzeile max. 12 Wörter, CAPS für Highlights
 2. "sub": Witziger Kommentar 2-3 Sätze, gerne auf Kosten des Letzten
-3. "anekdote": Echte interessante Fußball-Anekdote passend zu den Spielen
+3. "anekdote": Echte interessante Fußball-Anekdote passend zu den Spielen (oder WM 2026 allgemein wenn noch keine Spiele)
 4. "ticker": Array mit 5 kurzen Ticker-Meldungen (je max. 8 Wörter)
 
 Nur JSON, kein Markdown: {{"headline":"...","sub":"...","anekdote":"...","ticker":["...","...","...","...","..."]}}"""
 
-                import urllib.request
+            try:
                 req_data = json.dumps({
-                    "model": "claude-sonnet-4-20250514",
+                    "model": "claude-sonnet-4-5",
                     "max_tokens": 1000,
                     "messages": [{"role": "user", "content": prompt}]
                 }).encode("utf-8")
@@ -745,14 +761,35 @@ Nur JSON, kein Markdown: {{"headline":"...","sub":"...","anekdote":"...","ticker
                     result = json.loads(resp.read())
                 txt = result["content"][0]["text"]
                 parsed = json.loads(txt.replace("```json","").replace("```","").strip())
-                ki_kommentare[str(aktiver_st)] = parsed
-                print(f"[KI] ✓ Kommentar generiert: {parsed['headline'][:50]}...")
+                ki_kommentare[str(st_id)] = parsed
+                print(f"[KI] ✓ Spieltag {st_id}: {parsed['headline'][:60]}...")
+                return True
             except Exception as e:
-                print(f"[KI] Fehler: {e}")
-        elif str(aktiver_st) in ki_kommentare:
-            print(f"[KI] Kommentar für Spieltag {aktiver_st} bereits vorhanden — übersprungen")
-        else:
-            print(f"[KI] ANTHROPIC_API_KEY nicht gesetzt — kein KI-Kommentar")
+                print(f"[KI] Fehler Spieltag {st_id}: {e}")
+                return False
+
+        # Kommentare generieren für alle Spieltage die Daten haben aber noch keinen Kommentar
+        # Priorität: aktiver Spieltag zuerst, dann aufsteigend
+        spieltage_mit_daten = sorted(
+            set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())),
+            key=lambda x: (x != aktiver_st, x)  # aktiver_st zuerst
+        )
+        for st_id_raw in spieltage_mit_daten:
+            st_id = int(st_id_raw)
+            if str(st_id) in ki_kommentare:
+                print(f"[KI] Spieltag {st_id}: Kommentar bereits vorhanden — übersprungen")
+                continue
+            # Nur generieren wenn Spieltag Ranglisten- oder Spieldaten hat
+            hat_rangliste = bool(rangliste.get(st_id) or rangliste.get(str(st_id)))
+            hat_spiele = bool(spiele_by_spieltag.get(st_id))
+            if not hat_rangliste and not hat_spiele:
+                print(f"[KI] Spieltag {st_id}: keine Daten — übersprungen")
+                continue
+            print(f"[KI] Generiere Kommentar für Spieltag {st_id}...")
+            generiere_ki_kommentar(st_id)
+            # Kurze Pause zwischen API-Calls
+            if st_id != aktiver_st:
+                time.sleep(2)
 
     # 7. data.json schreiben
     output = {
