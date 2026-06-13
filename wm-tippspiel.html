@@ -248,29 +248,31 @@ let aktiverSpieltag = 1;
 
 // Generischen Fallback-Kommentar (wird durch KI ersetzt)
 function getFallbackK(id) {
-  const r = RANGLISTEN[id] || [];
-  const fuehrender     = r[0]?.n || r[0]?.name || '—';
-  const letzter        = r[r.length-1]?.n || r[r.length-1]?.name || '—';
-  const fuehrender_pts = r[0]?.pts || 0;
-  const spiele         = SPIELE[id] || [];
-  const ergebnisse     = spiele
-    .filter(s => s.status === 'finished')
-    .slice(0, 3)
-    .map(s => `${s.heim.name} ${s.score} ${s.gast.name}`);
+  const r            = RANGLISTEN[id] || [];
+  const fuehrender   = r[0]?.n || r[0]?.name || '—';
+  const letzter      = r[r.length-1]?.n || r[r.length-1]?.name || '—';
+  const fuehrPts     = r[0]?.pts || 0;
+  const spiele       = SPIELE[id] || [];
+  const ergebnisse   = spiele.filter(s => s.status === 'finished').slice(0, 3)
+                        .map(s => `${s.heim.name} ${s.score} ${s.gast.name}`);
+  const naechste     = spiele.filter(s => s.status === 'upcoming').slice(0, 2)
+                        .map(s => `${s.heim.name} vs ${s.gast.name}`);
   const ticker_items = [
-    fuehrender !== '—' ? `${fuehrender} führt mit ${fuehrender_pts} Punkten` : 'WM 2026 läuft!',
+    fuehrender !== '—' ? `${fuehrender} führt mit ${fuehrPts} Punkten` : `Spieltag ${id} läuft!`,
     ...ergebnisse,
-    letzter !== '—' && letzter !== fuehrender ? `${letzter} braucht noch Punkte` : 'Spiele laufen!',
-    'Nächste Spiele stehen an',
+    ...naechste.map(s => `Nächstes Spiel: ${s}`),
+    letzter !== '—' && letzter !== fuehrender ? `${letzter} braucht noch Punkte` : 'WM 2026!',
   ].filter(Boolean).slice(0, 5);
   return {
-    headline: fuehrender !== '—'
-      ? `SPIELTAG ${id} — ${fuehrender.toUpperCase()} FÜHRT MIT ${fuehrender_pts} PUNKTEN!`
-      : `SPIELTAG ${id} — die Tipps sind abgegeben!`,
+    headline: ergebnisse.length > 0 && fuehrender !== '—'
+      ? `SPIELTAG ${id} — ${fuehrender.toUpperCase()} FÜHRT MIT ${fuehrPts} PUNKTEN!`
+      : fuehrender !== '—'
+        ? `SPIELTAG ${id} — SPANNUNG PUR! ${fuehrender.toUpperCase()} VORNE!`
+        : `SPIELTAG ${id} — DIE SPIELE STEHEN BEVOR!`,
     sub: fuehrender !== '—'
-      ? `${fuehrender} führt die Tabelle an. ${letzter} hat noch Luft nach oben. KI-Kommentar wird gleich geladen...`
-      : 'KI-Kommentar wird geladen...',
-    anekdote: 'Die WM 2026 ist das erste Turnier mit 48 Mannschaften — mehr Spiele, mehr Überraschungen, mehr Chancen für epische Tipp-Fails.',
+      ? `${fuehrender} führt aktuell die Tabelle an.${letzter !== fuehrender ? ' ' + letzter + ' hat noch Luft nach oben.' : ''} KI-Kommentar folgt beim nächsten Daten-Update.`
+      : `Die Spiele stehen bevor — KI-Kommentar folgt nach dem nächsten Daten-Update.`,
+    anekdote: 'Die WM 2026 ist das erste Turnier mit 48 Mannschaften — mehr Spiele, mehr Überraschungen, mehr Chancen für epische Tipp-Fails!',
     ticker: ticker_items,
   };
 }
@@ -328,14 +330,23 @@ async function initApp() {
   }
 
   // Tabs bauen
+  // Ein Tab ist nur gesperrt wenn WEDER Rangliste NOCH Spieldaten vorhanden sind.
+  // zukuenftig=true bedeutet nur "noch nicht aktiv gewesen" — bei vorhandenen Daten trotzdem klickbar.
   const nav = document.getElementById('spieltagNav');
   nav.innerHTML = '';
   SPIELTAGE.forEach(st => {
     const t = document.createElement('div');
     t.className = 'spieltag-tab' + (st.id === aktiverSpieltag ? ' active' : '');
     t.textContent = st.label;
-    if (st.zukuenftig) { t.style.opacity = '.3'; t.style.cursor = 'not-allowed'; }
-    else t.onclick = () => wechsel(st.id);
+    const hatDaten = !!(RANGLISTEN[st.id] || SPIELE[st.id]);
+    if (!hatDaten) {
+      t.style.opacity = '.3';
+      t.style.cursor = 'not-allowed';
+      t.title = 'Noch keine Daten verfügbar';
+    } else {
+      t.onclick = () => wechsel(st.id);
+      if (st.zukuenftig) t.style.opacity = '.65'; // Zukunfts-ST mit Daten: leicht gedimmt aber klickbar
+    }
     nav.appendChild(t);
   });
   updateTabCacheBadges();
@@ -472,7 +483,13 @@ function resetBanner() {
 // Kein direkter API-Call im Browser — kein Key nötig
 // ═══════════════════════════════════════════════════════════════
 async function ladeKI(id) {
-  if (!RANGLISTEN[id]) return;
+  // Abbrechen wenn weder Rangliste noch Spiele vorhanden
+  if (!RANGLISTEN[id] && !SPIELE[id]) {
+    document.getElementById('rtlHeadline').textContent = 'Noch keine Daten für diesen Spieltag.';
+    document.getElementById('rtlSubtext').textContent  = '';
+    document.getElementById('rtlAnekdote').style.display = 'none';
+    return;
+  }
 
   // Cache prüfen (wurde beim Laden aus data.json befüllt)
   const cached = cacheGet(id);
