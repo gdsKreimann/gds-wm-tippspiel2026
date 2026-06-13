@@ -553,37 +553,90 @@ class FootballAPI:
 
     @staticmethod
     def parse_matches(matches):
+        """
+        Ordnet WM-Spiele den Kicktipp-Spieltagen zu.
+        Kicktipp-Spieltage = Spielwochen der Gruppenphase:
+          Spieltag 1: 11.06 – 17.06
+          Spieltag 2: 18.06 – 24.06
+          Spieltag 3: 25.06 – 28.06
+        football-data.org matchday-Nummern passen NICHT zur Kicktipp-Struktur
+        → wir mappen nach UTC-Datum auf die Spielwoche.
+        """
+        # Spielwoche-Grenzen (UTC-Datum, inklusive)
+        SPIELWOCHEN = [
+            (1, "2026-06-11", "2026-06-17"),
+            (2, "2026-06-18", "2026-06-24"),
+            (3, "2026-06-25", "2026-06-28"),
+        ]
+
+        def get_spieltag(utc_date_str: str) -> int | None:
+            """Gibt Spieltag 1/2/3 zurück oder None für K.o.-Runde."""
+            if not utc_date_str:
+                return None
+            try:
+                dt = datetime.fromisoformat(utc_date_str.replace("Z", "+00:00"))
+                # In Berliner Zeit umrechnen (MESZ) für Mitternacht-Spiele
+                dt_berlin = dt.astimezone(BERLIN)
+                datum = dt_berlin.date().isoformat()
+            except Exception:
+                return None
+            for st, von, bis in SPIELWOCHEN:
+                if von <= datum <= bis:
+                    return st
+            return None  # K.o.-Runde oder außerhalb
+
         by_st = {}
         for m in matches:
-            md = m.get("matchday")
-            if not md:
-                continue
-            status_raw = m.get("status","SCHEDULED")
-            if status_raw == "FINISHED":            status = "finished"
-            elif status_raw in ("IN_PLAY","PAUSED","HALF_TIME"): status = "live"
-            else:                                   status = "upcoming"
+            utc = m.get("utcDate", "")
+            st = get_spieltag(utc)
+            if not st:
+                continue  # K.o.-Spiel oder unbekanntes Datum → überspringen
 
-            ft = m.get("score",{}).get("fullTime",{})
+            status_raw = m.get("status", "SCHEDULED")
+            if status_raw == "FINISHED":
+                status = "finished"
+            elif status_raw in ("IN_PLAY", "PAUSED", "HALF_TIME"):
+                status = "live"
+            else:
+                status = "upcoming"
+
+            ft = m.get("score", {}).get("fullTime", {})
             hg, ag = ft.get("home"), ft.get("away")
-            if status == "finished" and hg is not None: score = f"{hg}:{ag}"
-            elif status == "live":                       score = f"{hg or 0}:{ag or 0}"
-            else:                                        score = "—"
+            if status == "finished" and hg is not None:
+                score = f"{hg}:{ag}"
+            elif status == "live":
+                score = f"{hg or 0}:{ag or 0}"
+            else:
+                score = "—"
 
-            utc = m.get("utcDate","")
             try:
-                dt = datetime.fromisoformat(utc.replace("Z","+00:00"))
+                dt = datetime.fromisoformat(utc.replace("Z", "+00:00"))
                 dt_loc = dt.astimezone(BERLIN)
-                zeit = "Abpfiff" if status=="finished" else "LIVE" if status=="live" else dt_loc.strftime("%H:%M")
-            except:
+                if status == "finished":
+                    zeit = "Abpfiff"
+                elif status == "live":
+                    zeit = "LIVE"
+                else:
+                    # Datum + Uhrzeit anzeigen damit User weiß wann das Spiel ist
+                    zeit = dt_loc.strftime("%d.%m. %H:%M")
+            except Exception:
                 zeit = utc[:10]
 
-            heim = m.get("homeTeam",{}).get("name","")
-            gast = m.get("awayTeam",{}).get("name","")
-            by_st.setdefault(md,[]).append({
-                "heim":  {"name":heim, "flag":FLAG_MAP.get(heim,"🏳️")},
-                "gast":  {"name":gast, "flag":FLAG_MAP.get(gast,"🏳️")},
+            heim = m.get("homeTeam", {}).get("name", "")
+            gast = m.get("awayTeam", {}).get("name", "")
+            by_st.setdefault(st, []).append({
+                "heim":  {"name": heim, "flag": FLAG_MAP.get(heim, "🏳️")},
+                "gast":  {"name": gast, "flag": FLAG_MAP.get(gast, "🏳️")},
                 "score": score, "status": status, "zeit": zeit, "tipps": [],
             })
+
+        # Innerhalb jedes Spieltags nach UTC-Datum sortieren
+        # (utcDate direkt am match-Objekt nicht mehr verfügbar hier → nach zeit sortieren
+        #  wobei "Abpfiff"/"LIVE" nach unten wandern und upcoming nach Uhrzeit sortiert)
+        STATUS_ORDER = {"live": 0, "finished": 1, "upcoming": 2}
+        for st in by_st:
+            by_st[st].sort(key=lambda s: (STATUS_ORDER.get(s["status"], 9), s["zeit"]))
+
         return by_st
 
 
@@ -667,19 +720,30 @@ def main():
             print(f"[Info] Spieltag {st_id}: noch keine Spiele gestartet")
 
     # 5. Aktiven Spieltag bestimmen
-    # Basis: erster Spieltag mit gestarteten Spielen laut football-data.org
-    # NICHT aus rangliste.keys() — die hat alle CSV-Spalten als "Spieltage"
+    # Aktiver Spieltag = letzter Spieltag mit mindestens einem gestarteten Spiel.
+    # Spieltage mit Spieldaten aber noch keinem Ergebnis sind "zukuenftig=False" —
+    # sie sind klickbar aber noch nicht aktiv (d.h. Fokus liegt auf dem aktiven ST).
     aktiver_st = 1
     for st_id in sorted(spiele_by_spieltag.keys()):
-        spiele = spiele_by_spieltag[st_id]
-        if any(s["status"] in ("finished", "live") for s in spiele):
+        spiele_st = spiele_by_spieltag[st_id]
+        if any(s["status"] in ("finished", "live") for s in spiele_st):
             aktiver_st = st_id
     print(f"[Info] Aktiver Spieltag: {aktiver_st}")
 
+    # Alle Spieltage die entweder Ranglisten- ODER Spieldaten haben
     alle_st = sorted(set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())))
-    spieltag_meta = [{"id":i,"label":f"Spieltag {i}",
-                      "aktiv":i==aktiver_st,"zukuenftig":i>aktiver_st}
-                     for i in alle_st]
+    spieltag_meta = []
+    for i in alle_st:
+        hat_spiele = bool(spiele_by_spieltag.get(i))
+        # zukuenftig=True nur wenn KEINE Spieldaten vorhanden (wirklich leer)
+        # Spieltage mit Daten aber ohne Ergebnisse: zukuenftig=False, aktiv=False
+        zukuenftig = not hat_spiele
+        spieltag_meta.append({
+            "id": i,
+            "label": f"Spieltag {i}",
+            "aktiv": i == aktiver_st,
+            "zukuenftig": zukuenftig,
+        })
 
     # 6. KI-Kommentare generieren (Anthropic API)
     # Bestehende Kommentare laden damit Vortage nicht neu generiert werden
