@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generiert_am": "15.06.2026 23:35 Uhr (CEST)",
-    "aktiver_spieltag": 5,
+    "generiert_am": "16.06.2026 01:11 Uhr (CEST)",
+    "aktiver_spieltag": 6,
     "quelle": "gds-wm-tippspiel2026"
   },
   "spieltage": [
@@ -32,14 +32,14 @@
     {
       "id": 5,
       "label": "15. Jun",
-      "aktiv": true,
+      "aktiv": false,
       "zukuenftig": false
     },
     {
       "id": 6,
       "label": "16. Jun",
-      "aktiv": false,
-      "zukuenftig": true
+      "aktiv": true,
+      "zukuenftig": false
     },
     {
       "id": 7,
@@ -1557,9 +1557,9 @@
           "name": "Uruguay",
           "flag": "🇺🇾"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "00:00",
+        "score": "1:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-16",
         "tipps": []
       },
@@ -2484,18 +2484,6 @@
         "Wer wird heute der HELD?"
       ]
     },
-    "6": {
-      "headline": "CAPTAIN verteidigt Spitze! JanG braucht ein WUNDER!",
-      "sub": "Spieltag 6 startet gleich und die Spannung ist UNERTRÄGLICH! Während Captain mit 8 Punkten souverän thront, wartet JanG immer noch auf seinen ersten Zähler. Vielleicht hilft ja ein Vieblättiges Kleeblatt, Jan?",
-      "anekdote": "Die WM 2026 wird die erste mit 48 statt 32 Teams sein! Gastgeber sind USA, Kanada und Mexiko - damit erstmals drei Nationen gleichzeitig. Das Eröffnungsspiel steigt im Aztekenstadion in Mexiko-Stadt, wo Maradona 1986 sein legendäres 'Hand Gottes'-Tor erzielte. Die meisten Spiele finden aber in den USA statt.",
-      "ticker": [
-        "Captain will Vorsprung auf Michelle ausbauen!",
-        "Großes Mittelfeld kämpft um Anschluss!",
-        "JanG, Pottkind und Olli_R punktlos!",
-        "Hanne_Sobek und Paule lauern dahinter!",
-        "Gleich geht's los - IRRSINN garantiert!"
-      ]
-    },
     "7": {
       "headline": "SPIELTAG 7: Die RUHE vor dem ABSOLUTEN STURM!",
       "sub": "Captain thront mit 8 Punkten an der Spitze wie ein König auf seinem Schachbrett! Während JanG weiter am Tabellenende campiert - vielleicht sollte er mal seine Glaskugel beim TÜV überprüfen lassen? Gleich geht's los, Leute!",
@@ -2578,6 +2566,18 @@
         "Spanien und Kap Verde langweilenNull-Null",
         "Captain nur EINEN Punkt hinter Paule!",
         "Olli_R und Pottkind: KATASTROPHALE Null-Bilanz!"
+      ]
+    },
+    "6": {
+      "headline": "PAULE an der Spitze - OLLI_R hofft auf das WM-WUNDER!",
+      "sub": "Meine Damen und Herren, gleich geht's los! Paule thront mit 19 Punkten über allem, während Olli_R und Pottkind noch auf ihren ERSTEN Punkt warten! Die Spannung ist so dick, dass selbst das RTL-Studio bebt!",
+      "anekdote": "Die WM 2026 wird die erste mit 48 Teams sein und findet in drei Ländern statt: USA, Kanada und Mexiko. Damit ist es die erste WM mit drei Gastgebern und die geografisch ausgedehnteste aller Zeiten - manche Teams werden über 5.000 Kilometer zwischen Spielorten zurücklegen müssen!",
+      "ticker": [
+        "Paule mit einem Punkt Vorsprung - WAHNSINN!",
+        "Captain lauert auf Platz 2 - JAGDINSTINKT!",
+        "Olli_R und Pottkind PUNKTLOS - Drama pur!",
+        "Michelle und Helmut punktgleich auf Rang 4!",
+        "Gleich startet Spieltag 6 - HERZRASEN garantiert!"
       ]
     }
   }
