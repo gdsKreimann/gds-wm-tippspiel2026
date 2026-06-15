@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "15.06.2026 06:54 Uhr (CEST)",
+    "generiert_am": "15.06.2026 08:36 Uhr (CEST)",
     "aktiver_spieltag": 5,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1369,7 +1369,7 @@
           "name": "Bosnia-Herzegovina",
           "flag": "🇧🇦"
         },
-        "score": "—",
+        "score": "1:1",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-12",
@@ -2569,15 +2569,15 @@
       ]
     },
     "5": {
-      "headline": "SCHWEDEN-GALA! Paule uneinholbar - Olli_R weiterhin CHANCENLOS!",
-      "sub": "WAHNSINN! Schweden zerlegt Tunesien mit 5:1 und die Elfenbeinküste siegt knapp! Während Paule souverän an der Spitze thront, scheinen Olli_R und Pottkind eine Art Nullpunkt-Zweckgemeinschaft gegründet zu haben - Innovation sieht anders aus, meine Damen und Herren!",
-      "anekdote": "Schwedens höchster WM-Sieg gelang 1938 mit 8:0 gegen Kuba. Kurios: Der schwedische Stürmer Gustav Wetterström erzielte dabei vier Tore in nur 18 Minuten - ein Rekord, der bis heute Bestand hat. Bei der WM 1994 schoss Schweden sich sensationell bis ins Halbfinale, wo sie erst gegen Brasilien mit 0:1 scheiterten.",
+      "headline": "SCHWEDEN-GALA! Paule baut Führung aus - Olli_R WEITER PUNKTLOS!",
+      "sub": "WAHNSINN! Schweden zerlegt Tunesien mit 5:1 und die Elfenbeinküste siegt knapp! Während Paule souverän an der Spitze thront, verwaltet Olli_R gemeinsam mit Pottkind weiterhin die Null-Punkte-Zone - da hilft wohl nur noch ein Wunder oder ein Trainerwechsel!",
+      "anekdote": "Schwedens höchster WM-Sieg war ein 8:0 gegen Kuba 1938 in Frankreich. Kurios: Kuba war damals nur zur WM angereist, weil in der Qualifikation alle Gegner zurückgezogen hatten - das Team bestieg in Havanna völlig unvorbereitet das Schiff nach Europa und kassierte prompt die historische Klatsche.",
       "ticker": [
-        "Elfenbeinküste mit knappem Arbeitssieg gegen Ecuador!",
-        "SCHWEDEN SHOW! Fünf Tore gegen chancenlose Tunesier!",
-        "Paule baut Führung aus - Captain lauert!",
-        "Anne komplettiert das Spitzentrio mit 15 Punkten!",
-        "Olli_R und Pottkind: Nullnummer geht weiter!"
+        "Elfenbeinküste mit Arbeitssieg gegen Ecuador!",
+        "Schweden EXPLODIERT - 5:1 Kantersieg!",
+        "Paule uneinholbar? 17 Punkte an Spitze!",
+        "Olli_R und Pottkind: Noch immer NULL!",
+        "Captain lauert nur einen Punkt dahinter!"
       ]
     }
   }
