@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "15.06.2026 18:23 Uhr (CEST)",
+    "generiert_am": "15.06.2026 21:34 Uhr (CEST)",
     "aktiver_spieltag": 5,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1488,21 +1488,6 @@
     "5": [
       {
         "heim": {
-          "name": "Spain",
-          "flag": "🇪🇸"
-        },
-        "gast": {
-          "name": "Cape Verde Islands",
-          "flag": "🇨🇻"
-        },
-        "score": "0:0",
-        "status": "live",
-        "zeit": "LIVE",
-        "datum": "2026-06-15",
-        "tipps": []
-      },
-      {
-        "heim": {
           "name": "Belgium",
           "flag": "🇧🇪"
         },
@@ -1510,9 +1495,9 @@
           "name": "Egypt",
           "flag": "🇪🇬"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
+        "score": "0:1",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-15",
         "tipps": []
       },
@@ -1541,6 +1526,21 @@
           "flag": "🇹🇳"
         },
         "score": "5:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-15",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Spain",
+          "flag": "🇪🇸"
+        },
+        "gast": {
+          "name": "Cape Verde Islands",
+          "flag": "🇨🇻"
+        },
+        "score": "0:0",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-15",
@@ -2569,15 +2569,15 @@
       ]
     },
     "5": {
-      "headline": "SCHWEDEN ZERLEGT TUNESIEN! Paule baut Führung aus - Drama hinten!",
-      "sub": "WAHNSINN bei gds! Während Paule einsam an der Spitze thront, kämpfen Pottkind und Olli_R verzweifelt um den ersten Punkt - nach FÜNF Spieltagen! Jungs, das Turnier hat gerade erst angefangen, nicht aufgehört!",
-      "anekdote": "Fun Fact zur WM 2026: Es wird die erste WM mit 48 statt 32 Teams sein! Die Elfenbeinküste und Schweden, heute siegreich, mussten sich hart qualifizieren. Kurios: Tunesien kassierte heute 5 Tore - bei der WM 1978 verloren sie gegen Polen exakt mit demselben Ergebnis. Geschichte wiederholt sich!",
+      "headline": "PAULE EINSAM AN DER SPITZE! Schweden-GALA schockt Tunesien!",
+      "sub": "Während Paule souverän die Tabellenspitze verteidigt, fragen wir uns: Haben Olli_R und Pottkind überhaupt mitbekommen, dass die WM bereits läuft? Null Punkte nach fünf Spieltagen - das schafft nicht mal meine Oma, und die tippt nach Trikotfarben!",
+      "anekdote": "Schwedens höchster WM-Sieg war ein 8:0 gegen Kuba 1938. Kurios: Das Spiel fand in Frankreich statt, und Kuba hatte sich nur qualifiziert, weil alle anderen CONCACAF-Teams zurückgezogen hatten. Die Schweden zeigten damals schon ihre Offensiv-Power - genau wie heute mit dem 5:1 gegen Tunesien!",
       "ticker": [
-        "Paule UNAUFHALTSAM - 17 Punkte!",
-        "Schweden mit KANTERSIEG gegen Tunesien",
-        "Elfenbeinküste siegt knapp gegen Ecuador",
-        "Pottkind und Olli_R WEITER ohne Punkt",
-        "Captain jagt Spitzenreiter - nur 1 Punkt zurück"
+        "Elfenbeinküste siegt knapp gegen Ecuador!",
+        "Schweden mit FÜNF Toren gegen Tunesien!",
+        "Spanien enttäuscht: Nullnummer gegen Kapverden!",
+        "Paule baut Führung aus - 17 Punkte!",
+        "Olli_R weiter punktlos am Tabellenende!"
       ]
     }
   }
