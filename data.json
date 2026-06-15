@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "15.06.2026 08:36 Uhr (CEST)",
+    "generiert_am": "15.06.2026 18:23 Uhr (CEST)",
     "aktiver_spieltag": 5,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1495,9 +1495,9 @@
           "name": "Cape Verde Islands",
           "flag": "🇨🇻"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "18:00",
+        "score": "0:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-15",
         "tipps": []
       },
@@ -2569,15 +2569,15 @@
       ]
     },
     "5": {
-      "headline": "SCHWEDEN-GALA! Paule baut Führung aus - Olli_R WEITER PUNKTLOS!",
-      "sub": "WAHNSINN! Schweden zerlegt Tunesien mit 5:1 und die Elfenbeinküste siegt knapp! Während Paule souverän an der Spitze thront, verwaltet Olli_R gemeinsam mit Pottkind weiterhin die Null-Punkte-Zone - da hilft wohl nur noch ein Wunder oder ein Trainerwechsel!",
-      "anekdote": "Schwedens höchster WM-Sieg war ein 8:0 gegen Kuba 1938 in Frankreich. Kurios: Kuba war damals nur zur WM angereist, weil in der Qualifikation alle Gegner zurückgezogen hatten - das Team bestieg in Havanna völlig unvorbereitet das Schiff nach Europa und kassierte prompt die historische Klatsche.",
+      "headline": "SCHWEDEN ZERLEGT TUNESIEN! Paule baut Führung aus - Drama hinten!",
+      "sub": "WAHNSINN bei gds! Während Paule einsam an der Spitze thront, kämpfen Pottkind und Olli_R verzweifelt um den ersten Punkt - nach FÜNF Spieltagen! Jungs, das Turnier hat gerade erst angefangen, nicht aufgehört!",
+      "anekdote": "Fun Fact zur WM 2026: Es wird die erste WM mit 48 statt 32 Teams sein! Die Elfenbeinküste und Schweden, heute siegreich, mussten sich hart qualifizieren. Kurios: Tunesien kassierte heute 5 Tore - bei der WM 1978 verloren sie gegen Polen exakt mit demselben Ergebnis. Geschichte wiederholt sich!",
       "ticker": [
-        "Elfenbeinküste mit Arbeitssieg gegen Ecuador!",
-        "Schweden EXPLODIERT - 5:1 Kantersieg!",
-        "Paule uneinholbar? 17 Punkte an Spitze!",
-        "Olli_R und Pottkind: Noch immer NULL!",
-        "Captain lauert nur einen Punkt dahinter!"
+        "Paule UNAUFHALTSAM - 17 Punkte!",
+        "Schweden mit KANTERSIEG gegen Tunesien",
+        "Elfenbeinküste siegt knapp gegen Ecuador",
+        "Pottkind und Olli_R WEITER ohne Punkt",
+        "Captain jagt Spitzenreiter - nur 1 Punkt zurück"
       ]
     }
   }
