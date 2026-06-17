@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "17.06.2026 18:48 Uhr (CEST)",
+    "generiert_am": "17.06.2026 20:38 Uhr (CEST)",
     "aktiver_spieltag": 7,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1604,9 +1604,9 @@
           "name": "Congo DR",
           "flag": "🇨🇩"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "19:00",
+        "score": "1:1",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-17",
         "tipps": []
       },
@@ -2569,15 +2569,15 @@
       ]
     },
     "7": {
-      "headline": "ANNE und CAPTAIN teilen sich Spitze - NORWEGEN-GALA schockt!",
-      "sub": "Was für ein WAHNSINN am Spieltag 7! Während Anne und Captain mit 30 Zählern das Feld anführen, dümpeln Pottkind und Olli_R weiter bei NULL Punkten! Jungs, ihr wisst schon, dass man auch Tipps ABGEBEN muss, oder?!",
-      "anekdote": "Norwegen feierte gegen Irak einen 4:1-Kantersieg - passend dazu: Bei der WM 1994 sorgte Norwegens Jostein Flo für Aufsehen, als er gegen die Niederlande ein Tor per Karate-Kick erzielte. Der Treffer wurde damals aberkannt, ging aber als legendärste Szene Norwegens in die WM-Geschichte ein!",
+      "headline": "ANNE und CAPTAIN teilen Spitze - Norwegen ZERTRÜMMERT Irak!",
+      "sub": "Während Anne und Captain oben GLEICHAUF thronen, machen Pottkind und Olli_R eine gemütliche Nullrunde! Vermutlich haben die beiden gedacht, Punkte gibt's erst im Achtelfinale - SPOILER: Tun sie nicht!",
+      "anekdote": "Norwegen feierte gegen Irak seinen höchsten WM-Qualifikationssieg seit 1982, als sie San Marino mit 10:0 demontierten. Besonders pikant: Der norwegische Stürmerstar Erling Haaland schwor nach der Nicht-Qualifikation für 2022 und 2024, sein Land endlich zur WM 2026 zu führen - offenbar nimmt er sich das zu Herzen!",
       "ticker": [
-        "NORWEGEN demoliert Irak mit 4:1-Gala!",
-        "Argentinien zeigt KEINE GNADE gegen Algerien!",
-        "Österreich siegt souverän 3:1 gegen Jordanien!",
-        "Anne und Captain - DAS Spitzenduo!",
-        "Olli_R und Pottkind: NOCH kein Punkt!"
+        "Norwegen macht VIER gegen Irak - Kantersieg!",
+        "Argentinien souverän: 3:0 gegen Algerien kein Problem",
+        "Österreich bezwingt Jordanien mit 3:1",
+        "Anne und Captain GLEICHAUF an der Spitze",
+        "Olli_R und Pottkind: Immer noch NULL Punkte"
       ]
     }
   }
