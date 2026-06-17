@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "17.06.2026 20:38 Uhr (CEST)",
+    "generiert_am": "18.06.2026 00:26 Uhr (CEST)",
     "aktiver_spieltag": 7,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -131,14 +131,14 @@
         "delta": 0
       },
       {
-        "name": "Hanne_Sobek",
+        "name": "DennisCostaRica",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
         "rang": "5",
         "delta": 0
       },
       {
-        "name": "DennisCostaRica",
+        "name": "Hanne_Sobek",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
         "rang": "6",
@@ -190,14 +190,14 @@
         "name": "Ludger_H",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -218,7 +218,7 @@
         "name": "JanG",
         "pts_spieltag": 2,
         "pts_gesamt": 2,
-        "rang": "12",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -269,8 +269,8 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 6,
         "pts_gesamt": 14,
-        "rang": "5",
-        "delta": -2
+        "rang": "6",
+        "delta": -1
       },
       {
         "name": "Helmut",
@@ -283,8 +283,8 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 4,
         "pts_gesamt": 12,
-        "rang": "6",
-        "delta": -3
+        "rang": "5",
+        "delta": -4
       },
       {
         "name": "Bastelwastel",
@@ -297,7 +297,7 @@
         "name": "JanG",
         "pts_spieltag": 10,
         "pts_gesamt": 12,
-        "rang": "12",
+        "rang": "9",
         "delta": 6
       },
       {
@@ -318,7 +318,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 4,
         "pts_gesamt": 10,
-        "rang": "12",
+        "rang": "13",
         "delta": -1
       },
       {
@@ -339,7 +339,7 @@
         "name": "thommes",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "12",
+        "rang": "13",
         "delta": -3
       },
       {
@@ -360,100 +360,100 @@
     "3": [
       {
         "name": "Anne",
-        "pts_spieltag": 13,
-        "pts_gesamt": 30,
+        "pts_spieltag": 15,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 2
       },
       {
         "name": "Captain",
-        "pts_spieltag": 10,
-        "pts_gesamt": 30,
+        "pts_spieltag": 12,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": -1
       },
       {
         "name": "Michelle",
-        "pts_spieltag": 11,
-        "pts_gesamt": 28,
+        "pts_spieltag": 14,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 1
       },
       {
         "name": "Paule",
-        "pts_spieltag": 8,
-        "pts_gesamt": 27,
+        "pts_spieltag": 10,
+        "pts_gesamt": 29,
         "rang": "4",
         "delta": -2
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 12,
+        "pts_gesamt": 24,
+        "rang": "5",
+        "delta": 2
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 9,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 10,
-        "pts_gesamt": 22,
         "rang": "6",
-        "delta": 1
+        "delta": -1
       },
       {
         "name": "TurboTobiBVB",
-        "pts_spieltag": 12,
-        "pts_gesamt": 20,
+        "pts_spieltag": 14,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 7
       },
       {
         "name": "Bastelwastel",
-        "pts_spieltag": 8,
-        "pts_gesamt": 20,
+        "pts_spieltag": 10,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
-        "pts_spieltag": 9,
-        "pts_gesamt": 19,
+        "pts_spieltag": 11,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 2
       },
       {
         "name": "UliPausS",
-        "pts_spieltag": 8,
-        "pts_gesamt": 19,
+        "pts_spieltag": 10,
+        "pts_gesamt": 21,
         "rang": "9",
-        "delta": 0
-      },
-      {
-        "name": "Helmut",
-        "pts_spieltag": 6,
-        "pts_gesamt": 19,
-        "rang": "9",
-        "delta": -5
-      },
-      {
-        "name": "Ludger_H",
-        "pts_spieltag": 8,
-        "pts_gesamt": 18,
-        "rang": "12",
         "delta": 0
       },
       {
         "name": "JanG",
-        "pts_spieltag": 6,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": -4
+        "pts_spieltag": 9,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": -2
+      },
+      {
+        "name": "Helmut",
+        "pts_spieltag": 8,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": -6
+      },
+      {
+        "name": "Ludger_H",
+        "pts_spieltag": 10,
+        "pts_gesamt": 20,
+        "rang": "13",
+        "delta": -1
       },
       {
         "name": "thommes",
-        "pts_spieltag": 10,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_spieltag": 12,
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 1
       },
       {
@@ -482,99 +482,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -603,99 +603,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -724,99 +724,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -845,99 +845,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -966,99 +966,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -1087,99 +1087,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -1208,99 +1208,99 @@
       {
         "name": "Anne",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "1",
         "delta": 0
       },
       {
         "name": "Captain",
         "pts_spieltag": 0,
-        "pts_gesamt": 30,
+        "pts_gesamt": 32,
         "rang": "2",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 0,
-        "pts_gesamt": 28,
+        "pts_gesamt": 31,
         "rang": "3",
         "delta": 0
       },
       {
         "name": "Paule",
         "pts_spieltag": 0,
-        "pts_gesamt": 27,
+        "pts_gesamt": 29,
         "rang": "4",
+        "delta": 0
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 0,
+        "pts_gesamt": 24,
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 0,
         "pts_gesamt": 23,
-        "rang": "5",
-        "delta": 0
-      },
-      {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 0,
-        "pts_gesamt": 22,
         "rang": "6",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Bastelwastel",
         "pts_spieltag": 0,
-        "pts_gesamt": 20,
+        "pts_gesamt": 22,
         "rang": "7",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
+        "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "JanG",
+        "pts_spieltag": 0,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Helmut",
         "pts_spieltag": 0,
-        "pts_gesamt": 19,
+        "pts_gesamt": 21,
         "rang": "9",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
-        "delta": 0
-      },
-      {
-        "name": "JanG",
-        "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 0,
-        "pts_gesamt": 18,
-        "rang": "12",
+        "pts_gesamt": 20,
+        "rang": "13",
         "delta": 0
       },
       {
@@ -1597,36 +1597,6 @@
     "7": [
       {
         "heim": {
-          "name": "Portugal",
-          "flag": "🇵🇹"
-        },
-        "gast": {
-          "name": "Congo DR",
-          "flag": "🇨🇩"
-        },
-        "score": "1:1",
-        "status": "live",
-        "zeit": "LIVE",
-        "datum": "2026-06-17",
-        "tipps": []
-      },
-      {
-        "heim": {
-          "name": "England",
-          "flag": "🇬🇧"
-        },
-        "gast": {
-          "name": "Croatia",
-          "flag": "🇭🇷"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "22:00",
-        "datum": "2026-06-17",
-        "tipps": []
-      },
-      {
-        "heim": {
           "name": "Iraq",
           "flag": "🇮🇶"
         },
@@ -1665,6 +1635,36 @@
           "flag": "🇯🇴"
         },
         "score": "3:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-17",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Portugal",
+          "flag": "🇵🇹"
+        },
+        "gast": {
+          "name": "Congo DR",
+          "flag": "🇨🇩"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-17",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "England",
+          "flag": "🇬🇧"
+        },
+        "gast": {
+          "name": "Croatia",
+          "flag": "🇭🇷"
+        },
+        "score": "4:2",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-17",
@@ -2569,15 +2569,15 @@
       ]
     },
     "7": {
-      "headline": "ANNE und CAPTAIN teilen Spitze - Norwegen ZERTRÜMMERT Irak!",
-      "sub": "Während Anne und Captain oben GLEICHAUF thronen, machen Pottkind und Olli_R eine gemütliche Nullrunde! Vermutlich haben die beiden gedacht, Punkte gibt's erst im Achtelfinale - SPOILER: Tun sie nicht!",
-      "anekdote": "Norwegen feierte gegen Irak seinen höchsten WM-Qualifikationssieg seit 1982, als sie San Marino mit 10:0 demontierten. Besonders pikant: Der norwegische Stürmerstar Erling Haaland schwor nach der Nicht-Qualifikation für 2022 und 2024, sein Land endlich zur WM 2026 zu führen - offenbar nimmt er sich das zu Herzen!",
+      "headline": "ANNE und CAPTAIN im KOPF-AN-KOPF-RENNEN an der SPITZE!",
+      "sub": "32 Punkte! Anne und Captain liefern sich ein IRRES Duell um die Krone! Während Olli_R und Pottkind mit 0 Punkten vermutlich noch auf ihre Startfreigabe warten - haben die beiden vielleicht das Passwort vergessen?!",
+      "anekdote": "Norwegen zeigte beim 4:1 gegen Irak genau die Offensivpower, die sie bei der WM 2026 zu einem Geheimfavoriten machen könnte. Historisch interessant: Bei der WM 1998 gelang den Norwegern ein legendäres 2:1 gegen Brasilien - danach qualifizierten sie sich jedoch nie wieder für eine WM-Endrunde. Nach 28 Jahren Durststrecke könnte 2026 endlich die Rückkehr gelingen!",
       "ticker": [
-        "Norwegen macht VIER gegen Irak - Kantersieg!",
-        "Argentinien souverän: 3:0 gegen Algerien kein Problem",
-        "Österreich bezwingt Jordanien mit 3:1",
-        "Anne und Captain GLEICHAUF an der Spitze",
-        "Olli_R und Pottkind: Immer noch NULL Punkte"
+        "Anne und Captain: Gleichstand an der Spitze!",
+        "Norwegen ZERLEGT Irak mit 4:1 Kantersieg!",
+        "England bezwingt Kroatien in Torfestival 4:2!",
+        "Portugal nur Remis gegen Kongo - Überraschung!",
+        "Olli_R und Pottkind: Noch punktlos abgeschlagen!"
       ]
     }
   }
