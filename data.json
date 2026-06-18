@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "18.06.2026 13:40 Uhr (CEST)",
+    "generiert_am": "18.06.2026 18:47 Uhr (CEST)",
     "aktiver_spieltag": 8,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1681,9 +1681,9 @@
           "name": "South Africa",
           "flag": "🇿🇦"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "18:00",
+        "score": "1:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-18",
         "tipps": []
       },
@@ -2569,15 +2569,15 @@
       ]
     },
     "8": {
-      "headline": "ANNE UNANTASTBAR! Ghana schockt Panama - KOLUMBIEN WALZT Usbekistan!",
-      "sub": "37 Punkte für Anne - sie ist nicht zu stoppen! Während die Spitze kämpft, haben Pottkind und Olli_R offenbar vergessen, dass ein Tippspiel auch TIPPEN erfordert. Null Punkte, meine Damen und Herren, NULL!",
-      "anekdote": "Kolumbien sorgte bei der WM 2014 für Furore, als James Rodríguez mit seinem Traumtor gegen Uruguay den Puskas Award gewann. Der Mittelfeld-Maestro tanzte damals mit 6 Toren zur Torjägerkanone - und auch heute zeigen die Cafeteros wieder, dass sie es draufhaben! Ghana hingegen wartet seit 2010 auf WM-Erfolge, als sie als erstes afrikanisches Team ins Viertelfinale der WM in Südafrika stürmten.",
+      "headline": "ANNE UNEINHOLBAR! Ghana schockt Panama - KOLUMBIEN ZERLEGT Usbekistan!",
+      "sub": "37 Punkte für Anne - die Frau ist eine MASCHINE! Während Olli_R und Pottkind weiterhin NULL PUNKTE auf dem Konto haben. Leute, selbst ein Blindhuhn findet mal ein Korn, aber bei euch beiden... UNGLAUBLICH!",
+      "anekdote": "Kolumbien hat seit der WM 2014 eine beeindruckende Bilanz gegen asiatische Teams: 8 Spiele, 7 Siege! Der heutige 3:1-Erfolg gegen Usbekistan setzt diese Dominanz fort. Interessant: Ghana gewann zuletzt 2006 bei einer WM gegen ein CONCACAF-Team - damals 2:1 gegen die USA. Panama zahlte jetzt die Zeche!",
       "ticker": [
-        "Anne baut Vorsprung aus - ÜBERRAGEND!",
-        "Kolumbien mit DREI Toren - Usbekistan chancenlos!",
-        "Ghana siegt knapp - Tor reicht!",
-        "Captain auf Platz 2 - Nur zwei Punkte Rückstand!",
-        "Olli_R und Pottkind weiter punktlos - DRAMA!"
+        "Ghana schlägt Panama 1:0 - Sensation!",
+        "Kolumbien DEMONTIERT Usbekistan mit 3:1!",
+        "Anne baut Führung auf 37 Punkte aus!",
+        "Olli_R und Pottkind: IMMER NOCH NULL!",
+        "Captain jagt mit 35 Punkten Anne hinterher!"
       ]
     }
   }
