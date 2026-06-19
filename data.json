@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "19.06.2026 19:31 Uhr (CEST)",
+    "generiert_am": "19.06.2026 22:53 Uhr (CEST)",
     "aktiver_spieltag": 9,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1743,9 +1743,9 @@
           "name": "Australia",
           "flag": "🇦🇺"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
+        "score": "2:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-19",
         "tipps": []
       },
@@ -2569,15 +2569,15 @@
       ]
     },
     "9": {
-      "headline": "KANADA ZERLEGT KATAR! Mexico siegt knapp - ANNE UNEINHOLBAR?",
-      "sub": "WAS FÜR EIN STATEMENT von Kanada mit dem 6:0-GALA! Während Anne oben thront wie die Rocky Mountains, dümpeln Olli_R und Pottkind am Tabellenende rum wie zwei verirrte Ahornblätter im Herbststurm. Mexiko macht es spannend - genau wie das Rennen um Platz 2!",
-      "anekdote": "Kanadas höchster WM-Sieg gelang 2012 bei der U20-WM mit 8:0 gegen Aserbaidschan. Bei Herren-WM-Endrunden wartet das Ahornblatt-Team noch auf den ersten Sieg überhaupt - 1986 verloren sie alle drei Spiele torlos! Die WM 2026 als Gastgeber könnte endlich die historische Wende bringen.",
+      "headline": "KANADA mit GALA-VORSTELLUNG! Anne baut Führung aus! OLLI verzweifelt!",
+      "sub": "UNFASSBAR! Während Canada Qatar mit 6:0 vom Platz fegt, kämpfen Pottkind und Olli_R weiterhin verzweifelt um ihren ersten Punkt! Anne thront majestätisch an der Spitze - sie tippt wohl mit der Glaskugel ihrer Oma!",
+      "anekdote": "Bei der WM 2026 wird Kanada als Gastgeber zusammen mit den USA und Mexiko erstmals seit 1986 wieder dabei sein. Damals schied man in der Gruppenphase aus - der höchste WM-Sieg der Kanadier war bisher ein 2:0. Ein 6:0 wie heute wäre historisch sensationell und würde die Nation in Ekstase versetzen!",
       "ticker": [
-        "Kanada schießt Katar in Grund und Boden!",
-        "6:0 - Das war ein STATEMENT!",
-        "Mexico bezwingt Südkorea knapp mit 1:0",
-        "Anne baut Führung weiter aus - SENSATIONELL!",
-        "Olli_R und Pottkind: Noch NIE gepunktet!"
+        "Anne uneinholbar? Zwei Punkte Vorsprung!",
+        "Canada DEMOLIERT Qatar mit sechs Toren!",
+        "Mexico ringt Südkorea nieder - 1:0!",
+        "Olli_R und Pottkind: Noch NULL Punkte!",
+        "Paule und Helmut lauern auf Annes Fehler!"
       ]
     }
   }
