@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "21.06.2026 14:11 Uhr (CEST)",
+    "generiert_am": "21.06.2026 19:27 Uhr (CEST)",
     "aktiver_spieltag": 11,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1867,9 +1867,9 @@
           "name": "Saudi Arabia",
           "flag": "🇸🇦"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "18:00",
+        "score": "4:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-21",
         "tipps": []
       },
@@ -2581,15 +2581,15 @@
       ]
     },
     "11": {
-      "headline": "JAPAN ZERLEGT TUNESIEN! Ecuador kann nicht treffen! NULLFESTIVAL!",
-      "sub": "Während Japan Tunisia mit 4:0 vom Platz fegt, schafft es Ecuador nicht mal gegen Curaçao ein Törchen zu schießen! Bei so viel Null-Bock-Leistung bleiben auch ALLE Tipper bei NULL Punkten - Gleichstand an der Spitze UND am Tabellenende!",
-      "anekdote": "Kuriose Japan-Statistik: Bei der WM 2022 war Japan das einzige Team, das sowohl Deutschland als auch Spanien besiegte - und flog trotzdem im Achtelfinale raus! Die Samurai Blue sind Meister der großen Überraschungen, aber auch der verpassten Chancen. Tunesien durfte das heute am eigenen Leib erfahren.",
+      "headline": "NULLNUMMER in Ecuador! Japan ZERREISST Tunesien mit VIER Toren!",
+      "sub": "Ecuador und Curaçao liefern sich ein Spektakel zum Einschlafen - 0:0, die Highlights passen auf einen Bierdeckel! Japan dagegen macht aus Tunesien Sushi - 4:0, das war eine Demonstration der Extraklasse! Und unsere Tipper? Alle im Tiefschlaf, KEINER hat auch nur einen mickrigen Punkt geholt!",
+      "anekdote": "Japan qualifizierte sich bereits siebenmal in Folge für die WM und ist damit asiatischer Rekordhalter. Bei der WM 2022 besiegten die Samurai Blue sowohl Deutschland als auch Spanien in der Gruppenphase - zwei ehemalige Weltmeister an einem Turnier zu schlagen, war eine historische Sensation für den japanischen Fußball.",
       "ticker": [
-        "Japan mit VIER Toren - Tunesien chancenlos!",
-        "Ecuador gegen Curaçao: Torlose Tristesse garantiert!",
-        "ALLE Tipper mit NULL Punkten gescheitert!",
-        "Führender hat NULL - Letzter auch NULL!",
-        "Spieltag 11: Katastrophe auf ganzer Linie!"
+        "Ecuador-Curaçao: Gähnfest der Extraklasse endet torlos",
+        "Japan ZERLEGT Tunesien mit VIER Treffern komplett",
+        "KEIN EINZIGER Tipper holt auch nur Punkt",
+        "Tabelle bleibt leer - totales Tipp-DESASTER",
+        "Spieltag 11: Kollektives Versagen aller Teilnehmer"
       ]
     }
   }
