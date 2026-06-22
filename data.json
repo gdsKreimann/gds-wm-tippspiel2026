@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "22.06.2026 21:26 Uhr (CEST)",
+    "generiert_am": "23.06.2026 00:22 Uhr (CEST)",
     "aktiver_spieltag": 12,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1929,9 +1929,9 @@
           "name": "Iraq",
           "flag": "🇮🇶"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "23:00",
+        "score": "1:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-22",
         "tipps": []
       },
@@ -2593,15 +2593,15 @@
       ]
     },
     "12": {
-      "headline": "TIPPSPIEL-CHAOS! Niemand hat PUNKTE - ALLE liegen DANEBEN!",
-      "sub": "Uruguay, Neuseeland und Argentinien haben gespielt - aber KEINER unserer Tipper hat auch nur ANSATZWEISE richtig gelegen! Bei diesem kollektiven Versagen fragt man sich: Haben die überhaupt getippt oder einfach die Zettel leer abgegeben?",
-      "anekdote": "Bei der WM 1930 in Uruguay gewann die Celeste im Finale gegen Argentinien 4:2 - und heute beim 2:2 gegen die Kapverden zeigt sich: Selbst 96 Jahre später sind Uruguay-Spiele absolute Tipp-Killer! Interessant: Kapverden existierte 1930 noch als portugiesische Kolonie und war vom Fußball weiter entfernt als unsere Tipper von Punkten.",
+      "headline": "SPIELTAG 12: CHAOS PUR! Alle bei NULL Punkten!",
+      "sub": "UNGLAUBLICH! Nach drei packenden Partien steht die gesamte gds-Tipprunde bei sagenhaften NULL Punkten! Entweder haben ALLE komplett daneben getippt, oder keiner hat überhaupt abgegeben – was fast noch peinlicher wäre!",
+      "anekdote": "Kap Verde bei einer WM wäre eine Sensation! Das afrikanische Inselreich mit nur 500.000 Einwohnern hat sich noch nie für eine WM qualifiziert. Ihr bisher größter Erfolg war das Viertelfinale beim Afrika-Cup 2013, als sie sensationell Angola besiegten. Die meisten ihrer Nationalspieler wurden in Portugal geboren und spielen in europäischen Ligen.",
       "ticker": [
-        "Uruguay verschenkt Sieg gegen Kapverden 2:2",
-        "Ägypten zerlegt Neuseeland mit 3:1",
-        "Argentinien bezwingt Österreich souverän 2:0",
-        "Alle Tipper komplett ohne Punkte",
-        "Kollektives Versagen auf ganzer Linie"
+        "Uruguay verschenkt Sieg gegen Kap Verde!",
+        "Ägypten zerlegt Neuseeland mit 3:1!",
+        "Argentinien souverän: 2:0 gegen Österreich!",
+        "Gesamte Tipprunde liegt komplett daneben!",
+        "Null Punkte für ALLE Tipper!"
       ]
     }
   }
