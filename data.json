@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "23.06.2026 14:35 Uhr (CEST)",
+    "generiert_am": "23.06.2026 19:54 Uhr (CEST)",
     "aktiver_spieltag": 13,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -1991,9 +1991,9 @@
           "name": "Uzbekistan",
           "flag": "🇺🇿"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "19:00",
+        "score": "3:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-23",
         "tipps": []
       },
@@ -2605,15 +2605,15 @@
       ]
     },
     "13": {
-      "headline": "NORWAY siegt DRAMATISCH! Algeria klaut Jordan den SIEG!",
-      "sub": "Zwei Spiele, zwei knappe Ergebnisse - und KEIN EINZIGER Tipper hat auch nur einen mickrigen Punkt geholt! Bei gds GmbH tippt man anscheinend mit geschlossenen Augen und überkreuzten Fingern. Vielleicht sollten wir einfach würfeln?",
-      "anekdote": "Norwegens größter WM-Moment war 1998, als sie in ihrem Debüt Brasilien mit 2:1 besiegten - Tore von Eggen und Flo. Trainer Egil Olsen schwor auf Langball-Fußball und Statistiken. Seine Spieler mussten sogar ausrechnen, dass 80% aller Tore nach maximal drei Pässen fallen. Die Brasilianer waren fassungslos!",
+      "headline": "SPIELTAG 13: NORWAY und ALGERIA siegen DRAMATISCH!",
+      "sub": "Wahnsinn bei der gds GmbH! Norway dreht ein 2:2 gegen Senegal noch zum 3:2, während Algeria sich knapp mit 2:1 gegen Jordan durchsetzt. Aber wo sind die Tipper? Haben die alle verschlafen oder sind die Tipps so katastrophal, dass sie nicht mal erwähnenswert sind?",
+      "anekdote": "Senegal war bei der WM 2002 die große Überraschung: Das Team besiegte im Eröffnungsspiel Titelverteidiger Frankreich mit 1:0 und zog sensationell ins Viertelfinale ein. Trainer Bruno Metsu wurde zur Legende, die Spieler tanzten nach jedem Tor - und ganz Afrika feierte mit. Gegen Norway hätte etwas von diesem Glück nicht geschadet!",
       "ticker": [
-        "Norway dreht Spiel gegen Senegal zum 3:2",
-        "Algeria siegt knapp 2:1 gegen Jordan",
-        "ALLE Tipper gehen komplett leer aus",
-        "Tabellenführer weiterhin bei NULL Punkten",
-        "Spieltag 13: Chaos pur im Tippspiel"
+        "Norway schlägt Senegal mit 3:2!",
+        "Algeria ringt Jordan mit 2:1 nieder!",
+        "Tabellenführer bleibt mysteriös bei 0 Punkten!",
+        "Wo sind die Tipper geblieben?",
+        "Spieltag 13 startet ohne klare Gewinner!"
       ]
     }
   }
