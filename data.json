@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "25.06.2026 20:09 Uhr (CEST)",
+    "generiert_am": "26.06.2026 00:04 Uhr (CEST)",
     "aktiver_spieltag": 15,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2108,36 +2108,6 @@
     "15": [
       {
         "heim": {
-          "name": "Ecuador",
-          "flag": "🇪🇨"
-        },
-        "gast": {
-          "name": "Germany",
-          "flag": "🇩🇪"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "22:00",
-        "datum": "2026-06-25",
-        "tipps": []
-      },
-      {
-        "heim": {
-          "name": "Curaçao",
-          "flag": "🏳️"
-        },
-        "gast": {
-          "name": "Ivory Coast",
-          "flag": "🇨🇮"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "22:00",
-        "datum": "2026-06-25",
-        "tipps": []
-      },
-      {
-        "heim": {
           "name": "Morocco",
           "flag": "🇲🇦"
         },
@@ -2191,6 +2161,36 @@
           "flag": "🇰🇷"
         },
         "score": "1:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-25",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Ecuador",
+          "flag": "🇪🇨"
+        },
+        "gast": {
+          "name": "Germany",
+          "flag": "🇩🇪"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-25",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Curaçao",
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": "Ivory Coast",
+          "flag": "🇨🇮"
+        },
+        "score": "0:2",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-25",
@@ -2629,15 +2629,15 @@
       ]
     },
     "15": {
-      "headline": "SPIELTAG 15: CHAOS PUR - ALLE bei NULL Punkten!",
-      "sub": "UNFASSBAR! Vier Spiele, klare Ergebnisse und KEINER hat auch nur EINEN PUNKT geholt! Entweder sind unsere Tipper blind oder die Fußballgötter haben Mitleid mit dem Letzten - der kann nämlich gar nicht weiter abrutschen!",
-      "anekdote": "Marokko schlug bei der WM 1986 Portugal und erreichte als erste afrikanische Nation ein Achtelfinale. Ihr 4:2 heute gegen Haiti zeigt: Der nordafrikanische Fußball ist eine Macht! Brasilien demontierte Schottland 0:3 - eine Reminiszenz an 1998, als Brasilien Schottland ebenfalls mit 2:1 besiegte und die Schotten weinend nach Hause fuhren.",
+      "headline": "SPIELTAG 15: TOTALES CHAOS - Deutschland BLAMIERT sich in Ecuador!",
+      "sub": "UNFASSBAR! Die DFB-Elf kassiert eine 1:2-Pleite in Ecuador - in der Höhe von Quito! Während Brasilien Scotland mit 3:0 vom Platz fegt und Marokko ein Torfestival gegen Haiti feiert, pennen ALLE Tipper komplett! Null Punkte für NIEMANDEN - das Tippspiel ist genauso tot wie Deutschlands WM-Chancen!",
+      "anekdote": "Ecuador ist für Deutschland ein echtes Angstgegner-Territorium! Bei der WM 2006 wäre die DFB-Elf im Achtelfinale gegen Ecuador beinahe gescheitert - nur ein Tor in der Nachspielzeit durch Miroslav Klose verhinderte das Aus. Die Höhe von Quito (2.850m) macht selbst Weltmeistern die Beine schwer - die dünne Luft kostet bis zu 20% Leistungsfähigkeit!",
       "ticker": [
-        "Marokko mit Torfestival gegen Haiti!",
-        "Brasilien zerlegt Schottland eiskalt 3:0!",
-        "Mexiko lässt Tschechien KEINE Chance!",
-        "Südafrika siegt knapp gegen Südkorea!",
-        "Tippkatastrophe: NIEMAND liegt richtig heute!"
+        "Marokko DEKLASSIERT Haiti mit 4:2 Kantersieg!",
+        "Brasilien macht Scotland PLATT - 3:0 Gala!",
+        "Mexiko ROLLT Tschechien 3:0 vom Rasen!",
+        "SENSATION: Südafrika schlägt Südkorea 1:0!",
+        "Deutschland SCHEITERT in Ecuador - 1:2 Blamage!"
       ]
     }
   }
