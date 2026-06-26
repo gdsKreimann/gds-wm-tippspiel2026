@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "26.06.2026 10:31 Uhr (CEST)",
+    "generiert_am": "26.06.2026 14:12 Uhr (CEST)",
     "aktiver_spieltag": 16,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2444,12 +2444,12 @@
       },
       {
         "heim": {
-          "name": "South Africa",
-          "flag": "🇿🇦"
+          "name": null,
+          "flag": "🏳️"
         },
         "gast": {
-          "name": "Canada",
-          "flag": "🇨🇦"
+          "name": null,
+          "flag": "🏳️"
         },
         "score": "—",
         "status": "upcoming",
@@ -2641,15 +2641,15 @@
       ]
     },
     "16": {
-      "headline": "SPIELTAG 16: TÜRKEI dreht IRRES Spiel gegen USA!",
-      "sub": "Vier Spiele, nur EIN Sieger mit mehr als einem Tor Vorsprung - die Niederlande zeigt's den anderen! Japan und Schweden sowie Paraguay und Australien langweilen mit torlosen Remis, während die Türkei dramatisch mit 3:2 gewinnt. Und wo sind eigentlich alle Tipper? Scheint, als hätte NIEMAND Punkte geholt!",
-      "anekdote": "Die WM 2026 wird die erste mit 48 Teams sein und findet in drei Ländern statt: USA, Kanada und Mexiko. Besonders kurios: Einige Teams werden über 4.000 Kilometer zwischen Spielorten zurücklegen müssen - mehr als die Entfernung von Lissabon nach Moskau! Die Türkei hofft nach 20 Jahren Pause endlich wieder dabei zu sein.",
+      "headline": "SPIELTAG 16: VIER SPIELE, NULL PUNKTE - TOTALES TIPP-DESASTER!",
+      "sub": "Unfassbar! Vier Partien gespielt und KEIN EINZIGER Tipper holt auch nur einen mickrigen Punkt! Die Niederlande feiert einen 3:1-Sieg, die Türkei dreht das Spiel gegen die USA - und unsere Tipp-Experten? Schauen in die Röhre wie Rentner beim ersten Smartphone-Kauf!",
+      "anekdote": "Bei der WM 2002 wurde die Türkei sensationell Dritter - genau wie heute besiegten sie damals die USA im Kleinen Finale mit 3:2! Trainer Senol Günes wurde zur Legende, während die Amerikaner lernten: Gegen die Türken gibt's keine easy wins, auch nicht 24 Jahre später.",
       "ticker": [
-        "Niederlande mit klarem 3:1 gegen Tunesien!",
-        "Japan-Schweden: Gähnende 1:1-Nullnummer!",
-        "TÜRKEI dreht Spiel: 3:2-Thriller gegen USA!",
-        "Paraguay-Australien: 0:0, absolut ideenlos!",
-        "Alle Tipper daneben - NULLRUNDE komplett!"
+        "Oranje marschiert! 3:1 gegen Tunesien",
+        "Japan-Schweden: 1:1, Samurai enttäuschen nicht",
+        "TÜRKEI dreht Spiel! 3:2 USA-Thriller",
+        "Paraguay-Australien: Gähn-Null-Null, alle pennen",
+        "Tipp-Expertisen? Fehlanzeige bei 0 Punkten!"
       ]
     }
   }
