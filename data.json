@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "27.06.2026 19:10 Uhr (CEST)",
+    "generiert_am": "27.06.2026 23:38 Uhr (CEST)",
     "aktiver_spieltag": 17,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2299,9 +2299,9 @@
           "name": "England",
           "flag": "🇬🇧"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "23:00",
+        "score": "0:0",
+        "status": "live",
+        "zeit": "LIVE",
         "datum": "2026-06-27",
         "tipps": []
       },
@@ -2653,15 +2653,15 @@
       ]
     },
     "17": {
-      "headline": "SPIELTAG 17: BELGIUM BALLERT, alle Tipper im TIEFSCHLAF!",
-      "sub": "Vier Spiele gespielt, aber NIEMAND hat auch nur einen einzigen Punkt geholt! Bei diesem Leistungsniveau könnte selbst meine Oma mit verbundenen Augen besser tippen – und die denkt, Abseits wäre ein Möbelhaus!",
-      "anekdote": "Belgiens 5:1-Kantersieg gegen Neuseeland erinnert an die WM 2014, als die Rode Duivels ihre goldene Generation starteten. Damals besiegten sie Algerien mit 2:1, obwohl sie zur Halbzeit zurücklagen – genau wie heute ballern sie sich ins Rampenlicht! Fun Fact: Belgien war 2026 in der Vorrunde nie Gastgeber, spielt aber erstmals in einem erweiterten 48-Teams-Format.",
+      "headline": "SPIELTAG 17: BELGIEN mit TORGALA - Alle Tipper PUNKTELOS!",
+      "sub": "UNFASSBAR! Vier Spiele sind durch und KEINER hat auch nur einen Punkt geholt! Bei der gds GmbH tippt man offenbar mit verbundenen Augen und Dartpfeilen. So viel Expertise wie bei einem Maulwurf im Schießstand!",
+      "anekdote": "Belgiens 5:1-Kantersieg erinnert an die WM 2014, als die belgische Goldene Generation gegen Südkorea ebenfalls mit 1:0 in Führung ging - allerdings brauchten sie damals bis zur 78. Minute für das erste Tor. Gegen Neuseeland ging es offenbar deutlich leichter! Kurios: Auch damals blieb Saudi-Arabien torlos - sie verloren 0:1 gegen Belgien.",
       "ticker": [
-        "Spanien siegt minimal gegen Uruguay!",
-        "Kap Verde und Saudi-Arabien langweilen todesmutig!",
-        "Belgien zerlegt Neuseeland in EINZELTEILE!",
-        "Ägypten und Iran trennen sich unentschieden!",
-        "Tippspiel-Teilnehmer verschlafen KOMPLETTEN Spieltag!"
+        "Spanien siegt knapp gegen Uruguay!",
+        "Kap Verde und Saudi-Arabien langweilen sich",
+        "Belgien ZERLEGT Neuseeland mit FÜNF Toren",
+        "Ägypten und Iran trennen sich remis",
+        "Tipper-Debakel: Niemand sammelt Punkte ein!"
       ]
     }
   }
