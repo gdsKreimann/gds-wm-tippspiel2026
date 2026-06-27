@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "27.06.2026 09:50 Uhr (CEST)",
+    "generiert_am": "27.06.2026 13:36 Uhr (CEST)",
     "aktiver_spieltag": 17,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2200,36 +2200,6 @@
     "16": [
       {
         "heim": {
-          "name": "Norway",
-          "flag": "🇳🇴"
-        },
-        "gast": {
-          "name": "France",
-          "flag": "🇫🇷"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
-        "datum": "2026-06-26",
-        "tipps": []
-      },
-      {
-        "heim": {
-          "name": "Senegal",
-          "flag": "🇸🇳"
-        },
-        "gast": {
-          "name": "Iraq",
-          "flag": "🇮🇶"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
-        "datum": "2026-06-26",
-        "tipps": []
-      },
-      {
-        "heim": {
           "name": "Tunisia",
           "flag": "🇹🇳"
         },
@@ -2283,6 +2253,36 @@
           "flag": "🇦🇺"
         },
         "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-26",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Norway",
+          "flag": "🇳🇴"
+        },
+        "gast": {
+          "name": "France",
+          "flag": "🇫🇷"
+        },
+        "score": "1:4",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-26",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Senegal",
+          "flag": "🇸🇳"
+        },
+        "gast": {
+          "name": "Iraq",
+          "flag": "🇮🇶"
+        },
+        "score": "5:0",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-26",
@@ -2374,7 +2374,7 @@
           "name": "Iran",
           "flag": "🇮🇷"
         },
-        "score": "1:2",
+        "score": "1:1",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-27",
@@ -2653,15 +2653,15 @@
       ]
     },
     "17": {
-      "headline": "CHAOS PUR! Alle bei NULL - Spieltag 17 DESASTRÖS!",
-      "sub": "UNFASSBAR! Vier Spiele gelaufen und KEINER hat auch nur einen einzigen Punkt geholt! Entweder sind die Ergebnisse komplett verrückt oder unsere Tipper haben kollektiv den Verstand verloren. Bei diesem Niveau könnte selbst ein Tintenfisch besser tippen!",
-      "anekdote": "Belgiens 5:1 gegen Neuseeland erinnert an die WM 2014, als die Roten Teufel sensationell ins Viertelfinale stürmten. Damals sagte Trainer Marc Wilmots: 'Wir haben eine goldene Generation.' Und heute? Mit Spielern wie De Bruyne zeigt Belgien wieder, dass sie Tore am Fließband produzieren können - fünf Treffer sind für die Belgier bei großen Turnieren fast schon Routine!",
+      "headline": "BELGIEN ZERLEGT NEUSEELAND! Spanien siegt, Saudi-Arabien enttäuscht KOMPLETT!",
+      "sub": "Spieltag 17 ist durch und WIR HABEN ABSOLUT KEINE AHNUNG wer vorne liegt, weil NIEMAND Punkte hat! Das ist wie Monopoly spielen, aber alle landen nur im Gefängnis!",
+      "anekdote": "Belgiens 5:1-Kantersieg erinnert an die WM 2014, als die Rode Duivels sensationell auftrumpften. Damals schoss Romelu Lukaku gegen Russland 15 Minuten vor Schluss sein erstes WM-Tor - heute würde er bei so einem Ergebnis vermutlich mindestens einen Doppelpack beisteuern. Fun Fact: Neuseeland hat bei WM-Endrunden historisch nur 4 Tore in 23 Spielen erzielt - heute kassierten sie mehr als das!",
       "ticker": [
-        "Spanien siegt knapp gegen Uruguay - 1:0!",
-        "Kap Verde und Saudi-Arabien langweilen null zu null",
-        "Belgien ZERLEGT Neuseeland mit FÜNF Toren!",
-        "Iran dreht Spiel gegen Ägypten sensationell!",
-        "NULLRUNDE! Keiner unserer Tipper trifft heute!"
+        "Spanien knapp aber verdient gegen Uruguay!",
+        "GÄHNALARM: Saudi-Arabien null null Kapverden!",
+        "Belgien im RAUSCH: FÜNF Tore geschossen!",
+        "Neuseeland komplett ÜBERFORDERT gegen Lukaku-Truppe!",
+        "Ägypten-Iran: Torloses Remis nach Führung!"
       ]
     }
   }
