@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "28.06.2026 19:11 Uhr (CEST)",
+    "generiert_am": "28.06.2026 23:38 Uhr (CEST)",
     "aktiver_spieltag": 18,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -134,7 +134,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "7",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -176,18 +176,18 @@
         "name": "Ludger_H",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
-        "rang": "3",
+        "rang": "4",
         "delta": 0
       },
       {
-        "name": "thommes",
+        "name": "Annik",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "5",
         "delta": 0
       },
       {
-        "name": "Annik",
+        "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "6",
@@ -269,7 +269,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 6,
         "pts_gesamt": 14,
-        "rang": "7",
+        "rang": "8",
         "delta": -2
       },
       {
@@ -311,15 +311,15 @@
         "name": "Ludger_H",
         "pts_spieltag": 4,
         "pts_gesamt": 10,
-        "rang": "3",
+        "rang": "4",
         "delta": -2
       },
       {
         "name": "Annik",
         "pts_spieltag": 4,
         "pts_gesamt": 10,
-        "rang": "6",
-        "delta": -1
+        "rang": "5",
+        "delta": -2
       },
       {
         "name": "Conny",
@@ -339,8 +339,8 @@
         "name": "thommes",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "5",
-        "delta": -5
+        "rang": "6",
+        "delta": -4
       },
       {
         "name": "Pottkind",
@@ -404,7 +404,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 14,
         "pts_gesamt": 28,
-        "rang": "7",
+        "rang": "8",
         "delta": -2
       },
       {
@@ -418,7 +418,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 16,
         "pts_gesamt": 26,
-        "rang": "3",
+        "rang": "4",
         "delta": 2
       },
       {
@@ -436,18 +436,18 @@
         "delta": -4
       },
       {
-        "name": "thommes",
-        "pts_spieltag": 16,
-        "pts_gesamt": 24,
-        "rang": "5",
-        "delta": 3
-      },
-      {
         "name": "Annik",
         "pts_spieltag": 14,
         "pts_gesamt": 24,
+        "rang": "5",
+        "delta": 0
+      },
+      {
+        "name": "thommes",
+        "pts_spieltag": 16,
+        "pts_gesamt": 24,
         "rang": "6",
-        "delta": -1
+        "delta": 2
       },
       {
         "name": "JanG",
@@ -497,7 +497,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 22,
         "pts_gesamt": 50,
-        "rang": "7",
+        "rang": "8",
         "delta": 4
       },
       {
@@ -525,8 +525,8 @@
         "name": "Annik",
         "pts_spieltag": 18,
         "pts_gesamt": 42,
-        "rang": "6",
-        "delta": 6
+        "rang": "5",
+        "delta": 5
       },
       {
         "name": "DennisCostaRica",
@@ -553,8 +553,8 @@
         "name": "thommes",
         "pts_spieltag": 14,
         "pts_gesamt": 38,
-        "rang": "5",
-        "delta": 1
+        "rang": "6",
+        "delta": 2
       },
       {
         "name": "UliPausS",
@@ -567,7 +567,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 10,
         "pts_gesamt": 36,
-        "rang": "3",
+        "rang": "4",
         "delta": -4
       },
       {
@@ -618,7 +618,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 10,
         "pts_gesamt": 60,
-        "rang": "7",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -639,7 +639,7 @@
         "name": "Annik",
         "pts_spieltag": 13,
         "pts_gesamt": 55,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -674,14 +674,14 @@
         "name": "thommes",
         "pts_spieltag": 7,
         "pts_gesamt": 45,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 6,
         "pts_gesamt": 42,
-        "rang": "3",
+        "rang": "4",
         "delta": 1
       },
       {
@@ -739,14 +739,14 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 17,
         "pts_gesamt": 77,
-        "rang": "7",
+        "rang": "8",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 71,
-        "rang": "6",
+        "rang": "5",
         "delta": 2
       },
       {
@@ -781,7 +781,7 @@
         "name": "thommes",
         "pts_spieltag": 20,
         "pts_gesamt": 65,
-        "rang": "5",
+        "rang": "6",
         "delta": 2
       },
       {
@@ -802,7 +802,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 15,
         "pts_gesamt": 57,
-        "rang": "3",
+        "rang": "4",
         "delta": 0
       },
       {
@@ -860,7 +860,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 10,
         "pts_gesamt": 87,
-        "rang": "7",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -874,7 +874,7 @@
         "name": "thommes",
         "pts_spieltag": 15,
         "pts_gesamt": 80,
-        "rang": "5",
+        "rang": "6",
         "delta": 4
       },
       {
@@ -888,7 +888,7 @@
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 78,
-        "rang": "6",
+        "rang": "5",
         "delta": -3
       },
       {
@@ -930,7 +930,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 5,
         "pts_gesamt": 62,
-        "rang": "3",
+        "rang": "4",
         "delta": -1
       },
       {
@@ -981,7 +981,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 4,
         "pts_gesamt": 91,
-        "rang": "7",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -1002,7 +1002,7 @@
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 86,
-        "rang": "5",
+        "rang": "6",
         "delta": -1
       },
       {
@@ -1016,7 +1016,7 @@
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 85,
-        "rang": "6",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -1044,7 +1044,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 10,
         "pts_gesamt": 72,
-        "rang": "3",
+        "rang": "4",
         "delta": 1
       },
       {
@@ -1109,21 +1109,21 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 9,
         "pts_gesamt": 100,
-        "rang": "7",
+        "rang": "8",
         "delta": -1
       },
       {
         "name": "Annik",
         "pts_spieltag": 12,
         "pts_gesamt": 97,
-        "rang": "6",
+        "rang": "5",
         "delta": 3
       },
       {
         "name": "thommes",
         "pts_spieltag": 9,
         "pts_gesamt": 95,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -1158,7 +1158,7 @@
         "name": "Ludger_H",
         "pts_spieltag": 16,
         "pts_gesamt": 88,
-        "rang": "3",
+        "rang": "4",
         "delta": 1
       },
       {
@@ -1223,7 +1223,7 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 113,
-        "rang": "6",
+        "rang": "5",
         "delta": 2
       },
       {
@@ -1244,21 +1244,21 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 4,
         "pts_gesamt": 104,
-        "rang": "7",
+        "rang": "8",
         "delta": -2
       },
       {
         "name": "Ludger_H",
         "pts_spieltag": 14,
         "pts_gesamt": 102,
-        "rang": "3",
+        "rang": "4",
         "delta": 4
       },
       {
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 101,
-        "rang": "5",
+        "rang": "6",
         "delta": -2
       },
       {
@@ -2384,21 +2384,6 @@
     "18": [
       {
         "heim": {
-          "name": "South Africa",
-          "flag": "🇿🇦"
-        },
-        "gast": {
-          "name": "Canada",
-          "flag": "🇨🇦"
-        },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
-        "datum": "2026-06-28",
-        "tipps": []
-      },
-      {
-        "heim": {
           "name": "Colombia",
           "flag": "🇨🇴"
         },
@@ -2452,6 +2437,21 @@
           "flag": "🇦🇹"
         },
         "score": "3:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "datum": "2026-06-28",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "South Africa",
+          "flag": "🇿🇦"
+        },
+        "gast": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "score": "0:1",
         "status": "finished",
         "zeit": "Abpfiff",
         "datum": "2026-06-28",
@@ -2665,15 +2665,15 @@
       ]
     },
     "18": {
-      "headline": "NULLRUNDE! Alle bei NULL - Das MEGA-CHAOS beim Spieltag!",
-      "sub": "UNGLAUBLICH! Vier Spiele, vier Chancen, und ALLE liegen bei null Punkten! Colombia-Portugal langweilt sich ins 0:0, während Kongo DR überrascht und Algerien-Österreich im Torrausch endet - aber KEINER hat's kommen sehen! Das ist ja peinlicher als die deutsche Vorrunde 2018!",
-      "anekdote": "Österreich und Algerien trafen bei der WM 1982 in einem der kuriosesten Spiele der Geschichte aufeinander - dem legendären 'Nichtangriffspakt von Gijón'. Deutschland schlug Österreich 1:0, und beide Teams schoben danach 80 Minuten den Ball hin und her, weil das Ergebnis beiden zum Weiterkommen reichte. Algerien schied trotz Sieg gegen Chile aus. Die FIFA führte danach ein: Letzte Gruppenspiele müssen zeitgleich stattfinden!",
+      "headline": "SPIELTAG 18: Fünf Spiele, NULL Punkte - KOMPLETTES DESASTER!",
+      "sub": "Unfassbar! Fünf packende Partien und KEINER hat auch nur einen einzigen Punkt geholt! Die gds-Tipper schaffen es nicht mal, ein 0:0 vorherzusagen. Bei dieser Trefferquote sollten wir vielleicht doch lieber beim Entwickeln bleiben!",
+      "anekdote": "Das 3:3 zwischen Algerien und Österreich erinnert an die WM 1982, als Algerien sensationell Deutschland mit 2:1 besiegte - eines der größten Wunder der WM-Geschichte. Die Österreicher hingegen sind berüchtigt für das 'Nichtangriffspakt von Gijón', als sie und Deutschland 1982 mit einem 1:0 beide weiterkamen, während Algerien ausschied. Diesmal gab es immerhin ehrlichen Offensivfußball mit 6 Toren!",
       "ticker": [
-        "SENSATIONELL! Kongo DR schlägt Usbekistan 3:1!",
-        "Portugal und Colombia: Gähn-Alarm beim 0:0!",
-        "Argentinien macht kurzen Prozess: 3:1 gegen Jordanien!",
-        "Tore-Festival! Algerien und Österreich teilen 3:3!",
-        "Historisch: ALLE Tipper punktlos nach vier Spielen!"
+        "Colombia und Portugal im Nullnummer-Festival",
+        "Kongo DR schockt Usbekistan mit 3:1",
+        "Argentinien marschiert - Jordan chancenlos 1:3",
+        "6-Tore-Spektakel! Algerien teilt mit Österreich",
+        "Kanada siegt knapp in Südafrika 0:1"
       ]
     }
   }
