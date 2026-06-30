@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generiert_am": "30.06.2026 09:51 Uhr (CEST)",
-    "aktiver_spieltag": 4,
+    "generiert_am": "30.06.2026 09:59 Uhr (CEST)",
+    "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
   "spieltage": [
@@ -26,44 +26,44 @@
     {
       "id": 4,
       "label": "Spieltag 4",
-      "aktiv": true,
+      "aktiv": false,
       "zukuenftig": false
     },
     {
       "id": 5,
       "label": "Spieltag 5",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 6,
       "label": "Spieltag 6",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 7,
       "label": "Spieltag 7",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 8,
       "label": "Spieltag 8",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 9,
       "label": "Spieltag 9",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 10,
       "label": "Spieltag 10",
-      "aktiv": false,
-      "zukuenftig": true
+      "aktiv": true,
+      "zukuenftig": false
     }
   ],
   "ranglisten": {
@@ -2754,5 +2754,18 @@
       }
     ]
   },
-  "ki_kommentare": {}
+  "ki_kommentare": {
+    "10": {
+      "headline": "ANNE THRONT UNANTASTBAR – Olli_R sucht noch seinen ERSTEN PUNKT!",
+      "sub": "Spieltag 10 und die Tabelle ist so klar wie Olli_Rs Tippstrategie es nicht ist! Während Anne mit 118 Punkten auf dem Thron sitzt wie Ronaldo vor dem Spiegel, hat Olli_R bisher exakt null Punkte gesammelt – das schafft man statistisch gesehen nur mit einer bemerkenswerten Kombination aus Mut und Ahnungslosigkeit. Pottkind nickt verständnisvoll, denn auch er kennt das Gefühl, als hätte man nie einen Tippschein ausgefüllt!",
+      "anekdote": "Passend zur aktuellen WM-Stimmung: Bei der WM 1950 in Brasilien weigerte sich die uruguayische Mannschaft, ihr Trikot für das entscheidende Finalspiel gegen Brasilien zu tragen – es war schlicht zu groß. Trainer Juan López ließ die Trikots kurzerhand von lokalen Näherinnen über Nacht umnähen. Uruguay gewann 2:1 vor 200.000 fassungslosen Brasilianern im Maracanã. Moral der Geschichte: Manchmal entscheiden die kleinsten Details über Sieg und Niederlage – Olli_R bitte notieren!",
+      "ticker": [
+        "Anne führt mit 118 – Rivalen schwitzen bereits!",
+        "Nur 4 Punkte trennen Platz 1 bis 3!",
+        "Olli_R und Pottkind: Gemeinsam einsam bei null!",
+        "TurboTobiBVB kämpft sich ins Spitzenfeld vor!",
+        "Spieltag 10 startet – JETZT wird alles anders!"
+      ]
+    }
+  }
 }
