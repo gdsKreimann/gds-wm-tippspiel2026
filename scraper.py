@@ -549,87 +549,91 @@ class FootballAPI:
             return []
         matches = r.json().get("matches", [])
         print(f"[Football-API] {len(matches)} Spiele")
+        # Debug: matchday/stage Verteilung loggen
+        md_stages = {}
+        for m in matches:
+            md = m.get("matchday")
+            stage = m.get("stage", "?")
+            key = f"md={md},stage={stage}"
+            md_stages[key] = md_stages.get(key, 0) + 1
+        unique_combos = sorted(set((m.get("matchday"), m.get("stage","?")) for m in matches), key=lambda x: (x[0] or 0))
+        print(f"[Football-API] Matchday/Stage-Kombinationen: {unique_combos}")
         return matches
 
     @staticmethod
     def parse_matches(matches):
         """
-        Ordnet WM-Spiele den Kicktipp-Spieltagen zu.
-        1 Spieltag = 1 Kalendertag (Berliner Zeit/MESZ).
-        Spieltage werden chronologisch nummeriert: ST1 = erster Spieltag, ST2 = zweiter, usw.
-        Gruppenphase: 11.06–28.06 → max. 18 Spieltage (nur Tage mit Spielen zählen).
-        K.o.-Runde ab 29.06 wird ignoriert.
+        Gruppiert football-data.org Spiele nach Kicktipp-Spieltagen.
+
+        WICHTIG: football-data.org's "matchday" zählt bei der WM 2026 NICHT
+        pro Gruppenspieltag, sondern läuft über alle 12 Gruppen verteilt
+        kalendertagbasiert hoch (matchday 1-7 ≈ Gruppenspieltag 1 aller Gruppen,
+        matchday 8-14 ≈ Gruppenspieltag 2, etc. — siehe openfootball.org Daten).
+        Kicktipp hingegen hat nur 10 Spieltage + KO-Runde insgesamt.
+
+        Mapping: 3 Gruppenspieltage (matchday-Block ≈7 je Spieltag) auf
+        Kicktipp-Spieltag 1-3, Rest (R32, R16, QF, SF, Finale) auf 4-10
+        anhand des "stage"-Felds von football-data.
         """
-        GRUPPENPHASE_ENDE = "2026-06-28"
+        STAGE_TO_KICKTIPP_ST = {
+            "GROUP_STAGE":       None,  # wird per matchday-Block berechnet
+            "LAST_32":           4,
+            "ROUND_OF_32":       4,
+            "LAST_16":           5,
+            "ROUND_OF_16":       5,
+            "QUARTER_FINALS":    6,
+            "SEMI_FINALS":       7,
+            "THIRD_PLACE":       8,
+            "FINAL":             9,
+        }
 
-        # Erst alle Gruppenphase-Spiele sammeln und nach Berliner Datum gruppieren
-        by_datum = {}  # "2026-06-11" → [spiel, ...]
+        by_st = {}
         for m in matches:
-            utc = m.get("utcDate", "")
-            if not utc:
-                continue
-            try:
-                dt = datetime.fromisoformat(utc.replace("Z", "+00:00"))
-                dt_berlin = dt.astimezone(BERLIN)
-                datum = dt_berlin.date().isoformat()
-            except Exception:
+            md = m.get("matchday")
+            stage = m.get("stage", "GROUP_STAGE")
+
+            if not md:
                 continue
 
-            # Nur Gruppenphase
-            if datum > GRUPPENPHASE_ENDE:
-                continue
-
-            status_raw = m.get("status", "SCHEDULED")
-            if status_raw == "FINISHED":
-                status = "finished"
-            elif status_raw in ("IN_PLAY", "PAUSED", "HALF_TIME"):
-                status = "live"
-            else:
-                status = "upcoming"
-
-            ft = m.get("score", {}).get("fullTime", {})
-            hg, ag = ft.get("home"), ft.get("away")
-            if status == "finished" and hg is not None:
-                score = f"{hg}:{ag}"
-            elif status == "live":
-                score = f"{hg or 0}:{ag or 0}"
-            else:
-                score = "—"
-
-            try:
-                if status == "finished":
-                    zeit = "Abpfiff"
-                elif status == "live":
-                    zeit = "LIVE"
+            # Kicktipp-Spieltag bestimmen
+            if stage == "GROUP_STAGE" or stage is None:
+                # Gruppenphase: matchday 1-21 (3 Spieltage x 7 Tage je Gruppe gestaffelt)
+                # auf Kicktipp-Spieltag 1-3 mappen (grobe Drittelung)
+                if md <= 7:
+                    kt_spieltag = 1
+                elif md <= 14:
+                    kt_spieltag = 2
                 else:
-                    zeit = dt_berlin.strftime("%H:%M")
-            except Exception:
+                    kt_spieltag = 3
+            else:
+                kt_spieltag = STAGE_TO_KICKTIPP_ST.get(stage, 10)
+
+            status_raw = m.get("status","SCHEDULED")
+            if status_raw == "FINISHED":            status = "finished"
+            elif status_raw in ("IN_PLAY","PAUSED","HALF_TIME"): status = "live"
+            else:                                   status = "upcoming"
+
+            ft = m.get("score",{}).get("fullTime",{})
+            hg, ag = ft.get("home"), ft.get("away")
+            if status == "finished" and hg is not None: score = f"{hg}:{ag}"
+            elif status == "live":                       score = f"{hg or 0}:{ag or 0}"
+            else:                                        score = "—"
+
+            utc = m.get("utcDate","")
+            try:
+                dt = datetime.fromisoformat(utc.replace("Z","+00:00"))
+                dt_loc = dt.astimezone(BERLIN)
+                zeit = "Abpfiff" if status=="finished" else "LIVE" if status=="live" else dt_loc.strftime("%H:%M")
+            except:
                 zeit = utc[:10]
 
-            heim = m.get("homeTeam", {}).get("name", "")
-            gast = m.get("awayTeam", {}).get("name", "")
-            spiel = {
-                "heim":  {"name": heim, "flag": FLAG_MAP.get(heim, "🏳️")},
-                "gast":  {"name": gast, "flag": FLAG_MAP.get(gast, "🏳️")},
-                "score": score, "status": status, "zeit": zeit,
-                "datum": datum,  # für Sortierung
-                "tipps": [],
-            }
-            by_datum.setdefault(datum, []).append(spiel)
-
-        # Innerhalb jedes Tages nach Uhrzeit sortieren (live zuerst, dann finished, dann upcoming)
-        STATUS_ORDER = {"live": 0, "upcoming": 1, "finished": 2}
-        for datum in by_datum:
-            by_datum[datum].sort(key=lambda s: (STATUS_ORDER.get(s["status"], 9), s["zeit"]))
-
-        # Tage chronologisch nummerieren → Spieltag-IDs
-        tage_sortiert = sorted(by_datum.keys())
-        by_st = {}
-        for st_nr, datum in enumerate(tage_sortiert, start=1):
-            by_st[st_nr] = by_datum[datum]
-
-        print(f"[Football-API] {len(by_st)} Spieltage (Tage): " +
-              ", ".join(f"ST{k}={tage_sortiert[k-1]}" for k in sorted(by_st.keys())))
+            heim = m.get("homeTeam",{}).get("name","")
+            gast = m.get("awayTeam",{}).get("name","")
+            by_st.setdefault(kt_spieltag,[]).append({
+                "heim":  {"name":heim, "flag":FLAG_MAP.get(heim,"🏳️")},
+                "gast":  {"name":gast, "flag":FLAG_MAP.get(gast,"🏳️")},
+                "score": score, "status": status, "zeit": zeit, "tipps": [],
+            })
         return by_st
 
 
@@ -713,46 +717,24 @@ def main():
             print(f"[Info] Spieltag {st_id}: noch keine Spiele gestartet")
 
     # 5. Aktiven Spieltag bestimmen
-    # Aktiver Spieltag = letzter Spieltag mit mindestens einem gestarteten Spiel.
-    # Spieltage mit Spieldaten aber noch keinem Ergebnis sind "zukuenftig=False" —
-    # sie sind klickbar aber noch nicht aktiv (d.h. Fokus liegt auf dem aktiven ST).
+    # football-data.org zählt jeden Turniertag als eigenen matchday (bis zu 18+),
+    # Kicktipp gruppiert mehrere Tage zu einem Spieltag (hier: 10 reguläre + KO-Runde).
+    # Der aktive Spieltag darf NIE höher sein als die höchste Kicktipp-Rangliste-Spalte,
+    # sonst zeigt die App einen "Spieltag" der in der Rangliste gar nicht existiert.
+    max_kicktipp_st = max(rangliste.keys()) if rangliste else 1
+
     aktiver_st = 1
     for st_id in sorted(spiele_by_spieltag.keys()):
-        spiele_st = spiele_by_spieltag[st_id]
-        if any(s["status"] in ("finished", "live") for s in spiele_st):
+        spiele = spiele_by_spieltag[st_id]
+        if any(s["status"] in ("finished", "live") for s in spiele):
             aktiver_st = st_id
-    print(f"[Info] Aktiver Spieltag: {aktiver_st}")
+    aktiver_st = min(aktiver_st, max_kicktipp_st)
+    print(f"[Info] Aktiver Spieltag (football-data): {aktiver_st}, gecappt auf max. {max_kicktipp_st} (Kicktipp-Spalten)")
 
-    # Alle Spieltage die entweder Ranglisten- ODER Spieldaten haben
     alle_st = sorted(set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())))
-
-    spieltag_meta = []
-    for i in alle_st:
-        spiele_i = spiele_by_spieltag.get(i, [])
-        hat_ergebnisse = any(s["status"] in ("finished", "live") for s in spiele_i)
-        hat_spiele     = bool(spiele_i)
-        # gesperrt = hat Spieldaten aber noch kein einziges gestartet/beendet
-        # ODER hat gar keine Spieldaten
-        zukuenftig = not hat_ergebnisse
-
-        # Datum-Label aus dem datum-Feld des ersten Spiels
-        label = f"Spieltag {i}"
-        if spiele_i:
-            datum_iso = spiele_i[0].get("datum", "")
-            if datum_iso:
-                try:
-                    from datetime import date as _date
-                    d = _date.fromisoformat(datum_iso)
-                    label = d.strftime("%-d. %b")  # z.B. "11. Jun"
-                except Exception:
-                    pass
-
-        spieltag_meta.append({
-            "id":         i,
-            "label":      label,
-            "aktiv":      i == aktiver_st,
-            "zukuenftig": zukuenftig,
-        })
+    spieltag_meta = [{"id":i,"label":f"Spieltag {i}",
+                      "aktiv":i==aktiver_st,"zukuenftig":i>aktiver_st}
+                     for i in alle_st]
 
     # 6. KI-Kommentare generieren (Anthropic API)
     # Bestehende Kommentare laden damit Vortage nicht neu generiert werden
@@ -764,60 +746,44 @@ def main():
         except:
             pass
 
-    anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not anthropic_key:
-        print(f"[KI] ANTHROPIC_API_KEY nicht gesetzt — kein KI-Kommentar")
+    if api_key:  # Anthropic Key wird als FOOTBALL_API_KEY nicht genutzt — eigener Key
+        anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
+        if anthropic_key and str(aktiver_st) not in ki_kommentare:
+            print(f"[KI] Generiere Kommentar für Spieltag {aktiver_st}...")
+            try:
+                rl = rangliste.get(aktiver_st, [])
+                fuehrender = rl[0]["name"] if rl else "—"
+                fuehrender_pts = rl[0]["pts_gesamt"] if rl else 0
+                letzter = rl[-1]["name"] if rl else "—"
+                spiele_txt = ", ".join(
+                    f"{s['heim']['name']} {s['score']} {s['gast']['name']}"
+                    for s in spiele_by_spieltag.get(aktiver_st, [])
+                    if s["status"] == "finished"
+                )
+                alle_tipper = ", ".join(
+                    f"{p['name']} ({p['pts_gesamt']} Pkt)"
+                    for p in rl
+                )
+                prompt = f"""Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
+Analysiere Spieltag {aktiver_st} und erstelle einen tagesfrischen Kommentar.
 
-    if anthropic_key:
-        import urllib.request
-
-        def generiere_ki_kommentar(st_id: int) -> bool:
-            """Generiert KI-Kommentar für einen Spieltag. Gibt True bei Erfolg zurück."""
-            rl = rangliste.get(st_id, rangliste.get(str(st_id), []))
-            spiele_st = spiele_by_spieltag.get(st_id, [])
-
-            fuehrender = rl[0]["name"] if rl else "—"
-            fuehrender_pts = rl[0]["pts_gesamt"] if rl else 0
-            letzter = rl[-1]["name"] if rl else "—"
-            spiele_txt = ", ".join(
-                f"{s['heim']['name']} {s['score']} {s['gast']['name']}"
-                for s in spiele_st
-                if s["status"] == "finished"
-            )
-            alle_tipper = ", ".join(
-                f"{p['name']} ({p['pts_gesamt']} Pkt)"
-                for p in rl
-            )
-            # Bestimme ob Spieltag bereits aktiv war oder noch in der Zukunft liegt
-            hat_ergebnisse = bool(spiele_txt)
-            context_hinweis = (
-                f"Spieltag {st_id} hat bereits abgeschlossene Spiele."
-                if hat_ergebnisse
-                else f"Spieltag {st_id} steht noch bevor — die Tipps sind abgegeben aber kein Spiel ist gestartet."
-            )
-
-            prompt = f"""Du bist ein hyperventilierender RTL-Sport-Kommentator beim internen gds GmbH WM Tippspiel 2026.
-Analysiere Spieltag {st_id} und erstelle einen tagesfrischen Kommentar.
-
-{context_hinweis}
-
-Aktueller Tabellenstand:
+Aktueller Stand:
 - Führender: {fuehrender} mit {fuehrender_pts} Punkten
 - Letzter: {letzter}
-- Abgeschlossene Spiele dieses Spieltags: {spiele_txt or 'noch keine'}
-- Alle Tipper mit Punkten: {alle_tipper}
+- Abgeschlossene Spiele: {spiele_txt or 'noch keine'}
+- Alle Tipper: {alle_tipper}
 
 Erstelle:
 1. "headline": Dramatische Schlagzeile max. 12 Wörter, CAPS für Highlights
 2. "sub": Witziger Kommentar 2-3 Sätze, gerne auf Kosten des Letzten
-3. "anekdote": Echte interessante Fußball-Anekdote passend zu den Spielen (oder WM 2026 allgemein wenn noch keine Spiele)
+3. "anekdote": Echte interessante Fußball-Anekdote passend zu den Spielen
 4. "ticker": Array mit 5 kurzen Ticker-Meldungen (je max. 8 Wörter)
 
 Nur JSON, kein Markdown: {{"headline":"...","sub":"...","anekdote":"...","ticker":["...","...","...","...","..."]}}"""
 
-            try:
+                import urllib.request
                 req_data = json.dumps({
-                    "model": "claude-sonnet-4-5",
+                    "model": "claude-sonnet-4-20250514",
                     "max_tokens": 1000,
                     "messages": [{"role": "user", "content": prompt}]
                 }).encode("utf-8")
@@ -834,57 +800,14 @@ Nur JSON, kein Markdown: {{"headline":"...","sub":"...","anekdote":"...","ticker
                     result = json.loads(resp.read())
                 txt = result["content"][0]["text"]
                 parsed = json.loads(txt.replace("```json","").replace("```","").strip())
-                ki_kommentare[str(st_id)] = parsed
-                print(f"[KI] ✓ Spieltag {st_id}: {parsed['headline'][:60]}...")
-                return True
+                ki_kommentare[str(aktiver_st)] = parsed
+                print(f"[KI] ✓ Kommentar generiert: {parsed['headline'][:50]}...")
             except Exception as e:
-                print(f"[KI] Fehler Spieltag {st_id}: {e}")
-                return False
-
-        # KI-Kommentar-Strategie:
-        # - Aktiver Spieltag: IMMER neu generieren (Führender kann sich täglich ändern)
-        # - Vergangene Spieltage: nur generieren wenn noch kein Kommentar vorhanden (einmalig)
-        # - Zukünftige Spieltage (zukuenftig=True): nie generieren
-        gesperrte_st = {
-            st["id"] for st in spieltag_meta if st.get("zukuenftig", True)
-        }
-
-        spieltage_mit_daten = sorted(
-            set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())),
-            key=lambda x: (x != aktiver_st, x)  # aktiver_st zuerst
-        )
-        for st_id_raw in spieltage_mit_daten:
-            st_id = int(st_id_raw)
-
-            # Gesperrte (Zukunfts-)Spieltage überspringen
-            if st_id in gesperrte_st:
-                print(f"[KI] Spieltag {st_id}: gesperrt (Zukunft) — übersprungen")
-                continue
-
-            # Aktiver Spieltag → immer frisch generieren (löscht alten Cache-Eintrag)
-            if st_id == aktiver_st:
-                if str(st_id) in ki_kommentare:
-                    print(f"[KI] Spieltag {st_id} (aktiv): Cache löschen, generiere frisch...")
-                    del ki_kommentare[str(st_id)]
-                else:
-                    print(f"[KI] Spieltag {st_id} (aktiv): generiere...")
-                generiere_ki_kommentar(st_id)
-                continue
-
-            # Vergangene Spieltage → nur einmalig generieren
-            if str(st_id) in ki_kommentare:
-                print(f"[KI] Spieltag {st_id}: Kommentar vorhanden — übersprungen")
-                continue
-
-            hat_rangliste = bool(rangliste.get(st_id) or rangliste.get(str(st_id)))
-            hat_spiele    = bool(spiele_by_spieltag.get(st_id))
-            if not hat_rangliste and not hat_spiele:
-                print(f"[KI] Spieltag {st_id}: keine Daten — übersprungen")
-                continue
-
-            print(f"[KI] Spieltag {st_id} (vergangen): generiere einmalig...")
-            generiere_ki_kommentar(st_id)
-            time.sleep(2)  # Pause zwischen vergangenen Spieltagen
+                print(f"[KI] Fehler: {e}")
+        elif str(aktiver_st) in ki_kommentare:
+            print(f"[KI] Kommentar für Spieltag {aktiver_st} bereits vorhanden — übersprungen")
+        else:
+            print(f"[KI] ANTHROPIC_API_KEY nicht gesetzt — kein KI-Kommentar")
 
     # 7. data.json schreiben
     output = {
@@ -900,11 +823,6 @@ Nur JSON, kein Markdown: {{"headline":"...","sub":"...","anekdote":"...","ticker
     }
     with open(OUTPUT_FILE,"w",encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-
-    # datum-Feld aus Spielen entfernen (nur intern für Label-Berechnung gebraucht)
-    for st_spiele in spiele_by_spieltag.values():
-        for s in st_spiele:
-            s.pop("datum", None)
 
     n_spiele = sum(len(v) for v in spiele_by_spieltag.values())
     print(f"✓ {OUTPUT_FILE} — {len(rangliste)} Spieltag-Ranglisten, {n_spiele} Spiele, {len(ki_kommentare)} KI-Kommentare")
