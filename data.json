@@ -1,33 +1,33 @@
 {
   "meta": {
-    "generiert_am": "30.06.2026 09:44 Uhr (CEST)",
-    "aktiver_spieltag": 1,
+    "generiert_am": "30.06.2026 09:47 Uhr (CEST)",
+    "aktiver_spieltag": 4,
     "quelle": "gds-wm-tippspiel2026"
   },
   "spieltage": [
     {
       "id": 1,
       "label": "Spieltag 1",
-      "aktiv": true,
+      "aktiv": false,
       "zukuenftig": false
     },
     {
       "id": 2,
       "label": "Spieltag 2",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 3,
       "label": "Spieltag 3",
       "aktiv": false,
-      "zukuenftig": true
+      "zukuenftig": false
     },
     {
       "id": 4,
       "label": "Spieltag 4",
-      "aktiv": false,
-      "zukuenftig": true
+      "aktiv": true,
+      "zukuenftig": false
     },
     {
       "id": 5,
@@ -1615,7 +1615,9 @@
         "status": "finished",
         "zeit": "Abpfiff",
         "tipps": []
-      },
+      }
+    ],
+    "2": [
       {
         "heim": {
           "name": "Czechia",
@@ -1951,7 +1953,9 @@
         "status": "finished",
         "zeit": "Abpfiff",
         "tipps": []
-      },
+      }
+    ],
+    "3": [
       {
         "heim": {
           "name": "Switzerland",
@@ -2286,6 +2290,466 @@
         "score": "3:3",
         "status": "finished",
         "zeit": "Abpfiff",
+        "tipps": []
+      }
+    ],
+    "4": [
+      {
+        "heim": {
+          "name": "South Africa",
+          "flag": "🇿🇦"
+        },
+        "gast": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Brazil",
+          "flag": "🇧🇷"
+        },
+        "gast": {
+          "name": "Japan",
+          "flag": "🇯🇵"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Germany",
+          "flag": "🇩🇪"
+        },
+        "gast": {
+          "name": "Paraguay",
+          "flag": "🇵🇾"
+        },
+        "score": "4:5",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Netherlands",
+          "flag": "🇳🇱"
+        },
+        "gast": {
+          "name": "Morocco",
+          "flag": "🇲🇦"
+        },
+        "score": "3:4",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Ivory Coast",
+          "flag": "🇨🇮"
+        },
+        "gast": {
+          "name": "Norway",
+          "flag": "🇳🇴"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "19:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "France",
+          "flag": "🇫🇷"
+        },
+        "gast": {
+          "name": "Sweden",
+          "flag": "🇸🇪"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "23:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Mexico",
+          "flag": "🇲🇽"
+        },
+        "gast": {
+          "name": "Ecuador",
+          "flag": "🇪🇨"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "03:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "England",
+          "flag": "🇬🇧"
+        },
+        "gast": {
+          "name": "Congo DR",
+          "flag": "🇨🇩"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "18:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Belgium",
+          "flag": "🇧🇪"
+        },
+        "gast": {
+          "name": "Senegal",
+          "flag": "🇸🇳"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "22:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "United States",
+          "flag": "🇺🇸"
+        },
+        "gast": {
+          "name": "Bosnia-Herzegovina",
+          "flag": "🇧🇦"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "02:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Spain",
+          "flag": "🇪🇸"
+        },
+        "gast": {
+          "name": "Austria",
+          "flag": "🇦🇹"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Portugal",
+          "flag": "🇵🇹"
+        },
+        "gast": {
+          "name": "Croatia",
+          "flag": "🇭🇷"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "01:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Switzerland",
+          "flag": "🇨🇭"
+        },
+        "gast": {
+          "name": "Algeria",
+          "flag": "🇩🇿"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "05:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Australia",
+          "flag": "🇦🇺"
+        },
+        "gast": {
+          "name": "Egypt",
+          "flag": "🇪🇬"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "20:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Argentina",
+          "flag": "🇦🇷"
+        },
+        "gast": {
+          "name": "Cape Verde Islands",
+          "flag": "🇨🇻"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "00:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Colombia",
+          "flag": "🇨🇴"
+        },
+        "gast": {
+          "name": "Ghana",
+          "flag": "🇬🇭"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "03:30",
+        "tipps": []
+      }
+    ],
+    "5": [
+      {
+        "heim": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "gast": {
+          "name": "Morocco",
+          "flag": "🇲🇦"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "19:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Paraguay",
+          "flag": "🇵🇾"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "23:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Brazil",
+          "flag": "🇧🇷"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "22:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "02:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "02:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "18:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "22:00",
+        "tipps": []
+      }
+    ],
+    "6": [
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "22:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "23:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "03:00",
+        "tipps": []
+      }
+    ],
+    "7": [
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
+        "tipps": []
+      }
+    ],
+    "8": [
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "23:00",
+        "tipps": []
+      }
+    ],
+    "9": [
+      {
+        "heim": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": null,
+          "flag": "🏳️"
+        },
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "21:00",
         "tipps": []
       }
     ]
