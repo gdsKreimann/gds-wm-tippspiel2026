@@ -1,117 +1,69 @@
 {
   "meta": {
-    "generiert_am": "29.06.2026 23:52 Uhr (CEST)",
+    "generiert_am": "30.06.2026 09:44 Uhr (CEST)",
     "aktiver_spieltag": 1,
     "quelle": "gds-wm-tippspiel2026"
   },
   "spieltage": [
     {
       "id": 1,
-      "label": "11. Jun",
-      "aktiv": false,
+      "label": "Spieltag 1",
+      "aktiv": true,
       "zukuenftig": false
     },
     {
       "id": 2,
-      "label": "12. Jun",
+      "label": "Spieltag 2",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 3,
-      "label": "13. Jun",
+      "label": "Spieltag 3",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 4,
-      "label": "14. Jun",
+      "label": "Spieltag 4",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 5,
-      "label": "15. Jun",
+      "label": "Spieltag 5",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 6,
-      "label": "16. Jun",
+      "label": "Spieltag 6",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 7,
-      "label": "17. Jun",
+      "label": "Spieltag 7",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 8,
-      "label": "18. Jun",
+      "label": "Spieltag 8",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 9,
-      "label": "19. Jun",
+      "label": "Spieltag 9",
       "aktiv": false,
-      "zukuenftig": false
+      "zukuenftig": true
     },
     {
       "id": 10,
-      "label": "20. Jun",
+      "label": "Spieltag 10",
       "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 11,
-      "label": "21. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 12,
-      "label": "22. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 13,
-      "label": "23. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 14,
-      "label": "24. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 15,
-      "label": "25. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 16,
-      "label": "26. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 17,
-      "label": "27. Jun",
-      "aktiv": false,
-      "zukuenftig": false
-    },
-    {
-      "id": 18,
-      "label": "28. Jun",
-      "aktiv": true,
-      "zukuenftig": false
+      "zukuenftig": true
     }
   ],
   "ranglisten": {
@@ -141,7 +93,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "10",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -180,14 +132,14 @@
         "delta": 0
       },
       {
-        "name": "Annik",
+        "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "5",
         "delta": 0
       },
       {
-        "name": "thommes",
+        "name": "Annik",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "6",
@@ -211,7 +163,7 @@
         "name": "Helmut",
         "pts_spieltag": 5,
         "pts_gesamt": 5,
-        "rang": "9",
+        "rang": "10",
         "delta": 0
       },
       {
@@ -276,7 +228,7 @@
         "name": "Helmut",
         "pts_spieltag": 8,
         "pts_gesamt": 13,
-        "rang": "9",
+        "rang": "10",
         "delta": 8
       },
       {
@@ -290,7 +242,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 4,
         "pts_gesamt": 12,
-        "rang": "10",
+        "rang": "9",
         "delta": -4
       },
       {
@@ -318,8 +270,8 @@
         "name": "Annik",
         "pts_spieltag": 4,
         "pts_gesamt": 10,
-        "rang": "5",
-        "delta": -2
+        "rang": "6",
+        "delta": -1
       },
       {
         "name": "Conny",
@@ -339,8 +291,8 @@
         "name": "thommes",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "6",
-        "delta": -4
+        "rang": "5",
+        "delta": -5
       },
       {
         "name": "Pottkind",
@@ -387,18 +339,18 @@
         "delta": -2
       },
       {
-        "name": "Helmut",
-        "pts_spieltag": 16,
-        "pts_gesamt": 29,
-        "rang": "9",
-        "delta": 1
-      },
-      {
         "name": "DennisCostaRica",
         "pts_spieltag": 17,
         "pts_gesamt": 29,
+        "rang": "9",
+        "delta": 3
+      },
+      {
+        "name": "Helmut",
+        "pts_spieltag": 16,
+        "pts_gesamt": 29,
         "rang": "10",
-        "delta": 2
+        "delta": 0
       },
       {
         "name": "Hanne_Sobek",
@@ -436,18 +388,18 @@
         "delta": -4
       },
       {
-        "name": "Annik",
-        "pts_spieltag": 14,
-        "pts_gesamt": 24,
-        "rang": "5",
-        "delta": 0
-      },
-      {
         "name": "thommes",
         "pts_spieltag": 16,
         "pts_gesamt": 24,
+        "rang": "5",
+        "delta": 3
+      },
+      {
+        "name": "Annik",
+        "pts_spieltag": 14,
+        "pts_gesamt": 24,
         "rang": "6",
-        "delta": 2
+        "delta": -1
       },
       {
         "name": "JanG",
@@ -511,8 +463,8 @@
         "name": "Helmut",
         "pts_spieltag": 17,
         "pts_gesamt": 46,
-        "rang": "9",
-        "delta": 0
+        "rang": "10",
+        "delta": 1
       },
       {
         "name": "Captain",
@@ -525,15 +477,15 @@
         "name": "Annik",
         "pts_spieltag": 18,
         "pts_gesamt": 42,
-        "rang": "5",
-        "delta": 5
+        "rang": "6",
+        "delta": 6
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 40,
-        "rang": "10",
-        "delta": -2
+        "rang": "9",
+        "delta": -3
       },
       {
         "name": "TurboTobiBVB",
@@ -553,8 +505,8 @@
         "name": "thommes",
         "pts_spieltag": 14,
         "pts_gesamt": 38,
-        "rang": "6",
-        "delta": 2
+        "rang": "5",
+        "delta": 1
       },
       {
         "name": "UliPausS",
@@ -632,14 +584,14 @@
         "name": "Helmut",
         "pts_spieltag": 10,
         "pts_gesamt": 56,
-        "rang": "9",
+        "rang": "10",
         "delta": 0
       },
       {
         "name": "Annik",
         "pts_spieltag": 13,
         "pts_gesamt": 55,
-        "rang": "5",
+        "rang": "6",
         "delta": 1
       },
       {
@@ -653,7 +605,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 51,
-        "rang": "10",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -674,7 +626,7 @@
         "name": "thommes",
         "pts_spieltag": 7,
         "pts_gesamt": 45,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -746,7 +698,7 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 71,
-        "rang": "5",
+        "rang": "6",
         "delta": 2
       },
       {
@@ -760,7 +712,7 @@
         "name": "Helmut",
         "pts_spieltag": 13,
         "pts_gesamt": 69,
-        "rang": "9",
+        "rang": "10",
         "delta": -1
       },
       {
@@ -781,7 +733,7 @@
         "name": "thommes",
         "pts_spieltag": 20,
         "pts_gesamt": 65,
-        "rang": "6",
+        "rang": "5",
         "delta": 2
       },
       {
@@ -795,7 +747,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 12,
         "pts_gesamt": 63,
-        "rang": "10",
+        "rang": "9",
         "delta": -3
       },
       {
@@ -874,7 +826,7 @@
         "name": "thommes",
         "pts_spieltag": 15,
         "pts_gesamt": 80,
-        "rang": "6",
+        "rang": "5",
         "delta": 4
       },
       {
@@ -888,7 +840,7 @@
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 78,
-        "rang": "5",
+        "rang": "6",
         "delta": -3
       },
       {
@@ -902,14 +854,14 @@
         "name": "Helmut",
         "pts_spieltag": 8,
         "pts_gesamt": 77,
-        "rang": "9",
+        "rang": "10",
         "delta": -3
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 74,
-        "rang": "10",
+        "rang": "9",
         "delta": 1
       },
       {
@@ -995,14 +947,14 @@
         "name": "Helmut",
         "pts_spieltag": 10,
         "pts_gesamt": 87,
-        "rang": "9",
+        "rang": "10",
         "delta": 4
       },
       {
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 86,
-        "rang": "6",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -1016,7 +968,7 @@
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 85,
-        "rang": "5",
+        "rang": "6",
         "delta": -1
       },
       {
@@ -1030,7 +982,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 6,
         "pts_gesamt": 80,
-        "rang": "10",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -1116,14 +1068,14 @@
         "name": "Annik",
         "pts_spieltag": 12,
         "pts_gesamt": 97,
-        "rang": "5",
+        "rang": "6",
         "delta": 3
       },
       {
         "name": "thommes",
         "pts_spieltag": 9,
         "pts_gesamt": 95,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -1137,7 +1089,7 @@
         "name": "Helmut",
         "pts_spieltag": 4,
         "pts_gesamt": 91,
-        "rang": "9",
+        "rang": "10",
         "delta": -3
       },
       {
@@ -1151,7 +1103,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 9,
         "pts_gesamt": 89,
-        "rang": "10",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -1223,7 +1175,7 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 113,
-        "rang": "5",
+        "rang": "6",
         "delta": 2
       },
       {
@@ -1237,7 +1189,7 @@
         "name": "Helmut",
         "pts_spieltag": 14,
         "pts_gesamt": 105,
-        "rang": "9",
+        "rang": "10",
         "delta": 3
       },
       {
@@ -1258,7 +1210,7 @@
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 101,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
@@ -1279,7 +1231,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 100,
-        "rang": "10",
+        "rang": "9",
         "delta": -1
       },
       {
@@ -1326,7 +1278,1018 @@
       }
     ]
   },
-  "spiele": {},
+  "spiele": {
+    "1": [
+      {
+        "heim": {
+          "name": "Mexico",
+          "flag": "🇲🇽"
+        },
+        "gast": {
+          "name": "South Africa",
+          "flag": "🇿🇦"
+        },
+        "score": "2:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "South Korea",
+          "flag": "🇰🇷"
+        },
+        "gast": {
+          "name": "Czechia",
+          "flag": "🇨🇿"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "gast": {
+          "name": "Bosnia-Herzegovina",
+          "flag": "🇧🇦"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "United States",
+          "flag": "🇺🇸"
+        },
+        "gast": {
+          "name": "Paraguay",
+          "flag": "🇵🇾"
+        },
+        "score": "4:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Qatar",
+          "flag": "🇶🇦"
+        },
+        "gast": {
+          "name": "Switzerland",
+          "flag": "🇨🇭"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Brazil",
+          "flag": "🇧🇷"
+        },
+        "gast": {
+          "name": "Morocco",
+          "flag": "🇲🇦"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Haiti",
+          "flag": "🇭🇹"
+        },
+        "gast": {
+          "name": "Scotland",
+          "flag": "🏴"
+        },
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Australia",
+          "flag": "🇦🇺"
+        },
+        "gast": {
+          "name": "Turkey",
+          "flag": "🇹🇷"
+        },
+        "score": "2:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Germany",
+          "flag": "🇩🇪"
+        },
+        "gast": {
+          "name": "Curaçao",
+          "flag": "🏳️"
+        },
+        "score": "7:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Netherlands",
+          "flag": "🇳🇱"
+        },
+        "gast": {
+          "name": "Japan",
+          "flag": "🇯🇵"
+        },
+        "score": "2:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Ivory Coast",
+          "flag": "🇨🇮"
+        },
+        "gast": {
+          "name": "Ecuador",
+          "flag": "🇪🇨"
+        },
+        "score": "1:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Sweden",
+          "flag": "🇸🇪"
+        },
+        "gast": {
+          "name": "Tunisia",
+          "flag": "🇹🇳"
+        },
+        "score": "5:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Spain",
+          "flag": "🇪🇸"
+        },
+        "gast": {
+          "name": "Cape Verde Islands",
+          "flag": "🇨🇻"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Belgium",
+          "flag": "🇧🇪"
+        },
+        "gast": {
+          "name": "Egypt",
+          "flag": "🇪🇬"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Saudi Arabia",
+          "flag": "🇸🇦"
+        },
+        "gast": {
+          "name": "Uruguay",
+          "flag": "🇺🇾"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Iran",
+          "flag": "🇮🇷"
+        },
+        "gast": {
+          "name": "New Zealand",
+          "flag": "🇳🇿"
+        },
+        "score": "2:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "France",
+          "flag": "🇫🇷"
+        },
+        "gast": {
+          "name": "Senegal",
+          "flag": "🇸🇳"
+        },
+        "score": "3:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Iraq",
+          "flag": "🇮🇶"
+        },
+        "gast": {
+          "name": "Norway",
+          "flag": "🇳🇴"
+        },
+        "score": "1:4",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Argentina",
+          "flag": "🇦🇷"
+        },
+        "gast": {
+          "name": "Algeria",
+          "flag": "🇩🇿"
+        },
+        "score": "3:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Austria",
+          "flag": "🇦🇹"
+        },
+        "gast": {
+          "name": "Jordan",
+          "flag": "🇯🇴"
+        },
+        "score": "3:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Portugal",
+          "flag": "🇵🇹"
+        },
+        "gast": {
+          "name": "Congo DR",
+          "flag": "🇨🇩"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "England",
+          "flag": "🇬🇧"
+        },
+        "gast": {
+          "name": "Croatia",
+          "flag": "🇭🇷"
+        },
+        "score": "4:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Ghana",
+          "flag": "🇬🇭"
+        },
+        "gast": {
+          "name": "Panama",
+          "flag": "🇵🇦"
+        },
+        "score": "1:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Uzbekistan",
+          "flag": "🇺🇿"
+        },
+        "gast": {
+          "name": "Colombia",
+          "flag": "🇨🇴"
+        },
+        "score": "1:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Czechia",
+          "flag": "🇨🇿"
+        },
+        "gast": {
+          "name": "South Africa",
+          "flag": "🇿🇦"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Switzerland",
+          "flag": "🇨🇭"
+        },
+        "gast": {
+          "name": "Bosnia-Herzegovina",
+          "flag": "🇧🇦"
+        },
+        "score": "4:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "gast": {
+          "name": "Qatar",
+          "flag": "🇶🇦"
+        },
+        "score": "6:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Mexico",
+          "flag": "🇲🇽"
+        },
+        "gast": {
+          "name": "South Korea",
+          "flag": "🇰🇷"
+        },
+        "score": "1:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "United States",
+          "flag": "🇺🇸"
+        },
+        "gast": {
+          "name": "Australia",
+          "flag": "🇦🇺"
+        },
+        "score": "2:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Scotland",
+          "flag": "🏴"
+        },
+        "gast": {
+          "name": "Morocco",
+          "flag": "🇲🇦"
+        },
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Brazil",
+          "flag": "🇧🇷"
+        },
+        "gast": {
+          "name": "Haiti",
+          "flag": "🇭🇹"
+        },
+        "score": "3:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Turkey",
+          "flag": "🇹🇷"
+        },
+        "gast": {
+          "name": "Paraguay",
+          "flag": "🇵🇾"
+        },
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Netherlands",
+          "flag": "🇳🇱"
+        },
+        "gast": {
+          "name": "Sweden",
+          "flag": "🇸🇪"
+        },
+        "score": "5:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Germany",
+          "flag": "🇩🇪"
+        },
+        "gast": {
+          "name": "Ivory Coast",
+          "flag": "🇨🇮"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Ecuador",
+          "flag": "🇪🇨"
+        },
+        "gast": {
+          "name": "Curaçao",
+          "flag": "🏳️"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Tunisia",
+          "flag": "🇹🇳"
+        },
+        "gast": {
+          "name": "Japan",
+          "flag": "🇯🇵"
+        },
+        "score": "0:4",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Spain",
+          "flag": "🇪🇸"
+        },
+        "gast": {
+          "name": "Saudi Arabia",
+          "flag": "🇸🇦"
+        },
+        "score": "4:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Belgium",
+          "flag": "🇧🇪"
+        },
+        "gast": {
+          "name": "Iran",
+          "flag": "🇮🇷"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Uruguay",
+          "flag": "🇺🇾"
+        },
+        "gast": {
+          "name": "Cape Verde Islands",
+          "flag": "🇨🇻"
+        },
+        "score": "2:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "New Zealand",
+          "flag": "🇳🇿"
+        },
+        "gast": {
+          "name": "Egypt",
+          "flag": "🇪🇬"
+        },
+        "score": "1:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Argentina",
+          "flag": "🇦🇷"
+        },
+        "gast": {
+          "name": "Austria",
+          "flag": "🇦🇹"
+        },
+        "score": "2:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "France",
+          "flag": "🇫🇷"
+        },
+        "gast": {
+          "name": "Iraq",
+          "flag": "🇮🇶"
+        },
+        "score": "3:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Norway",
+          "flag": "🇳🇴"
+        },
+        "gast": {
+          "name": "Senegal",
+          "flag": "🇸🇳"
+        },
+        "score": "3:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Jordan",
+          "flag": "🇯🇴"
+        },
+        "gast": {
+          "name": "Algeria",
+          "flag": "🇩🇿"
+        },
+        "score": "1:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Portugal",
+          "flag": "🇵🇹"
+        },
+        "gast": {
+          "name": "Uzbekistan",
+          "flag": "🇺🇿"
+        },
+        "score": "5:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "England",
+          "flag": "🇬🇧"
+        },
+        "gast": {
+          "name": "Ghana",
+          "flag": "🇬🇭"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Panama",
+          "flag": "🇵🇦"
+        },
+        "gast": {
+          "name": "Croatia",
+          "flag": "🇭🇷"
+        },
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Colombia",
+          "flag": "🇨🇴"
+        },
+        "gast": {
+          "name": "Congo DR",
+          "flag": "🇨🇩"
+        },
+        "score": "1:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Switzerland",
+          "flag": "🇨🇭"
+        },
+        "gast": {
+          "name": "Canada",
+          "flag": "🇨🇦"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Bosnia-Herzegovina",
+          "flag": "🇧🇦"
+        },
+        "gast": {
+          "name": "Qatar",
+          "flag": "🇶🇦"
+        },
+        "score": "3:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Morocco",
+          "flag": "🇲🇦"
+        },
+        "gast": {
+          "name": "Haiti",
+          "flag": "🇭🇹"
+        },
+        "score": "4:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Scotland",
+          "flag": "🏴"
+        },
+        "gast": {
+          "name": "Brazil",
+          "flag": "🇧🇷"
+        },
+        "score": "0:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Czechia",
+          "flag": "🇨🇿"
+        },
+        "gast": {
+          "name": "Mexico",
+          "flag": "🇲🇽"
+        },
+        "score": "0:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "South Africa",
+          "flag": "🇿🇦"
+        },
+        "gast": {
+          "name": "South Korea",
+          "flag": "🇰🇷"
+        },
+        "score": "1:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Ecuador",
+          "flag": "🇪🇨"
+        },
+        "gast": {
+          "name": "Germany",
+          "flag": "🇩🇪"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Curaçao",
+          "flag": "🏳️"
+        },
+        "gast": {
+          "name": "Ivory Coast",
+          "flag": "🇨🇮"
+        },
+        "score": "0:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Tunisia",
+          "flag": "🇹🇳"
+        },
+        "gast": {
+          "name": "Netherlands",
+          "flag": "🇳🇱"
+        },
+        "score": "1:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Japan",
+          "flag": "🇯🇵"
+        },
+        "gast": {
+          "name": "Sweden",
+          "flag": "🇸🇪"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Turkey",
+          "flag": "🇹🇷"
+        },
+        "gast": {
+          "name": "United States",
+          "flag": "🇺🇸"
+        },
+        "score": "3:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Paraguay",
+          "flag": "🇵🇾"
+        },
+        "gast": {
+          "name": "Australia",
+          "flag": "🇦🇺"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Norway",
+          "flag": "🇳🇴"
+        },
+        "gast": {
+          "name": "France",
+          "flag": "🇫🇷"
+        },
+        "score": "1:4",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Senegal",
+          "flag": "🇸🇳"
+        },
+        "gast": {
+          "name": "Iraq",
+          "flag": "🇮🇶"
+        },
+        "score": "5:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Uruguay",
+          "flag": "🇺🇾"
+        },
+        "gast": {
+          "name": "Spain",
+          "flag": "🇪🇸"
+        },
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Cape Verde Islands",
+          "flag": "🇨🇻"
+        },
+        "gast": {
+          "name": "Saudi Arabia",
+          "flag": "🇸🇦"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "New Zealand",
+          "flag": "🇳🇿"
+        },
+        "gast": {
+          "name": "Belgium",
+          "flag": "🇧🇪"
+        },
+        "score": "1:5",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Egypt",
+          "flag": "🇪🇬"
+        },
+        "gast": {
+          "name": "Iran",
+          "flag": "🇮🇷"
+        },
+        "score": "1:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Panama",
+          "flag": "🇵🇦"
+        },
+        "gast": {
+          "name": "England",
+          "flag": "🇬🇧"
+        },
+        "score": "0:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Croatia",
+          "flag": "🇭🇷"
+        },
+        "gast": {
+          "name": "Ghana",
+          "flag": "🇬🇭"
+        },
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Colombia",
+          "flag": "🇨🇴"
+        },
+        "gast": {
+          "name": "Portugal",
+          "flag": "🇵🇹"
+        },
+        "score": "0:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Congo DR",
+          "flag": "🇨🇩"
+        },
+        "gast": {
+          "name": "Uzbekistan",
+          "flag": "🇺🇿"
+        },
+        "score": "3:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Jordan",
+          "flag": "🇯🇴"
+        },
+        "gast": {
+          "name": "Argentina",
+          "flag": "🇦🇷"
+        },
+        "score": "1:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      },
+      {
+        "heim": {
+          "name": "Algeria",
+          "flag": "🇩🇿"
+        },
+        "gast": {
+          "name": "Austria",
+          "flag": "🇦🇹"
+        },
+        "score": "3:3",
+        "status": "finished",
+        "zeit": "Abpfiff",
+        "tipps": []
+      }
+    ]
+  },
   "ki_kommentare": {
     "1": {
       "headline": "PAULE RAST VORNEWEG! JanG im TIPP-CHAOS versunken!",
