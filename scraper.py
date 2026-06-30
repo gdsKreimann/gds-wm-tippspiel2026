@@ -565,48 +565,35 @@ class FootballAPI:
         """
         Gruppiert football-data.org Spiele nach Kicktipp-Spieltagen.
 
-        WICHTIG: football-data.org's "matchday" zählt bei der WM 2026 NICHT
-        pro Gruppenspieltag, sondern läuft über alle 12 Gruppen verteilt
-        kalendertagbasiert hoch (matchday 1-7 ≈ Gruppenspieltag 1 aller Gruppen,
-        matchday 8-14 ≈ Gruppenspieltag 2, etc. — siehe openfootball.org Daten).
-        Kicktipp hingegen hat nur 10 Spieltage + KO-Runde insgesamt.
-
-        Mapping: 3 Gruppenspieltage (matchday-Block ≈7 je Spieltag) auf
-        Kicktipp-Spieltag 1-3, Rest (R32, R16, QF, SF, Finale) auf 4-10
-        anhand des "stage"-Felds von football-data.
+        football-data.org liefert für die WM 2026:
+          - Gruppenphase: stage=GROUP_STAGE, matchday=1/2/3 (1:1 zu Kicktipp-Spieltag 1-3)
+          - KO-Runden: stage=LAST_32/LAST_16/QUARTER_FINALS/SEMI_FINALS/THIRD_PLACE/FINAL,
+            matchday=None → wird über das stage-Feld auf Kicktipp-Spieltag 4-9 gemappt.
         """
-        STAGE_TO_KICKTIPP_ST = {
-            "GROUP_STAGE":       None,  # wird per matchday-Block berechnet
-            "LAST_32":           4,
-            "ROUND_OF_32":       4,
-            "LAST_16":           5,
-            "ROUND_OF_16":       5,
-            "QUARTER_FINALS":    6,
-            "SEMI_FINALS":       7,
-            "THIRD_PLACE":       8,
-            "FINAL":             9,
-        }
 
         by_st = {}
         for m in matches:
             md = m.get("matchday")
             stage = m.get("stage", "GROUP_STAGE")
 
-            if not md:
-                continue
-
             # Kicktipp-Spieltag bestimmen
-            if stage == "GROUP_STAGE" or stage is None:
-                # Gruppenphase: matchday 1-21 (3 Spieltage x 7 Tage je Gruppe gestaffelt)
-                # auf Kicktipp-Spieltag 1-3 mappen (grobe Drittelung)
-                if md <= 7:
-                    kt_spieltag = 1
-                elif md <= 14:
-                    kt_spieltag = 2
-                else:
-                    kt_spieltag = 3
+            if stage == "GROUP_STAGE" and md:
+                # Gruppenphase: matchday 1,2,3 entsprechen 1:1 Kicktipp-Spieltag 1,2,3
+                kt_spieltag = md
+            elif stage in ("LAST_32", "ROUND_OF_32"):
+                kt_spieltag = 4
+            elif stage in ("LAST_16", "ROUND_OF_16"):
+                kt_spieltag = 5
+            elif stage == "QUARTER_FINALS":
+                kt_spieltag = 6
+            elif stage == "SEMI_FINALS":
+                kt_spieltag = 7
+            elif stage == "THIRD_PLACE":
+                kt_spieltag = 8
+            elif stage == "FINAL":
+                kt_spieltag = 9
             else:
-                kt_spieltag = STAGE_TO_KICKTIPP_ST.get(stage, 10)
+                continue  # unbekannte Kombination überspringen
 
             status_raw = m.get("status","SCHEDULED")
             if status_raw == "FINISHED":            status = "finished"
