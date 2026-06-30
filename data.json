@@ -2754,30 +2754,5 @@
       }
     ]
   },
-  "ki_kommentare": {
-    "1": {
-      "headline": "PAULE RAST VORNEWEG! JanG im TIPP-CHAOS versunken!",
-      "sub": "Während Paule mit traumhaften 6 Punkten die Konkurrenz vorführt, dümpelt JanG mit null Zählern am Tabellenende herum. Hat er vielleicht seine Tipps in einem anderen Universum abgegeben?",
-      "anekdote": "Südkorea's 2:1-Sieg über Tschechien erinnert an die WM 2002, als die Gastgeber sensationell ins Halbfinale stürmten. Damals sorgte ein umstrittenes Tor gegen Italien für Furore - Schiedsrichter Byron Moreno übersah einen klaren Ellenbogen-Check von Seol Ki-Hyeon. Die Koreaner feierten trotzdem wie verrückt!",
-      "ticker": [
-        "Paule führt souverän mit perfekten 6 Punkten!",
-        "Mexico bezwingt Südafrika überraschend deutlich 2:0",
-        "Südkorea schlägt Tschechien in packender Partie",
-        "Vier Tipper teilen sich Platz 2-12",
-        "JanG wartet noch auf ersten Punkt"
-      ]
-    },
-    "4": {
-      "headline": "CHAOS PUR! Paraguay schockt Deutschland – Tippspiel explodiert!",
-      "sub": "Spieltag 4 hat das Tippspiel auf den Kopf gestellt – neun Tore in zwei Spielen, und irgendwo da unten grübeln Pottkind und Olli_R, ob sie vielleicht einfach eine Münze werfen sollten. Mit null Punkten auf dem Konto haben die beiden die perfekte Tipp-Quote: hundert Prozent daneben, hundert Prozent konsequent!",
-      "anekdote": "Apropos Deutschland gegen Paraguay: Bei der WM 2002 in Japan und Südkorea traf Oliver Neuville in der 88. Minute zum 1:0-Siegtreffer gegen Paraguay im Achtelfinale – eines der dramatischsten Last-Minute-Tore der deutschen WM-Geschichte. Heute dreht Paraguay den Spieß um und haut Deutschland mit 5:4 aus dem Tippspiel-Olymp – die Revanche ist komplett!",
-      "ticker": [
-        "Paule thront mit 55 Punkten – unangreifbar?",
-        "Deutschland 4:5 Paraguay – Tipp-Apokalypse!",
-        "Morocco versenkt Niederlande: 4:3 – Wahnsinn!",
-        "Anne und Hanne jagen Paule – Spannung pur!",
-        "Pottkind & Olli_R: null Punkte, null Erbarmen!"
-      ]
-    }
-  }
+  "ki_kommentare": {}
 }
