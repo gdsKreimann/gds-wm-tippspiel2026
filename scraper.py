@@ -704,19 +704,32 @@ def main():
             print(f"[Info] Spieltag {st_id}: noch keine Spiele gestartet")
 
     # 5. Aktiven Spieltag bestimmen
-    # football-data.org zählt jeden Turniertag als eigenen matchday (bis zu 18+),
-    # Kicktipp gruppiert mehrere Tage zu einem Spieltag (hier: 10 reguläre + KO-Runde).
-    # Der aktive Spieltag darf NIE höher sein als die höchste Kicktipp-Rangliste-Spalte,
-    # sonst zeigt die App einen "Spieltag" der in der Rangliste gar nicht existiert.
+    # WICHTIG: Der aktive Spieltag muss sich nach der KICKTIPP-Rangliste richten,
+    # nicht nach football-data.org! Kicktipp füllt die CSV-Spalten aus sobald
+    # die zugehörigen Spiele abgepfiffen sind — auch für mehrere Spieltage im Voraus
+    # wenn der Scraper-Lauf zeitlich hinter dem echten Turnierstand liegt.
+    # football-data.org's matchday dient nur für die Spiele-Anzeige, NICHT für
+    # die Bestimmung welcher Rangliste-Stand der aktuelle ist.
     max_kicktipp_st = max(rangliste.keys()) if rangliste else 1
 
-    aktiver_st = 1
+    # Höchster Spieltag bei dem mindestens ein Tipper reale Punkte hat
+    aktiver_st_kicktipp = 1
+    for st_id in sorted(rangliste.keys()):
+        if any(p.get("pts_gesamt", 0) > 0 for p in rangliste[st_id]):
+            aktiver_st_kicktipp = st_id
+
+    # Höchster Spieltag mit gestarteten/beendeten Spielen laut football-data
+    aktiver_st_football = 1
     for st_id in sorted(spiele_by_spieltag.keys()):
         spiele = spiele_by_spieltag[st_id]
         if any(s["status"] in ("finished", "live") for s in spiele):
-            aktiver_st = st_id
-    aktiver_st = min(aktiver_st, max_kicktipp_st)
-    print(f"[Info] Aktiver Spieltag (football-data): {aktiver_st}, gecappt auf max. {max_kicktipp_st} (Kicktipp-Spalten)")
+            aktiver_st_football = st_id
+
+    # Der "echte" aktive Spieltag ist der Kicktipp-Stand — football-data dient nur
+    # als Validierung/Cap nach oben (kann nicht weiter sein als die Spiele real sind)
+    aktiver_st = min(aktiver_st_kicktipp, max_kicktipp_st)
+    print(f"[Info] Aktiver Spieltag — Kicktipp-Punktestand: {aktiver_st_kicktipp}, "
+          f"football-data Spielstand: {aktiver_st_football}, gewählt: {aktiver_st}")
 
     alle_st = sorted(set(list(rangliste.keys()) + list(spiele_by_spieltag.keys())))
     spieltag_meta = [{"id":i,"label":f"Spieltag {i}",
