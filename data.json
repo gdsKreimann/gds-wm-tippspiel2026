@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "30.06.2026 23:56 Uhr (CEST)",
+    "generiert_am": "01.07.2026 10:50 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -79,7 +79,7 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 10,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -107,7 +107,7 @@
         "name": "UliPausS",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -125,21 +125,21 @@
         "delta": 0
       },
       {
-        "name": "TurboTobiBVB",
+        "name": "Annik",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "4",
         "delta": 0
       },
       {
-        "name": "Annik",
+        "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "5",
         "delta": 0
       },
       {
-        "name": "thommes",
+        "name": "TurboTobiBVB",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "6",
@@ -193,7 +193,7 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 20,
-        "rang": "12",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -256,7 +256,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 11,
-        "rang": "12",
+        "rang": "13",
         "delta": -4
       },
       {
@@ -270,8 +270,8 @@
         "name": "Annik",
         "pts_spieltag": 4,
         "pts_gesamt": 10,
-        "rang": "5",
-        "delta": -2
+        "rang": "4",
+        "delta": -3
       },
       {
         "name": "Conny",
@@ -281,14 +281,14 @@
         "delta": 0
       },
       {
-        "name": "TurboTobiBVB",
+        "name": "thommes",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "4",
-        "delta": -5
+        "rang": "5",
+        "delta": -4
       },
       {
-        "name": "thommes",
+        "name": "TurboTobiBVB",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
         "rang": "6",
@@ -321,7 +321,7 @@
         "name": "Captain",
         "pts_spieltag": 15,
         "pts_gesamt": 35,
-        "rang": "12",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -363,8 +363,8 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 19,
         "pts_gesamt": 27,
-        "rang": "4",
-        "delta": 6
+        "rang": "6",
+        "delta": 7
       },
       {
         "name": "Ludger_H",
@@ -377,7 +377,7 @@
         "name": "UliPausS",
         "pts_spieltag": 15,
         "pts_gesamt": 26,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -391,15 +391,15 @@
         "name": "Annik",
         "pts_spieltag": 14,
         "pts_gesamt": 24,
-        "rang": "5",
+        "rang": "4",
         "delta": 0
       },
       {
         "name": "thommes",
         "pts_spieltag": 16,
         "pts_gesamt": 24,
-        "rang": "6",
-        "delta": 2
+        "rang": "5",
+        "delta": 1
       },
       {
         "name": "JanG",
@@ -470,14 +470,14 @@
         "name": "Captain",
         "pts_spieltag": 9,
         "pts_gesamt": 44,
-        "rang": "12",
+        "rang": "11",
         "delta": -4
       },
       {
         "name": "Annik",
         "pts_spieltag": 18,
         "pts_gesamt": 42,
-        "rang": "5",
+        "rang": "4",
         "delta": 5
       },
       {
@@ -491,7 +491,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 12,
         "pts_gesamt": 39,
-        "rang": "4",
+        "rang": "6",
         "delta": -1
       },
       {
@@ -505,14 +505,14 @@
         "name": "thommes",
         "pts_spieltag": 14,
         "pts_gesamt": 38,
-        "rang": "6",
+        "rang": "5",
         "delta": 2
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 11,
         "pts_gesamt": 37,
-        "rang": "12",
+        "rang": "13",
         "delta": -2
       },
       {
@@ -591,14 +591,14 @@
         "name": "Annik",
         "pts_spieltag": 13,
         "pts_gesamt": 55,
-        "rang": "5",
+        "rang": "4",
         "delta": 1
       },
       {
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 54,
-        "rang": "12",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -612,7 +612,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 10,
         "pts_gesamt": 49,
-        "rang": "4",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -626,7 +626,7 @@
         "name": "thommes",
         "pts_spieltag": 7,
         "pts_gesamt": 45,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -647,7 +647,7 @@
         "name": "UliPausS",
         "pts_spieltag": 0,
         "pts_gesamt": 37,
-        "rang": "12",
+        "rang": "13",
         "delta": -2
       },
       {
@@ -698,7 +698,7 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 71,
-        "rang": "5",
+        "rang": "4",
         "delta": 2
       },
       {
@@ -719,21 +719,21 @@
         "name": "Captain",
         "pts_spieltag": 15,
         "pts_gesamt": 69,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 17,
         "pts_gesamt": 66,
-        "rang": "4",
+        "rang": "6",
         "delta": 1
       },
       {
         "name": "thommes",
         "pts_spieltag": 20,
         "pts_gesamt": 65,
-        "rang": "6",
+        "rang": "5",
         "delta": 2
       },
       {
@@ -761,7 +761,7 @@
         "name": "UliPausS",
         "pts_spieltag": 19,
         "pts_gesamt": 56,
-        "rang": "12",
+        "rang": "13",
         "delta": 1
       },
       {
@@ -826,28 +826,28 @@
         "name": "thommes",
         "pts_spieltag": 15,
         "pts_gesamt": 80,
-        "rang": "6",
+        "rang": "5",
         "delta": 4
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 13,
         "pts_gesamt": 79,
-        "rang": "4",
+        "rang": "6",
         "delta": 2
       },
       {
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 78,
-        "rang": "5",
+        "rang": "4",
         "delta": -3
       },
       {
         "name": "Captain",
         "pts_spieltag": 9,
         "pts_gesamt": 78,
-        "rang": "12",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -875,7 +875,7 @@
         "name": "UliPausS",
         "pts_spieltag": 12,
         "pts_gesamt": 68,
-        "rang": "12",
+        "rang": "13",
         "delta": 1
       },
       {
@@ -940,7 +940,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 9,
         "pts_gesamt": 88,
-        "rang": "4",
+        "rang": "6",
         "delta": 2
       },
       {
@@ -954,21 +954,21 @@
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 86,
-        "rang": "6",
+        "rang": "5",
         "delta": -1
       },
       {
         "name": "Captain",
         "pts_spieltag": 8,
         "pts_gesamt": 86,
-        "rang": "12",
+        "rang": "11",
         "delta": 1
       },
       {
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 85,
-        "rang": "5",
+        "rang": "4",
         "delta": -1
       },
       {
@@ -1003,7 +1003,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 72,
-        "rang": "12",
+        "rang": "13",
         "delta": -1
       },
       {
@@ -1054,7 +1054,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 13,
         "pts_gesamt": 101,
-        "rang": "4",
+        "rang": "6",
         "delta": 1
       },
       {
@@ -1068,14 +1068,14 @@
         "name": "Annik",
         "pts_spieltag": 12,
         "pts_gesamt": 97,
-        "rang": "5",
+        "rang": "4",
         "delta": 3
       },
       {
         "name": "thommes",
         "pts_spieltag": 9,
         "pts_gesamt": 95,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -1117,14 +1117,14 @@
         "name": "Captain",
         "pts_spieltag": 0,
         "pts_gesamt": 86,
-        "rang": "12",
+        "rang": "11",
         "delta": -5
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 9,
         "pts_gesamt": 81,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -1175,14 +1175,14 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 113,
-        "rang": "5",
+        "rang": "4",
         "delta": 2
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 8,
         "pts_gesamt": 109,
-        "rang": "4",
+        "rang": "6",
         "delta": -1
       },
       {
@@ -1210,7 +1210,7 @@
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 101,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
@@ -1238,14 +1238,14 @@
         "name": "Captain",
         "pts_spieltag": 8,
         "pts_gesamt": 94,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 8,
         "pts_gesamt": 89,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -2359,9 +2359,9 @@
           "name": "Norway",
           "flag": "🇳🇴"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "19:00",
+        "score": "1:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2373,9 +2373,9 @@
           "name": "Sweden",
           "flag": "🇸🇪"
         },
-        "score": "0:0",
-        "status": "live",
-        "zeit": "LIVE",
+        "score": "3:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2387,9 +2387,9 @@
           "name": "Ecuador",
           "flag": "🇪🇨"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "03:00",
+        "score": "2:0",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2540,8 +2540,8 @@
           "flag": "🇵🇾"
         },
         "gast": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "France",
+          "flag": "🇫🇷"
         },
         "score": "—",
         "status": "upcoming",
@@ -2554,8 +2554,8 @@
           "flag": "🇧🇷"
         },
         "gast": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "Norway",
+          "flag": "🇳🇴"
         },
         "score": "—",
         "status": "upcoming",
