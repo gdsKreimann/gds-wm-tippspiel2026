@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "01.07.2026 19:54 Uhr (CEST)",
+    "generiert_am": "02.07.2026 00:02 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -97,17 +97,17 @@
         "delta": 0
       },
       {
-        "name": "Michelle",
+        "name": "UliPausS",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
         "rang": "11",
         "delta": 0
       },
       {
-        "name": "UliPausS",
+        "name": "Michelle",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
-        "rang": "13",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -215,7 +215,7 @@
         "pts_spieltag": 10,
         "pts_gesamt": 17,
         "rang": "11",
-        "delta": 1
+        "delta": 2
       },
       {
         "name": "Hanne_Sobek",
@@ -256,8 +256,8 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 11,
-        "rang": "13",
-        "delta": -4
+        "rang": "11",
+        "delta": -5
       },
       {
         "name": "Ludger_H",
@@ -377,7 +377,7 @@
         "name": "UliPausS",
         "pts_spieltag": 15,
         "pts_gesamt": 26,
-        "rang": "13",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -512,7 +512,7 @@
         "name": "UliPausS",
         "pts_spieltag": 11,
         "pts_gesamt": 37,
-        "rang": "13",
+        "rang": "11",
         "delta": -2
       },
       {
@@ -647,7 +647,7 @@
         "name": "UliPausS",
         "pts_spieltag": 0,
         "pts_gesamt": 37,
-        "rang": "13",
+        "rang": "11",
         "delta": -2
       },
       {
@@ -761,7 +761,7 @@
         "name": "UliPausS",
         "pts_spieltag": 19,
         "pts_gesamt": 56,
-        "rang": "13",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -875,7 +875,7 @@
         "name": "UliPausS",
         "pts_spieltag": 12,
         "pts_gesamt": 68,
-        "rang": "13",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -1003,7 +1003,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 72,
-        "rang": "13",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -1124,7 +1124,7 @@
         "name": "UliPausS",
         "pts_spieltag": 9,
         "pts_gesamt": 81,
-        "rang": "13",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -1245,7 +1245,7 @@
         "name": "UliPausS",
         "pts_spieltag": 8,
         "pts_gesamt": 89,
-        "rang": "13",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -2402,8 +2402,8 @@
           "flag": "🇨🇩"
         },
         "score": "2:1",
-        "status": "live",
-        "zeit": "LIVE",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2415,9 +2415,9 @@
           "name": "Senegal",
           "flag": "🇸🇳"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "22:00",
+        "score": "2:2",
+        "status": "live",
+        "zeit": "LIVE",
         "tipps": []
       },
       {
