@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "03.07.2026 19:25 Uhr (CEST)",
+    "generiert_am": "03.07.2026 23:40 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -86,14 +86,14 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "8",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -135,7 +135,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -163,7 +163,7 @@
         "name": "Helmut",
         "pts_spieltag": 5,
         "pts_gesamt": 5,
-        "rang": "9",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -221,21 +221,21 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 6,
         "pts_gesamt": 14,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
         "name": "Helmut",
         "pts_spieltag": 8,
         "pts_gesamt": 13,
-        "rang": "9",
+        "rang": "8",
         "delta": 8
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 4,
         "pts_gesamt": 12,
-        "rang": "8",
+        "rang": "9",
         "delta": -3
       },
       {
@@ -284,7 +284,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "5",
+        "rang": "6",
         "delta": -4
       },
       {
@@ -339,31 +339,31 @@
         "delta": -2
       },
       {
-        "name": "DennisCostaRica",
-        "pts_spieltag": 17,
-        "pts_gesamt": 29,
-        "rang": "8",
-        "delta": 2
-      },
-      {
         "name": "Helmut",
         "pts_spieltag": 16,
         "pts_gesamt": 29,
+        "rang": "8",
+        "delta": 1
+      },
+      {
+        "name": "DennisCostaRica",
+        "pts_spieltag": 17,
+        "pts_gesamt": 29,
         "rang": "9",
-        "delta": 0
+        "delta": 1
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 14,
         "pts_gesamt": 28,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 19,
         "pts_gesamt": 27,
-        "rang": "5",
+        "rang": "6",
         "delta": 6
       },
       {
@@ -449,7 +449,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 22,
         "pts_gesamt": 50,
-        "rang": "6",
+        "rang": "5",
         "delta": 4
       },
       {
@@ -463,8 +463,8 @@
         "name": "Helmut",
         "pts_spieltag": 17,
         "pts_gesamt": 46,
-        "rang": "9",
-        "delta": 1
+        "rang": "8",
+        "delta": 0
       },
       {
         "name": "Captain",
@@ -484,14 +484,14 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 40,
-        "rang": "8",
-        "delta": -3
+        "rang": "9",
+        "delta": -2
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 12,
         "pts_gesamt": 39,
-        "rang": "5",
+        "rang": "6",
         "delta": -1
       },
       {
@@ -570,7 +570,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 10,
         "pts_gesamt": 60,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -584,7 +584,7 @@
         "name": "Helmut",
         "pts_spieltag": 10,
         "pts_gesamt": 56,
-        "rang": "9",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -605,14 +605,14 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 51,
-        "rang": "8",
+        "rang": "9",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 10,
         "pts_gesamt": 49,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -691,7 +691,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 17,
         "pts_gesamt": 77,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -712,7 +712,7 @@
         "name": "Helmut",
         "pts_spieltag": 13,
         "pts_gesamt": 69,
-        "rang": "9",
+        "rang": "8",
         "delta": -1
       },
       {
@@ -726,7 +726,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 17,
         "pts_gesamt": 66,
-        "rang": "5",
+        "rang": "6",
         "delta": 1
       },
       {
@@ -740,7 +740,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 12,
         "pts_gesamt": 63,
-        "rang": "8",
+        "rang": "9",
         "delta": -2
       },
       {
@@ -812,7 +812,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 10,
         "pts_gesamt": 87,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -833,7 +833,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 13,
         "pts_gesamt": 79,
-        "rang": "5",
+        "rang": "6",
         "delta": 2
       },
       {
@@ -854,14 +854,14 @@
         "name": "Helmut",
         "pts_spieltag": 8,
         "pts_gesamt": 77,
-        "rang": "9",
+        "rang": "8",
         "delta": -3
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 74,
-        "rang": "8",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -933,21 +933,21 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 4,
         "pts_gesamt": 91,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 9,
         "pts_gesamt": 88,
-        "rang": "5",
+        "rang": "6",
         "delta": 2
       },
       {
         "name": "Helmut",
         "pts_spieltag": 10,
         "pts_gesamt": 87,
-        "rang": "9",
+        "rang": "8",
         "delta": 4
       },
       {
@@ -982,7 +982,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 6,
         "pts_gesamt": 80,
-        "rang": "8",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -1054,14 +1054,14 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 13,
         "pts_gesamt": 101,
-        "rang": "5",
+        "rang": "6",
         "delta": 1
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 9,
         "pts_gesamt": 100,
-        "rang": "6",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -1089,7 +1089,7 @@
         "name": "Helmut",
         "pts_spieltag": 4,
         "pts_gesamt": 91,
-        "rang": "9",
+        "rang": "8",
         "delta": -3
       },
       {
@@ -1103,7 +1103,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 9,
         "pts_gesamt": 89,
-        "rang": "8",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -1182,21 +1182,21 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 8,
         "pts_gesamt": 109,
-        "rang": "5",
+        "rang": "6",
         "delta": -1
       },
       {
         "name": "Helmut",
         "pts_spieltag": 14,
         "pts_gesamt": 105,
-        "rang": "9",
+        "rang": "8",
         "delta": 3
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 4,
         "pts_gesamt": 104,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
@@ -1224,7 +1224,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 100,
-        "rang": "8",
+        "rang": "9",
         "delta": 0
       },
       {
@@ -2485,9 +2485,9 @@
           "name": "Egypt",
           "flag": "🇪🇬"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "20:00",
+        "score": "3:5",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
