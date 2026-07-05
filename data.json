@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "04.07.2026 23:28 Uhr (CEST)",
+    "generiert_am": "05.07.2026 09:57 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2543,9 +2543,9 @@
           "name": "France",
           "flag": "🇫🇷"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "23:00",
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2636,12 +2636,12 @@
     "6": [
       {
         "heim": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "France",
+          "flag": "🇫🇷"
         },
         "gast": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "Morocco",
+          "flag": "🇲🇦"
         },
         "score": "—",
         "status": "upcoming",
