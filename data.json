@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "06.07.2026 20:10 Uhr (CEST)",
+    "generiert_am": "06.07.2026 23:55 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -118,14 +118,14 @@
         "delta": 0
       },
       {
-        "name": "Annik",
+        "name": "TurboTobiBVB",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "3",
         "delta": 0
       },
       {
-        "name": "TurboTobiBVB",
+        "name": "Annik",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "5",
@@ -263,8 +263,8 @@
         "name": "Annik",
         "pts_spieltag": 4,
         "pts_gesamt": 10,
-        "rang": "3",
-        "delta": -3
+        "rang": "5",
+        "delta": -2
       },
       {
         "name": "Ludger_H",
@@ -284,8 +284,8 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "5",
-        "delta": -5
+        "rang": "3",
+        "delta": -6
       },
       {
         "name": "thommes",
@@ -363,7 +363,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 19,
         "pts_gesamt": 27,
-        "rang": "5",
+        "rang": "3",
         "delta": 6
       },
       {
@@ -391,7 +391,7 @@
         "name": "Annik",
         "pts_spieltag": 14,
         "pts_gesamt": 24,
-        "rang": "3",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -477,7 +477,7 @@
         "name": "Annik",
         "pts_spieltag": 18,
         "pts_gesamt": 42,
-        "rang": "3",
+        "rang": "5",
         "delta": 5
       },
       {
@@ -491,7 +491,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 12,
         "pts_gesamt": 39,
-        "rang": "5",
+        "rang": "3",
         "delta": -1
       },
       {
@@ -591,7 +591,7 @@
         "name": "Annik",
         "pts_spieltag": 13,
         "pts_gesamt": 55,
-        "rang": "3",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -612,7 +612,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 10,
         "pts_gesamt": 49,
-        "rang": "5",
+        "rang": "3",
         "delta": 0
       },
       {
@@ -698,7 +698,7 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 71,
-        "rang": "3",
+        "rang": "5",
         "delta": 2
       },
       {
@@ -726,7 +726,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 17,
         "pts_gesamt": 66,
-        "rang": "5",
+        "rang": "3",
         "delta": 1
       },
       {
@@ -833,14 +833,14 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 13,
         "pts_gesamt": 79,
-        "rang": "5",
+        "rang": "3",
         "delta": 2
       },
       {
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 78,
-        "rang": "3",
+        "rang": "5",
         "delta": -3
       },
       {
@@ -940,7 +940,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 9,
         "pts_gesamt": 88,
-        "rang": "5",
+        "rang": "3",
         "delta": 2
       },
       {
@@ -968,7 +968,7 @@
         "name": "Annik",
         "pts_spieltag": 7,
         "pts_gesamt": 85,
-        "rang": "3",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -1054,7 +1054,7 @@
         "name": "TurboTobiBVB",
         "pts_spieltag": 13,
         "pts_gesamt": 101,
-        "rang": "5",
+        "rang": "3",
         "delta": 1
       },
       {
@@ -1068,7 +1068,7 @@
         "name": "Annik",
         "pts_spieltag": 12,
         "pts_gesamt": 97,
-        "rang": "3",
+        "rang": "5",
         "delta": 3
       },
       {
@@ -1175,14 +1175,14 @@
         "name": "Annik",
         "pts_spieltag": 16,
         "pts_gesamt": 113,
-        "rang": "3",
+        "rang": "5",
         "delta": 2
       },
       {
         "name": "TurboTobiBVB",
         "pts_spieltag": 8,
         "pts_gesamt": 109,
-        "rang": "5",
+        "rang": "3",
         "delta": -1
       },
       {
@@ -2585,9 +2585,9 @@
           "name": "Spain",
           "flag": "🇪🇸"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
+        "score": "0:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
