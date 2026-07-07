@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "06.07.2026 23:55 Uhr (CEST)",
+    "generiert_am": "07.07.2026 10:24 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2599,9 +2599,9 @@
           "name": "Belgium",
           "flag": "🇧🇪"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "02:00",
+        "score": "1:4",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2650,12 +2650,12 @@
       },
       {
         "heim": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "Spain",
+          "flag": "🇪🇸"
         },
         "gast": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "Belgium",
+          "flag": "🇧🇪"
         },
         "score": "—",
         "status": "upcoming",
