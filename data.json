@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "09.07.2026 19:54 Uhr (CEST)",
+    "generiert_am": "09.07.2026 23:59 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2643,9 +2643,9 @@
           "name": "Morocco",
           "flag": "🇲🇦"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "22:00",
+        "score": "2:0",
+        "status": "live",
+        "zeit": "LIVE",
         "tipps": []
       },
       {
