@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "10.07.2026 19:47 Uhr (CEST)",
+    "generiert_am": "10.07.2026 23:35 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -79,7 +79,7 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 10,
-        "rang": "11",
+        "rang": "12",
         "delta": 0
       },
       {
@@ -100,7 +100,7 @@
         "name": "UliPausS",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
-        "rang": "5",
+        "rang": "4",
         "delta": 0
       },
       {
@@ -149,7 +149,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -193,7 +193,7 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 20,
-        "rang": "11",
+        "rang": "12",
         "delta": 1
       },
       {
@@ -242,7 +242,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 6,
         "pts_gesamt": 12,
-        "rang": "12",
+        "rang": "11",
         "delta": 4
       },
       {
@@ -256,7 +256,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 11,
-        "rang": "5",
+        "rang": "4",
         "delta": -5
       },
       {
@@ -321,7 +321,7 @@
         "name": "Captain",
         "pts_spieltag": 15,
         "pts_gesamt": 35,
-        "rang": "11",
+        "rang": "12",
         "delta": -1
       },
       {
@@ -370,7 +370,7 @@
         "name": "UliPausS",
         "pts_spieltag": 15,
         "pts_gesamt": 26,
-        "rang": "5",
+        "rang": "4",
         "delta": 1
       },
       {
@@ -384,7 +384,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 13,
         "pts_gesamt": 25,
-        "rang": "12",
+        "rang": "11",
         "delta": -3
       },
       {
@@ -470,7 +470,7 @@
         "name": "Captain",
         "pts_spieltag": 9,
         "pts_gesamt": 44,
-        "rang": "11",
+        "rang": "12",
         "delta": -4
       },
       {
@@ -498,7 +498,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 14,
         "pts_gesamt": 39,
-        "rang": "12",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -512,7 +512,7 @@
         "name": "UliPausS",
         "pts_spieltag": 11,
         "pts_gesamt": 37,
-        "rang": "5",
+        "rang": "4",
         "delta": -3
       },
       {
@@ -598,7 +598,7 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 54,
-        "rang": "11",
+        "rang": "12",
         "delta": -1
       },
       {
@@ -619,7 +619,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 10,
         "pts_gesamt": 49,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -647,7 +647,7 @@
         "name": "UliPausS",
         "pts_spieltag": 0,
         "pts_gesamt": 37,
-        "rang": "5",
+        "rang": "4",
         "delta": -2
       },
       {
@@ -719,7 +719,7 @@
         "name": "Captain",
         "pts_spieltag": 15,
         "pts_gesamt": 69,
-        "rang": "11",
+        "rang": "12",
         "delta": 0
       },
       {
@@ -747,7 +747,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 14,
         "pts_gesamt": 63,
-        "rang": "12",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -761,7 +761,7 @@
         "name": "UliPausS",
         "pts_spieltag": 19,
         "pts_gesamt": 56,
-        "rang": "5",
+        "rang": "4",
         "delta": 1
       },
       {
@@ -847,7 +847,7 @@
         "name": "Captain",
         "pts_spieltag": 9,
         "pts_gesamt": 78,
-        "rang": "11",
+        "rang": "12",
         "delta": -1
       },
       {
@@ -868,14 +868,14 @@
         "name": "Bastelwastel",
         "pts_spieltag": 8,
         "pts_gesamt": 71,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 12,
         "pts_gesamt": 68,
-        "rang": "5",
+        "rang": "4",
         "delta": 1
       },
       {
@@ -961,7 +961,7 @@
         "name": "Captain",
         "pts_spieltag": 8,
         "pts_gesamt": 86,
-        "rang": "11",
+        "rang": "12",
         "delta": 1
       },
       {
@@ -989,14 +989,14 @@
         "name": "Bastelwastel",
         "pts_spieltag": 6,
         "pts_gesamt": 77,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 72,
-        "rang": "5",
+        "rang": "4",
         "delta": 0
       },
       {
@@ -1096,7 +1096,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 13,
         "pts_gesamt": 90,
-        "rang": "12",
+        "rang": "11",
         "delta": 2
       },
       {
@@ -1117,14 +1117,14 @@
         "name": "Captain",
         "pts_spieltag": 0,
         "pts_gesamt": 86,
-        "rang": "11",
+        "rang": "12",
         "delta": -5
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 9,
         "pts_gesamt": 81,
-        "rang": "5",
+        "rang": "4",
         "delta": -1
       },
       {
@@ -1231,21 +1231,21 @@
         "name": "Bastelwastel",
         "pts_spieltag": 10,
         "pts_gesamt": 100,
-        "rang": "12",
+        "rang": "11",
         "delta": -2
       },
       {
         "name": "Captain",
         "pts_spieltag": 8,
         "pts_gesamt": 94,
-        "rang": "11",
+        "rang": "12",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 8,
         "pts_gesamt": 89,
-        "rang": "5",
+        "rang": "4",
         "delta": 0
       },
       {
@@ -2657,9 +2657,9 @@
           "name": "Belgium",
           "flag": "🇧🇪"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
+        "score": "2:1",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
