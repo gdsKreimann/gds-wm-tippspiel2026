@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "09.07.2026 23:59 Uhr (CEST)",
+    "generiert_am": "10.07.2026 10:23 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -79,28 +79,28 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 10,
-        "rang": "8",
+        "rang": "11",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "10",
+        "rang": "7",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -132,17 +132,17 @@
         "delta": 0
       },
       {
-        "name": "thommes",
-        "pts_spieltag": 6,
-        "pts_gesamt": 6,
-        "rang": "7",
-        "delta": 0
-      },
-      {
         "name": "Ludger_H",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
         "rang": "9",
+        "delta": 0
+      },
+      {
+        "name": "thommes",
+        "pts_spieltag": 6,
+        "pts_gesamt": 6,
+        "rang": "10",
         "delta": 0
       },
       {
@@ -163,7 +163,7 @@
         "name": "Helmut",
         "pts_spieltag": 5,
         "pts_gesamt": 5,
-        "rang": "11",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -193,7 +193,7 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 20,
-        "rang": "8",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -221,21 +221,21 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 6,
         "pts_gesamt": 14,
-        "rang": "5",
+        "rang": "6",
         "delta": -2
       },
       {
         "name": "Helmut",
         "pts_spieltag": 8,
         "pts_gesamt": 13,
-        "rang": "11",
+        "rang": "8",
         "delta": 8
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 4,
         "pts_gesamt": 12,
-        "rang": "10",
+        "rang": "7",
         "delta": -3
       },
       {
@@ -256,7 +256,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 11,
-        "rang": "6",
+        "rang": "5",
         "delta": -5
       },
       {
@@ -271,7 +271,7 @@
         "pts_spieltag": 4,
         "pts_gesamt": 10,
         "rang": "9",
-        "delta": -1
+        "delta": -2
       },
       {
         "name": "Conny",
@@ -291,8 +291,8 @@
         "name": "thommes",
         "pts_spieltag": 2,
         "pts_gesamt": 8,
-        "rang": "7",
-        "delta": -5
+        "rang": "10",
+        "delta": -4
       },
       {
         "name": "Pottkind",
@@ -321,7 +321,7 @@
         "name": "Captain",
         "pts_spieltag": 15,
         "pts_gesamt": 35,
-        "rang": "8",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -342,21 +342,21 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 17,
         "pts_gesamt": 29,
-        "rang": "10",
+        "rang": "7",
         "delta": 2
       },
       {
         "name": "Helmut",
         "pts_spieltag": 16,
         "pts_gesamt": 29,
-        "rang": "11",
+        "rang": "8",
         "delta": 0
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 14,
         "pts_gesamt": 28,
-        "rang": "5",
+        "rang": "6",
         "delta": -2
       },
       {
@@ -370,7 +370,7 @@
         "name": "UliPausS",
         "pts_spieltag": 15,
         "pts_gesamt": 26,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -398,7 +398,7 @@
         "name": "thommes",
         "pts_spieltag": 16,
         "pts_gesamt": 24,
-        "rang": "7",
+        "rang": "10",
         "delta": 2
       },
       {
@@ -449,7 +449,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 22,
         "pts_gesamt": 50,
-        "rang": "5",
+        "rang": "6",
         "delta": 4
       },
       {
@@ -463,14 +463,14 @@
         "name": "Helmut",
         "pts_spieltag": 17,
         "pts_gesamt": 46,
-        "rang": "11",
+        "rang": "8",
         "delta": 1
       },
       {
         "name": "Captain",
         "pts_spieltag": 9,
         "pts_gesamt": 44,
-        "rang": "8",
+        "rang": "11",
         "delta": -4
       },
       {
@@ -484,7 +484,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 40,
-        "rang": "10",
+        "rang": "7",
         "delta": -3
       },
       {
@@ -505,14 +505,14 @@
         "name": "thommes",
         "pts_spieltag": 14,
         "pts_gesamt": 38,
-        "rang": "7",
+        "rang": "10",
         "delta": 2
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 11,
         "pts_gesamt": 37,
-        "rang": "6",
+        "rang": "5",
         "delta": -3
       },
       {
@@ -570,7 +570,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 10,
         "pts_gesamt": 60,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -584,7 +584,7 @@
         "name": "Helmut",
         "pts_spieltag": 10,
         "pts_gesamt": 56,
-        "rang": "11",
+        "rang": "8",
         "delta": 0
       },
       {
@@ -598,14 +598,14 @@
         "name": "Captain",
         "pts_spieltag": 10,
         "pts_gesamt": 54,
-        "rang": "8",
+        "rang": "11",
         "delta": -1
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 51,
-        "rang": "10",
+        "rang": "7",
         "delta": 0
       },
       {
@@ -626,7 +626,7 @@
         "name": "thommes",
         "pts_spieltag": 7,
         "pts_gesamt": 45,
-        "rang": "7",
+        "rang": "10",
         "delta": 0
       },
       {
@@ -647,7 +647,7 @@
         "name": "UliPausS",
         "pts_spieltag": 0,
         "pts_gesamt": 37,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
@@ -691,7 +691,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 17,
         "pts_gesamt": 77,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -709,18 +709,18 @@
         "delta": -1
       },
       {
-        "name": "Captain",
-        "pts_spieltag": 15,
-        "pts_gesamt": 69,
-        "rang": "8",
-        "delta": 1
-      },
-      {
         "name": "Helmut",
         "pts_spieltag": 13,
         "pts_gesamt": 69,
+        "rang": "8",
+        "delta": -1
+      },
+      {
+        "name": "Captain",
+        "pts_spieltag": 15,
+        "pts_gesamt": 69,
         "rang": "11",
-        "delta": -2
+        "delta": 0
       },
       {
         "name": "TurboTobiBVB",
@@ -733,14 +733,14 @@
         "name": "thommes",
         "pts_spieltag": 20,
         "pts_gesamt": 65,
-        "rang": "7",
+        "rang": "10",
         "delta": 2
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 12,
         "pts_gesamt": 63,
-        "rang": "10",
+        "rang": "7",
         "delta": -2
       },
       {
@@ -761,7 +761,7 @@
         "name": "UliPausS",
         "pts_spieltag": 19,
         "pts_gesamt": 56,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -812,7 +812,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 10,
         "pts_gesamt": 87,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -826,7 +826,7 @@
         "name": "thommes",
         "pts_spieltag": 15,
         "pts_gesamt": 80,
-        "rang": "7",
+        "rang": "10",
         "delta": 4
       },
       {
@@ -847,21 +847,21 @@
         "name": "Captain",
         "pts_spieltag": 9,
         "pts_gesamt": 78,
-        "rang": "8",
-        "delta": -2
+        "rang": "11",
+        "delta": -1
       },
       {
         "name": "Helmut",
         "pts_spieltag": 8,
         "pts_gesamt": 77,
-        "rang": "11",
-        "delta": -2
+        "rang": "8",
+        "delta": -3
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 74,
-        "rang": "10",
+        "rang": "7",
         "delta": 0
       },
       {
@@ -875,7 +875,7 @@
         "name": "UliPausS",
         "pts_spieltag": 12,
         "pts_gesamt": 68,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -933,7 +933,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 4,
         "pts_gesamt": 91,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -947,21 +947,21 @@
         "name": "Helmut",
         "pts_spieltag": 10,
         "pts_gesamt": 87,
-        "rang": "11",
+        "rang": "8",
         "delta": 4
       },
       {
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 86,
-        "rang": "7",
+        "rang": "10",
         "delta": -1
       },
       {
         "name": "Captain",
         "pts_spieltag": 8,
         "pts_gesamt": 86,
-        "rang": "8",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -982,7 +982,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 6,
         "pts_gesamt": 80,
-        "rang": "10",
+        "rang": "7",
         "delta": 0
       },
       {
@@ -996,7 +996,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 72,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -1061,7 +1061,7 @@
         "name": "Hanne_Sobek",
         "pts_spieltag": 9,
         "pts_gesamt": 100,
-        "rang": "5",
+        "rang": "6",
         "delta": -1
       },
       {
@@ -1075,7 +1075,7 @@
         "name": "thommes",
         "pts_spieltag": 9,
         "pts_gesamt": 95,
-        "rang": "7",
+        "rang": "10",
         "delta": 0
       },
       {
@@ -1089,7 +1089,7 @@
         "name": "Helmut",
         "pts_spieltag": 4,
         "pts_gesamt": 91,
-        "rang": "11",
+        "rang": "8",
         "delta": -3
       },
       {
@@ -1103,7 +1103,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 9,
         "pts_gesamt": 89,
-        "rang": "10",
+        "rang": "7",
         "delta": 0
       },
       {
@@ -1117,14 +1117,14 @@
         "name": "Captain",
         "pts_spieltag": 0,
         "pts_gesamt": 86,
-        "rang": "8",
+        "rang": "11",
         "delta": -5
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 9,
         "pts_gesamt": 81,
-        "rang": "6",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -1189,14 +1189,14 @@
         "name": "Helmut",
         "pts_spieltag": 14,
         "pts_gesamt": 105,
-        "rang": "11",
+        "rang": "8",
         "delta": 3
       },
       {
         "name": "Hanne_Sobek",
         "pts_spieltag": 4,
         "pts_gesamt": 104,
-        "rang": "5",
+        "rang": "6",
         "delta": -2
       },
       {
@@ -1210,7 +1210,7 @@
         "name": "thommes",
         "pts_spieltag": 6,
         "pts_gesamt": 101,
-        "rang": "7",
+        "rang": "10",
         "delta": -2
       },
       {
@@ -1224,7 +1224,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 100,
-        "rang": "10",
+        "rang": "7",
         "delta": 0
       },
       {
@@ -1238,14 +1238,14 @@
         "name": "Captain",
         "pts_spieltag": 8,
         "pts_gesamt": 94,
-        "rang": "8",
+        "rang": "11",
         "delta": 0
       },
       {
         "name": "UliPausS",
         "pts_spieltag": 8,
         "pts_gesamt": 89,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -2644,8 +2644,8 @@
           "flag": "🇲🇦"
         },
         "score": "2:0",
-        "status": "live",
-        "zeit": "LIVE",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       },
       {
@@ -2694,8 +2694,8 @@
     "7": [
       {
         "heim": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "France",
+          "flag": "🇫🇷"
         },
         "gast": {
           "name": null,
