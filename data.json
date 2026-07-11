@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "10.07.2026 23:35 Uhr (CEST)",
+    "generiert_am": "11.07.2026 09:11 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2698,8 +2698,8 @@
           "flag": "🇫🇷"
         },
         "gast": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "Spain",
+          "flag": "🇪🇸"
         },
         "score": "—",
         "status": "upcoming",
