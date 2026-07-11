@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "11.07.2026 18:57 Uhr (CEST)",
+    "generiert_am": "11.07.2026 23:23 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2571,9 +2571,9 @@
           "name": "England",
           "flag": "🇬🇧"
         },
-        "score": "2:3",
-        "status": "finished",
-        "zeit": "Abpfiff",
+        "score": "—",
+        "status": "upcoming",
+        "zeit": "03:00",
         "tipps": []
       },
       {
@@ -2671,9 +2671,9 @@
           "name": "England",
           "flag": "🇬🇧"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "23:00",
+        "score": "0:0",
+        "status": "live",
+        "zeit": "LIVE",
         "tipps": []
       },
       {
