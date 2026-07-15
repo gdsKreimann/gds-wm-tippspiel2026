@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "14.07.2026 23:31 Uhr (CEST)",
+    "generiert_am": "15.07.2026 09:15 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2724,8 +2724,8 @@
     "8": [
       {
         "heim": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "France",
+          "flag": "🇫🇷"
         },
         "gast": {
           "name": null,
@@ -2740,8 +2740,8 @@
     "9": [
       {
         "heim": {
-          "name": null,
-          "flag": "🏳️"
+          "name": "Spain",
+          "flag": "🇪🇸"
         },
         "gast": {
           "name": null,
