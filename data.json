@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "15.07.2026 19:16 Uhr (CEST)",
+    "generiert_am": "15.07.2026 23:30 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -86,7 +86,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 8,
         "pts_gesamt": 8,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -100,14 +100,14 @@
         "name": "UliPausS",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
         "name": "Michelle",
         "pts_spieltag": 7,
         "pts_gesamt": 7,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -214,7 +214,7 @@
         "name": "Michelle",
         "pts_spieltag": 10,
         "pts_gesamt": 17,
-        "rang": "12",
+        "rang": "13",
         "delta": 2
       },
       {
@@ -235,7 +235,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 4,
         "pts_gesamt": 12,
-        "rang": "5",
+        "rang": "6",
         "delta": -4
       },
       {
@@ -256,7 +256,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 11,
-        "rang": "6",
+        "rang": "5",
         "delta": -5
       },
       {
@@ -328,7 +328,7 @@
         "name": "Michelle",
         "pts_spieltag": 17,
         "pts_gesamt": 34,
-        "rang": "12",
+        "rang": "13",
         "delta": 1
       },
       {
@@ -342,7 +342,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 17,
         "pts_gesamt": 29,
-        "rang": "5",
+        "rang": "6",
         "delta": 2
       },
       {
@@ -370,7 +370,7 @@
         "name": "UliPausS",
         "pts_spieltag": 15,
         "pts_gesamt": 26,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -456,7 +456,7 @@
         "name": "Michelle",
         "pts_spieltag": 13,
         "pts_gesamt": 47,
-        "rang": "12",
+        "rang": "13",
         "delta": -1
       },
       {
@@ -484,7 +484,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 40,
-        "rang": "5",
+        "rang": "6",
         "delta": -3
       },
       {
@@ -512,7 +512,7 @@
         "name": "UliPausS",
         "pts_spieltag": 11,
         "pts_gesamt": 37,
-        "rang": "6",
+        "rang": "5",
         "delta": -3
       },
       {
@@ -577,7 +577,7 @@
         "name": "Michelle",
         "pts_spieltag": 10,
         "pts_gesamt": 57,
-        "rang": "12",
+        "rang": "13",
         "delta": 0
       },
       {
@@ -605,7 +605,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 51,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -647,7 +647,7 @@
         "name": "UliPausS",
         "pts_spieltag": 0,
         "pts_gesamt": 37,
-        "rang": "6",
+        "rang": "5",
         "delta": -2
       },
       {
@@ -705,7 +705,7 @@
         "name": "Michelle",
         "pts_spieltag": 14,
         "pts_gesamt": 71,
-        "rang": "12",
+        "rang": "13",
         "delta": -1
       },
       {
@@ -740,7 +740,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 12,
         "pts_gesamt": 63,
-        "rang": "5",
+        "rang": "6",
         "delta": -2
       },
       {
@@ -761,7 +761,7 @@
         "name": "UliPausS",
         "pts_spieltag": 19,
         "pts_gesamt": 56,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -819,7 +819,7 @@
         "name": "Michelle",
         "pts_spieltag": 11,
         "pts_gesamt": 82,
-        "rang": "12",
+        "rang": "13",
         "delta": 1
       },
       {
@@ -861,7 +861,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 74,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -875,7 +875,7 @@
         "name": "UliPausS",
         "pts_spieltag": 12,
         "pts_gesamt": 68,
-        "rang": "6",
+        "rang": "5",
         "delta": 1
       },
       {
@@ -975,14 +975,14 @@
         "name": "Michelle",
         "pts_spieltag": 2,
         "pts_gesamt": 84,
-        "rang": "12",
+        "rang": "13",
         "delta": -5
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 6,
         "pts_gesamt": 80,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -996,7 +996,7 @@
         "name": "UliPausS",
         "pts_spieltag": 4,
         "pts_gesamt": 72,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -1082,7 +1082,7 @@
         "name": "Michelle",
         "pts_spieltag": 10,
         "pts_gesamt": 94,
-        "rang": "12",
+        "rang": "13",
         "delta": 2
       },
       {
@@ -1103,7 +1103,7 @@
         "name": "DennisCostaRica",
         "pts_spieltag": 9,
         "pts_gesamt": 89,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -1124,7 +1124,7 @@
         "name": "UliPausS",
         "pts_spieltag": 9,
         "pts_gesamt": 81,
-        "rang": "6",
+        "rang": "5",
         "delta": -1
       },
       {
@@ -1217,14 +1217,14 @@
         "name": "Michelle",
         "pts_spieltag": 7,
         "pts_gesamt": 101,
-        "rang": "12",
+        "rang": "13",
         "delta": -2
       },
       {
         "name": "DennisCostaRica",
         "pts_spieltag": 11,
         "pts_gesamt": 100,
-        "rang": "5",
+        "rang": "6",
         "delta": 0
       },
       {
@@ -1245,7 +1245,7 @@
         "name": "UliPausS",
         "pts_spieltag": 8,
         "pts_gesamt": 89,
-        "rang": "6",
+        "rang": "5",
         "delta": 0
       },
       {
@@ -2715,9 +2715,9 @@
           "name": "Argentina",
           "flag": "🇦🇷"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
+        "score": "1:2",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       }
     ],
