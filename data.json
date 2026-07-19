@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "19.07.2026 18:57 Uhr (CEST)",
+    "generiert_am": "19.07.2026 23:25 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -2747,9 +2747,9 @@
           "name": "Argentina",
           "flag": "🇦🇷"
         },
-        "score": "—",
-        "status": "upcoming",
-        "zeit": "21:00",
+        "score": "0:0",
+        "status": "live",
+        "zeit": "LIVE",
         "tipps": []
       }
     ]
