@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generiert_am": "18.07.2026 23:24 Uhr (CEST)",
+    "generiert_am": "19.07.2026 09:27 Uhr (CEST)",
     "aktiver_spieltag": 10,
     "quelle": "gds-wm-tippspiel2026"
   },
@@ -149,7 +149,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 6,
         "pts_gesamt": 6,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -242,7 +242,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 6,
         "pts_gesamt": 12,
-        "rang": "12",
+        "rang": "11",
         "delta": 4
       },
       {
@@ -384,7 +384,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 13,
         "pts_gesamt": 25,
-        "rang": "12",
+        "rang": "11",
         "delta": -3
       },
       {
@@ -498,7 +498,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 14,
         "pts_gesamt": 39,
-        "rang": "12",
+        "rang": "11",
         "delta": 1
       },
       {
@@ -619,7 +619,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 10,
         "pts_gesamt": 49,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -747,7 +747,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 14,
         "pts_gesamt": 63,
-        "rang": "12",
+        "rang": "11",
         "delta": -1
       },
       {
@@ -868,7 +868,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 8,
         "pts_gesamt": 71,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -989,7 +989,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 6,
         "pts_gesamt": 77,
-        "rang": "12",
+        "rang": "11",
         "delta": 0
       },
       {
@@ -1096,7 +1096,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 13,
         "pts_gesamt": 90,
-        "rang": "12",
+        "rang": "11",
         "delta": 2
       },
       {
@@ -1231,7 +1231,7 @@
         "name": "Bastelwastel",
         "pts_spieltag": 10,
         "pts_gesamt": 100,
-        "rang": "12",
+        "rang": "11",
         "delta": -2
       },
       {
@@ -2731,9 +2731,9 @@
           "name": "England",
           "flag": "🇬🇧"
         },
-        "score": "0:1",
-        "status": "live",
-        "zeit": "LIVE",
+        "score": "4:6",
+        "status": "finished",
+        "zeit": "Abpfiff",
         "tipps": []
       }
     ],
